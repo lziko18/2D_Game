@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite.png-f21a344d31b40293fa4ca42c0514625f.stex"
+path="res://.import/FX052_02.png-63dc4a054af2d0c3c0c7b2bc8d2e6866.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/sprite.png"
-dest_files=[ "res://.import/sprite.png-f21a344d31b40293fa4ca42c0514625f.stex" ]
+source_file="res://Effects/FX052_nyknck/FX052_02.png"
+dest_files=[ "res://.import/FX052_02.png-63dc4a054af2d0c3c0c7b2bc8d2e6866.stex" ]
 
 [params]
 
