@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/Player_health.gd" type="Script" id=1]
+[ext_resource path="res://UI/HeartUIEmpty.png" type="Texture" id=2]
+[ext_resource path="res://UI/HeartUIFull.png" type="Texture" id=3]
+
+
+[node name="prova" type="Control"]
+margin_left = 13.125
+margin_top = 7.875
+margin_right = 57.125
+margin_bottom = 18.875
+rect_scale = Vector2( 1.80363, 2.05814 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="empty" type="TextureRect" parent="."]
+margin_right = 44.0
+margin_bottom = 11.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="full" type="TextureRect" parent="."]
+margin_right = 44.0
+margin_bottom = 11.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

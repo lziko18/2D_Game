@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/warped vehicles.ogg-61ed5814f2a1a58a254f40e8483692ae.oggstr"
+
+[deps]
+
+source_file="res://Audio/warped vehicles.ogg"
+dest_files=[ "res://.import/warped vehicles.ogg-61ed5814f2a1a58a254f40e8483692ae.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -9,20 +9,93 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "VBoxContainer",
-"class": "MenuItem",
+"base": "Node",
+"class": "StateMachine",
 "language": "GDScript",
-"path": "res://UI/Menu.gd"
+"path": "res://StateMachine.gd"
 } ]
 _global_script_class_icons={
-"MenuItem": "res://UI/MenuItem.gd"
+"StateMachine": ""
 }
 
 [application]
 
-config/name="2D-Game"
+config/name="Test2ForGameOne"
+run/main_scene="res://UI/MarginContainer.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+PlayerStats="*res://Player/Player_stats.tscn"
+LizardStats="*res://Skills/Lizard_stats.tscn"
+Transition="*res://UI/Transition.tscn"
+
+[display]
+
+window/size/width=650
+window/size/height=352
+window/size/test_width=1280
+window/size/test_height=600
+mouse_cursor/custom_image="res://UI/Cursor.png"
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[input]
+
+"Go right"={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+"Go left"={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
+}
+"Cast Spell"={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":84,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Crouch={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Hook={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Playey hit"
+2d_physics/layer_5="player hurt"
+2d_physics/layer_6="enemy hurt"
+2d_physics/layer_7="enemy hit"
+2d_physics/layer_8="bounce"
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
+quality/filters/use_nearest_mipmap_filter=true
 environment/default_environment="res://default_env.tres"

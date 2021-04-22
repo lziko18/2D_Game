@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds.png-e15a5a259bdfa5b572ef7df21c501181.stex"
+path="res://.import/clouds.png-42f6e8b29feadc13537c42b87bc8ccbe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BAckgorund/Magic cliff/clouds.png"
-dest_files=[ "res://.import/clouds.png-e15a5a259bdfa5b572ef7df21c501181.stex" ]
+source_file="res://Assets/Magic cliff/clouds.png"
+dest_files=[ "res://.import/clouds.png-42f6e8b29feadc13537c42b87bc8ccbe.stex" ]
 
 [params]
 

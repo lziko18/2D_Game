@@ -1,0 +1,1274 @@
+[gd_resource type="TileSet" load_steps=3 format=2]
+
+[ext_resource path="res://Tilesets/jungle tileset.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[resource]
+0/name = "Jungle001"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 64, 32, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 8, 8 )
+0/navigation_offset = Vector2( 8, 8 )
+0/shape_offset = Vector2( 8.52028, 8.81758 )
+0/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+0/z_index = 0
+1/name = "Jungle002"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 80, 32, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 8, 8 )
+1/navigation_offset = Vector2( 8, 8 )
+1/shape_offset = Vector2( 8.52028, 8.81758 )
+1/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+1/shape = SubResource( 1 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+1/z_index = 0
+2/name = "Jungle003"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 128, 32, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 8, 8 )
+2/navigation_offset = Vector2( 8, 8 )
+2/shape_offset = Vector2( 8.52028, 8.81758 )
+2/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+2/shape = SubResource( 1 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+2/z_index = 0
+3/name = "Jungle004"
+3/texture = ExtResource( 1 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 128, 48, 16, 16 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 8, 8 )
+3/navigation_offset = Vector2( 8, 8 )
+3/shape_offset = Vector2( 8.52028, 8.81758 )
+3/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+3/shape = SubResource( 1 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+3/z_index = 0
+4/name = "Jungle005"
+4/texture = ExtResource( 1 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 64, 48, 16, 16 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 8, 8 )
+4/navigation_offset = Vector2( 8, 8 )
+4/shape_offset = Vector2( 8.52028, 8.81758 )
+4/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+4/shape = SubResource( 1 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+4/z_index = 0
+5/name = "Jungle006"
+5/texture = ExtResource( 1 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 80, 48, 16, 16 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 8, 8 )
+5/navigation_offset = Vector2( 8, 8 )
+5/shape_offset = Vector2( 8.52028, 8.81758 )
+5/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+5/shape = SubResource( 1 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+5/z_index = 0
+6/name = "Jungle007"
+6/texture = ExtResource( 1 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 96, 48, 16, 16 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 8, 8 )
+6/navigation_offset = Vector2( 8, 8 )
+6/shape_offset = Vector2( 8.52028, 8.81758 )
+6/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+6/shape = SubResource( 1 )
+6/shape_one_way = false
+6/shape_one_way_margin = 1.0
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+6/z_index = 0
+7/name = "Jungle008"
+7/texture = ExtResource( 1 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 64, 96, 16, 16 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 8, 8 )
+7/navigation_offset = Vector2( 8, 8 )
+7/shape_offset = Vector2( 8.52028, 8.81758 )
+7/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+7/shape = SubResource( 1 )
+7/shape_one_way = false
+7/shape_one_way_margin = 1.0
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+7/z_index = 0
+8/name = "Jungle009"
+8/texture = ExtResource( 1 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 80, 96, 16, 16 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 8, 8 )
+8/navigation_offset = Vector2( 8, 8 )
+8/shape_offset = Vector2( 8.52028, 8.81758 )
+8/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+8/shape = SubResource( 1 )
+8/shape_one_way = false
+8/shape_one_way_margin = 1.0
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+8/z_index = 0
+9/name = "Jungle010"
+9/texture = ExtResource( 1 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 128, 96, 16, 16 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 8, 8 )
+9/navigation_offset = Vector2( 8, 8 )
+9/shape_offset = Vector2( 8.52028, 8.81758 )
+9/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+9/shape = SubResource( 1 )
+9/shape_one_way = false
+9/shape_one_way_margin = 1.0
+9/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+9/z_index = 0
+10/name = "Jungle011"
+10/texture = ExtResource( 1 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 160, 48, 16, 16 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 8, 8 )
+10/navigation_offset = Vector2( 8, 8 )
+10/shape_offset = Vector2( 8.52028, 8.81758 )
+10/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+10/shape = SubResource( 1 )
+10/shape_one_way = false
+10/shape_one_way_margin = 1.0
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+10/z_index = 0
+11/name = "Jungle012"
+11/texture = ExtResource( 1 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 176, 48, 16, 16 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 8, 8 )
+11/navigation_offset = Vector2( 8, 8 )
+11/shape_offset = Vector2( 8.52028, 8.81758 )
+11/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+11/shape = SubResource( 1 )
+11/shape_one_way = false
+11/shape_one_way_margin = 1.0
+11/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+11/z_index = 0
+12/name = "Jungle013"
+12/texture = ExtResource( 1 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 208, 32, 16, 16 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 8, 8 )
+12/navigation_offset = Vector2( 8, 8 )
+12/shape_offset = Vector2( 8.52028, 8.81758 )
+12/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+12/shape = SubResource( 1 )
+12/shape_one_way = false
+12/shape_one_way_margin = 1.0
+12/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+12/z_index = 0
+13/name = "Jungle014"
+13/texture = ExtResource( 1 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 208, 64, 16, 16 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 8, 8 )
+13/navigation_offset = Vector2( 8, 8 )
+13/shape_offset = Vector2( 8.52028, 8.81758 )
+13/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+13/shape = SubResource( 1 )
+13/shape_one_way = false
+13/shape_one_way_margin = 1.0
+13/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+13/z_index = 0
+14/name = "Jungle015"
+14/texture = ExtResource( 1 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 224, 64, 16, 16 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 8, 8 )
+14/navigation_offset = Vector2( 8, 8 )
+14/shape_offset = Vector2( 8.52028, 8.81758 )
+14/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+14/shape = SubResource( 1 )
+14/shape_one_way = false
+14/shape_one_way_margin = 1.0
+14/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+14/z_index = 0
+15/name = "Jungle016"
+15/texture = ExtResource( 1 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 240, 64, 16, 16 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 8, 8 )
+15/navigation_offset = Vector2( 8, 8 )
+15/shape_offset = Vector2( 8.52028, 8.81758 )
+15/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+15/shape = SubResource( 1 )
+15/shape_one_way = false
+15/shape_one_way_margin = 1.0
+15/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+15/z_index = 0
+16/name = "Jungle017"
+16/texture = ExtResource( 1 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 256, 64, 16, 16 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 8, 8 )
+16/navigation_offset = Vector2( 8, 8 )
+16/shape_offset = Vector2( 8.52028, 8.81758 )
+16/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+16/shape = SubResource( 1 )
+16/shape_one_way = false
+16/shape_one_way_margin = 1.0
+16/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+16/z_index = 0
+17/name = "Jungle018"
+17/texture = ExtResource( 1 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 272, 64, 16, 16 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 8, 8 )
+17/navigation_offset = Vector2( 8, 8 )
+17/shape_offset = Vector2( 8.52028, 8.81758 )
+17/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+17/shape = SubResource( 1 )
+17/shape_one_way = false
+17/shape_one_way_margin = 1.0
+17/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+17/z_index = 0
+18/name = "Jungle019"
+18/texture = ExtResource( 1 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 240, 32, 16, 16 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 8, 8 )
+18/navigation_offset = Vector2( 8, 8 )
+18/shape_offset = Vector2( 8.52028, 8.81758 )
+18/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+18/shape = SubResource( 1 )
+18/shape_one_way = false
+18/shape_one_way_margin = 1.0
+18/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+18/z_index = 0
+19/name = "Jungle020"
+19/texture = ExtResource( 1 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 240, 48, 16, 16 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 8, 8 )
+19/navigation_offset = Vector2( 8, 8 )
+19/shape_offset = Vector2( 8.52028, 8.81758 )
+19/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+19/shape = SubResource( 1 )
+19/shape_one_way = false
+19/shape_one_way_margin = 1.0
+19/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+19/z_index = 0
+20/name = "Jungle021"
+20/texture = ExtResource( 1 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 240, 80, 16, 16 )
+20/tile_mode = 0
+20/occluder_offset = Vector2( 8, 8 )
+20/navigation_offset = Vector2( 8, 8 )
+20/shape_offset = Vector2( 8.52028, 8.81758 )
+20/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+20/shape = SubResource( 1 )
+20/shape_one_way = false
+20/shape_one_way_margin = 1.0
+20/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+20/z_index = 0
+21/name = "Jungle022"
+21/texture = ExtResource( 1 )
+21/tex_offset = Vector2( 0, 0 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 240, 96, 16, 16 )
+21/tile_mode = 0
+21/occluder_offset = Vector2( 8, 8 )
+21/navigation_offset = Vector2( 8, 8 )
+21/shape_offset = Vector2( 8.52028, 8.81758 )
+21/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+21/shape = SubResource( 1 )
+21/shape_one_way = false
+21/shape_one_way_margin = 1.0
+21/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+21/z_index = 0
+22/name = "Jungle023"
+22/texture = ExtResource( 1 )
+22/tex_offset = Vector2( 0, 0 )
+22/modulate = Color( 1, 1, 1, 1 )
+22/region = Rect2( 304, 48, 16, 16 )
+22/tile_mode = 0
+22/occluder_offset = Vector2( 8, 8 )
+22/navigation_offset = Vector2( 8, 8 )
+22/shape_offset = Vector2( 8.52028, 8.81758 )
+22/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+22/shape = SubResource( 1 )
+22/shape_one_way = false
+22/shape_one_way_margin = 1.0
+22/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+22/z_index = 0
+23/name = "Jungle024"
+23/texture = ExtResource( 1 )
+23/tex_offset = Vector2( 0, 0 )
+23/modulate = Color( 1, 1, 1, 1 )
+23/region = Rect2( 320, 48, 16, 16 )
+23/tile_mode = 0
+23/occluder_offset = Vector2( 8, 8 )
+23/navigation_offset = Vector2( 8, 8 )
+23/shape_offset = Vector2( 8.52028, 8.81758 )
+23/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+23/shape = SubResource( 1 )
+23/shape_one_way = false
+23/shape_one_way_margin = 1.0
+23/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+23/z_index = 0
+24/name = "Jungle025"
+24/texture = ExtResource( 1 )
+24/tex_offset = Vector2( 0, 0 )
+24/modulate = Color( 1, 1, 1, 1 )
+24/region = Rect2( 336, 48, 16, 16 )
+24/tile_mode = 0
+24/occluder_offset = Vector2( 8, 8 )
+24/navigation_offset = Vector2( 8, 8 )
+24/shape_offset = Vector2( 8.52028, 8.81758 )
+24/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+24/shape = SubResource( 1 )
+24/shape_one_way = false
+24/shape_one_way_margin = 1.0
+24/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+24/z_index = 0
+25/name = "Jungle026"
+25/texture = ExtResource( 1 )
+25/tex_offset = Vector2( 0, 0 )
+25/modulate = Color( 1, 1, 1, 1 )
+25/region = Rect2( 336, 64, 16, 16 )
+25/tile_mode = 0
+25/occluder_offset = Vector2( 8, 8 )
+25/navigation_offset = Vector2( 8, 8 )
+25/shape_offset = Vector2( 8.52028, 8.81758 )
+25/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+25/shape = SubResource( 1 )
+25/shape_one_way = false
+25/shape_one_way_margin = 1.0
+25/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+25/z_index = 0
+26/name = "Jungle027"
+26/texture = ExtResource( 1 )
+26/tex_offset = Vector2( 0, 0 )
+26/modulate = Color( 1, 1, 1, 1 )
+26/region = Rect2( 336, 80, 16, 16 )
+26/tile_mode = 0
+26/occluder_offset = Vector2( 8, 8 )
+26/navigation_offset = Vector2( 8, 8 )
+26/shape_offset = Vector2( 8.52028, 8.81758 )
+26/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+26/shape = SubResource( 1 )
+26/shape_one_way = false
+26/shape_one_way_margin = 1.0
+26/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+26/z_index = 0
+27/name = "Jungle028"
+27/texture = ExtResource( 1 )
+27/tex_offset = Vector2( 0, 0 )
+27/modulate = Color( 1, 1, 1, 1 )
+27/region = Rect2( 320, 80, 16, 16 )
+27/tile_mode = 0
+27/occluder_offset = Vector2( 8, 8 )
+27/navigation_offset = Vector2( 8, 8 )
+27/shape_offset = Vector2( 8.52028, 8.81758 )
+27/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+27/shape = SubResource( 1 )
+27/shape_one_way = false
+27/shape_one_way_margin = 1.0
+27/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+27/z_index = 0
+28/name = "Jungle029"
+28/texture = ExtResource( 1 )
+28/tex_offset = Vector2( 0, 0 )
+28/modulate = Color( 1, 1, 1, 1 )
+28/region = Rect2( 304, 80, 16, 16 )
+28/tile_mode = 0
+28/occluder_offset = Vector2( 8, 8 )
+28/navigation_offset = Vector2( 8, 8 )
+28/shape_offset = Vector2( 8.52028, 8.81758 )
+28/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+28/shape = SubResource( 1 )
+28/shape_one_way = false
+28/shape_one_way_margin = 1.0
+28/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+28/z_index = 0
+29/name = "Jungle030"
+29/texture = ExtResource( 1 )
+29/tex_offset = Vector2( 0, 0 )
+29/modulate = Color( 1, 1, 1, 1 )
+29/region = Rect2( 304, 64, 16, 16 )
+29/tile_mode = 0
+29/occluder_offset = Vector2( 8, 8 )
+29/navigation_offset = Vector2( 8, 8 )
+29/shape_offset = Vector2( 8.52028, 8.81758 )
+29/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+29/shape = SubResource( 1 )
+29/shape_one_way = false
+29/shape_one_way_margin = 1.0
+29/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+29/z_index = 0
+30/name = "Jungle031"
+30/texture = ExtResource( 1 )
+30/tex_offset = Vector2( 0, 0 )
+30/modulate = Color( 1, 1, 1, 1 )
+30/region = Rect2( 672, 128, 16, 16 )
+30/tile_mode = 0
+30/occluder_offset = Vector2( 8, 8 )
+30/navigation_offset = Vector2( 8, 8 )
+30/shape_offset = Vector2( 8.52028, 8.81758 )
+30/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+30/shape = SubResource( 1 )
+30/shape_one_way = false
+30/shape_one_way_margin = 1.0
+30/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+30/z_index = 0
+31/name = "Jungle032"
+31/texture = ExtResource( 1 )
+31/tex_offset = Vector2( 0, 0 )
+31/modulate = Color( 1, 1, 1, 1 )
+31/region = Rect2( 688, 128, 16, 16 )
+31/tile_mode = 0
+31/occluder_offset = Vector2( 8, 8 )
+31/navigation_offset = Vector2( 8, 8 )
+31/shape_offset = Vector2( 8.52028, 8.81758 )
+31/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+31/shape = SubResource( 1 )
+31/shape_one_way = false
+31/shape_one_way_margin = 1.0
+31/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+31/z_index = 0
+32/name = "Jungle033"
+32/texture = ExtResource( 1 )
+32/tex_offset = Vector2( 0, 0 )
+32/modulate = Color( 1, 1, 1, 1 )
+32/region = Rect2( 704, 128, 16, 16 )
+32/tile_mode = 0
+32/occluder_offset = Vector2( 8, 8 )
+32/navigation_offset = Vector2( 8, 8 )
+32/shape_offset = Vector2( 8.52028, 8.81758 )
+32/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+32/shape = SubResource( 1 )
+32/shape_one_way = false
+32/shape_one_way_margin = 1.0
+32/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+32/z_index = 0
+33/name = "Jungle034"
+33/texture = ExtResource( 1 )
+33/tex_offset = Vector2( 0, 0 )
+33/modulate = Color( 1, 1, 1, 1 )
+33/region = Rect2( 704, 160, 16, 16 )
+33/tile_mode = 0
+33/occluder_offset = Vector2( 8, 8 )
+33/navigation_offset = Vector2( 8, 8 )
+33/shape_offset = Vector2( 8.52028, 8.81758 )
+33/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+33/shape = SubResource( 1 )
+33/shape_one_way = false
+33/shape_one_way_margin = 1.0
+33/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+33/z_index = 0
+34/name = "Jungle035"
+34/texture = ExtResource( 1 )
+34/tex_offset = Vector2( 0, 0 )
+34/modulate = Color( 1, 1, 1, 1 )
+34/region = Rect2( 704, 144, 16, 16 )
+34/tile_mode = 0
+34/occluder_offset = Vector2( 8, 8 )
+34/navigation_offset = Vector2( 8, 8 )
+34/shape_offset = Vector2( 8.52028, 8.81758 )
+34/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+34/shape = SubResource( 1 )
+34/shape_one_way = false
+34/shape_one_way_margin = 1.0
+34/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+34/z_index = 0
+35/name = "Jungle036"
+35/texture = ExtResource( 1 )
+35/tex_offset = Vector2( 0, 0 )
+35/modulate = Color( 1, 1, 1, 1 )
+35/region = Rect2( 688, 160, 16, 16 )
+35/tile_mode = 0
+35/occluder_offset = Vector2( 8, 8 )
+35/navigation_offset = Vector2( 8, 8 )
+35/shape_offset = Vector2( 8.52028, 8.81758 )
+35/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+35/shape = SubResource( 1 )
+35/shape_one_way = false
+35/shape_one_way_margin = 1.0
+35/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+35/z_index = 0
+36/name = "Jungle037"
+36/texture = ExtResource( 1 )
+36/tex_offset = Vector2( 0, 0 )
+36/modulate = Color( 1, 1, 1, 1 )
+36/region = Rect2( 672, 160, 16, 16 )
+36/tile_mode = 0
+36/occluder_offset = Vector2( 8, 8 )
+36/navigation_offset = Vector2( 8, 8 )
+36/shape_offset = Vector2( 8.52028, 8.81758 )
+36/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+36/shape = SubResource( 1 )
+36/shape_one_way = false
+36/shape_one_way_margin = 1.0
+36/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+36/z_index = 0
+37/name = "Jungle038"
+37/texture = ExtResource( 1 )
+37/tex_offset = Vector2( 0, 0 )
+37/modulate = Color( 1, 1, 1, 1 )
+37/region = Rect2( 672, 144, 16, 16 )
+37/tile_mode = 0
+37/occluder_offset = Vector2( 8, 8 )
+37/navigation_offset = Vector2( 8, 8 )
+37/shape_offset = Vector2( 8.52028, 8.81758 )
+37/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+37/shape = SubResource( 1 )
+37/shape_one_way = false
+37/shape_one_way_margin = 1.0
+37/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+37/z_index = 0
+38/name = "Jungle039"
+38/texture = ExtResource( 1 )
+38/tex_offset = Vector2( 0, 0 )
+38/modulate = Color( 1, 1, 1, 1 )
+38/region = Rect2( 528, 112, 16, 16 )
+38/tile_mode = 0
+38/occluder_offset = Vector2( 8, 8 )
+38/navigation_offset = Vector2( 8, 8 )
+38/shape_offset = Vector2( 8.52028, 8.81758 )
+38/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+38/shape = SubResource( 1 )
+38/shape_one_way = false
+38/shape_one_way_margin = 1.0
+38/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+38/z_index = 0
+39/name = "Jungle040"
+39/texture = ExtResource( 1 )
+39/tex_offset = Vector2( 0, 0 )
+39/modulate = Color( 1, 1, 1, 1 )
+39/region = Rect2( 544, 112, 16, 16 )
+39/tile_mode = 0
+39/occluder_offset = Vector2( 8, 8 )
+39/navigation_offset = Vector2( 8, 8 )
+39/shape_offset = Vector2( 8.52028, 8.81758 )
+39/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+39/shape = SubResource( 1 )
+39/shape_one_way = false
+39/shape_one_way_margin = 1.0
+39/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+39/z_index = 0
+40/name = "Jungle041"
+40/texture = ExtResource( 1 )
+40/tex_offset = Vector2( 0, 0 )
+40/modulate = Color( 1, 1, 1, 1 )
+40/region = Rect2( 560, 112, 16, 16 )
+40/tile_mode = 0
+40/occluder_offset = Vector2( 8, 8 )
+40/navigation_offset = Vector2( 8, 8 )
+40/shape_offset = Vector2( 8.52028, 8.81758 )
+40/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+40/shape = SubResource( 1 )
+40/shape_one_way = false
+40/shape_one_way_margin = 1.0
+40/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+40/z_index = 0
+41/name = "Jungle042"
+41/texture = ExtResource( 1 )
+41/tex_offset = Vector2( 0, 0 )
+41/modulate = Color( 1, 1, 1, 1 )
+41/region = Rect2( 576, 112, 16, 16 )
+41/tile_mode = 0
+41/occluder_offset = Vector2( 8, 8 )
+41/navigation_offset = Vector2( 8, 8 )
+41/shape_offset = Vector2( 8.52028, 8.81758 )
+41/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+41/shape = SubResource( 1 )
+41/shape_one_way = false
+41/shape_one_way_margin = 1.0
+41/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+41/z_index = 0
+42/name = "Jungle043"
+42/texture = ExtResource( 1 )
+42/tex_offset = Vector2( 0, 0 )
+42/modulate = Color( 1, 1, 1, 1 )
+42/region = Rect2( 592, 112, 16, 16 )
+42/tile_mode = 0
+42/occluder_offset = Vector2( 8, 8 )
+42/navigation_offset = Vector2( 8, 8 )
+42/shape_offset = Vector2( 8.52028, 8.81758 )
+42/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+42/shape = SubResource( 1 )
+42/shape_one_way = false
+42/shape_one_way_margin = 1.0
+42/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+42/z_index = 0
+43/name = "Jungle044"
+43/texture = ExtResource( 1 )
+43/tex_offset = Vector2( 0, 0 )
+43/modulate = Color( 1, 1, 1, 1 )
+43/region = Rect2( 544, 144, 16, 16 )
+43/tile_mode = 0
+43/occluder_offset = Vector2( 8, 8 )
+43/navigation_offset = Vector2( 8, 8 )
+43/shape_offset = Vector2( 8.52028, 8.81758 )
+43/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+43/shape = SubResource( 1 )
+43/shape_one_way = false
+43/shape_one_way_margin = 1.0
+43/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+43/z_index = 0
+44/name = "Jungle045"
+44/texture = ExtResource( 1 )
+44/tex_offset = Vector2( 0, 0 )
+44/modulate = Color( 1, 1, 1, 1 )
+44/region = Rect2( 576, 144, 16, 16 )
+44/tile_mode = 0
+44/occluder_offset = Vector2( 8, 8 )
+44/navigation_offset = Vector2( 8, 8 )
+44/shape_offset = Vector2( 8.52028, 8.81758 )
+44/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+44/shape = SubResource( 1 )
+44/shape_one_way = false
+44/shape_one_way_margin = 1.0
+44/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+44/z_index = 0
+45/name = "Jungle046"
+45/texture = ExtResource( 1 )
+45/tex_offset = Vector2( 0, 0 )
+45/modulate = Color( 1, 1, 1, 1 )
+45/region = Rect2( 592, 144, 16, 16 )
+45/tile_mode = 0
+45/occluder_offset = Vector2( 8, 8 )
+45/navigation_offset = Vector2( 8, 8 )
+45/shape_offset = Vector2( 8.52028, 8.81758 )
+45/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+45/shape = SubResource( 1 )
+45/shape_one_way = false
+45/shape_one_way_margin = 1.0
+45/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+45/z_index = 0
+46/name = "Jungle047"
+46/texture = ExtResource( 1 )
+46/tex_offset = Vector2( 0, 0 )
+46/modulate = Color( 1, 1, 1, 1 )
+46/region = Rect2( 528, 144, 16, 16 )
+46/tile_mode = 0
+46/occluder_offset = Vector2( 8, 8 )
+46/navigation_offset = Vector2( 8, 8 )
+46/shape_offset = Vector2( 8.52028, 8.81758 )
+46/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+46/shape = SubResource( 1 )
+46/shape_one_way = false
+46/shape_one_way_margin = 1.0
+46/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+46/z_index = 0
+47/name = "Jungle048"
+47/texture = ExtResource( 1 )
+47/tex_offset = Vector2( 0, 0 )
+47/modulate = Color( 1, 1, 1, 1 )
+47/region = Rect2( 96, 64, 16, 16 )
+47/tile_mode = 0
+47/occluder_offset = Vector2( 8, 8 )
+47/navigation_offset = Vector2( 8, 8 )
+47/shape_offset = Vector2( 8.52028, 8.81758 )
+47/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+47/shape = SubResource( 1 )
+47/shape_one_way = false
+47/shape_one_way_margin = 1.0
+47/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+47/z_index = 0
+48/name = "Jungle049"
+48/texture = ExtResource( 1 )
+48/tex_offset = Vector2( 0, 0 )
+48/modulate = Color( 1, 1, 1, 1 )
+48/region = Rect2( 80, 144, 16, 16 )
+48/tile_mode = 0
+48/occluder_offset = Vector2( 8, 8 )
+48/navigation_offset = Vector2( 8, 8 )
+48/shape_offset = Vector2( 8.52028, 8.81758 )
+48/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+48/shape = SubResource( 1 )
+48/shape_one_way = false
+48/shape_one_way_margin = 1.0
+48/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+48/z_index = 0
+49/name = "Jungle050"
+49/texture = ExtResource( 1 )
+49/tex_offset = Vector2( 0, 0 )
+49/modulate = Color( 1, 1, 1, 1 )
+49/region = Rect2( 32, 224, 16, 16 )
+49/tile_mode = 0
+49/occluder_offset = Vector2( 8, 8 )
+49/navigation_offset = Vector2( 8, 8 )
+49/shape_offset = Vector2( 8.52028, 8.81758 )
+49/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+49/shape = SubResource( 1 )
+49/shape_one_way = false
+49/shape_one_way_margin = 1.0
+49/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+49/z_index = 0
+50/name = "Jungle051"
+50/texture = ExtResource( 1 )
+50/tex_offset = Vector2( 0, 0 )
+50/modulate = Color( 1, 1, 1, 1 )
+50/region = Rect2( 64, 224, 16, 16 )
+50/tile_mode = 0
+50/occluder_offset = Vector2( 8, 8 )
+50/navigation_offset = Vector2( 8, 8 )
+50/shape_offset = Vector2( 8.52028, 8.81758 )
+50/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+50/shape = SubResource( 1 )
+50/shape_one_way = false
+50/shape_one_way_margin = 1.0
+50/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+50/z_index = 0
+51/name = "Jungle052"
+51/texture = ExtResource( 1 )
+51/tex_offset = Vector2( 0, 0 )
+51/modulate = Color( 1, 1, 1, 1 )
+51/region = Rect2( 80, 224, 16, 16 )
+51/tile_mode = 0
+51/occluder_offset = Vector2( 8, 8 )
+51/navigation_offset = Vector2( 8, 8 )
+51/shape_offset = Vector2( 8.52028, 8.81758 )
+51/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+51/shape = SubResource( 1 )
+51/shape_one_way = false
+51/shape_one_way_margin = 1.0
+51/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+51/z_index = 0
+52/name = "Jungle053"
+52/texture = ExtResource( 1 )
+52/tex_offset = Vector2( 0, 0 )
+52/modulate = Color( 1, 1, 1, 1 )
+52/region = Rect2( 96, 224, 16, 16 )
+52/tile_mode = 0
+52/occluder_offset = Vector2( 8, 8 )
+52/navigation_offset = Vector2( 8, 8 )
+52/shape_offset = Vector2( 8.52028, 8.81758 )
+52/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+52/shape = SubResource( 1 )
+52/shape_one_way = false
+52/shape_one_way_margin = 1.0
+52/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+52/z_index = 0
+53/name = "Jungle054"
+53/texture = ExtResource( 1 )
+53/tex_offset = Vector2( 0, 0 )
+53/modulate = Color( 1, 1, 1, 1 )
+53/region = Rect2( 128, 224, 16, 16 )
+53/tile_mode = 0
+53/occluder_offset = Vector2( 8, 8 )
+53/navigation_offset = Vector2( 8, 8 )
+53/shape_offset = Vector2( 8.52028, 8.81758 )
+53/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+53/shape = SubResource( 1 )
+53/shape_one_way = false
+53/shape_one_way_margin = 1.0
+53/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+53/z_index = 0
+54/name = "Jungle055"
+54/texture = ExtResource( 1 )
+54/tex_offset = Vector2( 0, 0 )
+54/modulate = Color( 1, 1, 1, 1 )
+54/region = Rect2( 144, 224, 16, 16 )
+54/tile_mode = 0
+54/occluder_offset = Vector2( 8, 8 )
+54/navigation_offset = Vector2( 8, 8 )
+54/shape_offset = Vector2( 8.52028, 8.81758 )
+54/shape_transform = Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+54/shape = SubResource( 1 )
+54/shape_one_way = false
+54/shape_one_way_margin = 1.0
+54/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 0.752136, 0, 0, 0.66161, 8.52028, 8.81758 )
+} ]
+54/z_index = 0
+55/name = "Jungle056"
+55/texture = ExtResource( 1 )
+55/tex_offset = Vector2( 0, 0 )
+55/modulate = Color( 1, 1, 1, 1 )
+55/region = Rect2( 304, 208, 16, 16 )
+55/tile_mode = 0
+55/occluder_offset = Vector2( 8, 8 )
+55/navigation_offset = Vector2( 8, 8 )
+55/shape_offset = Vector2( 0, 0 )
+55/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+55/shape_one_way = false
+55/shape_one_way_margin = 0.0
+55/shapes = [  ]
+55/z_index = 0
+56/name = "Jungle057"
+56/texture = ExtResource( 1 )
+56/tex_offset = Vector2( 0, 0 )
+56/modulate = Color( 1, 1, 1, 1 )
+56/region = Rect2( 320, 208, 16, 16 )
+56/tile_mode = 0
+56/occluder_offset = Vector2( 8, 8 )
+56/navigation_offset = Vector2( 8, 8 )
+56/shape_offset = Vector2( 0, 0 )
+56/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+56/shape_one_way = false
+56/shape_one_way_margin = 0.0
+56/shapes = [  ]
+56/z_index = 0
+57/name = "Jungle058"
+57/texture = ExtResource( 1 )
+57/tex_offset = Vector2( 0, 0 )
+57/modulate = Color( 1, 1, 1, 1 )
+57/region = Rect2( 320, 224, 16, 16 )
+57/tile_mode = 0
+57/occluder_offset = Vector2( 8, 8 )
+57/navigation_offset = Vector2( 8, 8 )
+57/shape_offset = Vector2( 0, 0 )
+57/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+57/shape_one_way = false
+57/shape_one_way_margin = 0.0
+57/shapes = [  ]
+57/z_index = 0
+58/name = "Jungle059"
+58/texture = ExtResource( 1 )
+58/tex_offset = Vector2( 0, 0 )
+58/modulate = Color( 1, 1, 1, 1 )
+58/region = Rect2( 368, 224, 16, 16 )
+58/tile_mode = 0
+58/occluder_offset = Vector2( 8, 8 )
+58/navigation_offset = Vector2( 8, 8 )
+58/shape_offset = Vector2( 0, 0 )
+58/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+58/shape_one_way = false
+58/shape_one_way_margin = 0.0
+58/shapes = [  ]
+58/z_index = 0
+59/name = "Jungle060"
+59/texture = ExtResource( 1 )
+59/tex_offset = Vector2( 0, 0 )
+59/modulate = Color( 1, 1, 1, 1 )
+59/region = Rect2( 480, 208, 16, 16 )
+59/tile_mode = 0
+59/occluder_offset = Vector2( 8, 8 )
+59/navigation_offset = Vector2( 8, 8 )
+59/shape_offset = Vector2( 0, 0 )
+59/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+59/shape_one_way = false
+59/shape_one_way_margin = 0.0
+59/shapes = [  ]
+59/z_index = 0
+60/name = "Jungle061"
+60/texture = ExtResource( 1 )
+60/tex_offset = Vector2( 0, 0 )
+60/modulate = Color( 1, 1, 1, 1 )
+60/region = Rect2( 496, 208, 16, 16 )
+60/tile_mode = 0
+60/occluder_offset = Vector2( 8, 8 )
+60/navigation_offset = Vector2( 8, 8 )
+60/shape_offset = Vector2( 0, 0 )
+60/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+60/shape_one_way = false
+60/shape_one_way_margin = 0.0
+60/shapes = [  ]
+60/z_index = 0
+61/name = "Jungle062"
+61/texture = ExtResource( 1 )
+61/tex_offset = Vector2( 0, 0 )
+61/modulate = Color( 1, 1, 1, 1 )
+61/region = Rect2( 496, 224, 16, 16 )
+61/tile_mode = 0
+61/occluder_offset = Vector2( 8, 8 )
+61/navigation_offset = Vector2( 8, 8 )
+61/shape_offset = Vector2( 0, 0 )
+61/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+61/shape_one_way = false
+61/shape_one_way_margin = 0.0
+61/shapes = [  ]
+61/z_index = 0
+62/name = "Jungle063"
+62/texture = ExtResource( 1 )
+62/tex_offset = Vector2( 0, 0 )
+62/modulate = Color( 1, 1, 1, 1 )
+62/region = Rect2( 480, 224, 16, 16 )
+62/tile_mode = 0
+62/occluder_offset = Vector2( 8, 8 )
+62/navigation_offset = Vector2( 8, 8 )
+62/shape_offset = Vector2( 0, 0 )
+62/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+62/shape_one_way = false
+62/shape_one_way_margin = 0.0
+62/shapes = [  ]
+62/z_index = 0

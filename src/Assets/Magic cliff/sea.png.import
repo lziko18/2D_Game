@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sea.png-f9d12bd9831fdece9f69bb74372c2fa3.stex"
+path="res://.import/sea.png-3638cb47b6f909b06b5289aa48307824.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BAckgorund/Magic cliff/sea.png"
-dest_files=[ "res://.import/sea.png-f9d12bd9831fdece9f69bb74372c2fa3.stex" ]
+source_file="res://Assets/Magic cliff/sea.png"
+dest_files=[ "res://.import/sea.png-3638cb47b6f909b06b5289aa48307824.stex" ]
 
 [params]
 

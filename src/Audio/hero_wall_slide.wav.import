@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hero_wall_slide.wav-4c1610c9bed355ea83ec73fd3451af05.sample"
+
+[deps]
+
+source_file="res://Audio/hero_wall_slide.wav"
+dest_files=[ "res://.import/hero_wall_slide.wav-4c1610c9bed355ea83ec73fd3451af05.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

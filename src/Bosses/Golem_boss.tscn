@@ -1,0 +1,344 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Golem_boss/Laser_sheet.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Golem_boss/Character_sheet.png" type="Texture" id=3]
+[ext_resource path="res://Skills/Enemy_hitbox.gd" type="Script" id=4]
+[ext_resource path="res://Bosses/Golem_boss.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "arm_launch"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 21, 22, 23, 24, 25, 26, 27, 28, 28 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "attack"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 40, 41, 42, 43, 44, 45, 46 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "death"
+length = 1.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "glow"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14, 15, 16, 17 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "laser"
+length = 1.151
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 50, 51, 52, 53, 54, 55, 56 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "activate_laser_beam"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "shield"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 30, 31, 32, 33, 34, 35, 36, 37 ]
+}
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 19.6596, 17.8847 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "cast"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 4, 6, 8, 10, 12, 14, 16 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 1.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.73, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 4, 6, 8, 10, 12, 14, 16, 2, 18, 20, 22, 24, 26, 28 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "activate_laser_beam2"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "activate_laser_beam3"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "find_angle"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.75, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.75 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "clearall"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Area2D/CollisionShape2D2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.85, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 23, 25, 27, 29 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 23, 25, 27, 29 ]
+}
+
+[sub_resource type="SegmentShape2D" id=12]
+
+[node name="miniboss" type="KinematicBody2D"]
+position = Vector2( 285.857, 196.421 )
+scale = Vector2( 2.65945, 2.9356 )
+collision_layer = 0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+vframes = 10
+hframes = 10
+frame = 56
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/arm_launch = SubResource( 1 )
+anims/attack = SubResource( 2 )
+anims/death = SubResource( 3 )
+anims/glow = SubResource( 4 )
+anims/laser = SubResource( 5 )
+anims/shield = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 24.8741 )
+shape = SubResource( 7 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 9.23804, -16.7095 )
+
+[node name="Sprite2" type="Sprite" parent="Position2D"]
+position = Vector2( -10.0085, -0.0405602 )
+texture = ExtResource( 2 )
+offset = Vector2( 45.4874, 16.0377 )
+vframes = 15
+hframes = 2
+frame = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D/Sprite2"]
+anims/cast = SubResource( 8 )
+anims/laser = SubResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="Position2D"]
+position = Vector2( -10.0062, -0.0318108 )
+texture = ExtResource( 2 )
+offset = Vector2( 193.584, 16.0245 )
+vframes = 15
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D/Sprite3"]
+anims/laser = SubResource( 10 )
+
+[node name="Sprite4" type="Sprite" parent="Position2D"]
+position = Vector2( -10.005, -0.0290031 )
+texture = ExtResource( 2 )
+offset = Vector2( 343.163, 16.0217 )
+vframes = 15
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Position2D/Sprite4"]
+anims/laser = SubResource( 11 )
+
+[node name="Area2D" parent="Position2D" instance=ExtResource( 1 )]
+position = Vector2( 15.7988, -1.07353 )
+rotation = -1.5708
+scale = Vector2( 6.35366, 50.8293 )
+collision_layer = 64
+collision_mask = 16
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Position2D/Area2D"]
+shape = SubResource( 12 )
+[connection signal="animation_finished" from="Position2D/Sprite2/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="Position2D/Sprite2/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
+[connection signal="animation_finished" from="Position2D/Sprite3/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="Position2D/Sprite4/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/false_knight_strike_ground.wav-bec04830c2b5b79dab949a56d73119d8.sample"
+
+[deps]
+
+source_file="res://Audio/false_knight_strike_ground.wav"
+dest_files=[ "res://.import/false_knight_strike_ground.wav-bec04830c2b5b79dab949a56d73119d8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

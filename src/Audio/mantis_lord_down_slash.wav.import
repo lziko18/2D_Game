@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mantis_lord_down_slash.wav-acc74a1e8fb461f82b296f3239578c58.sample"
+
+[deps]
+
+source_file="res://Audio/mantis_lord_down_slash.wav"
+dest_files=[ "res://.import/mantis_lord_down_slash.wav-acc74a1e8fb461f82b296f3239578c58.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

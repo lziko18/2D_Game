@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sky.png-0e630b2cf8caf771ba730008f419e5ee.stex"
+path="res://.import/sky.png-7f332166ab7a426cd37d79f0de8a1cf7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BAckgorund/Magic cliff/sky.png"
-dest_files=[ "res://.import/sky.png-0e630b2cf8caf771ba730008f419e5ee.stex" ]
+source_file="res://Assets/Magic cliff/sky.png"
+dest_files=[ "res://.import/sky.png-7f332166ab7a426cd37d79f0de8a1cf7.stex" ]
 
 [params]
 

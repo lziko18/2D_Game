@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script>
+  
+  function func_delete() {
+
+    var x = "";
+    var name=document.getElementById("Name");
+    var email=document.getElementById("Email");
+    var msg=document.getElementById("MSG");
+
+    if (name.value !="" && email.value !="" && msg.value !="") {
+    Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Your work has been sent successfully!',
+  showConfirmButton: false,
+  timer: 1500
+})
+name.value=x;
+email.value=x;
+msg.value=x;
+
+  } 
+  else {
+    Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Something went wrong!',
+
+})
+  }
+ 
+
+ 
+  }
+  </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xhulio Isufi</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+   
+    <main>
+      
+          <form>
+            <label>Name</label>
+            <input type="text" placeholder="Full name" id="Name" />
+            <label>Email</label>
+            <input type="text" placeholder="Email address" id="Email" />
+            <label>Message</label>
+            <textarea
+              rows="6"
+              cols="50"
+              placeholder="Write your message here"
+              id="MSG"
+            ></textarea>
+            <button type="button" style="margin:15px" onclick="func_delete()">Submit</button>
+          </form>
+       
+    
+  </body>
+</html>

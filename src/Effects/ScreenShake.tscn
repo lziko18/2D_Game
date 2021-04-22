@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Effects/ScreenShake.gd" type="Script" id=1]
+
+
+[node name="ScreenShake" type="Node"]
+script = ExtResource( 1 )
+
+[node name="ShakeTween" type="Tween" parent="."]
+[connection signal="tween_completed" from="ShakeTween" to="." method="_on_ShakeTween_tween_completed"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset.png-49e94de15e86f9bdbf167bfce300d871.stex"
+path="res://.import/tileset.png-08615064ee7c7306ced9d474c819905c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BAckgorund/Magic cliff/tileset.png"
-dest_files=[ "res://.import/tileset.png-49e94de15e86f9bdbf167bfce300d871.stex" ]
+source_file="res://Assets/Magic cliff/tileset.png"
+dest_files=[ "res://.import/tileset.png-08615064ee7c7306ced9d474c819905c.stex" ]
 
 [params]
 

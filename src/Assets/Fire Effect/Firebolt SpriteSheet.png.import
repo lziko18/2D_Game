@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Firebolt SpriteSheet.png-9caab31add14897acc661a04228c242b.stex"
+path="res://.import/Firebolt SpriteSheet.png-e4091030fdcc5e943572f46b5f06f4a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Effects/Fire Effect 1/Firebolt SpriteSheet.png"
-dest_files=[ "res://.import/Firebolt SpriteSheet.png-9caab31add14897acc661a04228c242b.stex" ]
+source_file="res://Assets/Fire Effect/Firebolt SpriteSheet.png"
+dest_files=[ "res://.import/Firebolt SpriteSheet.png-e4091030fdcc5e943572f46b5f06f4a4.stex" ]
 
 [params]
 

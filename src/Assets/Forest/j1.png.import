@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/j1.png-13678a75aab9953ff8fab1dc930bc443.stex"
+path="res://.import/j1.png-9e9e1879a3bbec677a941bfaa91ed9cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BAckgorund/Forest/j1.png"
-dest_files=[ "res://.import/j1.png-13678a75aab9953ff8fab1dc930bc443.stex" ]
+source_file="res://Assets/Forest/j1.png"
+dest_files=[ "res://.import/j1.png-9e9e1879a3bbec677a941bfaa91ed9cd.stex" ]
 
 [params]
 

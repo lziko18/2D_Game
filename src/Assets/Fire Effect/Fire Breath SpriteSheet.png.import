@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fire Breath SpriteSheet.png-db883315815e8c528625d9d66843f731.stex"
+path="res://.import/Fire Breath SpriteSheet.png-d172b0b75bda1d24f1f62bb1d01ff324.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Effects/Fire Effect 1/Fire Breath SpriteSheet.png"
-dest_files=[ "res://.import/Fire Breath SpriteSheet.png-db883315815e8c528625d9d66843f731.stex" ]
+source_file="res://Assets/Fire Effect/Fire Breath SpriteSheet.png"
+dest_files=[ "res://.import/Fire Breath SpriteSheet.png-d172b0b75bda1d24f1f62bb1d01ff324.stex" ]
 
 [params]
 

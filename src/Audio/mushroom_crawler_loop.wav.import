@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mushroom_crawler_loop.wav-f9d95bc939f365b1c8d031d483a05060.sample"
+
+[deps]
+
+source_file="res://Audio/mushroom_crawler_loop.wav"
+dest_files=[ "res://.import/mushroom_crawler_loop.wav-f9d95bc939f365b1c8d031d483a05060.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

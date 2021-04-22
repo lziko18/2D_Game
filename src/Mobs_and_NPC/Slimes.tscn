@@ -1,0 +1,201 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Sprites/Slime_sprite_sheet.png" type="Texture" id=1]
+[ext_resource path="res://Mobs_and_NPC/Slimes.gd" type="Script" id=2]
+[ext_resource path="res://Skills/Enemy_hitbox.gd" type="Script" id=3]
+[ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Audio/mushroom_crawler_loop.wav" type="AudioStream" id=5]
+
+
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "Bite"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Area2D/CollisionShape2D2:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Death"
+length = 1.45
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 14, 15, 16, 17, 18, 19, 20 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Slide"
+length = 1.45
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+
+[sub_resource type="CapsuleShape2D" id=7]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 27.1987, 14.8207 )
+
+[sub_resource type="RectangleShape2D" id=9]
+
+[node name="Slimes" type="KinematicBody2D"]
+scale = Vector2( 0.50986, 0.50986 )
+collision_layer = 4
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.666667, 0.180392, 0.501961, 1 )
+scale = Vector2( 2.75403, 2.75403 )
+texture = ExtResource( 1 )
+vframes = 3
+hframes = 8
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/Bite = SubResource( 1 )
+anims/Death = SubResource( 2 )
+anims/Slide = SubResource( 3 )
+anims/hurt = SubResource( 4 )
+anims/idle = SubResource( 5 )
+
+[node name="Position2D" type="Position2D" parent="Sprite"]
+position = Vector2( -11.4707, 0.933662 )
+
+[node name="Area2D" parent="Sprite/Position2D" instance=ExtResource( 4 )]
+collision_layer = 64
+collision_mask = 16
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite/Position2D/Area2D"]
+shape = SubResource( 6 )
+disabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite/Position2D"]
+rotation = 1.5708
+scale = Vector2( 1, 0.5 )
+enabled = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="Sprite/Position2D"]
+position = Vector2( -36.413, 0 )
+scale = Vector2( 1, 0.5 )
+enabled = true
+
+[node name="Player_detect" type="Area2D" parent="Sprite/Position2D"]
+position = Vector2( -0.10585, 4.18163 )
+scale = Vector2( 1, 0.515732 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite/Position2D/Player_detect"]
+shape = SubResource( 6 )
+
+[node name="kot" parent="Sprite" instance=ExtResource( 4 )]
+position = Vector2( -0.565247, 8.03821 )
+rotation = 1.5708
+scale = Vector2( 0.806068, 0.539045 )
+collision_layer = 64
+collision_mask = 16
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite/kot"]
+shape = SubResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 3.0889, 16.0622 )
+shape = SubResource( 8 )
+
+[node name="Weak_point" type="Area2D" parent="."]
+position = Vector2( -3.1951, -7.26178 )
+scale = Vector2( 2.72154, 0.82937 )
+linear_damp = 0.0
+collision_layer = 128
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weak_point"]
+shape = SubResource( 9 )
+one_way_collision = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+area_mask = 4
+[connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
+[connection signal="body_entered" from="Sprite/Position2D/Player_detect" to="." method="_on_Player_detect_body_entered"]
+[connection signal="area_entered" from="Weak_point" to="." method="_on_Weak_point_area_entered"]

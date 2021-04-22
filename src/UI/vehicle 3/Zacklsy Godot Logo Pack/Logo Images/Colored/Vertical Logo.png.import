@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Vertical Logo.png-6be73488e214cd1caf7856b573a221ab.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://UI/vehicle 3/Zacklsy Godot Logo Pack/Logo Images/Colored/Vertical Logo.png"
+dest_files=[ "res://.import/Vertical Logo.png-6be73488e214cd1caf7856b573a221ab.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

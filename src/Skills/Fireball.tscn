@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Sprites/Fire_Effect _1/Firebolt SpriteSheet.png" type="Texture" id=1]
+[ext_resource path="res://Skills/Fireball.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 24, 48, 12 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 24, 48, 12 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 24, 48, 12 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 24, 48, 12 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Fireball_shooting",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 17.7805, 10 )
+
+[node name="Fireball" type="Area2D"]
+scale = Vector2( 1.13569, 1.18721 )
+collision_layer = 8
+collision_mask = 33
+script = ExtResource( 2 )
+
+[node name="Fireball_animation" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.16921, 1.34501 )
+frames = SubResource( 5 )
+animation = "Fireball_shooting"
+frame = 2
+playing = true
+
+[node name="Fireball_collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 6 )
+
+[node name="Fireball_visibility" type="VisibilityNotifier2D" parent="."]
+[connection signal="area_entered" from="." to="." method="_on_Fireball_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Fireball_body_entered"]
+[connection signal="screen_exited" from="Fireball_visibility" to="." method="_on_Fireball_visibility_screen_exited"]

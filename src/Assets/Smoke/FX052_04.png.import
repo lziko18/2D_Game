@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FX052_04.png-813311fac9a5fa321192e49dcf605d95.stex"
+path="res://.import/FX052_04.png-01d72cb9442c8575a7be73c2aebb7321.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Effects/FX052_nyknck/FX052_04.png"
-dest_files=[ "res://.import/FX052_04.png-813311fac9a5fa321192e49dcf605d95.stex" ]
+source_file="res://Assets/Smoke/FX052_04.png"
+dest_files=[ "res://.import/FX052_04.png-01d72cb9442c8575a7be73c2aebb7321.stex" ]
 
 [params]
 

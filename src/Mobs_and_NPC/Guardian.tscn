@@ -1,0 +1,175 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Sprites/Guardian_Sprite_Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Mobs_and_NPC/Guardian.gd" type="Script" id=2]
+[ext_resource path="res://Skills/Lizard_stats.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Skills/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Skills/Enemy_hitbox.gd" type="Script" id=6]
+[ext_resource path="res://Skills/Hurtbox.gd" type="Script" id=7]
+
+
+
+
+
+
+
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "Guardian_death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 29, 30, 31, 32, 33, 34, 35, 36, 37, 38 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 1.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Position2D/Area2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -46.3, -65.6, -75.3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Position2D/Area2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 3 ), Vector2( 0.5, 5 ), Vector2( 0.5, 7.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Position2D/Area2D/CollisionShape2D2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 0.55, 0.6, 0.65, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 5, 7, 8, 9 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.65
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27, 28, 29 ]
+}
+
+[sub_resource type="SegmentShape2D" id=5]
+
+[sub_resource type="RectangleShape2D" id=6]
+
+[sub_resource type="CapsuleShape2D" id=7]
+
+[node name="Guardian" type="Node2D"]
+position = Vector2( 0.25, 0 )
+scale = Vector2( 3.70313, 3.29006 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+vframes = 39
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/Guardian_death = SubResource( 1 )
+anims/Hit_da_boy = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/teleport = SubResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="Sprite"]
+position = Vector2( 23.1758, 12.1838 )
+
+[node name="Area2D" parent="Sprite/Position2D" instance=ExtResource( 4 )]
+collision_layer = 64
+collision_mask = 16
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite/Position2D/Area2D"]
+shape = SubResource( 5 )
+disabled = true
+
+[node name="Player_detect" type="Area2D" parent="Sprite/Position2D"]
+position = Vector2( 33.6693, 0.607892 )
+scale = Vector2( 3.64034, 2.37889 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Position2D/Player_detect"]
+shape = SubResource( 6 )
+
+[node name="Hurtbox" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( 22.4434, 15.4723 )
+scale = Vector2( 0.352973, 0.579433 )
+collision_layer = 32
+collision_mask = 8
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite/Hurtbox"]
+shape = SubResource( 7 )
+
+[node name="Lizard_stats" parent="." instance=ExtResource( 3 )]
+[connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
+[connection signal="body_entered" from="Sprite/Position2D/Player_detect" to="." method="_on_Player_detect_body_entered"]
+[connection signal="area_entered" from="Sprite/Hurtbox" to="Sprite/Hurtbox" method="_on_Hurtbox_area_entered"]
+[connection signal="area_entered" from="Sprite/Hurtbox" to="." method="_on_Hurtbox_area_entered"]

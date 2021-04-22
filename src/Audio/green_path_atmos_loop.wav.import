@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/green_path_atmos_loop.wav-dc298203b4f2fbc40d3a95427f06ef75.sample"
+
+[deps]
+
+source_file="res://Audio/green_path_atmos_loop.wav"
+dest_files=[ "res://.import/green_path_atmos_loop.wav-dc298203b4f2fbc40d3a95427f06ef75.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

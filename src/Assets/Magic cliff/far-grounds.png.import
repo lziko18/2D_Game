@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/far-grounds.png-9cabc93454180f6b54548d38c2e2acbe.stex"
+path="res://.import/far-grounds.png-756e233253cdb2b77442a446ebdaeac0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BAckgorund/Magic cliff/far-grounds.png"
-dest_files=[ "res://.import/far-grounds.png-9cabc93454180f6b54548d38c2e2acbe.stex" ]
+source_file="res://Assets/Magic cliff/far-grounds.png"
+dest_files=[ "res://.import/far-grounds.png-756e233253cdb2b77442a446ebdaeac0.stex" ]
 
 [params]
 
