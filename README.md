@@ -4,10 +4,10 @@ A 2D Metroidvania game in development by students using the godot engine as a pr
 
 ## Demo
 
-### Player move set
+### Player movements
 ![moves](https://github.com/lziko18/2D_Game/blob/master/demo/moves.gif?raw=true)
 
-### Player combat
+### Different enemies
 ![lizard](https://github.com/lziko18/2D_Game/blob/master/demo/lizard.gif?raw=true)
 
 ![slime](https://github.com/lziko18/2D_Game/blob/master/demo/slime.gif?raw=true)
