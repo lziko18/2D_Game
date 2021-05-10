@@ -1,550 +1,299 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Tilesets/mainlevbuild.png" type="Texture" id=1]
+[ext_resource path="res://Tilesets/TX Tileset Ground.png" type="Texture" id=1]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="tileset_new_01" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 16, 16, 32, 96 )
+region_rect = Rect2( 0, 0, 16, 16 )
 
-[node name="tileset_new_02" type="Sprite" parent="."]
+[node name="Sprite2" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 48, 16, 32, 80 )
+region_rect = Rect2( 16, 0, 16, 16 )
 
-[node name="tileset_new_03" type="Sprite" parent="."]
+[node name="Sprite3" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 80, 16, 32, 64 )
+region_rect = Rect2( 32, 0, 16, 16 )
 
-[node name="tileset_new_04" type="Sprite" parent="."]
+[node name="Sprite4" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 112, 16, 32, 48 )
+region_rect = Rect2( 48, 0, 16, 16 )
 
-[node name="tileset_new_05" type="Sprite" parent="."]
+[node name="Sprite5" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 144, 16, 32, 48 )
+region_rect = Rect2( 64, 0, 16, 16 )
 
-[node name="tileset_new_06" type="Sprite" parent="."]
+[node name="Sprite6" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 176, 16, 32, 48 )
+region_rect = Rect2( 80, 0, 16, 16 )
 
-[node name="tileset_new_07" type="Sprite" parent="."]
+[node name="Sprite7" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 176, 64, 32, 32 )
+region_rect = Rect2( 0, 16, 16, 16 )
 
-[node name="tileset_new_08" type="Sprite" parent="."]
+[node name="Sprite8" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 176, 96, 32, 16 )
+region_rect = Rect2( 0, 32, 16, 16 )
 
-[node name="tileset_new_09" type="Sprite" parent="."]
+[node name="Sprite9" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 176, 112, 32, 32 )
+region_rect = Rect2( 0, 48, 16, 16 )
 
-[node name="tileset_new_10" type="Sprite" parent="."]
+[node name="Sprite10" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 256, 16, 32, 32 )
+region_rect = Rect2( 0, 64, 16, 16 )
 
-[node name="tileset_new_11" type="Sprite" parent="."]
+[node name="Sprite11" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 256, 48, 32, 32 )
+region_rect = Rect2( 0, 80, 16, 16 )
 
-[node name="tileset_new_12" type="Sprite" parent="."]
+[node name="Sprite12" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 336, 16, 32, 32 )
+region_rect = Rect2( 16, 16, 16, 16 )
 
-[node name="tileset_new_13" type="Sprite" parent="."]
+[node name="Sprite13" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 336, 48, 32, 16 )
+region_rect = Rect2( 16, 16, 32, 32 )
 
-[node name="tileset_new_14" type="Sprite" parent="."]
-position = Vector2( 133.191, 5.94603 )
+[node name="Sprite14" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 416, 16, 32, 48 )
+region_rect = Rect2( 16, 48, 32, 32 )
 
-[node name="tileset_new_15" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite15" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 416, 16, 32, 32 )
+region_rect = Rect2( 48, 16, 32, 32 )
 
-[node name="tileset_new_16" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite16" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 512, 16, 32, 32 )
+region_rect = Rect2( 48, 48, 32, 32 )
 
-[node name="tileset_new_17" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite17" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 560, 16, 64, 32 )
+region_rect = Rect2( 16, 80, 32, 16 )
 
-[node name="tileset_new_18" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite18" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 640, 16, 16, 32 )
+region_rect = Rect2( 48, 80, 32, 16 )
 
-[node name="tileset_new_19" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite19" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 672, 16, 32, 32 )
+region_rect = Rect2( 80, 16, 16, 32 )
 
-[node name="tileset_new_20" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite20" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 672, 64, 32, 32 )
+region_rect = Rect2( 80, 48, 16, 32 )
 
-[node name="tileset_new_21" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite21" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 592, 64, 64, 32 )
+region_rect = Rect2( 80, 80, 16, 16 )
 
-[node name="tileset_new_22" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite22" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 560, 64, 16, 32 )
+region_rect = Rect2( 96, 0, 16, 16 )
 
-[node name="tileset_new_23" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite23" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 560, 112, 32, 32 )
+region_rect = Rect2( 96, 16, 16, 16 )
 
-[node name="tileset_new_24" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite24" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 608, 112, 16, 16 )
+region_rect = Rect2( 96, 32, 16, 16 )
 
-[node name="tileset_new_25" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite25" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 640, 112, 16, 16 )
+region_rect = Rect2( 96, 48, 16, 16 )
 
-[node name="tileset_new_26" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite26" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 416, 80, 32, 32 )
+region_rect = Rect2( 96, 96, 16, 16 )
 
-[node name="tileset_new_27" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite27" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 416, 112, 32, 32 )
+region_rect = Rect2( 96, 112, 16, 16 )
 
-[node name="tileset_new_28" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite28" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 448, 128, 32, 32 )
+region_rect = Rect2( 0, 96, 16, 16 )
 
-[node name="tileset_new_29" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite29" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 336, 80, 32, 32 )
+region_rect = Rect2( 0, 112, 16, 16 )
 
-[node name="tileset_new_30" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite30" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 96, 176, 32, 32 )
+region_rect = Rect2( 0, 128, 32, 32 )
 
-[node name="tileset_new_31" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite31" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 128, 176, 32, 32 )
+region_rect = Rect2( 0, 160, 32, 32 )
 
-[node name="tileset_new_32" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite32" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 160, 176, 16, 32 )
+region_rect = Rect2( 16, 192, 16, 32 )
 
-[node name="tileset_new_33" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite33" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 176, 176, 32, 32 )
+region_rect = Rect2( 64, 192, 16, 32 )
 
-[node name="tileset_new_34" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite34" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 176, 144, 32, 32 )
+region_rect = Rect2( 32, 192, 32, 32 )
 
-[node name="tileset_new_35" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite35" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 176, 208, 32, 32 )
+region_rect = Rect2( 208, 128, 16, 16 )
 
-[node name="tileset_new_36" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite36" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 176, 240, 32, 32 )
+region_rect = Rect2( 192, 128, 16, 16 )
 
-[node name="tileset_new_37" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite37" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 176, 272, 32, 32 )
+region_rect = Rect2( 176, 144, 16, 16 )
 
-[node name="tileset_new_38" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite38" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 144, 256, 32, 48 )
+region_rect = Rect2( 160, 144, 16, 16 )
 
-[node name="tileset_new_39" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite39" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 112, 256, 32, 48 )
+region_rect = Rect2( 160, 160, 16, 16 )
 
-[node name="tileset_new_40" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite40" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 80, 240, 32, 64 )
+region_rect = Rect2( 176, 160, 16, 16 )
 
-[node name="tileset_new_41" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite41" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 48, 224, 32, 80 )
+region_rect = Rect2( 192, 144, 16, 16 )
 
-[node name="tileset_new_42" type="Sprite" parent="."]
-position = Vector2( 178.976, 40.433 )
+[node name="Sprite42" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 16, 208, 32, 96 )
+region_rect = Rect2( 208, 144, 16, 16 )
 
-[node name="tileset_new_43" type="Sprite" parent="."]
-position = Vector2( 350.221, 58.8657 )
+[node name="Sprite43" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 368, 256, 48, 48 )
+region_rect = Rect2( 208, 160, 16, 16 )
 
-[node name="tileset_new_44" type="Sprite" parent="."]
-position = Vector2( 291.95, 40.433 )
+[node name="Sprite44" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 384, 240, 32, 16 )
+region_rect = Rect2( 192, 160, 16, 16 )
 
-[node name="tileset_new_45" type="Sprite" parent="."]
-position = Vector2( 256.274, 77.8931 )
+[node name="Sprite45" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 368, 208, 48, 32 )
+region_rect = Rect2( 160, 176, 16, 16 )
 
-[node name="tileset_new_46" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
+[node name="Sprite46" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 480, 240, 80, 64 )
+region_rect = Rect2( 176, 176, 16, 16 )
 
-[node name="tileset_new_47" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
+[node name="Sprite47" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 560, 160, 32, 32 )
+region_rect = Rect2( 192, 176, 16, 16 )
 
-[node name="tileset_new_48" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
+[node name="Sprite48" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 592, 160, 16, 32 )
+region_rect = Rect2( 208, 176, 16, 16 )
 
-[node name="tileset_new_49" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
+[node name="Sprite49" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+centered = false
 region_enabled = true
-region_rect = Rect2( 576, 192, 16, 16 )
-
-[node name="tileset_new_50" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 592, 192, 16, 32 )
-
-[node name="tileset_new_51" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 944, 96, 64, 32 )
-
-[node name="tileset_new_52" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 928, 128, 80, 32 )
-
-[node name="tileset_new_53" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 752, 352, 32, 80 )
-
-[node name="tileset_new_54" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 800, 368, 48, 64 )
-
-[node name="tileset_new_55" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 864, 368, 48, 64 )
-
-[node name="tileset_new_56" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 928, 352, 32, 80 )
-
-[node name="tileset_new_57" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 912, 448, 64, 32 )
-
-[node name="tileset_new_58" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 816, 448, 32, 32 )
-
-[node name="tileset_new_59" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 864, 448, 32, 32 )
-
-[node name="tileset_new_60" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 864, 496, 32, 16 )
-
-[node name="tileset_new_61" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 816, 496, 32, 16 )
-
-[node name="tileset_new_62" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 736, 448, 64, 32 )
-
-[node name="tileset_new_63" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 464, 352, 32, 32 )
-
-[node name="tileset_new_64" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 160, 336, 32, 64 )
-
-[node name="tileset_new_65" type="Sprite" parent="."]
-position = Vector2( -54.109, 83.2445 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 144, 368, 16, 32 )
-
-[node name="tileset_new_66" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 144, 400, 48, 16 )
-
-[node name="tileset_new_67" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 96, 400, 48, 32 )
-
-[node name="tileset_new_68" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 240, 400, 32, 32 )
-
-[node name="tileset_new_69" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 64, 400, 48, 48 )
-
-[node name="tileset_new_70" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 80, 448, 48, 32 )
-
-[node name="tileset_new_71" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 80, 480, 48, 32 )
-
-[node name="tileset_new_72" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 80, 512, 48, 32 )
-
-[node name="tileset_new_73" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 64, 544, 64, 32 )
-
-[node name="tileset_new_74" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 64, 576, 64, 48 )
-
-[node name="tileset_new_75" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 240, 592, 48, 32 )
-
-[node name="tileset_new_76" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 128, 592, 64, 32 )
-
-[node name="tileset_new_77" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 528, 336, 48, 64 )
-
-[node name="tileset_new_78" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 544, 336, 32, 64 )
-
-[node name="tileset_new_79" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 528, 368, 16, 32 )
-
-[node name="tileset_new_80" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 544, 464, 16, 16 )
-
-[node name="tileset_new_81" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 544, 496, 16, 16 )
-
-[node name="tileset_new_82" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 480, 400, 48, 48 )
-
-[node name="tileset_new_83" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 528, 400, 48, 48 )
-
-[node name="tileset_new_84" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 448, 400, 48, 48 )
-
-[node name="tileset_new_85" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 464, 448, 48, 32 )
-
-[node name="tileset_new_86" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 464, 480, 48, 32 )
-
-[node name="tileset_new_87" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 464, 512, 48, 32 )
-
-[node name="tileset_new_88" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 512, 528, 16, 16 )
-
-[node name="tileset_new_89" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 544, 528, 16, 16 )
-
-[node name="tileset_new_90" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 528, 544, 16, 16 )
-
-[node name="tileset_new_91" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 512, 560, 16, 16 )
-
-[node name="tileset_new_92" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 544, 544, 16, 16 )
-
-[node name="tileset_new_93" type="Sprite" parent="."]
-position = Vector2( 122.488, 94.542 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 544, 544, 16, 16 )
+region_rect = Rect2( 208, 176, 16, 16 )
