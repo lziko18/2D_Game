@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "VBoxContainer",
+"class": "MenuItem",
+"language": "GDScript",
+"path": "res://Scenes/UI/Menu.gd"
+}, {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://StateMachine.gd"
 } ]
 _global_script_class_icons={
+"MenuItem": "",
 "StateMachine": ""
 }
 
