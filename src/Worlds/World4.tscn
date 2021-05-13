@@ -21,9 +21,6 @@
 [ext_resource path="res://Backgrounds/Magic_Forest/BAckgorund/Magic cliff/tileset.png" type="Texture" id=19]
 [ext_resource path="res://Worlds/World.gd" type="Script" id=20]
 
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1439.36, 10 )
 
@@ -270,6 +267,7 @@ position = Vector2( 3247.26, 255.424 )
 collision_mask = 1
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 213.9, 231.387 )
 
 [node name="Guardian" parent="." instance=ExtResource( 2 )]
 position = Vector2( 3050.86, 185 )
