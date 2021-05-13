@@ -1,6 +1,6 @@
 extends KinematicBody2D
-const Hammer = preload("res://bosses/Hammer.tscn")
-const Dust=preload("res://bosses/Boss_jump.tscn")
+const Hammer = preload("res://Bosses/Hammer.tscn")
+const Dust=preload("res://Bosses/Boss_jump.tscn")
 const UP = Vector2(0, -1);
 var GRAVITY = 100;
 const ACCELERATION = 50;

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sprites/boss_effect_hammer.png" type="Texture" id=1]
-[ext_resource path="res://bosses/Boss_jump.gd" type="Script" id=2]
+[ext_resource path="res://Bosses/Boss_jump.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -30,6 +30,7 @@ animations = [ {
 [node name="Boss_jump" type="AnimatedSprite"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
+frame = 2
 playing = true
 script = ExtResource( 2 )
 [connection signal="animation_finished" from="." to="." method="_on_Boss_jump_animation_finished"]

@@ -22,6 +22,8 @@
 [ext_resource path="res://Worlds/World.gd" type="Script" id=20]
 
 
+
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1439.36, 10 )
 
