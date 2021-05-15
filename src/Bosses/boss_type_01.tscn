@@ -1,10 +1,8 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Sprites/Boss_with_hammer_sprite_sheet.png" type="Texture" id=1]
-[ext_resource path="res://bosses/Node.gd" type="Script" id=2]
-[ext_resource path="res://bosses/boss_type_01.gd" type="Script" id=3]
-
-
+[ext_resource path="res://Bosses/Node.gd" type="Script" id=2]
+[ext_resource path="res://Bosses/boss_type_01.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 

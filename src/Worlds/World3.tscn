@@ -9,6 +9,8 @@
 [ext_resource path="res://Tilesets/Background/Background-2.png" type="Texture" id=7]
 [ext_resource path="res://Tilesets/Background/Background-4.png" type="Texture" id=8]
 
+
+
 [node name="Wold3" type="Node"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
