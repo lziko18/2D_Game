@@ -304,6 +304,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=14]
 length = 0.8
+loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -520,7 +521,7 @@ position = Vector2( -0.418701, -11.5197 )
 scale = Vector2( 3.6374, 3.92665 )
 texture = ExtResource( 12 )
 hframes = 140
-frame = 47
+frame = 93
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 21 )
