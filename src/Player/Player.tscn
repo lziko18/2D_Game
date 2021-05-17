@@ -18,8 +18,6 @@
 [ext_resource path="res://Player/PlayerHitbox.gd" type="Script" id=16]
 [ext_resource path="res://Player/Player.gd" type="Script" id=17]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 60.581 )
 
@@ -580,9 +578,11 @@ scale = Vector2( 1, 0.5 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 current = true
 limit_left = 0
 limit_top = -190
+limit_right = 10300
 limit_bottom = 352
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
