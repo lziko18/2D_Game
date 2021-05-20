@@ -578,6 +578,7 @@ scale = Vector2( 1, 0.5 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 current = true
 limit_left = 0
 limit_top = 0
