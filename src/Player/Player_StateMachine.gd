@@ -1,19 +1,25 @@
 extends "res://Scripts/StateMachine.gd"
 
-const UP=Vector2(0,-1)
-
-enum Direction { RIGHT = 1, LEFT = -1 }
 var running_speed : float = 350
+var crouch_speed : float = 200
+var attack_3_speed : float = 220
 var falling_speed_x : float = 400
 var gravity : float = 60
 var jump_acceleration : float = 1200
 var double_jump_acceleration : float = 1000
 var fall_threshold : float = 550
 
+const collision_offset_normal = Vector2(0, 0)
+const collision_offset_crouch = Vector2(0, 12)
+const collision_normal = Vector2(26, 56)
+const collision_crouch = Vector2(26, 32)
+const UP=Vector2(0,-1)
+enum Direction { RIGHT = 1, LEFT = -1 }
+
 var facing_direction
 var velocity = Vector2()
 var has_double_jumped : bool = false
-var attack_queued : bool = false
+var attack_queued : int = 0
 var attack_animation_finished : bool = true
 
 func _ready():
@@ -21,6 +27,8 @@ func _ready():
 	
 	add_state("idle")
 	add_state("running")
+	add_state("crouch_idle")
+	add_state("crouch_moving")
 	add_state("falling")
 	add_state("jumping")
 	add_state("double_jumping")
@@ -33,6 +41,9 @@ func _ready():
 	add_input_action("player_left", KEY_LEFT)
 	add_input_action("player_jump", KEY_UP)
 	add_input_action("player_attack", KEY_Q)
+	add_input_action("player_crouch", KEY_C)
+	
+	$CollisionShape2D.shape.set_extents(collision_normal)
 
 
 func add_input_action(name, key):
@@ -49,7 +60,10 @@ func _input_logic(event):
 	match state:
 		states.attack_1:
 			if event.is_action_pressed("player_attack"):
-				attack_queued = true
+				attack_queued += 1
+		states.attack_2:
+			if event.is_action_pressed("player_attack"):
+				attack_queued += 1
 	pass
 
 func _state_logic(delta):
@@ -57,9 +71,8 @@ func _state_logic(delta):
 	match state:
 		states.running:
 			velocity.x = running_speed * facing_direction
-			pass
 		states.idle:
-			pass
+			velocity.x = 0
 		states.falling:
 			if Input.is_action_pressed("player_right") || Input.is_action_pressed("player_left"):
 				velocity.x = falling_speed_x * facing_direction
@@ -76,12 +89,22 @@ func _state_logic(delta):
 			else:
 				velocity.x = 0
 		states.attack_1:
-			pass
+			velocity.x = 0
+		states.attack_2:
+			velocity.x = 0
+		states.attack_3:
+			velocity.x = attack_3_speed * facing_direction
+		states.crouch_idle:
+			velocity.x = 0
+		states.crouch_moving:
+			velocity.x = crouch_speed * facing_direction
 	velocity = move_and_slide(velocity, UP)
 
 func _get_transition():
 	match state:
 		states.idle:
+			if Input.is_action_just_pressed("player_crouch"):
+				return states.crouch_idle
 			if Input.is_action_just_pressed("player_attack"):
 				return states.attack_1
 			if !is_on_floor():
@@ -91,6 +114,8 @@ func _get_transition():
 			if Input.is_action_pressed("player_right") || Input.is_action_pressed("player_left"):
 				return states.running
 		states.running:
+			if Input.is_action_just_pressed("player_crouch"):
+				return states.crouch_moving
 			if Input.is_action_just_pressed("player_attack"):
 				return states.attack_1
 			if !is_on_floor():
@@ -131,13 +156,38 @@ func _get_transition():
 				return states.falling
 		states.attack_1:
 			if attack_animation_finished:
-				if attack_queued:
+				if attack_queued > 0:
 					return states.attack_2
 				else:
 					return states.idle
 		states.attack_2:
 			if attack_animation_finished:
+				if attack_queued > 0:
+					return states.attack_3
+				else:
+					return states.idle
+		states.attack_3:
+			if attack_animation_finished:
 				return states.idle
+		states.crouch_idle:
+			if Input.is_action_just_released("player_crouch"):
+				return states.idle
+			if Input.is_action_just_pressed("player_left") || Input.is_action_just_pressed("player_right"):
+				return states.crouch_moving
+		states.crouch_moving:
+			if Input.is_action_just_released("player_crouch"):
+				return states.idle
+			match facing_direction:
+				Direction.RIGHT:
+					if Input.is_action_just_released("player_right"):
+						return states.crouch_idle
+					elif Input.is_action_just_pressed("player_left"):
+						return states.crouch_moving
+				Direction.LEFT:
+					if Input.is_action_just_released("player_left"):
+						return states.crouch_idle
+					elif Input.is_action_just_pressed("player_right"):
+						return states.crouch_moving
 	return null
 	
 func _enter_state(new_state, old_state):
@@ -166,15 +216,28 @@ func _enter_state(new_state, old_state):
 		states.attack_1:
 			$AnimationPlayer.play("Attackt1")
 			attack_animation_finished = false
-			attack_queued = false
-			velocity.x = 0
+			attack_queued = 0
 			print("attack_1")
 		states.attack_2:
 			$AnimationPlayer.play("Attack2")
 			attack_animation_finished = false
-			attack_queued = false
-			velocity.x = 0
+			attack_queued -= 1
 			print("attack_2")
+		states.attack_3:
+			$AnimationPlayer.play("Attack3")
+			attack_animation_finished = false
+			attack_queued -= 1
+			print("attack_3")
+		states.crouch_idle:
+			$AnimationPlayer.play("CrouchIdle")
+			$CollisionShape2D.shape.set_extents(collision_crouch)
+			$CollisionShape2D.position.y = 12
+			print("crouch_idle")
+		states.crouch_moving:
+			$AnimationPlayer.play("CrouchIdle")
+			$CollisionShape2D.shape.set_extents(collision_crouch)
+			$CollisionShape2D.position.y = 12
+			print("crouch_moving")
 
 func _exit_state(old_state, new_state):
 	match old_state:
@@ -194,10 +257,17 @@ func _exit_state(old_state, new_state):
 			if is_on_floor():
 				has_double_jumped = false
 		states.attack_1:
-			attack_queued = false
+			pass
 		states.attack_2:
-			attack_queued = false
 			velocity.x = 0
+		states.attack_3:
+			pass
+		states.crouch_moving:
+			$CollisionShape2D.shape.set_extents(collision_normal)
+			$CollisionShape2D.position.y = 0
+		states.crouch_idle:
+			$CollisionShape2D.shape.set_extents(collision_normal)
+			$CollisionShape2D.position.y = 0
 	pass
 
 func _on_AnimationPlayer_animation_started(animation_name):
@@ -207,6 +277,8 @@ func _on_AnimationPlayer_animation_finished(animation_name):
 	if animation_name == "Attackt1":
 		attack_animation_finished = true
 	elif animation_name == "Attack2":
+		attack_animation_finished = true
+	elif animation_name == "Attack3":
 		attack_animation_finished = true
 	pass
 
