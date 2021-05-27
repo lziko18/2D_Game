@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/Load_Game_Menu/Menu_Item.gd" type="Script" id=1]
+
+[node name="MenuItem" type="HBoxContainer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selected" type="Label" parent="."]
+margin_bottom = 14.0
+
+[node name="Text" type="Label" parent="."]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 14.0
