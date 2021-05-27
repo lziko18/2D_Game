@@ -2,6 +2,8 @@ extends "res://Scripts/StateMachine.gd"
 
 var running_speed : float = 350
 var crouch_speed : float = 200
+var sliding_start_speed : float = running_speed
+var sliding_acceleration : float = -2
 var attack_3_speed : float = 220
 var falling_speed_x : float = 400
 var gravity : float = 60
@@ -12,7 +14,7 @@ var fall_threshold : float = 550
 const collision_offset_normal = Vector2(0, 0)
 const collision_offset_crouch = Vector2(0, 12)
 const collision_normal = Vector2(26, 56)
-const collision_crouch = Vector2(26, 32)
+const collision_crouch = Vector2(26, 30)
 const UP=Vector2(0,-1)
 enum Direction { RIGHT = 1, LEFT = -1 }
 
@@ -21,6 +23,7 @@ var velocity = Vector2()
 var has_double_jumped : bool = false
 var attack_queued : int = 0
 var attack_animation_finished : bool = true
+var sliding_finished : bool = false
 
 func _ready():
 	set_direction(Direction.RIGHT)
@@ -29,6 +32,7 @@ func _ready():
 	add_state("running")
 	add_state("crouch_idle")
 	add_state("crouch_moving")
+	add_state("sliding")
 	add_state("falling")
 	add_state("jumping")
 	add_state("double_jumping")
@@ -98,6 +102,17 @@ func _state_logic(delta):
 			velocity.x = 0
 		states.crouch_moving:
 			velocity.x = crouch_speed * facing_direction
+		states.sliding:
+			if facing_direction == Direction.RIGHT:
+				if velocity.x - sliding_acceleration > 0:
+					velocity.x += sliding_acceleration
+				else:
+					velocity.x = 0
+			elif facing_direction == Direction.LEFT:
+				if velocity.x - sliding_acceleration < 0:
+					velocity.x -= sliding_acceleration
+				else:
+					velocity.x = 0
 	velocity = move_and_slide(velocity, UP)
 
 func _get_transition():
@@ -115,7 +130,7 @@ func _get_transition():
 				return states.running
 		states.running:
 			if Input.is_action_just_pressed("player_crouch"):
-				return states.crouch_moving
+				return states.sliding
 			if Input.is_action_just_pressed("player_attack"):
 				return states.attack_1
 			if !is_on_floor():
@@ -170,13 +185,14 @@ func _get_transition():
 			if attack_animation_finished:
 				return states.idle
 		states.crouch_idle:
-			if Input.is_action_just_released("player_crouch"):
-				return states.idle
 			if Input.is_action_just_pressed("player_left") || Input.is_action_just_pressed("player_right"):
 				return states.crouch_moving
+			if !Input.is_action_pressed("player_crouch"):
+				if $CrouchCollisionCeil.is_colliding():
+					return null
+				else:
+					return states.idle
 		states.crouch_moving:
-			if Input.is_action_just_released("player_crouch"):
-				return states.idle
 			match facing_direction:
 				Direction.RIGHT:
 					if Input.is_action_just_released("player_right"):
@@ -188,6 +204,22 @@ func _get_transition():
 						return states.crouch_idle
 					elif Input.is_action_just_pressed("player_right"):
 						return states.crouch_moving
+			if !Input.is_action_pressed("player_crouch"):
+				if $CrouchCollisionCeil.is_colliding():
+					return null
+				else:
+					return states.idle
+		states.sliding:
+			if !Input.is_action_pressed("player_crouch"):
+				if $CrouchCollisionCeil.is_colliding():
+					return null
+				else:
+					return states.idle
+			elif sliding_finished:
+				if $CrouchCollisionCeil.is_colliding():
+					return states.crouch_idle
+				else:
+					return states.idle
 	return null
 	
 func _enter_state(new_state, old_state):
@@ -231,13 +263,20 @@ func _enter_state(new_state, old_state):
 		states.crouch_idle:
 			$AnimationPlayer.play("CrouchIdle")
 			$CollisionShape2D.shape.set_extents(collision_crouch)
-			$CollisionShape2D.position.y = 12
+			$CollisionShape2D.set_position(Vector2(0, collision_normal.y - collision_crouch.y))
 			print("crouch_idle")
 		states.crouch_moving:
 			$AnimationPlayer.play("CrouchIdle")
 			$CollisionShape2D.shape.set_extents(collision_crouch)
-			$CollisionShape2D.position.y = 12
+			$CollisionShape2D.set_position(Vector2(0, collision_normal.y - collision_crouch.y))
 			print("crouch_moving")
+		states.sliding:
+			velocity.x = sliding_start_speed * facing_direction
+			sliding_finished = false
+			$AnimationPlayer.play("Slide")
+			$CollisionShape2D.shape.set_extents(collision_crouch)
+			$CollisionShape2D.set_position(Vector2(0, collision_normal.y - collision_crouch.y))
+			print("sliding")
 
 func _exit_state(old_state, new_state):
 	match old_state:
@@ -263,11 +302,17 @@ func _exit_state(old_state, new_state):
 		states.attack_3:
 			pass
 		states.crouch_moving:
-			$CollisionShape2D.shape.set_extents(collision_normal)
-			$CollisionShape2D.position.y = 0
+			if new_state != states.crouch_idle:
+				$CollisionShape2D.shape.set_extents(collision_normal)
+				$CollisionShape2D.set_position(Vector2(0, 0))
 		states.crouch_idle:
-			$CollisionShape2D.shape.set_extents(collision_normal)
-			$CollisionShape2D.position.y = 0
+			if new_state != states.crouch_moving:
+				$CollisionShape2D.shape.set_extents(collision_normal)
+				$CollisionShape2D.set_position(Vector2(0, 0))
+		states.sliding:
+			if new_state != states.crouch_moving and new_state != states.crouch_idle:
+				$CollisionShape2D.shape.set_extents(collision_normal)
+				$CollisionShape2D.set_position(Vector2(0, 0))
 	pass
 
 func _on_AnimationPlayer_animation_started(animation_name):
@@ -280,8 +325,39 @@ func _on_AnimationPlayer_animation_finished(animation_name):
 		attack_animation_finished = true
 	elif animation_name == "Attack3":
 		attack_animation_finished = true
+	elif animation_name == "Slide":
+		sliding_finished = true
 	pass
 
 func set_direction(dir):
 	facing_direction = dir
 	$Sprite.flip_h = (dir == Direction.LEFT)
+
+func get_save_data():
+	var data = {
+		"state": state,
+		"position": {
+			"x": position.x,
+			"y": position.y
+		},
+		"velocity": {
+			"x": velocity.x,
+			"y": velocity.y
+		},
+		"facing_direction": facing_direction,
+		"has_double_jumped": has_double_jumped,
+		"attack_queued": attack_queued,
+		"attack_animation_finished": attack_animation_finished
+	}
+	return data
+	
+func set_from_save_data(data):
+	state = data.state
+	position.x = data.position.x
+	position.y = data.position.y
+	velocity.x = data.velocity.x
+	velocity.y = data.velocity.y
+	facing_direction = data.facing_direction
+	has_double_jumped = data.has_double_jumped
+	attack_queued = data.attack_queued
+	attack_animation_finished = data.attack_animation_finished
