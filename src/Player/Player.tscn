@@ -623,11 +623,13 @@ position = Vector2( 26.0639, -4.58886 )
 [node name="Chain" parent="Position2D" instance=ExtResource( 1 )]
 
 [node name="Att_hitbox" parent="Position2D" instance=ExtResource( 5 )]
+visible = false
 collision_layer = 8
 collision_mask = 32
 script = ExtResource( 16 )
 
 [node name="CollisionShape2D" parent="Position2D/Att_hitbox" index="0"]
+visible = false
 shape = SubResource( 22 )
 disabled = true
 
