@@ -16,9 +16,14 @@ var leap=false
 var dust_pos
 var dust_dir
 var can_choose=true
+var attack_2=false
 var rng = RandomNumberGenerator.new()
 var num
-
+var dash_con=false
+var spin_con=false
+onready var player_push=$Sprite/Position2D/Area2D
+onready var player_push2=$Sprite/Position2D/Area2D2
+onready var player_push3=$Sprite/Position2D/Area2D3
 
 
 func gravity():
@@ -38,17 +43,38 @@ func change_dir():
 	var our=get_parent().get_node("boss_type_01").global_position.x
 	if our > dir:
 		$Sprite.flip_h=true
-		
 		$Sprite/Position2D.position.x=-8
+		$Sprite/Position2D/Area2D.position.x=8.177
+		$Sprite/Position2D/Area2D2.position.x=-11.579
+		$Sprite/Position2D/Area2D3.position.x=-4.508
 	elif our < dir:
 		$Sprite.flip_h=false
-		$Sprite/Position2D.position.x=8	
+		$Sprite/Position2D.position.x=8
+		$Sprite/Position2D/Area2D.position.x=-8.177
+		$Sprite/Position2D/Area2D2.position.x=11.579
+		$Sprite/Position2D/Area2D3.position.x=4.508
 
+func player_knock_back():
+	var dir=get_parent().get_node("Player").global_position.x
+	var our=get_parent().get_node("boss_type_01").global_position.x
+	if our<dir:
+		player_push.knockback_vector=100
+		player_push2.knockback_vector=100
+		player_push3.knockback_vector=100
+	else:
+		player_push.knockback_vector=-100
+		player_push2.knockback_vector=-100
+		player_push3.knockback_vector=-100
+		
 func walk():
+	var dir=get_parent().get_node("Player").global_position.x
+	var our=get_parent().get_node("boss_type_01").global_position.x
 	if $Sprite.flip_h == true:
 		motion.x = -150;
 	elif $Sprite.flip_h == false:
 		motion.x = 150;
+	if  abs(our - dir)<=30:
+		motion.x = 0;
 
 
 
@@ -79,6 +105,7 @@ func spin():
 			motion.x=-600
 
 func leap_up():
+	set_collision_mask_bit(1,false)
 	motion.x=0
 	motion.y=0
 	yield(get_tree().create_timer(0.35), "timeout")
@@ -91,33 +118,41 @@ func leap_up():
 func leap_down():
 	pass
 
-func choose_state():
-	print("from1")
-	if can_choose==true:
-		rng.randomize()
-		num=rng.randf_range(0, 10)
-		if int(num)<=2:
-			$Node.set_state(0)
-		elif int(num)<=8 and 2<int(num):
-			$Node.set_state(0)
-		elif 8<int(num) and int(num)<=10:
-			$Node.set_state(6)
-func choose_state2():
-	print("from2")
-	if can_choose==true:
-		rng.randomize()
-		num=rng.randf_range(0, 10)
-		if int(num)<=2:
+
+func choose_state_from_distance():
+	var dir=get_parent().get_node("Player").global_position.x
+	var our=get_parent().get_node("boss_type_01").global_position.x
+	rng.randomize()
+	num=rng.randi()%10+1
+	print(num)
+	if  abs(our - dir)<=120:
+		if can_choose==true:
+			if int(num)<=2:
+				$Node.set_state(6)
+			else:
+				if attack_2==false:
+					$Node.set_state(7)
+				elif attack_2==true:
+					$Node.set_state(8)
+	elif abs(our - dir)>120 and abs(our - dir)<=450 :
+		if can_choose==true:
 			dash=true
-			$Node.set_state(5)
-		elif int(num)<=5 and 2<int(num):
-			dash=true
-			$Node.set_state(10)
-		elif int(num)<=9 and 5<int(num):
+			if int(num)<=1:
+				$Node.set_state(4)
+			elif int(num)<=2 and 1<int(num):
+				$Node.set_state(6)
+			elif int(num)<=7 and 2<int(num):
+				$Node.set_state(0)
+			elif 7<int(num) and int(num)<=9:
+				$Node.set_state(10)
+			elif int(num)<=10 and 9<int(num):
+				$Node.set_state(5)
+	elif abs(our - dir)>450 :
+		if can_choose==true:
 			dash=true
 			$Node.set_state(1)
-		elif int(num)<=10 and 9<int(num):
-			$Node.set_state(6)
+
+
 
 
 func throw():
@@ -156,9 +191,11 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$Node.set_state(11)
 	if anim_name=='boss_leap_down':
 		$Node.set_state(4)
+	if anim_name=='boss_taunt':
+		$Node.set_state(4)
 
 func get_hammer():
-	get_parent().get_child(get_child_count()-1).queue_free()
+	pass
 
 func get_pos():
 	dust_pos=Vector2(get_parent().get_node("boss_type_01").global_position.x,get_parent().get_node("boss_type_01").global_position.y-20)
@@ -200,6 +237,3 @@ func _on_AnimationPlayer_animation_started(anim_name):
 
 
 
-func _on_att_body_entered(body):
-	if $Node.state==4 or $Node.state==0 or $Node.state==1:
-		$Node.set_state(7)

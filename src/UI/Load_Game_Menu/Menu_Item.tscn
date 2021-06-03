@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Load_Game_Menu/Menu_Item.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Adventurefont.tres" type="DynamicFont" id=2]
+
+[node name="MenuItem" type="HBoxContainer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selected" type="Label" parent="."]
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 2 )
+
+[node name="Text" type="Label" parent="."]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 2 )

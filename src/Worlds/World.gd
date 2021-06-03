@@ -31,7 +31,6 @@ func _on_Area2D2_body_entered(body):
 		yield(get_tree().create_timer(1), "timeout")
 		call_deferred("next_scene")
 
-
 func next_scene():
 	var level = root.get_node(self.name)
 	root.remove_child(level)
