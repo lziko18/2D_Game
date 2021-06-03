@@ -1,19 +1,22 @@
 extends Node
 
+onready var root=get_tree().get_root()
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	get_tree().paused=true
+	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
+	get_tree().paused=false
+	yield(get_tree().create_timer(1.1), "timeout")
+	$Player/Camera2D/CanvasLayer/Label/AnimationPlayer.play("Hide")
+	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
 
 
 

@@ -3,8 +3,6 @@
 [ext_resource path="res://bosses/Throw.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/boss_effect_hammer.png" type="Texture" id=2]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 12.6986 )
 

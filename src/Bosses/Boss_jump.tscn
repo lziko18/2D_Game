@@ -30,7 +30,6 @@ animations = [ {
 [node name="Boss_jump" type="AnimatedSprite"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
-frame = 2
 playing = true
 script = ExtResource( 2 )
 [connection signal="animation_finished" from="." to="." method="_on_Boss_jump_animation_finished"]
