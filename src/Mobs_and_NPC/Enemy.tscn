@@ -149,7 +149,6 @@ shape = SubResource( 2 )
 "anims/en walk" = SubResource( 7 )
 
 [node name="Position2D" type="Position2D" parent="."]
-visible = false
 position = Vector2( 23.1646, 0 )
 
 [node name="Area2D" parent="Position2D" instance=ExtResource( 1 )]

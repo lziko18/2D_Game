@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Old_Guardian_spit_effect.png-4180cab7d9f08826f36488c762a322c2.stex"
+path="res://.import/tileset.png-c2ce1b075e25b47535ea8ce511e7836b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Old_Guardian/Old_Guardian_spit_effect.png"
-dest_files=[ "res://.import/Old_Guardian_spit_effect.png-4180cab7d9f08826f36488c762a322c2.stex" ]
+source_file="res://Tilesets/tileset.png"
+dest_files=[ "res://.import/tileset.png-c2ce1b075e25b47535ea8ce511e7836b.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

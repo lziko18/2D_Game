@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Old_Guardian_spit_effect.png-4180cab7d9f08826f36488c762a322c2.stex"
+path="res://.import/Old_guardian.png-25db39d17d0f4964f8a5304d1643f592.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Old_Guardian/Old_Guardian_spit_effect.png"
-dest_files=[ "res://.import/Old_Guardian_spit_effect.png-4180cab7d9f08826f36488c762a322c2.stex" ]
+source_file="res://Sprites/Old_Guardian/Old_guardian.png"
+dest_files=[ "res://.import/Old_guardian.png-25db39d17d0f4964f8a5304d1643f592.stex" ]
 
 [params]
 
