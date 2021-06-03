@@ -1,8 +1,7 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Player/Player_StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Audio/sword_2.wav" type="AudioStream" id=6]
-[ext_resource path="res://Audio/hero_shade_dash_2.wav" type="AudioStream" id=7]
 [ext_resource path="res://Audio/sword_3.wav" type="AudioStream" id=8]
 [ext_resource path="res://Audio/mantis_lord_down_slash.wav" type="AudioStream" id=9]
 [ext_resource path="res://Audio/hero_wall_slide.wav" type="AudioStream" id=10]
@@ -228,35 +227,6 @@ tracks/0/keys = {
 "values": [ 90, 91, 92 ]
 }
 
-[sub_resource type="Animation" id=11]
-length = 2.56
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 26, 27, 26, 27, 26, 27, 26, 27, 26, 27, 26, 27, 26 ]
-}
-tracks/1/type = "audio"
-tracks/1/path = NodePath("AudioStreamPlayer4")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0105485,
-"start_offset": 0.0,
-"stream": ExtResource( 10 )
-} ],
-"times": PoolRealArray( 0 )
-}
-
 [sub_resource type="Animation" id=12]
 length = 0.27
 step = 0.05
@@ -395,6 +365,36 @@ tracks/0/keys = {
 "values": [ 111, 112, 111, 112, 111, 112, 116 ]
 }
 
+[sub_resource type="Animation" id=11]
+resource_name = "Wall_Slide"
+length = 2.56
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 26, 27, 26, 27, 26, 27, 26, 27, 26, 27, 26, 27, 26 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer4")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0105485,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
 [sub_resource type="Animation" id=19]
 length = 0.35
 step = 0.025
@@ -491,7 +491,6 @@ anims/Grab = SubResource( 7 )
 anims/Ground_slam = SubResource( 8 )
 anims/Hooking = SubResource( 9 )
 anims/Hurt = SubResource( 10 )
-"anims/New Anim" = SubResource( 11 )
 "anims/Player Casting" = SubResource( 12 )
 "anims/Player Die" = SubResource( 13 )
 "anims/Player Falling" = SubResource( 14 )
@@ -499,6 +498,7 @@ anims/Hurt = SubResource( 10 )
 "anims/Player Jumping" = SubResource( 16 )
 "anims/Player Running" = SubResource( 17 )
 anims/Slide = SubResource( 18 )
+anims/Wall_Slide = SubResource( 11 )
 anims/air1 = SubResource( 19 )
 anims/air2 = SubResource( 20 )
 anims/air3 = SubResource( 21 )
@@ -516,21 +516,29 @@ stream = ExtResource( 14 )
 stream = ExtResource( 10 )
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.418701, -11.5197 )
 scale = Vector2( 3.6374, 3.92665 )
 texture = ExtResource( 12 )
 hframes = 140
-frame = 111
+frame = 26
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 22 )
 
 [node name="CrouchCollisionCeil" type="RayCast2D" parent="."]
-position = Vector2( -0.353516, 31.54 )
+position = Vector2( 0, 32 )
 rotation = 3.14159
 enabled = true
+
+[node name="AirAttackCollisionFloor" type="RayCast2D" parent="."]
+position = Vector2( 0, 32 )
+enabled = true
+
+[node name="WallSlideCollision" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 30, 0 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

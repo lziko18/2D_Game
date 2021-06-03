@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/Game_UI/Pause.tscn" type="PackedScene" id=1]
+
+[node name="Camera2D" type="Camera2D"]
+position = Vector2( -554.28, -387.264 )
+scale = Vector2( 2, 2 )
+anchor_mode = 0
+current = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 557
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+editor_draw_limits = true
+
+[node name="Pause" parent="." instance=ExtResource( 1 )]

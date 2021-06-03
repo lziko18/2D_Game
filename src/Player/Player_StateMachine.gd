@@ -5,11 +5,14 @@ var crouch_speed : float = 200
 var sliding_start_speed : float = running_speed
 var sliding_acceleration : float = -2
 var attack_3_speed : float = 220
+var attack_air_speed : float = 800
 var falling_speed_x : float = 400
 var gravity : float = 60
 var jump_acceleration : float = 1200
 var double_jump_acceleration : float = 1000
 var fall_threshold : float = 550
+var wall_sliding_speed : float = 200
+var wall_slide_collision_vector : Vector2 = Vector2(30, 0)
 
 const collision_offset_normal = Vector2(0, 0)
 const collision_offset_crouch = Vector2(0, 12)
@@ -39,6 +42,14 @@ func _ready():
 	add_state("attack_1")
 	add_state("attack_2")
 	add_state("attack_3")
+	add_state("attack_air")
+	add_state("hurt")
+	add_state("death")
+	add_state("wall_slide")
+	add_state("wall_grab")
+	add_state("casting")
+	
+	#set_state(states.idle)
 	call_deferred("set_state", states.idle)
 	
 	add_input_action("player_right", KEY_RIGHT)
@@ -48,7 +59,6 @@ func _ready():
 	add_input_action("player_crouch", KEY_C)
 	
 	$CollisionShape2D.shape.set_extents(collision_normal)
-
 
 func add_input_action(name, key):
 	InputMap.add_action(name)
@@ -94,10 +104,15 @@ func _state_logic(delta):
 				velocity.x = 0
 		states.attack_1:
 			velocity.x = 0
+			velocity.y = 0
 		states.attack_2:
 			velocity.x = 0
+			velocity.y = 0
 		states.attack_3:
 			velocity.x = attack_3_speed * facing_direction
+			velocity.y = 0
+		states.attack_air:
+			velocity.y = attack_air_speed
 		states.crouch_idle:
 			velocity.x = 0
 		states.crouch_moving:
@@ -113,6 +128,11 @@ func _state_logic(delta):
 					velocity.x -= sliding_acceleration
 				else:
 					velocity.x = 0
+		states.wall_slide:
+			velocity.x = 0
+			velocity.y = wall_sliding_speed
+		states.wall_grab:
+			pass
 	velocity = move_and_slide(velocity, UP)
 
 func _get_transition():
@@ -156,9 +176,13 @@ func _get_transition():
 					return states.idle
 			elif Input.is_action_just_pressed("player_jump") && velocity.y > -jump_acceleration && !has_double_jumped:
 				return states.double_jumping
+			elif $WallSlideCollision.is_colliding():
+				return states.wall_slide
 		states.jumping:
 			if is_on_floor():
 				return states.idle
+			elif Input.is_action_just_pressed("player_attack"):
+				return states.attack_1
 			else:
 				if Input.is_action_just_pressed("player_jump") && velocity.y > gravity - jump_acceleration && !has_double_jumped:
 					return states.double_jumping
@@ -178,11 +202,17 @@ func _get_transition():
 		states.attack_2:
 			if attack_animation_finished:
 				if attack_queued > 0:
-					return states.attack_3
+					if $AirAttackCollisionFloor.is_colliding():
+						return states.attack_3
+					else:
+						return states.attack_air
 				else:
 					return states.idle
 		states.attack_3:
 			if attack_animation_finished:
+				return states.idle
+		states.attack_air:
+			if attack_animation_finished && is_on_floor():
 				return states.idle
 		states.crouch_idle:
 			if Input.is_action_just_pressed("player_left") || Input.is_action_just_pressed("player_right"):
@@ -220,8 +250,23 @@ func _get_transition():
 					return states.crouch_idle
 				else:
 					return states.idle
+		states.wall_slide:
+			if is_on_floor():
+				return states.idle
+			elif not $WallSlideCollision.is_colliding():
+				return states.falling
+			elif Input.is_action_just_pressed("player_jump"):
+				return states.jumping
+		states.wall_grab:
+			return null
+		states.hurt:
+			return null
+		states.death:
+			return null
+		states.casting:
+			return null
 	return null
-	
+
 func _enter_state(new_state, old_state):
 	match new_state:
 		states.idle:
@@ -260,6 +305,11 @@ func _enter_state(new_state, old_state):
 			attack_animation_finished = false
 			attack_queued -= 1
 			print("attack_3")
+		states.attack_air:
+			$AnimationPlayer.play("Ground_slam")
+			attack_animation_finished = false
+			attack_queued -= 1
+			print("attack_air")
 		states.crouch_idle:
 			$AnimationPlayer.play("CrouchIdle")
 			$CollisionShape2D.shape.set_extents(collision_crouch)
@@ -277,6 +327,11 @@ func _enter_state(new_state, old_state):
 			$CollisionShape2D.shape.set_extents(collision_crouch)
 			$CollisionShape2D.set_position(Vector2(0, collision_normal.y - collision_crouch.y))
 			print("sliding")
+		states.wall_slide:
+			velocity.x = 0
+			velocity.y = wall_sliding_speed
+			$AnimationPlayer.play("Wall_Slide")
+			print("wall_slide")
 
 func _exit_state(old_state, new_state):
 	match old_state:
@@ -327,11 +382,14 @@ func _on_AnimationPlayer_animation_finished(animation_name):
 		attack_animation_finished = true
 	elif animation_name == "Slide":
 		sliding_finished = true
+	elif animation_name == "Ground_slam":
+		attack_animation_finished = true
 	pass
 
 func set_direction(dir):
 	facing_direction = dir
 	$Sprite.flip_h = (dir == Direction.LEFT)
+	$WallSlideCollision.set_cast_to(Vector2(wall_slide_collision_vector.x * facing_direction, wall_slide_collision_vector.y))
 
 func get_save_data():
 	var data = {
@@ -347,12 +405,17 @@ func get_save_data():
 		"facing_direction": facing_direction,
 		"has_double_jumped": has_double_jumped,
 		"attack_queued": attack_queued,
-		"attack_animation_finished": attack_animation_finished
+		"attack_animation_finished": attack_animation_finished,
+		"hitbox_extents": {
+			"x": $CollisionShape2D.shape.get_extents().x,
+			"y": $CollisionShape2D.shape.get_extents().y
+		}
 	}
 	return data
-	
+
 func set_from_save_data(data):
-	state = data.state
+	print(data)
+	set_state(data.state)
 	position.x = data.position.x
 	position.y = data.position.y
 	velocity.x = data.velocity.x
@@ -361,3 +424,5 @@ func set_from_save_data(data):
 	has_double_jumped = data.has_double_jumped
 	attack_queued = data.attack_queued
 	attack_animation_finished = data.attack_animation_finished
+	var hitbox_extents = data.hitbox_extents
+	$CollisionShape2D.shape.set_extents(Vector2(hitbox_extents.x, hitbox_extents.y))
