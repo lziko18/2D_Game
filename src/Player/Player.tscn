@@ -505,22 +505,14 @@ position = Vector2( 26.0639, -4.58886 )
 [node name="Chain" parent="Position2D" instance=ExtResource( 1 )]
 
 [node name="Att_hitbox" parent="Position2D" instance=ExtResource( 5 )]
-<<<<<<< HEAD
-position = Vector2( 29.73, 0 )
-=======
 visible = false
->>>>>>> 776625b2fffe37e5ac0bd3a1bccd4a4590132d5f
 collision_layer = 8
 collision_mask = 32
 script = ExtResource( 16 )
 
 [node name="CollisionShape2D" parent="Position2D/Att_hitbox" index="0"]
-<<<<<<< HEAD
-shape = SubResource( 23 )
-=======
 visible = false
 shape = SubResource( 22 )
->>>>>>> 776625b2fffe37e5ac0bd3a1bccd4a4590132d5f
 disabled = true
 
 [node name="RightWall1" type="RayCast2D" parent="."]
