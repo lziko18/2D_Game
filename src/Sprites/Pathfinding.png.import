@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Old_Guardian_spit_effect.png-4180cab7d9f08826f36488c762a322c2.stex"
+path="res://.import/Pathfinding.png-dd28ff67c76ed80b736f592abb94bbf4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Old_Guardian/Old_Guardian_spit_effect.png"
-dest_files=[ "res://.import/Old_Guardian_spit_effect.png-4180cab7d9f08826f36488c762a322c2.stex" ]
+source_file="res://Sprites/Pathfinding.png"
+dest_files=[ "res://.import/Pathfinding.png-dd28ff67c76ed80b736f592abb94bbf4.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

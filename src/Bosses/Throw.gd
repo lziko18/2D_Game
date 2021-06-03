@@ -25,6 +25,8 @@ func _physics_process(delta):
 		motion.x=speed*2
 		$AnimationPlayer.play("Roll")
 	motion=move_and_slide(motion,UP)
+	yield(get_tree().create_timer(1.35), "timeout")
+	queue_free()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

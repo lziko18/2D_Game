@@ -37,6 +37,8 @@ var got_hit=false
 var can_be_target=true
 var not_dead=true
 var is_hooking=false
+var grab_right=false
+var grab_left=false
 var chain_velocity := Vector2(0,0)
 
 onready var attack_hitbox =$Position2D/Att_hitbox
@@ -181,11 +183,13 @@ func gravity_apply():
 		motion.y += gravity
 
 func cornor():
-	if $RightWall1.is_colliding() and $RightWall2.is_colliding() and $Grab1.is_colliding()==false and is_crouching==false and is_sliding==false:
+	if $Grab1.is_colliding()==false and next_to_right_wall()==true and is_crouching==false and is_sliding==false:
+		grab_right=true
 		grabbed=true
 		motion.x=0
 		motion.y=0
-	elif $LeftWall1.is_colliding() and $LeftWall2.is_colliding() and $Grab2.is_colliding()==false and is_crouching==false and is_sliding==false:
+	elif $Grab2.is_colliding()==false and next_to_left_wall()==true  and is_crouching==false and is_sliding==false:
+		grab_left=true
 		grabbed=true
 		motion.x=0
 		motion.y=0
@@ -196,7 +200,18 @@ func cornor():
 func is_grabed():
 	if grabbed==true:
 		is_casting=false
-		$AnimationPlayer.play("Grab")
+		if grab_right==true and $Sprite.flip_h==false:
+			$Sprite.flip_h=false
+			$AnimationPlayer.play("Grab")
+		elif grab_right==true and $Sprite.flip_h==true:
+			$Sprite.flip_h=false
+			$AnimationPlayer.play("Grab")
+		elif grab_left==true and $Sprite.flip_h==true:
+			$Sprite.flip_h=true
+			$AnimationPlayer.play("Grab")
+		elif grab_left==true and $Sprite.flip_h==false:
+			$Sprite.flip_h=true
+			$AnimationPlayer.play("Grab")
 		if Input.is_action_just_pressed("Crouch"):
 			grabbed=false
 			if $Sprite.flip_h==false:
@@ -365,7 +380,6 @@ func cast():
 			is_casting=true
 			motion.x=0
 			$AnimationPlayer.play("Player Casting")
-			$AudioStreamPlayer5.play(0)
 
 
 
@@ -377,13 +391,13 @@ func next_to_left_wall():
 	return $LeftWall1.is_colliding() and $LeftWall2.is_colliding()
 
 func wall_sliding():
-	if next_to_right_wall() and !is_on_floor() and motion.y>-200 :
+	if next_to_right_wall() and !is_on_floor() and motion.y>-200 and $Grab1.is_colliding():
 		is_wall_sliding=true
 		$Sprite.flip_h=false
 		$AnimationPlayer.play("New Anim")
 		if Input.is_action_pressed("ui_left"):
 			$AnimationPlayer.play("Player Jumping")
-	elif next_to_left_wall() and !is_on_floor() and motion.y>-200:
+	elif next_to_left_wall() and !is_on_floor() and motion.y>-200 and $Grab2.is_colliding():
 		is_wall_sliding=true
 		$Sprite.flip_h=true
 		$AnimationPlayer.play("New Anim")
@@ -476,7 +490,6 @@ func _physics_process(delta):
 		hooked()
 		hook()
 		gravity_apply()
-		wall_sliding()
 		get_input_for_moving()
 		get_input_for_jumping()
 		cast()
@@ -488,13 +501,14 @@ func _physics_process(delta):
 		cornor()
 		is_grabed()
 		flip()
+		wall_sliding()
 		enemy_knock_direction()
 		update_Hurtbox()
-		motion=move_and_slide(motion,UP)
+		motion=move_and_slide(motion,UP,true)
 	elif got_hit==true:
 		gravity_apply()
 		player_got_hurt(delta)
-		motion=move_and_slide(motion,UP)
+		motion=move_and_slide(motion,UP,true)
 
 func _on_AnimationPlayer_animation_finished(cast):
 	if cast=="Player Casting":

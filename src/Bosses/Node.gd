@@ -1,5 +1,5 @@
 extends StateMachine
-
+var time=0.5
 func _ready():
 	add_state('walk') #0
 	add_state('dash') #1
@@ -12,9 +12,11 @@ func _ready():
 	add_state('attack2')#8
 	add_state('attack3')#9
 	add_state('leap_up')#10
-	add_state('leap_down')#12
-	call_deferred("set_state",states.idle)
-	
+	add_state('leap_down')#11
+	add_state('death')#12
+	add_state('taunt')#13
+	add_state('fake_idle')#15
+	call_deferred("set_state",states.fake_idle)
 func _input(event):
 	#if[states.idle,states.walk].has(state):
 		#if event.is_action_pressed("ui_up"):
@@ -44,6 +46,12 @@ func _input(event):
 
 func _state_logic(delta):
 	parent.gravity()
+	parent.player_knock_back()
+	if state==states.idle or state==states.walk or state==states.dash or state==states.attack1 or state==states.attack2  or state==states.leap_down:
+		parent.set_collision_mask_bit(1,true)
+	else:
+		parent.set_collision_mask_bit(1,false)
+		
 	if state==states.idle or state==states.leap_up :
 		parent.change_dir()
 	if state==states.walk:
@@ -108,14 +116,14 @@ func _enter_state(new_state,old_state):
 		states.idle:
 			parent.motion.x=0
 			parent.get_node("AnimationPlayer").play("boss_idle")
+			yield(get_tree().create_timer(time), "timeout")
 			parent.can_choose=true
-			yield(get_tree().create_timer(0.5), "timeout")
-			parent.choose_state()
+			parent.choose_state_from_distance()
 		states.walk:
-			parent.can_choose=true
 			parent.get_node("AnimationPlayer").play("boss_walk");
-			yield(get_tree().create_timer(0.5), "timeout")
-			parent.choose_state2()
+			yield(get_tree().create_timer(0.8), "timeout")
+			parent.can_choose=true
+			parent.choose_state_from_distance()
 		states.jump_up:
 			parent.get_node("AnimationPlayer").play("boss_jump_up")
 			parent.can_choose=false
@@ -132,9 +140,13 @@ func _enter_state(new_state,old_state):
 			parent.can_choose=false
 		states.attack1:
 			parent.get_node("AnimationPlayer").play("boss_att_01")
+			parent.attack_2=true
+			yield(get_tree().create_timer(1.2), "timeout")
+			parent.attack_2=false
 			parent.can_choose=false
 		states.attack2:
 			parent.get_node("AnimationPlayer").play("boss_att_02")
+			parent.attack_2=false
 			parent.can_choose=false
 		states.attack3:
 			parent.get_node("AnimationPlayer").play("boss_att_03")
@@ -148,15 +160,33 @@ func _enter_state(new_state,old_state):
 		states.leap_down:
 			parent.get_node("AnimationPlayer").play("boss_leap_down")
 			parent.can_choose=false
+		states.fake_idle:
+			parent.get_node("AnimationPlayer").play("boss_idle")
+			parent.can_choose=false
+		states.fake_idle:
+			parent.get_node("AnimationPlayer").play("boss_idle")
+			parent.can_choose=false
+		states.taunt:
+			parent.get_node("AnimationPlayer").play("boss_taunt")
+			parent.can_choose=false
+		states.death:
+			parent.get_node("AnimationPlayer").play("boss_death")
+			parent.can_choose=false
 
-	
+
 func _exit_state(old_state,new_state):
 	match old_state:
 		states.idle:
 			parent.can_choose=false
-		states.walk:
-			parent.can_choose=false
 		states.dash:
+			time=0.15
 			parent.dash=false
-			
+		states.spin:
+			time=0.4
+		states.jump_down:
+			time=0.4
+		states.leap_down:
+			time=0.4
+
+
 
