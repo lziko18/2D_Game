@@ -1,10 +1,7 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=1]
-[ext_resource path="res://Tilesets/Background/Background-3.png" type="Texture" id=2]
-[ext_resource path="res://Tilesets/Background/Background-4.png" type="Texture" id=3]
-[ext_resource path="res://Tilesets/Background/Background-2.png" type="Texture" id=4]
-[ext_resource path="res://Tilesets/Background/Background-1.png" type="Texture" id=5]
+[ext_resource path="res://ParallaxBackgrounds/Background_Magic_Forest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mobs_and_NPC/Crawler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mobs_and_NPC/Pathfinder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/1-16663_light-beam-png-beam-of-light-png.png" type="Texture" id=8]
@@ -82,48 +79,6 @@ script = ExtResource( 9 )
 __meta__ = {
 "_edit_horizontal_guides_": [ -553.4 ]
 }
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 0, -197.777 )
-motion_scale = Vector2( 0.5, 0.5 )
-motion_mirroring = Vector2( 974.4, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2( 2.9, 2.9 )
-texture = ExtResource( 3 )
-centered = false
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 0, -197.777 )
-motion_scale = Vector2( 0.7, 0.7 )
-motion_mirroring = Vector2( 974.4, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-scale = Vector2( 2.9, 2.9 )
-texture = ExtResource( 2 )
-centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 0, -197.777 )
-motion_scale = Vector2( 0.9, 0.8 )
-motion_mirroring = Vector2( 974.4, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
-scale = Vector2( 2.9, 2.9 )
-texture = ExtResource( 4 )
-centered = false
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 0, -197.777 )
-motion_mirroring = Vector2( 840, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2( 0, 77.3408 )
-scale = Vector2( 2.5, 2.5 )
-texture = ExtResource( 5 )
-centered = false
 
 [node name="background_depth" type="TileMap" parent="."]
 modulate = Color( 0.780392, 0.764706, 0.764706, 1 )
@@ -388,6 +343,10 @@ dir = 0
 [node name="Cute_slime2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 697.589, 280.564 )
 collision_layer = 0
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+offset = Vector2( 0, -190 )
+transform = Transform2D( 1, 0, 0, 1, 0, -190 )
 [connection signal="body_entered" from="Hide1_area" to="." method="_on_Hide1_area_body_entered"]
 [connection signal="body_exited" from="Hide1_area" to="." method="_on_Hide1_area_body_exited"]
 [connection signal="body_entered" from="Hide2_area" to="." method="_on_Hide2_area_body_entered"]

@@ -446,7 +446,6 @@ visible = false
 current = true
 limit_left = 0
 limit_top = -190
-limit_right = 10300
 limit_bottom = 352
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://UI/CanvasLayer.gd" type="Script" id=1]
+[ext_resource path="res://UI/Game_UI/Pause.gd" type="Script" id=1]
 [ext_resource path="res://UI/pngfind.com-scroll-paper-png-5531999.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=1]
