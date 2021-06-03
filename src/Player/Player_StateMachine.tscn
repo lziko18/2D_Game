@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Player/Player_StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Audio/sword_2.wav" type="AudioStream" id=6]
@@ -104,8 +104,9 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "Crouch"
+resource_name = "CrouchIdle"
 length = 0.8
+loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -121,7 +122,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "Double Jump"
+resource_name = "CrouchMoving"
+
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -149,8 +152,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Grab"
+[sub_resource type="Animation" id=7]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -165,7 +167,7 @@ tracks/0/keys = {
 "values": [ 71, 72, 73, 74 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.35
 step = 0.025
 tracks/0/type = "value"
@@ -195,8 +197,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Hooking"
+[sub_resource type="Animation" id=9]
 length = 0.24
 step = 0.05
 tracks/0/type = "value"
@@ -212,7 +213,7 @@ tracks/0/keys = {
 "values": [ 61, 59, 60 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -227,7 +228,7 @@ tracks/0/keys = {
 "values": [ 90, 91, 92 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 2.56
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -256,7 +257,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.27
 step = 0.05
 tracks/0/type = "value"
@@ -272,7 +273,7 @@ tracks/0/keys = {
 "values": [ 58, 59, 60, 61, 62, 63 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -287,7 +288,7 @@ tracks/0/keys = {
 "values": [ 81, 82, 83, 84, 85, 86, 87 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 2.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -302,8 +303,9 @@ tracks/0/keys = {
 "values": [ 88, 89, 88, 89, 88, 89, 88, 89, 88, 89, 88, 89, 88, 89 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 0.8
+loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -318,7 +320,7 @@ tracks/0/keys = {
 "values": [ 93, 94, 95, 100 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -346,7 +348,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 1.8
 loop = true
 step = 0.05
@@ -377,7 +379,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 0.6
 step = 0.05
 tracks/0/type = "value"
@@ -393,7 +395,7 @@ tracks/0/keys = {
 "values": [ 111, 112, 111, 112, 111, 112, 116 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 length = 0.35
 step = 0.025
 tracks/0/type = "value"
@@ -423,7 +425,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.125 )
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=20]
 length = 0.35
 step = 0.025
 tracks/0/type = "value"
@@ -453,7 +455,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.125 )
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -468,8 +470,8 @@ tracks/0/keys = {
 "values": [ 38, 39, 38, 39, 38, 39, 38, 39, 38, 39 ]
 }
 
-[sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 30.1431, 61.0808 )
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 26, 56 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 277.14, 193.632 )
@@ -482,23 +484,24 @@ autoplay = "Player Idle"
 anims/Attack2 = SubResource( 1 )
 anims/Attack3 = SubResource( 2 )
 anims/Attackt1 = SubResource( 3 )
-anims/Crouch = SubResource( 4 )
-"anims/Double Jump" = SubResource( 5 )
-anims/Grab = SubResource( 6 )
-anims/Ground_slam = SubResource( 7 )
-anims/Hooking = SubResource( 8 )
-anims/Hurt = SubResource( 9 )
-"anims/New Anim" = SubResource( 10 )
-"anims/Player Casting" = SubResource( 11 )
-"anims/Player Die" = SubResource( 12 )
-"anims/Player Falling" = SubResource( 13 )
-"anims/Player Idle" = SubResource( 14 )
-"anims/Player Jumping" = SubResource( 15 )
-"anims/Player Running" = SubResource( 16 )
-anims/Slide = SubResource( 17 )
-anims/air1 = SubResource( 18 )
-anims/air2 = SubResource( 19 )
-anims/air3 = SubResource( 20 )
+anims/CrouchIdle = SubResource( 4 )
+anims/CrouchMoving = SubResource( 5 )
+"anims/Double Jump" = SubResource( 6 )
+anims/Grab = SubResource( 7 )
+anims/Ground_slam = SubResource( 8 )
+anims/Hooking = SubResource( 9 )
+anims/Hurt = SubResource( 10 )
+"anims/New Anim" = SubResource( 11 )
+"anims/Player Casting" = SubResource( 12 )
+"anims/Player Die" = SubResource( 13 )
+"anims/Player Falling" = SubResource( 14 )
+"anims/Player Idle" = SubResource( 15 )
+"anims/Player Jumping" = SubResource( 16 )
+"anims/Player Running" = SubResource( 17 )
+anims/Slide = SubResource( 18 )
+anims/air1 = SubResource( 19 )
+anims/air2 = SubResource( 20 )
+anims/air3 = SubResource( 21 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
@@ -520,9 +523,14 @@ position = Vector2( -0.418701, -11.5197 )
 scale = Vector2( 3.6374, 3.92665 )
 texture = ExtResource( 12 )
 hframes = 140
-frame = 47
+frame = 111
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 21 )
+shape = SubResource( 22 )
+
+[node name="CrouchCollisionCeil" type="RayCast2D" parent="."]
+position = Vector2( -0.353516, 31.54 )
+rotation = 3.14159
+enabled = true
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
