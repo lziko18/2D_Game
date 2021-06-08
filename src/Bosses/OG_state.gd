@@ -7,15 +7,15 @@ func _ready():
 	add_state('att2') #3
 	add_state('spit') #4
 	add_state('die') #5
-	add_state('jump') #6
+	add_state('fake_idle') #6
 	
 
-	call_deferred("set_state",states.walk)
+	call_deferred("set_state",states.fake_idle)
 func _input(event):
-	if[states.idle,states.walk].has(state):
-		if event.is_action_pressed("ui_down"):
-			parent.attack3=true
-			set_state(4)
+	#if[states.idle,states.walk].has(state):
+		#if event.is_action_pressed("ui_down"):
+			#parent.attack3=true
+			#set_state(4)
 	#if[states.idle,states.walk].has(state):
 		#	parent.spin_attack=true
 			#set_state(6)
@@ -40,6 +40,12 @@ func _input(event):
 
 func _state_logic(delta):
 	parent.gravity()
+	parent.player_knock_back()
+	if state!=states.fake_idle :
+		parent.get_node("Hurtbox/CollisionShape2D2").disabled=false
+	if parent.is_dead==true and parent.is_on_floor()==true:
+		set_state(5)
+		parent.set_collision_mask_bit(1,false)
 	if state==states.idle :
 		parent.change_dir()
 	if state==states.walk:
@@ -63,21 +69,39 @@ func _enter_state(new_state,old_state):
 	match new_state:
 		states.idle:
 			parent.get_node("AnimationPlayer").play("Idle")
+			yield(get_tree().create_timer(1), "timeout")
+			if parent.is_dead==false:
+				parent.can_choose=true
+				parent.ch_state1()
+
 		states.walk:
 			parent.get_node("AnimationPlayer").play("Walk")
+			yield(get_tree().create_timer(0.5), "timeout")
+			if parent.is_dead==false:
+				parent.can_choose=true
+				parent.ch_state1()
 		states.att1:
 			parent.get_node("AnimationPlayer").play("Att1")
+			parent.can_choose=false
 		states.att2:
 			parent.get_node("AnimationPlayer").play("Att2")
+			parent.can_choose=false
 		states.die:
 			parent.get_node("AnimationPlayer").play("Die")
+			parent.can_choose=false
+			parent.motion.x=0
 		states.spit:
 			parent.get_node("AnimationPlayer").play("Spit")
-		states.jump:
-			parent.get_node("AnimationPlayer").play("Jump")
+			parent.can_choose=false
+		states.fake_idle:
+			parent.get_node("AnimationPlayer").play("Idle")
+			parent.can_choose=false
 
 
 func _exit_state(old_state,new_state):
 	match old_state:
 		states.idle:
-			pass
+			parent.can_choose=false
+		states.walk:
+			parent.can_choose=false
+

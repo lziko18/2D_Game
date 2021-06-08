@@ -3,10 +3,6 @@
 [ext_resource path="res://Effects/Effects.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Hit_Effect.png" type="Texture" id=2]
 
-
-
-
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 24, 24 )
@@ -25,6 +21,7 @@ animations = [ {
 
 [node name="AnimatedSprite" type="AnimatedSprite"]
 position = Vector2( 0, 2 )
+z_index = 1
 frames = SubResource( 3 )
 script = ExtResource( 1 )
 [connection signal="animation_finished" from="." to="." method="_on_AnimatedSprite_animation_finished"]

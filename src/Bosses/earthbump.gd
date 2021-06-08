@@ -1,4 +1,4 @@
-extends Node
+extends Sprite
 
 
 # Declare member variables here. Examples:
@@ -8,7 +8,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Player.set_physics_process(true)
+	$AnimationPlayer.play("bump")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,6 +16,10 @@ func _ready():
 #	pass
 
 
-func _on_Area2D_body_entered(body):
-	print("u fute")
-	$boss_type_01/Node.set_state(13)
+
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name=="bump":
+		queue_free()
+

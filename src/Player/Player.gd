@@ -40,7 +40,7 @@ var is_hooking=false
 var grab_right=false
 var grab_left=false
 var chain_velocity := Vector2(0,0)
-
+onready var cam=$Camera2D
 onready var attack_hitbox =$Position2D/Att_hitbox
 onready var ground_damage=$Ground_slam_hitbox
 var player_stats=PlayerStats
@@ -185,11 +185,13 @@ func gravity_apply():
 func cornor():
 	if $Grab1.is_colliding()==false and next_to_right_wall()==true and is_crouching==false and is_sliding==false:
 		grab_right=true
+		grab_left=false
 		grabbed=true
 		motion.x=0
 		motion.y=0
 	elif $Grab2.is_colliding()==false and next_to_left_wall()==true  and is_crouching==false and is_sliding==false:
 		grab_left=true
+		grab_right=false
 		grabbed=true
 		motion.x=0
 		motion.y=0
@@ -484,7 +486,6 @@ func check2():
 		$AnimationPlayer.play("Player Jumping")
 
 
-
 func _physics_process(delta):
 	if got_hit==false:
 		hooked()
@@ -588,4 +589,5 @@ func _on_Hurt_reset_timeout():
 
 func _ready():
 	player_stats.connect("no_health",self,"player_die")
+	set_physics_process(false)
 

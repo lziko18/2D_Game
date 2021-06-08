@@ -21,6 +21,8 @@ var rng = RandomNumberGenerator.new()
 var num
 var dash_con=false
 var spin_con=false
+var health=1
+var is_dead=false
 onready var player_push=$Sprite/Position2D/Area2D
 onready var player_push2=$Sprite/Position2D/Area2D2
 onready var player_push3=$Sprite/Position2D/Area2D3
@@ -82,19 +84,13 @@ func walk():
 
 
 
-func jumporfall():
-	if grounded:
-		if Input.is_action_just_pressed("ui_up"):
-			motion.y += JUMP_HEIGHT
-	if grounded==false:
-		if motion.y>0:
-			pass
 
 func jump_attack():
-	motion.y += JUMP_HEIGHT
-	if $Sprite.flip_h == false :
+	if is_dead==false:
+		motion.y += JUMP_HEIGHT
+		if $Sprite.flip_h == false :
 			motion.x=800 
-	elif $Sprite.flip_h == true :
+		elif $Sprite.flip_h == true :
 			motion.x=-800
 
 func spin():
@@ -110,7 +106,8 @@ func leap_up():
 	motion.y=0
 	yield(get_tree().create_timer(0.35), "timeout")
 	GRAVITY=0
-	motion.y=-1000
+	if is_dead==false:
+		motion.y=-1000
 	yield(get_tree().create_timer(0.15), "timeout")
 	motion.y=0
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -124,7 +121,7 @@ func choose_state_from_distance():
 	var our=get_parent().get_node("boss_type_01").global_position.x
 	rng.randomize()
 	num=rng.randi()%10+1
-	print(num)
+
 	if  abs(our - dir)<=120:
 		if can_choose==true:
 			if int(num)<=2:
@@ -187,12 +184,16 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		attack=false
 		$Node.set_state(4)
 	if anim_name=='boss_leap_up':
-		GRAVITY=100
-		$Node.set_state(11)
+		if is_dead==false:
+			GRAVITY=100
+			$Node.set_state(11)
 	if anim_name=='boss_leap_down':
 		$Node.set_state(4)
 	if anim_name=='boss_taunt':
+		$Hurtbox/CollisionShape2D2.disabled=false
 		$Node.set_state(4)
+	if anim_name=='boss_death':
+		queue_free()
 
 func get_hammer():
 	pass
@@ -216,8 +217,15 @@ func spawn_dust():
 
 
 func _on_AnimationPlayer_animation_started(anim_name):
+	if anim_name=='boss_death':
+		can_choose=false
 	if anim_name=="boss_spin_att":
 		spin()
+	if anim_name=="boss_death":
+		$Hurtbox/CollisionShape2D2.disabled=true
+		$Sprite/Position2D/Area2D/CollisionShape2D2.disabled=true
+		$Sprite/Position2D/Area2D2/CollisionShape2D2.disabled=true
+		$Sprite/Position2D/Area2D3/CollisionShape2D2.disabled=true
 	elif anim_name=="boss_dash":
 		dash()
 	elif anim_name=="boss_att_01" or anim_name=="boss_att_02" or anim_name=="boss_att_03":
@@ -230,10 +238,21 @@ func _on_AnimationPlayer_animation_started(anim_name):
 		yield(get_tree().create_timer(0.1), "timeout")
 		motion.x=0
 	elif anim_name=="boss_leap_up":
-		leap_up()
+		if is_dead==false:
+			leap_up()
 	elif anim_name=="boss_leap_down":
 		position.x=get_parent().get_node("Hammer").position.x
 		position.y=get_parent().get_node("Hammer").position.y-10
 
 
+
+
+
+func _on_Hurtbox_area_entered(area):
+	health=health-1
+	print("jeta=")
+	print(health)
+	if health<=0:
+		can_choose=false
+		is_dead=true
 

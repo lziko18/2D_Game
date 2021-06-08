@@ -21,3 +21,6 @@ func _on_Hurtbox_area_entered(area):
 		get_tree().get_root().add_child(effect)
 		effect.playing=true
 		effect.global_position=global_position +Vector2(0,3)
+
+
+

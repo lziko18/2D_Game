@@ -135,7 +135,8 @@ func _on_AnimationPlayer_animation_started(anim_name):
 func _on_Hurtbox_area_entered(area):
 	state=Hurt
 	health=health-1
-	if health==0:
+	if health<=0:
+		$Hurtbox/CollisionShape2D2.disabled=true
 		state=Die
 	if area.name=="Att_hitbox":
 		velocity.x=area.knockback_vector*0.5

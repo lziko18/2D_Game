@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 # Declare member variables here. Examples:
@@ -17,5 +17,4 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
-	print("u fute")
-	$boss_type_01/Node.set_state(13)
+	$Old_guardian/OG_state.set_state(0)
