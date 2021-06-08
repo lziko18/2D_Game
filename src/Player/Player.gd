@@ -277,7 +277,6 @@ func get_input_for_jumping():
 	if friction==true:
 			motion.x = lerp(motion.x,0,0.05)
 
-
 func get_input_for_attacking():
 	var fireball_cast=Fireball.instance()
 	if sign($Position2D.position.x)==1:

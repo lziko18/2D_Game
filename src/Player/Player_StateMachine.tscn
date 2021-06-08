@@ -227,7 +227,7 @@ tracks/0/keys = {
 "values": [ 90, 91, 92 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 length = 0.27
 step = 0.05
 tracks/0/type = "value"
@@ -243,7 +243,7 @@ tracks/0/keys = {
 "values": [ 58, 59, 60, 61, 62, 63 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -258,7 +258,7 @@ tracks/0/keys = {
 "values": [ 81, 82, 83, 84, 85, 86, 87 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 length = 2.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -273,7 +273,7 @@ tracks/0/keys = {
 "values": [ 88, 89, 88, 89, 88, 89, 88, 89, 88, 89, 88, 89, 88, 89 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=14]
 length = 0.8
 loop = true
 step = 0.05
@@ -290,7 +290,7 @@ tracks/0/keys = {
 "values": [ 93, 94, 95, 100 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -318,7 +318,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 length = 1.8
 loop = true
 step = 0.05
@@ -349,7 +349,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=17]
 length = 0.6
 step = 0.05
 tracks/0/type = "value"
@@ -365,8 +365,7 @@ tracks/0/keys = {
 "values": [ 111, 112, 111, 112, 111, 112, 116 ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "Wall_Slide"
+[sub_resource type="Animation" id=18]
 length = 2.56
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -491,14 +490,14 @@ anims/Grab = SubResource( 7 )
 anims/Ground_slam = SubResource( 8 )
 anims/Hooking = SubResource( 9 )
 anims/Hurt = SubResource( 10 )
-"anims/Player Casting" = SubResource( 12 )
-"anims/Player Die" = SubResource( 13 )
-"anims/Player Falling" = SubResource( 14 )
-"anims/Player Idle" = SubResource( 15 )
-"anims/Player Jumping" = SubResource( 16 )
-"anims/Player Running" = SubResource( 17 )
-anims/Slide = SubResource( 18 )
-anims/Wall_Slide = SubResource( 11 )
+"anims/Player Casting" = SubResource( 11 )
+"anims/Player Die" = SubResource( 12 )
+"anims/Player Falling" = SubResource( 13 )
+"anims/Player Idle" = SubResource( 14 )
+"anims/Player Jumping" = SubResource( 15 )
+"anims/Player Running" = SubResource( 16 )
+anims/Slide = SubResource( 17 )
+anims/Wall_Slide = SubResource( 18 )
 anims/air1 = SubResource( 19 )
 anims/air2 = SubResource( 20 )
 anims/air3 = SubResource( 21 )
@@ -523,7 +522,7 @@ position = Vector2( -0.418701, -11.5197 )
 scale = Vector2( 3.6374, 3.92665 )
 texture = ExtResource( 12 )
 hframes = 140
-frame = 26
+frame = 47
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 22 )
@@ -537,7 +536,22 @@ enabled = true
 position = Vector2( 0, 32 )
 enabled = true
 
-[node name="WallSlideCollision" type="RayCast2D" parent="."]
+[node name="WallSlideCollision_1" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 30, 0 )
+
+[node name="WallSlideCollision_2" type="RayCast2D" parent="."]
+position = Vector2( 0, -40 )
+enabled = true
+cast_to = Vector2( 30, 0 )
+
+[node name="WallGrabCollision_1" type="RayCast2D" parent="."]
+position = Vector2( 0, -70 )
+enabled = true
+cast_to = Vector2( 30, 0 )
+
+[node name="WallGrabCollision_2" type="RayCast2D" parent="."]
+position = Vector2( 0, -60 )
 enabled = true
 cast_to = Vector2( 30, 0 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

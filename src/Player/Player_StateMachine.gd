@@ -1,5 +1,7 @@
 extends "res://Scripts/StateMachine.gd"
 
+var fireball = preload("res://Skills/Fireball.tscn")
+
 var running_speed : float = 350
 var crouch_speed : float = 200
 var sliding_start_speed : float = running_speed
@@ -13,6 +15,8 @@ var double_jump_acceleration : float = 1000
 var fall_threshold : float = 550
 var wall_sliding_speed : float = 200
 var wall_slide_collision_vector : Vector2 = Vector2(30, 0)
+var wall_grab_collision_vector_1 : Vector2 = Vector2(30, 0)
+var wall_grab_collision_vector_2 : Vector2 = Vector2(30, 0)
 
 const collision_offset_normal = Vector2(0, 0)
 const collision_offset_crouch = Vector2(0, 12)
@@ -27,10 +31,13 @@ var has_double_jumped : bool = false
 var attack_queued : int = 0
 var attack_animation_finished : bool = true
 var sliding_finished : bool = false
+var health_current : int
+var health_max : int
 
-func _ready():
-	set_direction(Direction.RIGHT)
-	
+var save_data = null
+var player_health_ui
+
+func _init():
 	add_state("idle")
 	add_state("running")
 	add_state("crouch_idle")
@@ -42,23 +49,38 @@ func _ready():
 	add_state("attack_1")
 	add_state("attack_2")
 	add_state("attack_3")
-	add_state("attack_air")
+	add_state("air3")
+	add_state("ground_slam")
 	add_state("hurt")
 	add_state("death")
 	add_state("wall_slide")
 	add_state("wall_grab")
 	add_state("casting")
 	
-	#set_state(states.idle)
-	call_deferred("set_state", states.idle)
-	
 	add_input_action("player_right", KEY_RIGHT)
 	add_input_action("player_left", KEY_LEFT)
 	add_input_action("player_jump", KEY_UP)
 	add_input_action("player_attack", KEY_Q)
 	add_input_action("player_crouch", KEY_C)
+	add_input_action("player_cast", KEY_W)
+	add_input_action("player_health_1", KEY_E)
+	add_input_action("player_health_2", KEY_R)
 	
-	$CollisionShape2D.shape.set_extents(collision_normal)
+func load_save(data):
+	save_data = data
+
+func _ready():
+	player_health_ui = get_tree().get_root().get_node("World/Player/Game_UI/CanvasLayer/Player_Health")
+	if save_data == null:
+		set_direction(Direction.RIGHT)
+		set_state(states.idle)
+		$CollisionShape2D.shape.set_extents(collision_normal)
+		health_max = 5
+		update_max_health()
+		health_current = 5
+		update_health()
+	else:
+		set_from_save_data(save_data)
 
 func add_input_action(name, key):
 	InputMap.add_action(name)
@@ -67,10 +89,15 @@ func add_input_action(name, key):
 	InputMap.action_add_event(name, ev)
 	
 func _input_logic(event):
-	if event.is_action_pressed("player_right"):
-		set_direction(Direction.RIGHT)
-	elif event.is_action_pressed("player_left"):
-		set_direction(Direction.LEFT)
+	if event.is_action_pressed("player_health_1"):
+		add_health(1)
+	elif event.is_action_pressed("player_health_2"):
+		take_damage(1)
+	if state != states.wall_grab and state != states.sliding and state != states.death:
+		if event.is_action_pressed("player_right"):
+			set_direction(Direction.RIGHT)
+		elif event.is_action_pressed("player_left"):
+			set_direction(Direction.LEFT)
 	match state:
 		states.attack_1:
 			if event.is_action_pressed("player_attack"):
@@ -78,7 +105,7 @@ func _input_logic(event):
 		states.attack_2:
 			if event.is_action_pressed("player_attack"):
 				attack_queued += 1
-	pass
+		
 
 func _state_logic(delta):
 	velocity.y += gravity
@@ -111,7 +138,7 @@ func _state_logic(delta):
 		states.attack_3:
 			velocity.x = attack_3_speed * facing_direction
 			velocity.y = 0
-		states.attack_air:
+		states.air3:
 			velocity.y = attack_air_speed
 		states.crouch_idle:
 			velocity.x = 0
@@ -132,12 +159,20 @@ func _state_logic(delta):
 			velocity.x = 0
 			velocity.y = wall_sliding_speed
 		states.wall_grab:
-			pass
+			velocity.x = 0
+			velocity.y = 0
+		states.casting:
+			velocity.x = 0
+			velocity.y = 0
 	velocity = move_and_slide(velocity, UP)
 
 func _get_transition():
+	if health_current <= 0 and state != states.death:
+		return states.death
 	match state:
 		states.idle:
+			if Input.is_action_just_pressed("player_cast"):
+				return states.casting
 			if Input.is_action_just_pressed("player_crouch"):
 				return states.crouch_idle
 			if Input.is_action_just_pressed("player_attack"):
@@ -149,6 +184,8 @@ func _get_transition():
 			if Input.is_action_pressed("player_right") || Input.is_action_pressed("player_left"):
 				return states.running
 		states.running:
+			if Input.is_action_just_pressed("player_cast"):
+				return states.casting
 			if Input.is_action_just_pressed("player_crouch"):
 				return states.sliding
 			if Input.is_action_just_pressed("player_attack"):
@@ -169,6 +206,10 @@ func _get_transition():
 					elif Input.is_action_just_pressed("player_right"):
 						return states.running
 		states.falling:
+			if Input.is_action_just_pressed("player_cast"):
+				return states.casting
+			if Input.is_action_just_pressed("player_attack"):
+				return states.attack_1
 			if is_on_floor():
 				if Input.is_action_pressed("player_right") || Input.is_action_pressed("player_left"):
 					return states.running
@@ -176,9 +217,13 @@ func _get_transition():
 					return states.idle
 			elif Input.is_action_just_pressed("player_jump") && velocity.y > -jump_acceleration && !has_double_jumped:
 				return states.double_jumping
-			elif $WallSlideCollision.is_colliding():
+			elif $WallGrabCollision_2.is_colliding() and (not $WallGrabCollision_1.is_colliding()):
+				return states.wall_grab
+			elif $WallSlideCollision_1.is_colliding() and $WallSlideCollision_2.is_colliding():
 				return states.wall_slide
 		states.jumping:
+			if Input.is_action_just_pressed("player_cast"):
+				return states.casting
 			if is_on_floor():
 				return states.idle
 			elif Input.is_action_just_pressed("player_attack"):
@@ -189,6 +234,8 @@ func _get_transition():
 				elif velocity.y >= fall_threshold:
 					return states.falling
 		states.double_jumping:
+			if Input.is_action_just_pressed("player_cast"):
+				return states.casting
 			if is_on_floor():
 				return states.idle
 			elif velocity.y >= fall_threshold:
@@ -205,15 +252,15 @@ func _get_transition():
 					if $AirAttackCollisionFloor.is_colliding():
 						return states.attack_3
 					else:
-						return states.attack_air
+						return states.air3
 				else:
 					return states.idle
 		states.attack_3:
 			if attack_animation_finished:
 				return states.idle
-		states.attack_air:
-			if attack_animation_finished && is_on_floor():
-				return states.idle
+		states.air3:
+			if is_on_floor():
+				return states.ground_slam
 		states.crouch_idle:
 			if Input.is_action_just_pressed("player_left") || Input.is_action_just_pressed("player_right"):
 				return states.crouch_moving
@@ -245,7 +292,7 @@ func _get_transition():
 					return null
 				else:
 					return states.idle
-			elif sliding_finished:
+			elif sliding_finished or velocity.x == 0:
 				if $CrouchCollisionCeil.is_colliding():
 					return states.crouch_idle
 				else:
@@ -253,18 +300,26 @@ func _get_transition():
 		states.wall_slide:
 			if is_on_floor():
 				return states.idle
-			elif not $WallSlideCollision.is_colliding():
+			elif not $WallSlideCollision_1.is_colliding():
 				return states.falling
 			elif Input.is_action_just_pressed("player_jump"):
 				return states.jumping
+			elif $WallGrabCollision_2.is_colliding() and (not $WallGrabCollision_1.is_colliding()):
+				return states.wall_grab
 		states.wall_grab:
-			return null
+			if Input.is_action_just_pressed("player_jump"):
+				return states.jumping
 		states.hurt:
-			return null
+			if attack_animation_finished:
+				return states.idle
 		states.death:
 			return null
 		states.casting:
-			return null
+			if attack_animation_finished:
+				return states.idle
+		states.ground_slam:
+			if attack_animation_finished:
+				return states.idle
 	return null
 
 func _enter_state(new_state, old_state):
@@ -305,11 +360,15 @@ func _enter_state(new_state, old_state):
 			attack_animation_finished = false
 			attack_queued -= 1
 			print("attack_3")
-		states.attack_air:
-			$AnimationPlayer.play("Ground_slam")
+		states.air3:
+			$AnimationPlayer.play("air3")
 			attack_animation_finished = false
 			attack_queued -= 1
-			print("attack_air")
+			print("air3")
+		states.ground_slam:
+			$AnimationPlayer.play("Ground_slam")
+			attack_animation_finished = false
+			print("ground_slam")
 		states.crouch_idle:
 			$AnimationPlayer.play("CrouchIdle")
 			$CollisionShape2D.shape.set_extents(collision_crouch)
@@ -332,6 +391,31 @@ func _enter_state(new_state, old_state):
 			velocity.y = wall_sliding_speed
 			$AnimationPlayer.play("Wall_Slide")
 			print("wall_slide")
+		states.wall_grab:
+			velocity.x = 0
+			velocity.y = 0
+			$AnimationPlayer.play("Grab")
+			print("wall_grab")
+		states.casting:
+			velocity.x = 0
+			velocity.y = 0
+			attack_animation_finished = false
+			$AnimationPlayer.play("Player Casting")
+			print("casting")
+		states.hurt:
+			health_current = health_current - 1
+			player_health_ui.set_max_hearts(health_max)
+			player_health_ui.set_hearts(health_current)
+			velocity.x = 0
+			velocity.y = 0
+			attack_animation_finished = false
+			$AnimationPlayer.play("Hurt")
+			print("hurt")
+		states.death:
+			velocity.x = 0
+			velocity.y = 0
+			$AnimationPlayer.play("Player Die")
+			print("death")
 
 func _exit_state(old_state, new_state):
 	match old_state:
@@ -368,6 +452,12 @@ func _exit_state(old_state, new_state):
 			if new_state != states.crouch_moving and new_state != states.crouch_idle:
 				$CollisionShape2D.shape.set_extents(collision_normal)
 				$CollisionShape2D.set_position(Vector2(0, 0))
+		states.casting:
+			var fireball_cast = fireball.instance()
+			fireball_cast.knockback_vector=300 * facing_direction
+			fireball_cast.get_fireball_direction(facing_direction)
+			fireball_cast.position=global_position
+			get_tree().get_root().get_node("World").add_child(fireball_cast)
 	pass
 
 func _on_AnimationPlayer_animation_started(animation_name):
@@ -382,18 +472,58 @@ func _on_AnimationPlayer_animation_finished(animation_name):
 		attack_animation_finished = true
 	elif animation_name == "Slide":
 		sliding_finished = true
+	elif animation_name == "air3":
+		attack_animation_finished = true
 	elif animation_name == "Ground_slam":
+		attack_animation_finished = true
+	elif animation_name == "Player Casting":
+		attack_animation_finished = true
+	elif animation_name == "Hurt":
 		attack_animation_finished = true
 	pass
 
 func set_direction(dir):
 	facing_direction = dir
 	$Sprite.flip_h = (dir == Direction.LEFT)
-	$WallSlideCollision.set_cast_to(Vector2(wall_slide_collision_vector.x * facing_direction, wall_slide_collision_vector.y))
+	$WallSlideCollision_1.set_cast_to(Vector2(wall_slide_collision_vector.x * facing_direction, wall_slide_collision_vector.y))
+	$WallSlideCollision_2.set_cast_to(Vector2(wall_slide_collision_vector.x * facing_direction, wall_slide_collision_vector.y))
+	$WallGrabCollision_1.set_cast_to(Vector2(wall_grab_collision_vector_1.x * facing_direction, wall_grab_collision_vector_1.y))
+	$WallGrabCollision_2.set_cast_to(Vector2(wall_grab_collision_vector_2.x * facing_direction, wall_grab_collision_vector_2.y))
+
+func reset_health():
+	health_current = health_max
+	update_health()
+
+func take_damage(amount):
+	health_current = health_current - amount
+	update_health()
+	
+func heal(amount):
+	health_current = health_current + amount
+	if health_current > health_max:
+		health_current = health_max
+	update_health()
+
+func add_health(amount):
+	health_max = health_max + amount
+	health_current = health_current + amount
+	update_max_health()
+	update_health()
+
+func update_health():
+	player_health_ui.set_hearts(health_current)
+	
+func update_max_health():
+	player_health_ui.set_max_hearts(health_max)
 
 func get_save_data():
+	var _state
+	for key in states.keys():
+		if states[key] == state:
+			_state = key
+			break
 	var data = {
-		"state": state,
+		"state": _state,
 		"position": {
 			"x": position.x,
 			"y": position.y
@@ -409,20 +539,34 @@ func get_save_data():
 		"hitbox_extents": {
 			"x": $CollisionShape2D.shape.get_extents().x,
 			"y": $CollisionShape2D.shape.get_extents().y
+		},
+		"animation": {
+			"name": $AnimationPlayer.current_animation,
+			"position": $AnimationPlayer.current_animation_position
+		},
+		"health": {
+			"current": health_current,
+			"max": health_max
 		}
 	}
 	return data
 
 func set_from_save_data(data):
-	print(data)
-	set_state(data.state)
+	set_state(states[data.state])
+	state = states[data.state]
 	position.x = data.position.x
 	position.y = data.position.y
 	velocity.x = data.velocity.x
 	velocity.y = data.velocity.y
-	facing_direction = data.facing_direction
+	set_direction(data.facing_direction)
 	has_double_jumped = data.has_double_jumped
 	attack_queued = data.attack_queued
 	attack_animation_finished = data.attack_animation_finished
 	var hitbox_extents = data.hitbox_extents
 	$CollisionShape2D.shape.set_extents(Vector2(hitbox_extents.x, hitbox_extents.y))
+	$AnimationPlayer.play(data.animation.name)
+	$AnimationPlayer.seek(data.animation.position)
+	health_max = data.health["max"]
+	update_max_health()
+	health_current = data.health.current
+	update_health()

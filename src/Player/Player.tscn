@@ -1,34 +1,16 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Skills/Chain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Skills/Hurtbox.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Effects/ScreenShake.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/Player_health.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Game_UI/Game_UI_2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/Player_sprite_sheet.png" type="Texture" id=12]
 [ext_resource path="res://Skills/Groundslam.gd" type="Script" id=15]
 [ext_resource path="res://Player/PlayerHitbox.gd" type="Script" id=16]
 [ext_resource path="res://Player/Player.gd" type="Script" id=17]
-[ext_resource path="res://Fonts/Adventurefont.tres" type="DynamicFont" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 60.581 )
-
-[sub_resource type="Animation" id=2]
-resource_name = "Hide"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 2.5, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
 
 [sub_resource type="Animation" id=3]
 length = 0.5
@@ -427,7 +409,6 @@ height = 24.7495
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-position = Vector2( 277.14, 193.632 )
 scale = Vector2( 0.5, 0.5 )
 collision_layer = 2
 script = ExtResource( 17 )
@@ -441,40 +422,7 @@ position = Vector2( -0.187378, 24.8841 )
 scale = Vector2( 1, 0.5 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-current = true
-limit_left = 0
-limit_top = -190
-limit_bottom = 352
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_speed = 15.0
-editor_draw_limits = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-
-[node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -156.5
-margin_top = 33.9028
-margin_right = 156.5
-margin_bottom = 73.9028
-custom_fonts/font = ExtResource( 18 )
-text = "Enchanted Forest"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer/Label"]
-anims/Hide = SubResource( 2 )
-
-[node name="prova" parent="Camera2D/CanvasLayer" instance=ExtResource( 4 )]
-
-[node name="ScreenShake" parent="Camera2D" instance=ExtResource( 3 )]
+[node name="Camera2D" parent="." instance=ExtResource( 3 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Player Idle"
