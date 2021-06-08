@@ -172,14 +172,14 @@ position = Vector2( 2.31645, -9.72912 )
 shape = SubResource( 9 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 0.463, -20 )
+position = Vector2( 0.463, 1.0012 )
 rotation = -1.5708
-scale = Vector2( 1, 1.12703 )
+scale = Vector2( 10, 1.127 )
 enabled = true
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 position = Vector2( 20, 15.415 )
-scale = Vector2( 1, 1.12703 )
+scale = Vector2( 1, 0.3 )
 enabled = true
 
 [node name="backhit" type="Area2D" parent="."]
@@ -194,8 +194,8 @@ __meta__ = {
 shape = SubResource( 10 )
 
 [node name="Lizard_stats" parent="." instance=ExtResource( 5 )]
-[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_area_entered"]
 [connection signal="animation_finished" from="Enemyanim" to="." method="_on_Enemyanim_animation_finished"]
 [connection signal="animation_started" from="Enemyanim" to="." method="_on_Enemyanim_animation_started"]
 [connection signal="body_entered" from="Position2D/Player_detect" to="." method="_on_Player_detect_body_entered"]

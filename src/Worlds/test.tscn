@@ -1,20 +1,39 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tilesets/collision.tres" type="TileSet" id=1]
 [ext_resource path="res://Bosses/Old_guardian.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=4]
+[ext_resource path="res://Worlds/test.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="test" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 262144, 0, 0, 327680, 0, 0, 393216, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 458752, 0, 0, 524288, 0, 0, 589824, 0, 0, 655360, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 28, 0, 0, 65536, 0, 0, 65564, 0, 0, 131072, 0, 0, 131100, 0, 0, 196608, 0, 0, 196636, 0, 0, 262144, 0, 0, 262172, 0, 0, 327680, 0, 0, 327708, 0, 0, 393216, 0, 0, 393244, 0, 0, 458752, 0, 0, 458780, 0, 0, 524288, 0, 0, 524316, 0, 0, 589824, 0, 0, 589852, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 0, 0, 655388, 0, 0 )
 
 [node name="Old_guardian" parent="." instance=ExtResource( 2 )]
-position = Vector2( 165.276, 224.606 )
+position = Vector2( 409.977, 245.628 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 546.244, 60.1396 )
+position = Vector2( 592.493, 289.704 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 655361, 1610612746, 0, 655362, 1610612746, 0, 655363, 1610612746, 0, 655364, 1610612746, 0, 655365, 1610612746, 0, 655366, 1610612746, 0, 655367, 1610612746, 0, 655368, 1610612746, 0, 655369, 1610612746, 0, 655370, 1610612746, 0, 655371, 1610612746, 0, 655372, 1610612746, 0, 655373, 1610612746, 0, 655374, 1610612746, 0, 655375, 1610612746, 0, 655376, 1610612746, 0, 655377, 1610612746, 0, 655378, 1610612746, 0, 655379, 1610612746, 0, 655380, 1610612746, 0, 655381, 1610612746, 0, 655382, 1610612746, 0, 655383, 1610612746, 0, 655384, 1610612746, 0, 655385, 1610612746, 0, 655386, 1610612746, 0, 655387, 1610612746, 0 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 883.205, 194.028 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
