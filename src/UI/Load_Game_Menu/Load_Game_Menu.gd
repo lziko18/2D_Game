@@ -5,9 +5,10 @@ var menu_items : Array
 var current_selected : int
 var world_scene = preload("res://Worlds/TestWorld.tscn")
 var player_scene = preload("res://Player/Player_StateMachine.tscn")
-var game_ui_scene = preload("res://UI/Game_UI/Game_UI.tscn")
+var game_ui_scene = preload("res://UI/Game_UI/Game_UI_2.tscn")
 
 func _ready():
+	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
 	saves_list = SaveSystem.get_saves_list()
 	
 	menu_items = []
@@ -37,7 +38,7 @@ func _input(event):
 		menu_up()
 	elif event.is_action_pressed("menu_action"):
 		load_game(saves_list[current_selected])
-		
+
 func menu_down():
 	menu_items[current_selected].unselect()
 	current_selected = (current_selected + 1) % menu_items.size()
@@ -51,15 +52,13 @@ func menu_up():
 func load_game(save : String):
 	print("Loading game.")
 	var player_data = SaveSystem.load_player(save)
-	self.queue_free()
 	var world_instance = world_scene.instance()
 	var player_instance = player_scene.instance()
 	var game_ui_instance = game_ui_scene.instance()
 	player_instance.add_child(game_ui_instance)
-	call_deferred("load_player_data", player_instance, player_data)
+	player_instance.load_save(player_data)
 	world_instance.add_child(player_instance)
+	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
+	yield(get_tree().create_timer(1), "timeout")
 	get_tree().get_root().add_child(world_instance)
-
-func load_player_data(player_instance, player_data):
-	#player_instance.set_from_save_data(player_data)
-	pass
+	self.queue_free()

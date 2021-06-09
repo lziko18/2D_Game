@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var state = null
+var state = 0
 var previous_state = null
 var states = {}
 

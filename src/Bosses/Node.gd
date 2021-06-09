@@ -45,18 +45,25 @@ func _input(event):
 
 
 func _state_logic(delta):
+	for i in states.keys():
+		if states[i]==state:
+			print(i)
 	parent.gravity()
 	parent.player_knock_back()
+	if parent.is_dead==true and parent.is_on_floor()==true:
+		set_state(12)
+		parent.set_collision_mask_bit(1,false)
+		parent.gravity()
+	if (state==states.idle or state==states.leap_up) and parent.is_dead==false :
+		parent.change_dir()
+	if state==states.walk and parent.is_dead==false :
+		parent.change_dir()
+		parent.walk()
 	if state==states.idle or state==states.walk or state==states.dash or state==states.attack1 or state==states.attack2  or state==states.leap_down:
 		parent.set_collision_mask_bit(1,true)
 	else:
 		parent.set_collision_mask_bit(1,false)
-		
-	if state==states.idle or state==states.leap_up :
-		parent.change_dir()
-	if state==states.walk:
-		parent.change_dir()
-		parent.walk()
+
 
 
 func _get_transition(delta):
@@ -73,6 +80,7 @@ func _get_transition(delta):
 				return states.jump_charge
 			elif parent.attack==true:
 				return states.attack1
+				
 		states.walk:
 			if !parent.is_on_floor():
 				if parent.motion.y<0:
@@ -117,13 +125,15 @@ func _enter_state(new_state,old_state):
 			parent.motion.x=0
 			parent.get_node("AnimationPlayer").play("boss_idle")
 			yield(get_tree().create_timer(time), "timeout")
-			parent.can_choose=true
-			parent.choose_state_from_distance()
+			if parent.is_dead==false:
+				parent.can_choose=true
+				parent.choose_state_from_distance()
 		states.walk:
 			parent.get_node("AnimationPlayer").play("boss_walk");
 			yield(get_tree().create_timer(0.8), "timeout")
-			parent.can_choose=true
-			parent.choose_state_from_distance()
+			if parent.is_dead==false:
+				parent.can_choose=true
+				parent.choose_state_from_distance()
 		states.jump_up:
 			parent.get_node("AnimationPlayer").play("boss_jump_up")
 			parent.can_choose=false
@@ -163,14 +173,13 @@ func _enter_state(new_state,old_state):
 		states.fake_idle:
 			parent.get_node("AnimationPlayer").play("boss_idle")
 			parent.can_choose=false
-		states.fake_idle:
-			parent.get_node("AnimationPlayer").play("boss_idle")
-			parent.can_choose=false
 		states.taunt:
 			parent.get_node("AnimationPlayer").play("boss_taunt")
 			parent.can_choose=false
 		states.death:
 			parent.get_node("AnimationPlayer").play("boss_death")
+			parent.motion.x=0
+			parent.motion.y=1000
 			parent.can_choose=false
 
 

@@ -13,6 +13,7 @@ static func get_saves_list():
 		
 		var file_name = null
 		while file_name != "":
+			print(file_name)
 			file_name = dir.get_next()
 			if dir.current_is_dir() && file_name != '.' && file_name != '..':
 				saves.append(file_name)

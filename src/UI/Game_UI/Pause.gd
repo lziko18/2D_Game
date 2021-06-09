@@ -51,12 +51,9 @@ func _on_Full_Screen_pressed():
 		$VBoxContainer/FullScreen.text="Full Screen"
 
 func _on_Quit_pressed():
-	get_tree().paused=false
-	set_visible(false)
-	get_parent().get_node("/root/PlayerStats").refresh()
-	get_tree().get_root().get_child(4).queue_free()
-	get_tree().get_root().get_child(3).queue_free()
 	var menu=load('res://UI/MarginContainer.tscn').instance()
+	for c in get_tree().get_root().get_children():
+		c.queue_free()
 	get_tree().get_root().add_child(menu)
 
 func _on_Save_pressed():

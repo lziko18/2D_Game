@@ -110,6 +110,8 @@ func _on_Hurtbox_area_entered(area):
 	enemy_stats.health-=1
 	if enemy_stats.health>0:
 		state=Hurt
+	else:
+		state=Die
 	if area.name=="Att_hitbox":
 		motion.x=area.knockback_vector 
 	elif area.name=="Ground_slam_hitbox":
