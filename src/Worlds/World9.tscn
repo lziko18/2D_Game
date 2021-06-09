@@ -54,10 +54,12 @@ scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 7 )
 centered = false
 
-[node name="Navigation2D" type="Navigation2D" parent="."]
+[node name="LevelNavigation" type="Navigation2D" parent="." groups=[
+"LevelNavigation",
+]]
 visible = false
 
-[node name="collision" type="TileMap" parent="Navigation2D"]
+[node name="collision" type="TileMap" parent="LevelNavigation"]
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 9 )
 cell_size = Vector2( 16, 16 )

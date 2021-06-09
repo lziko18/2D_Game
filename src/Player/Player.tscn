@@ -395,7 +395,7 @@ tracks/0/keys = {
 "values": [ 38, 39, 38, 39, 38, 39, 38, 39, 38, 39 ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=22]
 resource_name = "hurt_wait"
 length = 0.3
 tracks/0/type = "value"
@@ -411,16 +411,16 @@ tracks/0/keys = {
 "values": [ 90, 91, 92 ]
 }
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 29.5326, 53.3176 )
 
-[sub_resource type="CapsuleShape2D" id=23]
+[sub_resource type="CapsuleShape2D" id=24]
 radius = 77.6895
 height = 24.7495
 
-[sub_resource type="RectangleShape2D" id=24]
-
 [sub_resource type="RectangleShape2D" id=25]
+
+[sub_resource type="RectangleShape2D" id=26]
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -462,7 +462,7 @@ anims/Slide = SubResource( 18 )
 anims/air1 = SubResource( 19 )
 anims/air2 = SubResource( 20 )
 anims/air3 = SubResource( 21 )
-anims/hurt_wait = SubResource( 26 )
+anims/hurt_wait = SubResource( 22 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 34, -4.589 )
@@ -476,7 +476,7 @@ collision_mask = 32
 script = ExtResource( 16 )
 
 [node name="CollisionShape2D" parent="Position2D/Att_hitbox" index="0"]
-shape = SubResource( 22 )
+shape = SubResource( 23 )
 disabled = true
 
 [node name="RightWall1" type="RayCast2D" parent="."]
@@ -562,7 +562,7 @@ script = ExtResource( 15 )
 [node name="CollisionShape2D" parent="Ground_slam_hitbox" index="0"]
 visible = false
 rotation = 1.5708
-shape = SubResource( 23 )
+shape = SubResource( 24 )
 disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 2 )]
@@ -573,17 +573,16 @@ collision_mask = 64
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 visible = false
-shape = SubResource( 24 )
+shape = SubResource( 25 )
 
 [node name="Bounce" type="Area2D" parent="."]
-visible = false
 position = Vector2( -1.68365, 46.8629 )
 scale = Vector2( 2.2, 1 )
 collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounce"]
-shape = SubResource( 25 )
+shape = SubResource( 26 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.418701, -11.5197 )

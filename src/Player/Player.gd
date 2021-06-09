@@ -545,6 +545,8 @@ func _on_AnimationPlayer_animation_finished(cast):
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name=="Hurt":
+		$Bounce/CollisionShape2D.disabled=false
+		$Position2D/Att_hitbox/CollisionShape2D.disabled=true
 		if not_dead==true:
 			player_stats.health-=1
 	if anim_name=="Player Casting":
@@ -589,13 +591,7 @@ func _on_Hurtbox_area_entered(area):
 		got_hit=true
 		$Camera2D/ScreenShake.screen_shake(0.5,5,100)
 		$AnimationPlayer.play("Hurt")
-		if area.name=="kot":
-			if area.enemy_position>position.x:
-				motion.x=area.knockback_vector
-			elif area.enemy_position<position.x:
-				motion.x=-area.knockback_vector
-		else:
-			motion.x=area.knockback_vector
+		motion.x=area.knockback_vector
 		print("Hurt")
 
 
