@@ -185,11 +185,13 @@ func gravity_apply():
 func cornor():
 	if $Grab1.is_colliding()==false and next_to_right_wall()==true and is_crouching==false and is_sliding==false:
 		grab_right=true
+		grab_left=false
 		grabbed=true
 		motion.x=0
 		motion.y=0
 	elif $Grab2.is_colliding()==false and next_to_left_wall()==true  and is_crouching==false and is_sliding==false:
 		grab_left=true
+		grab_right=false
 		grabbed=true
 		motion.x=0
 		motion.y=0

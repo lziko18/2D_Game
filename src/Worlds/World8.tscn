@@ -10,7 +10,6 @@
 [ext_resource path="res://Worlds/World8.gd" type="Script" id=8]
 [ext_resource path="res://Tilesets/iron.tres" type="TileSet" id=9]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
 length = 0.3

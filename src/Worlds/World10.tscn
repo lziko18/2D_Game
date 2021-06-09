@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=1]
+[ext_resource path="res://Backgrounds/Forest/background1.png" type="Texture" id=2]
+[ext_resource path="res://Backgrounds/Forest/background4a.png" type="Texture" id=3]
+[ext_resource path="res://Backgrounds/Forest/background2.png" type="Texture" id=4]
+[ext_resource path="res://Backgrounds/Forest/background3.png" type="Texture" id=5]
+[ext_resource path="res://Backgrounds/Forest/background0.png" type="Texture" id=6]
+[ext_resource path="res://Tilesets/collision.tres" type="TileSet" id=7]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BackgroundDepth" type="TileMap" parent="."]
+format = 1
+
+[node name="Background" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+
+[node name="Ground" type="TileMap" parent="."]
+format = 1
+
+[node name="ForeGround" type="TileMap" parent="."]
+format = 1
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="collision" type="TileMap" parent="Navigation2D"]
+tile_set = ExtResource( 7 )
+format = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 960, 400 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource( 6 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 960, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 960, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 4 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 960, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 5 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+motion_mirroring = Vector2( 960, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource( 3 )
