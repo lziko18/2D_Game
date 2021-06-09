@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Tilesets/collision.tres" type="TileSet" id=1]
+[ext_resource path="res://Tilesets/Background/Background-1.png" type="Texture" id=2]
+[ext_resource path="res://Tilesets/Background/Background-3.png" type="Texture" id=3]
+[ext_resource path="res://Tilesets/Background/Background-4.png" type="Texture" id=4]
+[ext_resource path="res://Tilesets/Background/Background-2.png" type="Texture" id=5]
+[ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=6]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Worlds/World6.gd" type="Script" id=8]
+
+[node name="World6" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 1.33484, -204.23 )
+motion_scale = Vector2( 0.5, 0.7 )
+motion_mirroring = Vector2( 974.4, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -1.55907, -404.107 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 1.33484, -204.23 )
+motion_scale = Vector2( 0.7, 0.8 )
+motion_mirroring = Vector2( 974.4, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2( 2.9, 2.9 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 1.33484, -204.23 )
+motion_scale = Vector2( 0.9, 0.9 )
+motion_mirroring = Vector2( 974.4, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+scale = Vector2( 2.9, 2.9 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 1.33484, -204.23 )
+motion_mirroring = Vector2( 974.4, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+scale = Vector2( 2.9, 2.9 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 291.5, -495.633 )
+
+[node name="collision" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1900526, 0, 0, -1900525, 0, 0, -1900524, 0, 0, -1900522, 0, 0, -1900521, 0, 0, -1900520, 0, 0, -1900518, 0, 0, -1900517, 0, 0, -1900516, 0, 0, -1834990, 0, 0, -1834988, 0, 0, -1834986, 0, 0, -1834984, 0, 0, -1834982, 0, 0, -1769454, 0, 0, -1769453, 0, 0, -1769452, 0, 0, -1769450, 0, 0, -1769448, 0, 0, -1769446, 0, 0, -1769445, 0, 0, -1769444, 0, 0, -1703918, 0, 0, -1703916, 0, 0, -1703914, 0, 0, -1703912, 0, 0, -1703908, 0, 0, -1638382, 0, 0, -1638381, 0, 0, -1638380, 0, 0, -1638378, 0, 0, -1638377, 0, 0, -1638376, 0, 0, -1638374, 0, 0, -1638373, 0, 0, -1638372, 0, 0, -1310715, 0, 0, -1310707, 0, 0, -1310706, 0, 0, -1310705, 0, 0, -1310704, 0, 0, -1310703, 0, 0, -1310702, 0, 0, -1310701, 0, 0, -1310700, 0, 0, -1310699, 0, 0, -1310698, 0, 0, -1310697, 0, 0, -1310696, 0, 0, -1310695, 0, 0, -1245179, 0, 0, -1245171, 0, 0, -1179643, 0, 0, -1179635, 0, 0, -1114107, 0, 0, -1114099, 0, 0, -1048571, 0, 0, -1048563, 0, 0, -983035, 0, 0, -983027, 0, 0, -917499, 0, 0, -917491, 0, 0, -851963, 0, 0, -851955, 0, 0, -786427, 0, 0, -786419, 0, 0, -720891, 0, 0, -720883, 0, 0, -655355, 0, 0, -655347, 0, 0, -589819, 0, 0, -589811, 0, 0, -524283, 0, 0, -524275, 0, 0, -458747, 0, 0, -458739, 0, 0, -393211, 0, 0, -393203, 0, 0, -327675, 0, 0, -327667, 0, 0, -327666, 0, 0, -327665, 0, 0, -327664, 0, 0, -327663, 0, 0, -327662, 0, 0, -327661, 0, 0, -327660, 0, 0, -327659, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262131, 0, 0, -196605, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -65535, 0, 0, -65534, 0, 0, 1, 0, 0, 2, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 65537, 0, 0, 65538, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 196608, 0, 0, 196609, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0, 327708, 0, 0, 327709, 0, 0, 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327715, 0, 0, 327716, 0, 0, 327717, 0, 0, 327718, 0, 0 )
+
+[node name="ground" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -458752, 59, 0, -458751, 59, 0, -458750, 59, 0, -458749, 59, 0, -393216, 59, 0, -393215, 59, 0, -393214, 59, 0, -393213, 59, 0, -393212, 59, 0, -327680, 59, 0, -327679, 59, 0, -327678, 59, 0, -327677, 59, 0, -327676, 59, 0, -262144, 59, 0, -262143, 59, 0, -262142, 59, 0, -262141, 59, 0, -262140, 59, 0, -196608, 59, 0, -196607, 59, 0, -196606, 59, 0, -196605, 59, 0, -131072, 47, 0, -65516, 56, 0, 0, 48, 0, 131086, 56, 0, 262144, 16, 0, 262145, 16, 0, 262146, 16, 0, 262147, 16, 0, 262148, 30, 0, 262149, 30, 0, 262150, 30, 0, 262151, 30, 0, 262152, 30, 0, 262153, 30, 0, 262154, 30, 0, 262155, 30, 0, 262156, 30, 0, 262157, 30, 0, 262158, 30, 0, 262159, 30, 0, 262160, 30, 0, 262161, 30, 0, 262162, 30, 0, 262163, 30, 0, 262164, 30, 0, 262165, 30, 0, 262166, 30, 0, 262167, 30, 0, 327680, 10, 0, 327681, 10, 0, 327682, 10, 0, 327683, 10, 0 )
+
+[node name="background" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="foreground" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 196606, 1610612811, 0 )

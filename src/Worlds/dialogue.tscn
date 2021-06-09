@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Tilesets/collision.tres" type="TileSet" id=2]
+[ext_resource path="res://Backgrounds/dialog_box.png" type="Texture" id=4]
+[ext_resource path="res://Worlds/Minecraft.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Worlds/DialogBox2.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 19
+font_data = ExtResource( 5 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 46, 0, 0, 65536, 0, 0, 65582, 0, 0, 131072, 0, 0, 131118, 0, 0, 196608, 0, 0, 196654, 0, 0, 262144, 0, 0, 262190, 0, 0, 327680, 0, 0, 327726, 0, 0, 393216, 0, 0, 393262, 0, 0, 458752, 0, 0, 458798, 0, 0, 524288, 0, 0, 524334, 0, 0, 589824, 0, 0, 589870, 0, 0, 655360, 0, 0, 655406, 0, 0, 720896, 0, 0, 720942, 0, 0, 786432, 0, 0, 786478, 0, 0, 851968, 0, 0, 852014, 0, 0, 917504, 0, 0, 917550, 0, 0, 983040, 0, 0, 983086, 0, 0, 1048576, 0, 0, 1048622, 0, 0, 1114112, 0, 0, 1114158, 0, 0, 1179648, 0, 0, 1179694, 0, 0, 1245184, 0, 0, 1245230, 0, 0, 1310720, 0, 0, 1310766, 0, 0, 1376256, 0, 0, 1376257, 0, 0, 1376258, 0, 0, 1376259, 0, 0, 1376260, 0, 0, 1376261, 0, 0, 1376262, 0, 0, 1376263, 0, 0, 1376264, 0, 0, 1376265, 0, 0, 1376266, 0, 0, 1376267, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1376271, 0, 0, 1376272, 0, 0, 1376273, 0, 0, 1376274, 0, 0, 1376275, 0, 0, 1376276, 0, 0, 1376277, 0, 0, 1376278, 0, 0, 1376279, 0, 0, 1376280, 0, 0, 1376281, 0, 0, 1376282, 0, 0, 1376283, 0, 0, 1376284, 0, 0, 1376285, 0, 0, 1376286, 0, 0, 1376287, 0, 0, 1376288, 0, 0, 1376289, 0, 0, 1376290, 0, 0, 1376291, 0, 0, 1376292, 0, 0, 1376293, 0, 0, 1376294, 0, 0, 1376295, 0, 0, 1376296, 0, 0, 1376297, 0, 0, 1376298, 0, 0, 1376299, 0, 0, 1376300, 0, 0, 1376301, 0, 0, 1376302, 0, 0 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( -48, -208 )
+scale = Vector2( 1.32258, 1 )
+color = Color( 0.254902, 0.247059, 0.247059, 1 )
+texture_scale = Vector2( 7, 3 )
+polygon = PoolVector2Array( 72.5854, 224, 72.5854, 272, 72.5854, 320, 320, 320, 326.956, 320, 568.585, 320, 568.585, 272, 568.585, 224 )
+
+[node name="Timer" type="Timer" parent="Polygon2D"]
+wait_time = 0.05
+autostart = true
+
+[node name="DialogBox" type="Control" parent="."]
+margin_left = 64.0
+margin_top = 16.0
+margin_right = 688.0
+margin_bottom = 112.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DialogBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogBox"]
+anchor_left = 0.499
+anchor_top = -0.99
+anchor_right = 0.499
+anchor_bottom = -0.99
+margin_left = -295.843
+margin_top = 112.03
+margin_right = 296.157
+margin_bottom = 176.03
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.376471, 0.305882, 0.227451, 1 )
+bbcode_enabled = true
+bbcode_text = "Testing Code heheheheheh asd asdasdasdasdasd asda dasdasd asdasd as dasdasd asdasdadqweqe qsdq wqe xzc zxc"
+text = "Testing Code heheheheheh asd asdasdasdasdasd asda dasdasd asdasd as dasdasd asdasdadqweqe qsdq wqe xzc zxc"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="DialogBox"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 272 )
+[connection signal="timeout" from="Polygon2D/Timer" to="DialogBox/RichTextLabel" method="_on_Timer_timeout"]
