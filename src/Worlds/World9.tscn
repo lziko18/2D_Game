@@ -10,7 +10,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="World9" type="Node2D"]
+[node name="World" type="Node2D"]
 script = ExtResource( 8 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

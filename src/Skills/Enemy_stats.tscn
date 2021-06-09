@@ -2,6 +2,5 @@
 
 [ext_resource path="res://Skills/Enemy_stats.gd" type="Script" id=1]
 
-
 [node name="Enemy_stats" type="Node"]
 script = ExtResource( 1 )
