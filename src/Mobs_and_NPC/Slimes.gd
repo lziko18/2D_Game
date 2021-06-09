@@ -62,10 +62,17 @@ func idle(_delta):
 
 
 func player_knock():
-	player_push1.knockback_vector=-100
-	player_push1.enemy_position=position.x
+	var dir=get_parent().get_node("Player").global_position.x
+	var our=get_parent().get_node("Slimes").global_position.x
+	if our<dir:
+		player_push1.knockback_vector=100
+		player_push.knockback_vector=150
+	else:
+		player_push1.knockback_vector=-100
+		player_push.knockback_vector=-150
 	if $Sprite.flip_h==false:
 		player_push.knockback_vector=-150
+		player_push
 	else:
 		player_push.knockback_vector=150
 
@@ -116,15 +123,17 @@ func _on_Player_detect_body_entered(_body):
 
 
 func _on_Weak_point_area_entered(area):
-	if area.get_parent().motion.y<0:
-		pass
-	elif area.get_parent().motion.y>0:
-		area.get_parent().motion.y=-600
-		area.get_parent().get_node("AnimationPlayer").stop()
-		area.get_parent().get_node("AnimationPlayer").play("Player Jumping")
-		if health>0:
-			state=Hurt
-		else:
-			state=Die
-			$Weak_point.queue_free()
+	if area.get_parent().name=="Player":
+		if area.get_parent().motion.y<0:
+			return
+		elif area.get_parent().motion.y>0:
+			area.get_parent().motion.y=-600
+			area.get_parent().get_node("AnimationPlayer").stop()
+			area.get_parent().get_node("AnimationPlayer").play("Player Jumping")
+			if health>0:
+				state=Hurt
+			else:
+				state=Die
+				$Weak_point.queue_free()
+
 

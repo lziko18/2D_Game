@@ -224,8 +224,6 @@ func _get_transition():
 		states.jumping:
 			if Input.is_action_just_pressed("player_cast"):
 				return states.casting
-			if is_on_floor():
-				return states.idle
 			elif Input.is_action_just_pressed("player_attack"):
 				return states.attack_1
 			else:

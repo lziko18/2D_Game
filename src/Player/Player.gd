@@ -46,7 +46,7 @@ onready var ground_damage=$Ground_slam_hitbox
 var player_stats=PlayerStats
 
 func crawl():
-	if Input.is_action_pressed("Crouch") and is_sliding==false and is_attackig==false and is_casting==false and is_on_floor():
+	if Input.is_action_pressed("Crouch") and is_sliding==false and is_attackig==false and is_casting==false and is_on_floor() and is_air_att==false:
 		$Check_above.enabled=true
 		$Colli1.disabled=true
 		$Colli2.disabled=false
@@ -63,10 +63,13 @@ func check():
 		is_crouching=false
 
 func hook():
-	if Input.is_action_just_pressed("Hook"):
+	if Input.is_action_just_pressed("Hook") and is_sliding==false and is_attackig==false and is_casting==false and is_air_att==false and is_crouching==false and is_wall_sliding==false and grabbed==false:
 		$Position2D/Chain.realease=false
 		is_hooking=true
-		motion.x=1
+		if $Sprite.flip_h==true:
+			motion.x=1
+		elif $Sprite.flip_h==false:
+			motion.x=-1
 		motion.y=0
 		if $Sprite.flip_h==false:
 			$AnimationPlayer.play("Hooking")
@@ -80,15 +83,11 @@ func hook():
 func hooked():
 	if $Position2D/Chain.realease==true:
 		is_hooking=false
-		$Colli1.disabled=false
-		$Colli2.disabled=true
 		$Position2D/Chain.release()
 	if $Position2D/Chain.hooked:
 		# `to_local($Chain.tip).normalized()` is the direction that the chain is pulling
 		chain_velocity = to_local($Position2D/Chain.tip).normalized() * CHAIN_PULL
-		$Colli1.disabled=true
-		$Colli2.disabled=false
-		if motion.x==0:
+		if motion.x==0 or motion.y!=0:
 			is_hooking=false
 			$Position2D/Chain.release()
 	else:
@@ -98,8 +97,11 @@ func hooked():
 
 
 func get_input_for_moving():
-	if Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_right") and is_on_floor() and is_casting==false and is_hooking==false:
+	if Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_right") and is_on_floor() and is_casting==false and is_hooking==false and is_attackig==false and is_air_att==false and is_sliding==false and is_crouching==false:
 		$AnimationPlayer.play("Player Idle")
+		motion.x = 0
+	if Input.is_action_pressed("ui_left") and Input.is_action_pressed("ui_right") and is_on_floor() and is_casting==false and is_hooking==false and is_attackig==false and is_air_att==false and is_sliding==false and is_crouching==true:
+		$AnimationPlayer.play("Crouch")
 		motion.x = 0
 		
 	if Input.is_action_pressed("ui_left") and is_crouching==false and !Input.is_action_pressed("ui_right"):
@@ -115,7 +117,6 @@ func get_input_for_moving():
 					is_crouching=true
 				else:
 					$AnimationPlayer.play("Player Running")
-
 					$Colli1.disabled=false
 					$Colli2.disabled=true
 				
@@ -134,7 +135,7 @@ func get_input_for_moving():
 					$AnimationPlayer.play("Player Running")
 					$Colli1.disabled=false
 					$Colli2.disabled=true
-	elif Input.is_action_pressed("ui_right") and is_crouching==true:
+	elif Input.is_action_pressed("ui_right") and is_crouching==true and !Input.is_action_pressed("ui_left"):
 		if is_casting==false and is_sliding==false and is_attackig==false and is_air_att==false and is_hooking==false:
 			motion.x = 100
 			$Sprite.flip_h=false
@@ -147,7 +148,7 @@ func get_input_for_moving():
 				else:
 					$AnimationPlayer.play("Crouch")
 
-	elif Input.is_action_pressed("ui_left") and is_crouching==true:
+	elif Input.is_action_pressed("ui_left") and is_crouching==true and  !Input.is_action_pressed("ui_right"):
 		if is_casting==false and is_sliding==false and is_attackig==false and is_air_att==false and is_hooking==false:
 			motion.x =-100
 			$Sprite.flip_h=true
@@ -159,7 +160,6 @@ func get_input_for_moving():
 					motion.x=-100
 				else:
 					$AnimationPlayer.play("Crouch")
-
 	else:
 		if is_casting==false and is_sliding==false and is_attackig==false  and is_air_att==false and  is_hooking==false:
 			motion.x = lerp(motion.x,0,0.2)
@@ -200,8 +200,9 @@ func cornor():
 
 
 func is_grabed():
-	if grabbed==true:
+	if grabbed==true :
 		is_casting=false
+		is_attackig=false
 		if grab_right==true and $Sprite.flip_h==false:
 			$Sprite.flip_h=false
 			$AnimationPlayer.play("Grab")
@@ -230,11 +231,11 @@ func is_grabed():
 
 
 func get_input_for_jumping():
-	if is_on_floor() or next_to_wall() and is_crouching==false and can_jump==true:
+	if is_on_floor() or next_to_wall() and is_crouching==false and can_jump==true and is_hooking==false:
 		first_jump=true
 		jumps_left=1
 		double_jump=false
-		if Input.is_action_just_pressed("ui_up")&& is_casting==false and is_sliding==false and is_crouching==false and is_attackig==false and is_air_att==false:
+		if Input.is_action_just_pressed("ui_up")&& is_casting==false and is_sliding==false and is_crouching==false and is_attackig==false and is_air_att==false and is_hooking==false:
 			is_jumping=true
 			motion.x = 0
 			double_jump=true
@@ -257,7 +258,7 @@ func get_input_for_jumping():
 				can_jump=true
 	else:
 		var double_dust=Double_jump_dust.instance()
-		if Input.is_action_just_pressed("ui_up")&& is_casting==false && double_jump==true and is_attackig==false and can_jump==true and is_air_att==false:
+		if Input.is_action_just_pressed("ui_up")&& is_casting==false && double_jump==true and is_attackig==false and can_jump==true and is_air_att==false  and is_hooking==false:
 			first_jump=false
 			$AnimationPlayer.play("Double Jump")
 			get_parent().add_child(double_dust)
@@ -266,7 +267,7 @@ func get_input_for_jumping():
 			double_jump=false
 			jumps_left-=1
 			motion.y =-jump_force
-		elif Input.is_action_just_pressed("ui_up")&& is_casting==false && jumps_left==1 and is_attackig==false and can_jump==true and is_air_att==false:
+		elif Input.is_action_just_pressed("ui_up")&& is_casting==false && jumps_left==1 and is_attackig==false and can_jump==true and is_air_att==false  and is_hooking==false:
 			first_jump=false
 			$AnimationPlayer.play("Double Jump")
 			get_parent().add_child(double_dust)
@@ -293,35 +294,35 @@ func get_input_for_attacking():
 
 
 func attacking_at_least():
-	if is_on_floor() or grabbed==true:
+	if is_on_floor() :
 		air_att_points=3
-		if Input.is_action_just_pressed("Attack") and attack_points==3 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_air_att==false:
+		if Input.is_action_just_pressed("Attack") and attack_points==3 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_air_att==false and is_hooking==false:
 			$Attack_reset.start()
 			is_attackig=true
 			motion.x=0
 			$AnimationPlayer.play("Attackt1")
-		elif Input.is_action_just_pressed("Attack") and attack_points==2 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_air_att==false:
+		elif Input.is_action_just_pressed("Attack") and attack_points==2 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_air_att==false and is_hooking==false:
 			$Attack_reset.start()
 			is_attackig=true
 			motion.x=0
 			$AnimationPlayer.play("Attack2")
-		elif Input.is_action_just_pressed("Attack") and attack_points==1 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_air_att==false:
+		elif Input.is_action_just_pressed("Attack") and attack_points==1 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_air_att==false and is_hooking==false:
 			$Attack_reset.start()
 			is_attackig=true
 			motion.x=0
 			$AnimationPlayer.play("Attack3")
 	elif not is_on_floor() and not next_to_wall():
-		if Input.is_action_just_pressed("Attack") and air_att_points==3 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_attackig==false :
+		if Input.is_action_just_pressed("Attack") and air_att_points==3 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_attackig==false and is_hooking==false :
 			is_air_att=true
 			motion.x=0
 			motion.y=0
 			$AnimationPlayer.play("air1")
-		elif Input.is_action_just_pressed("Attack") and air_att_points==2 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_attackig==false:
+		elif Input.is_action_just_pressed("Attack") and air_att_points==2 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_attackig==false and is_hooking==false:
 			is_air_att=true
 			motion.x=0
 			motion.y=0
 			$AnimationPlayer.play("air2")
-		elif Input.is_action_just_pressed("Attack") and air_att_points==1 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_attackig==false:
+		elif Input.is_action_just_pressed("Attack") and air_att_points==1 and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_casting==false and is_attackig==false and is_hooking==false:
 			$Final.enabled=true
 			$Final2.enabled=true
 			$Final3.enabled=true
@@ -374,8 +375,10 @@ func flip():
 
 
 
+
+
 func cast():
-	if Input.is_action_just_pressed("Cast Spell")  and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_attackig==false and is_air_att==false:
+	if Input.is_action_just_pressed("Cast Spell")  and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_attackig==false and is_air_att==false and is_hooking==false:
 		if can_cast==true:
 			$Cast_reset.start()
 			is_casting=true
@@ -409,8 +412,8 @@ func wall_sliding():
 
 
 func crouch_slide():
-	if is_on_floor() and is_crouching==false and can_slide==true:
-		if Input.is_action_just_pressed("Crouch") and (Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")):
+	if is_on_floor() and is_crouching==false and can_slide==true and is_attackig==false and is_casting==false and is_wall_sliding==false and is_air_att==false and is_hooking==false:
+		if Input.is_action_just_pressed("Crouch") and ((Input.is_action_pressed("ui_right") and !Input.is_action_pressed("ui_left"))or (Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"))):
 			$Slide_reset.start()
 			can_slide=false
 			is_sliding=true
@@ -471,14 +474,23 @@ func player_got_hurt(delta):
 		motion= move_and_slide(motion,UP)
 	
 func player_die():
-	$AnimationPlayer.play("Player Die")
+	got_hit=true
 	can_be_detected=false
 	can_be_target=false
 	not_dead=false
-	player_stats.disconnect("no_health",self,"player_die")
+	
+	
+	
+func finish_him():
 	if is_on_floor():
+		player_stats.disconnect("no_health",self,"player_die")
+		$AnimationPlayer.play("Player Die")
 		motion.x=0
 		set_physics_process(false)
+	elif !is_on_floor():
+		$AnimationPlayer.play("hurt_wait")
+
+		
 
 func check2():
 	if !get_input_for_jumping() and motion.y<0:
@@ -487,27 +499,28 @@ func check2():
 
 func _physics_process(delta):
 	if got_hit==false:
-		hooked()
-		hook()
+		flip()
 		gravity_apply()
-		get_input_for_moving()
-		get_input_for_jumping()
 		cast()
 		attacking_at_least()
 		crouch_slide()
 		crawl()
 		check()
 		landing()
-		cornor()
-		is_grabed()
-		flip()
-		wall_sliding()
 		enemy_knock_direction()
 		update_Hurtbox()
+		get_input_for_moving()
+		get_input_for_jumping()
+		wall_sliding()
+		cornor()
+		is_grabed()
+		hooked()
+		hook()
 		motion=move_and_slide(motion,UP,true)
 	elif got_hit==true:
 		gravity_apply()
-		player_got_hurt(delta)
+		if not_dead==false:
+			finish_him()
 		motion=move_and_slide(motion,UP,true)
 
 func _on_AnimationPlayer_animation_finished(cast):
@@ -521,6 +534,7 @@ func _on_AnimationPlayer_animation_finished(cast):
 		is_air_att=false
 		air_att_points-=1
 	if cast=="Ground_slam":
+		$Bounce/CollisionShape2D.disabled=false
 		is_air_att=false
 		air_att_points-=1
 	if cast=="Hurt":
@@ -531,7 +545,8 @@ func _on_AnimationPlayer_animation_finished(cast):
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name=="Hurt":
-		player_stats.health-=1
+		if not_dead==true:
+			player_stats.health-=1
 	if anim_name=="Player Casting":
 		can_cast=false
 	if anim_name=="New Anim":
@@ -541,6 +556,9 @@ func _on_AnimationPlayer_animation_started(anim_name):
 		motion.y+=800
 	if anim_name=="Ground_slam":
 		$Position2D/Att_hitbox/CollisionShape2D.disabled=true
+	if anim_name=="air3":
+			$Bounce/CollisionShape2D.disabled=true
+
 
 
 func _on_Timer_timeout():

@@ -11,7 +11,7 @@ func _ready():
 	get_tree().paused=true
 	yield(get_tree().create_timer(0.01), "timeout")
 	$Player/Camera2D.limit_bottom=352
-	$Player/Camera2D.limit_top=-317
+	$Player/Camera2D.limit_top=-500
 	$Player/Camera2D.limit_right=26000
 	$Player/Camera2D.limit_left=0
 	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")

@@ -42,7 +42,7 @@ func handle_selection(_current_selection):
 		var pause_mode = load("res://UI/Game_UI/Pause.tscn")
 		get_tree().get_root().add_child(pause_mode.instance())
 		get_tree().get_root().add_child((load('res://Worlds/World8.tscn')).instance())
-		player.position=Vector2(143,-79)#player_data.position
+		player.position=Vector2(2800,-79)#player_data.position
 		get_tree().get_root().get_child(5).add_child(player)
 		
 	elif _current_selection == 1:
