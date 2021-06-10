@@ -2,6 +2,5 @@
 
 [ext_resource path="res://Skills/Enemy_stats.tscn" type="PackedScene" id=1]
 
-
 [node name="Player_stats" instance=ExtResource( 1 )]
 max_health = 6

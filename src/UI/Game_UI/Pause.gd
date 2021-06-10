@@ -58,4 +58,4 @@ func _on_Quit_pressed():
 
 func _on_Save_pressed():
 	var player_data = get_tree().get_root().get_node("World/Player").get_save_data()
-	SaveSystem.save_player("Test1", player_data)
+	SaveSystem.save_player("Test2", player_data)
