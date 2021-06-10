@@ -47,7 +47,41 @@ var last_floor_ctr = 0
 onready var cam=$Camera2D
 onready var attack_hitbox =$Position2D/Att_hitbox
 onready var ground_damage=$Ground_slam_hitbox
-var player_stats=PlayerStats
+var health_current : int
+var health_max : int
+var save_data = null
+var player_stats
+
+func load_save(data):
+	save_data = data
+
+func reset_health():
+	health_current = health_max
+	update_health()
+
+func take_damage(amount):
+	health_current = health_current - amount
+	if health_current<=0:
+		player_die()
+	update_health()
+	
+func heal(amount):
+	health_current = health_current + amount
+	if health_current > health_max:
+		health_current = health_max
+	update_health()
+
+func add_health(amount):
+	health_max = health_max + amount
+	health_current = health_current + amount
+	update_max_health()
+	update_health()
+
+func update_health():
+	player_stats.set_hearts(health_current)
+	
+func update_max_health():
+	player_stats.set_max_hearts(health_max)
 
 func crawl():
 	if Input.is_action_pressed("Crouch") and is_sliding==false and is_attackig==false and is_casting==false and is_on_floor() and is_air_att==false:
@@ -399,13 +433,13 @@ func next_to_left_wall():
 	return $LeftWall1.is_colliding() and $LeftWall2.is_colliding()
 
 func wall_sliding():
-	if next_to_right_wall() and !is_on_floor() and motion.y>-200 and $Grab1.is_colliding():
+	if next_to_right_wall() and !is_on_floor() and motion.y>-200 and $Grab1.is_colliding() and is_casting==false and is_attackig==false and is_hooking==false:
 		is_wall_sliding=true
 		$Sprite.flip_h=false
 		$AnimationPlayer.play("New Anim")
 		if Input.is_action_pressed("ui_left"):
 			$AnimationPlayer.play("Player Jumping")
-	elif next_to_left_wall() and !is_on_floor() and motion.y>-200 and $Grab2.is_colliding():
+	elif next_to_left_wall() and !is_on_floor() and motion.y>-200 and $Grab2.is_colliding()and is_casting==false and is_attackig==false and is_hooking==false:
 		is_wall_sliding=true
 		$Sprite.flip_h=true
 		$AnimationPlayer.play("New Anim")
@@ -553,7 +587,7 @@ func _on_AnimationPlayer_animation_started(anim_name):
 		$Bounce/CollisionShape2D.disabled=false
 		$Position2D/Att_hitbox/CollisionShape2D.disabled=true
 		if not_dead==true:
-			player_stats.health-=1
+			take_damage(1)
 	if anim_name=="Player Casting":
 		can_cast=false
 	if anim_name=="New Anim":
@@ -600,10 +634,38 @@ func _on_Hurt_reset_timeout():
 	if not_dead==true:
 		can_be_target=true
 
+func get_save_data():
+	var data = {
+		"position": {
+			"x": position.x,
+			"y": position.y
+		},
+		"health": {
+			"current": health_current,
+			"max": health_max
+		}
+	}
+	return data
+
+func set_from_save_data(data):
+	position.x = data.position.x
+	position.y = data.position.y
+	health_max = data.health["max"]
+	update_max_health()
+	health_current = data.health.current
+	update_health()
 
 func _ready():
-	player_stats.connect("no_health",self,"player_die")
+	#player_stat.connect("no_health",self,"player_die")
+	player_stats= get_tree().get_root().get_node("World/Player/Camera2D/CanvasLayer/Prova")
 	set_physics_process(false)
+	if save_data == null:
+		health_max = 5
+		update_max_health()
+		health_current = 5
+		update_health()
+	else:
+		set_from_save_data(save_data)
 
 
 func update_floor_position():

@@ -128,6 +128,9 @@ func _on_Weak_point_area_entered(area):
 			pass
 		elif area.get_parent().motion.y>0:
 			area.get_parent().motion.y=-600
+			area.get_parent().first_jump=true
+			area.get_parent().jumps_left=1
+			area.get_parent().double_jump=false
 			area.get_parent().get_node("AnimationPlayer").stop()
 			area.get_parent().get_node("AnimationPlayer").play("Player Jumping")
 			if health>0:

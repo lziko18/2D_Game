@@ -130,6 +130,8 @@ anims/idle = SubResource( 5 )
 position = Vector2( -11.4707, 0.933662 )
 
 [node name="Area2D" parent="Sprite/Position2D" instance=ExtResource( 4 )]
+position = Vector2( 0, 4.15451 )
+scale = Vector2( 1, 0.5 )
 collision_layer = 64
 collision_mask = 16
 script = ExtResource( 3 )
@@ -139,16 +141,19 @@ shape = SubResource( 6 )
 disabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="Sprite/Position2D"]
+visible = false
 rotation = 1.5708
 scale = Vector2( 1, 0.5 )
 enabled = true
 
 [node name="RayCast2D2" type="RayCast2D" parent="Sprite/Position2D"]
+visible = false
 position = Vector2( -36.413, 0 )
 scale = Vector2( 1, 0.22 )
 enabled = true
 
 [node name="Player_detect" type="Area2D" parent="Sprite/Position2D"]
+visible = false
 position = Vector2( -0.10585, 4.18163 )
 scale = Vector2( 1, 0.515732 )
 collision_layer = 0
@@ -160,7 +165,7 @@ shape = SubResource( 6 )
 [node name="kot" parent="Sprite" instance=ExtResource( 4 )]
 position = Vector2( -0.565247, 8.03821 )
 rotation = 1.5708
-scale = Vector2( 0.806068, 0.539045 )
+scale = Vector2( 0.8, 0.45 )
 collision_layer = 64
 collision_mask = 16
 script = ExtResource( 3 )

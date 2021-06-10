@@ -4,7 +4,7 @@
 [ext_resource path="res://UI/HeartUIEmpty.png" type="Texture" id=2]
 [ext_resource path="res://UI/HeartUIFull.png" type="Texture" id=3]
 
-[node name="Player_Health" type="Control"]
+[node name="Prova" type="Control"]
 margin_left = 13.125
 margin_top = 7.875
 margin_right = 57.125
