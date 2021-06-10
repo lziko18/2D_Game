@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Tilesets/Background/Background-1.png" type="Texture" id=1]
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=2]
@@ -141,6 +141,8 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=13]
 
 [sub_resource type="RectangleShape2D" id=14]
+
+[sub_resource type="RectangleShape2D" id=15]
 
 [node name="World" type="Node2D"]
 position = Vector2( 1.12244, 0 )
@@ -344,8 +346,29 @@ shape = SubResource( 14 )
 [node name="Entities" type="Node" parent="."]
 
 [node name="Slimes4" parent="Entities" instance=ExtResource( 7 )]
-position = Vector2( 3453.21, 236.192 )
-direction = -1
+position = Vector2( 2998.85, 231.737 )
+
+[node name="Slimes5" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 3363.23, 235.301 )
+
+[node name="Slimes6" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 3220.69, 235.301 )
+
+[node name="FallCollision" type="Area2D" parent="."]
+position = Vector2( 33.2979, -285.41 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallCollision"]
+position = Vector2( 5634.64, 648.272 )
+scale = Vector2( 700, 1 )
+shape = SubResource( 15 )
+
+[node name="FallCollision2" type="Area2D" parent="."]
+position = Vector2( 16814.6, 82.6782 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallCollision2"]
+position = Vector2( 5634.64, 648.272 )
+scale = Vector2( 700, 1 )
+shape = SubResource( 15 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
@@ -356,3 +379,5 @@ direction = -1
 [connection signal="body_exited" from="Area2D4" to="." method="_on_Area2D4_body_exited"]
 [connection signal="body_entered" from="world9" to="." method="_on_world9_body_entered"]
 [connection signal="body_entered" from="world5" to="." method="_on_world5_body_entered"]
+[connection signal="body_entered" from="FallCollision" to="." method="_on_FallCollision_body_entered"]
+[connection signal="body_entered" from="FallCollision2" to="." method="_on_FallCollision2_body_entered"]

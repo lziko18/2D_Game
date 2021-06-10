@@ -637,8 +637,8 @@ func _on_Hurt_reset_timeout():
 func get_save_data():
 	var data = {
 		"position": {
-			"x": position.x,
-			"y": position.y
+			"x": global_position.x,
+			"y": global_position.y
 		},
 		"health": {
 			"current": health_current,
@@ -648,8 +648,8 @@ func get_save_data():
 	return data
 
 func set_from_save_data(data):
-	position.x = data.position.x
-	position.y = data.position.y
+	global_position.x = data.position.x
+	global_position.y = data.position.y
 	health_max = data.health["max"]
 	update_max_health()
 	health_current = data.health.current
@@ -657,7 +657,7 @@ func set_from_save_data(data):
 
 func _ready():
 	#player_stat.connect("no_health",self,"player_die")
-	player_stats= get_tree().get_root().get_node("World/Player/Camera2D/CanvasLayer/Prova")
+	player_stats=get_tree().get_root().get_node("World/Player/Camera2D/CanvasLayer/Prova")
 	set_physics_process(false)
 	if save_data == null:
 		health_max = 5
@@ -675,23 +675,3 @@ func update_floor_position():
 		if is_on_floor():
 			last_floor_position.x = global_position.x
 			last_floor_position.y = global_position.y
-
-
-func get_save_data():
-	var data = {
-		"last_floor_position" : {
-			"x": last_floor_position.x,
-			"y": last_floor_position.y
-		},
-		"health": {
-			"max": PlayerStats.max_health,
-			"current": PlayerStats.health
-		}
-	}
-	return data
-
-func set_from_save_data(data):
-	position.x = data.last_floor_position.x
-	position.y = data.last_floor_position.y
-	PlayerStats.set_max_health(data.health["max"])
-	PlayerStats.set_health(data.health.current)

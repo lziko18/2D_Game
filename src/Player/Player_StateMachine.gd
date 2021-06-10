@@ -515,13 +515,9 @@ func update_max_health():
 	player_health_ui.set_max_hearts(health_max)
 
 func get_save_data():
-	var _state
-	for key in states.keys():
-		if states[key] == state:
-			_state = key
-			break
+	
 	var data = {
-		"state": _state,
+		"state": get_state_by_id(state),
 		"position": {
 			"x": position.x,
 			"y": position.y

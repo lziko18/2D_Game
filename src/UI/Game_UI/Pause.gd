@@ -52,10 +52,12 @@ func _on_Full_Screen_pressed():
 
 func _on_Quit_pressed():
 	var menu=load('res://UI/MarginContainer.tscn').instance()
-	for c in get_tree().get_root().get_children():
-		c.queue_free()
+	get_tree().get_root().get_node("World").queue_free()
 	get_tree().get_root().add_child(menu)
+	get_tree().paused=false
 
 func _on_Save_pressed():
 	var player_data = get_tree().get_root().get_node("World/Player").get_save_data()
+	var world_data = get_tree().get_root().get_node("World").get_save_data()
 	SaveSystem.save_player("Test2", player_data)
+	SaveSystem.save_world("Test2", world_data)

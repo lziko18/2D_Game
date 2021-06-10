@@ -3,9 +3,8 @@ extends MarginContainer
 var saves_list : Array
 var menu_items : Array
 var current_selected : int
-var world_scene = preload("res://Worlds/TestWorld.tscn")
-var player_scene = preload("res://Player/Player_StateMachine.tscn")
-var game_ui_scene = preload("res://UI/Game_UI/Game_UI_2.tscn")
+var world_scene = preload("res://Worlds/World8.tscn")
+var player_scene = preload("res://Player/Player.tscn")
 
 func _ready():
 	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
@@ -50,13 +49,13 @@ func menu_up():
 	menu_items[current_selected].select()
 
 func load_game(save : String):
-	print("Loading game.")
+	print("Loading game. "+save)
 	var player_data = SaveSystem.load_player(save)
-	var world_instance = world_scene.instance()
+	var world_data = SaveSystem.load_world(save)
 	var player_instance = player_scene.instance()
-	var game_ui_instance = game_ui_scene.instance()
-	player_instance.add_child(game_ui_instance)
+	var world_instance = world_scene.instance()
 	player_instance.load_save(player_data)
+	world_instance.load_save(world_data)
 	world_instance.add_child(player_instance)
 	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
 	yield(get_tree().create_timer(1), "timeout")
