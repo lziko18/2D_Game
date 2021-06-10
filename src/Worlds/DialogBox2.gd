@@ -4,11 +4,14 @@ var dialog = ["Ho... Mukatte kuru no ka... Nigezu ni kono DIO ni chikadzuite kur
 				"Chikadzukanakya teme o buchi nomesenainde na"]
 var characters = ["Dio", "Jotaro"]
 
-var dialog_index = 0
-var finished = false
+var dialog_index 
+var finished 
 
 func _ready():
+	finished = false
+	dialog_index = 0
 	load_dialog()
+
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -24,7 +27,8 @@ func load_dialog():
 		)
 		$Tween.start()
 	else:
-		queue_free()
+		get_tree().get_root().get_node("World/Player").is_speaking=false
+		get_parent().queue_free()
 	dialog_index += 1
 
 func on_Tween_tween_completed(object, key):

@@ -263,6 +263,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=15]
 length = 0.8
+loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -587,7 +588,7 @@ position = Vector2( -0.418701, -11.5197 )
 scale = Vector2( 3.6374, 3.92665 )
 texture = ExtResource( 12 )
 hframes = 140
-frame = 61
+frame = 93
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
