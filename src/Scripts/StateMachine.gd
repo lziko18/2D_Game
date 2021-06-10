@@ -46,3 +46,10 @@ func set_state(new_state):
 func add_state(state_name):
 	states[state_name] = states.size()
 
+func get_state_by_id(id):
+	var _state
+	for key in states.keys():
+		if states[key] == id:
+			_state = key
+			break
+	return _state

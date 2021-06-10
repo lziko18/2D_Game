@@ -21,7 +21,6 @@ func _ready():
 			print(player_data)
 			file.close()
 
-
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_down") and current_selection < 2:
 		current_selection += 1
@@ -39,11 +38,11 @@ func handle_selection(_current_selection):
 		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
 		yield(get_tree().create_timer(1), "timeout")
 		self.queue_free()
-		var pause_mode = load("res://UI/Game_UI/Pause.tscn")
-		get_tree().get_root().add_child(pause_mode.instance())
+		#var pause_mode = load("res://UI/Game_UI/Pause.tscn")
+		#get_tree().get_root().add_child(pause_mode.instance())
 		get_tree().get_root().add_child((load('res://Worlds/World8.tscn')).instance())
 		player.position=Vector2(2800,-79)#player_data.position
-		get_tree().get_root().get_child(5).add_child(player)
+		get_tree().get_root().get_node("World").add_child(player)
 		
 	elif _current_selection == 1:
 		var load_game_menu_scene = load("res://UI/Load_Game_Menu/Load_Game_Menu.tscn")

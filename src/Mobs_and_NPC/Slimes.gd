@@ -17,16 +17,16 @@ enum{
 	Die,
 }
 
-
 func _ready():
 	state=Wander
 
 func wander(_delta):
 	motion.y+=gravity
 	motion= move_and_slide(motion,UP)
-	$Sprite/AnimationPlayer.play("Slide")
-	$Sprite/Position2D/Player_detect/CollisionShape2D2.disabled=true
-	$Sprite/Position2D/Player_detect/CollisionShape2D2.disabled=false
+	if $Sprite/AnimationPlayer.current_animation != "Slide":
+		$Sprite/AnimationPlayer.play("Slide")
+	#$Sprite/Position2D/Player_detect/CollisionShape2D2.disabled=true
+	#$Sprite/Position2D/Player_detect/CollisionShape2D2.disabled=false
 	if direction==1:
 		$Sprite.flip_h=true
 		motion.x=speed
@@ -44,25 +44,25 @@ func wander(_delta):
 					$Sprite/Position2D.position.x*=-1
 					$Sprite/Position2D.scale.x=-1
 
-
-
 func attack(_delta):
-	$Sprite/AnimationPlayer.play("Bite")
-	$Sprite/Position2D/Player_detect/CollisionShape2D2.disabled=true
-	motion.x=0
+	if $Sprite/AnimationPlayer.current_animation != "Bite":
+		$Sprite/AnimationPlayer.play("Bite")
+		$Sprite/Position2D/Player_detect/CollisionShape2D2.disabled=true
+		motion.x=0
 
 func hurt(_delta):
-	motion.x=0
-	$Sprite/AnimationPlayer.play("hurt")
+	if $Sprite/AnimationPlayer.current_animation != "hurt":
+		$Sprite/AnimationPlayer.play("hurt")
+		motion.x=0
 
 
 func idle(_delta):
-	motion.x=0
-	$Sprite/AnimationPlayer.play("idle")
-
+	if $Sprite/AnimationPlayer.current_animation != "idle":
+		$Sprite/AnimationPlayer.play("idle")
+		motion.x=0
 
 func player_knock():
-	var dir=get_parent().get_node("Player").global_position.x
+	var dir=get_tree().get_root().get_node("World/Player").global_position.x
 	var our=global_position.x
 	if our<dir:
 		player_push1.knockback_vector=100
@@ -112,10 +112,7 @@ func _on_AnimationPlayer_animation_finished(name):
 
 
 func _on_AnimationPlayer_animation_started(name):
-		if name=="hurt":
-			health-=1
-
-
+	pass
 
 
 func _on_Player_detect_body_entered(_body):
@@ -124,6 +121,7 @@ func _on_Player_detect_body_entered(_body):
 
 func _on_Weak_point_area_entered(area):
 	if area.get_parent().name=="Player":
+		health-=1
 		if area.get_parent().motion.y<0:
 			pass
 		elif area.get_parent().motion.y>0:
@@ -139,4 +137,34 @@ func _on_Weak_point_area_entered(area):
 				state=Die
 				$Weak_point.queue_free()
 
-
+func get_save_data():
+	var data = {
+		"direction": direction,
+		"position": {
+			"x": global_position.x,
+			"y": global_position.y
+		},
+		"motion": {
+			"x": motion.x,
+			"y": motion.y
+		},
+		"state": state,
+		"animation": {
+			"name": $Sprite/AnimationPlayer.current_animation,
+			"position": $Sprite/AnimationPlayer.current_animation_position
+		},
+		"health": health
+	}
+	return data
+	
+func set_from_save_data(data):
+	direction = data.direction
+	global_position.x = data.position.x
+	global_position.y = data.position.y
+	motion.x = data.motion.x
+	motion.y = data.motion.y
+	state = data.state
+	$Sprite/AnimationPlayer.play(data.animation.name)
+	$Sprite/AnimationPlayer.seek(data.animation.position)
+	health = data.health
+	

@@ -18,6 +18,7 @@ var double_jump_force= 500
 var jumps_left=0
 var attack_points=3
 var air_att_points=3
+
 var double_jump=false
 var friction=true
 var is_casting=false
@@ -41,6 +42,9 @@ var is_hooking=false
 var grab_right=false
 var grab_left=false
 var chain_velocity := Vector2(0,0)
+var last_floor_position = Vector2(0, 0)
+var last_floor_ctr = 0
+
 onready var cam=$Camera2D
 onready var attack_hitbox =$Position2D/Att_hitbox
 onready var ground_damage=$Ground_slam_hitbox
@@ -540,6 +544,7 @@ func check2():
 
 
 func _physics_process(delta):
+	update_floor_position()
 	if got_hit==false:
 		flip()
 		gravity_apply()
@@ -618,10 +623,6 @@ func _on_Cast_reset_timeout():
 func _on_Slide_reset_timeout():
 	can_slide=true
 
-
-
-
-
 func _on_Hurtbox_area_entered(area):
 	if can_be_target==true:
 		is_casting=false
@@ -645,8 +646,8 @@ func _on_Hurt_reset_timeout():
 func get_save_data():
 	var data = {
 		"position": {
-			"x": position.x,
-			"y": position.y
+			"x": global_position.x,
+			"y": global_position.y
 		},
 		"health": {
 			"current": health_current,
@@ -656,8 +657,8 @@ func get_save_data():
 	return data
 
 func set_from_save_data(data):
-	position.x = data.position.x
-	position.y = data.position.y
+	global_position.x = data.position.x
+	global_position.y = data.position.y
 	health_max = data.health["max"]
 	update_max_health()
 	health_current = data.health.current
@@ -665,7 +666,7 @@ func set_from_save_data(data):
 
 func _ready():
 	#player_stat.connect("no_health",self,"player_die")
-	player_stats= get_tree().get_root().get_node("World/Player/Camera2D/CanvasLayer/Prova")
+	player_stats=get_tree().get_root().get_node("World/Player/Camera2D/CanvasLayer/Prova")
 	set_physics_process(false)
 
 	if save_data == null:
@@ -676,3 +677,11 @@ func _ready():
 	else:
 		set_from_save_data(save_data)
 
+
+func update_floor_position():
+	last_floor_ctr += 1
+	if last_floor_ctr % 60 == 0:
+		last_floor_ctr -= 60
+		if is_on_floor():
+			last_floor_position.x = global_position.x
+			last_floor_position.y = global_position.y

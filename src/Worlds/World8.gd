@@ -4,7 +4,7 @@ onready var root=get_tree().get_root()
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var entities = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +19,11 @@ func _ready():
 	yield(get_tree().create_timer(0.05), "timeout")
 	$Player.set_physics_process(true)
 	$Area2D3/CollisionShape2D.disabled=false
+	entities = []
+	for i in range(0, get_node("Entities").get_child_count()):
+		entities.append(true)
+	if save_data != null:
+		set_from_save_data(save_data)
 
 func next_scene_to_world9():
 	var level = root.get_node(self.name)
@@ -48,8 +53,6 @@ func next_scene_to_world5():
 	root.get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
 	root.get_child(root.get_child_count()-1).add_child(player)
 	print(root.get_child_count())
-
-
 
 
 func _on_Area2D_body_entered(body):
@@ -121,3 +124,46 @@ func _on_world5_body_entered(body):
 			get_tree().paused=false
 			yield(get_tree().create_timer(1), "timeout")
 			call_deferred("next_scene_to_world5")
+
+var save_data = null
+
+func load_save(data):
+	save_data = data
+
+func get_save_data():
+	print(entities)
+	var entities_to_save = []
+	var counter = 0
+	for e in entities:
+		if e:
+			entities_to_save.append(get_node("Entities").get_child(counter).get_save_data())
+			counter += 1
+		else:
+			entities_to_save.append(null)
+	var data = {
+		"entities" : entities_to_save,
+	}
+	return data
+
+func set_from_save_data(data):
+	for i in range(0, get_node("Entities").get_child_count()):
+		if data.entities[i] != null:
+			get_node("Entities").get_child(i).set_from_save_data(data.entities[i])
+		else:
+			entities[i] = false
+	for i in range(0, entities.size()):
+		if not entities[i]:
+			get_node("Entities").get_child(i).queue_free()
+	
+
+
+func _on_FallCollision2_body_entered(body):
+	if body.name == "Player":
+		body.position.x = body.last_floor_position.x
+		body.position.y = body.last_floor_position.y
+
+
+func _on_FallCollision_body_entered(body):
+	if body.name == "Player":
+		body.position.x = body.last_floor_position.x
+		body.position.y = body.last_floor_position.y
