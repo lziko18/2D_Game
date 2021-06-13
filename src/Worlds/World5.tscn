@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=1]
 [ext_resource path="res://ParallaxBackgrounds/Background_Magic_Forest.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Mobs_and_NPC/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Mobs_and_NPC/Lizard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Mobs_and_NPC/Slimes.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Mobs_and_NPC/Crawler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mobs_and_NPC/Pathfinder.tscn" type="PackedScene" id=7]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Sprites/Skeleton_enemy/light_PNG14418.png" type="Texture" id=10]
 [ext_resource path="res://Tilesets/collision.tres" type="TileSet" id=11]
 [ext_resource path="res://Mobs_and_NPC/Cute_slime.tscn" type="PackedScene" id=12]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"

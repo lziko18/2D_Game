@@ -48,7 +48,7 @@ func _physics_process(delta):
 			if player_spotted:
 				state=Hunt
 		Hurt:
-			$AnimationPlayer.play("New Anim")
+			$AnimationPlayer.play("hurt")
 		Die:
 			$AnimationPlayer.play("die")
 			velocity.x=0
@@ -57,7 +57,6 @@ func _physics_process(delta):
 				state=Land
 		Land:
 			$AnimationPlayer.play("land")
-
 		Hunt:
 			flip()
 			$AnimationPlayer.play("move")
@@ -111,7 +110,7 @@ func move():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name=="attack":
 		state=Wander
-	if anim_name=="New Anim":
+	if anim_name=="hurt":
 		state=Wander
 	if anim_name=="land":
 		queue_free()

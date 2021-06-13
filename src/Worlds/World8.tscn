@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Tilesets/Background/Background-1.png" type="Texture" id=1]
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Mobs_and_NPC/Slimes.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Worlds/World8.gd" type="Script" id=8]
 [ext_resource path="res://Tilesets/iron.tres" type="TileSet" id=9]
+[ext_resource path="res://Mobs_and_NPC/Crawler.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Mobs_and_NPC/Guardian.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Mobs_and_NPC/Pathfinder.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
@@ -345,6 +348,9 @@ shape = SubResource( 14 )
 
 [node name="Entities" type="Node" parent="."]
 
+[node name="Guardian" parent="Entities" instance=ExtResource( 11 )]
+position = Vector2( 104.521, 147.998 )
+
 [node name="Slimes4" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 2998.85, 231.737 )
 
@@ -353,6 +359,12 @@ position = Vector2( 3363.23, 235.301 )
 
 [node name="Slimes6" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 3220.69, 235.301 )
+
+[node name="Crawler" parent="Entities" instance=ExtResource( 10 )]
+position = Vector2( 660.004, -116.868 )
+
+[node name="Pathfinder" parent="Entities" instance=ExtResource( 12 )]
+position = Vector2( 740.836, 130.781 )
 
 [node name="FallCollision" type="Area2D" parent="."]
 position = Vector2( 33.2979, -285.41 )

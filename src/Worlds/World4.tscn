@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://Mobs_and_NPC/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Mobs_and_NPC/Lizard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Mobs_and_NPC/Guardian.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Mobs_and_NPC/Slimes.tscn" type="PackedScene" id=4]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Backgrounds/Magic_Forest/BAckgorund/Layers/Foreground.png" type="Texture" id=18]
 [ext_resource path="res://Backgrounds/Magic_Forest/BAckgorund/Magic cliff/tileset.png" type="Texture" id=19]
 [ext_resource path="res://Worlds/World.gd" type="Script" id=20]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1439.36, 10 )
