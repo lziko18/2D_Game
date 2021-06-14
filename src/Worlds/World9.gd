@@ -39,17 +39,18 @@ func _ready():
 
 func raise():
 	$Hidden1/AnimationPlayer.play_backwards("New Anim")
-	$StaticBody2D/CollisionShape2D.disabled=false
-	
+
 
 func unraise():
-	$Hidden1/AnimationPlayer.play_backwards("New Anim")
-	$Hidden2/AnimationPlayer.play_backwards("New Anim")
+	$Hidden1/AnimationPlayer.play("New Anim")
+	$Hidden2/AnimationPlayer.play("New Anim")
 	yield(get_tree().create_timer(0.3), "timeout")
-	$StaticBody2D/CollisionShape2D.disabled=true
-	$StaticBody2D2/CollisionShape2D.disabled=true
+	var from=$Player/Camera2D.global_position.x
+	$Player/Camera2D.change_left(9800,from-1000)
+	$Player/Camera2D.change_right(10700,11232)
+	yield(get_tree().create_timer(1), "timeout")
 	$Player/Camera2D.limit_left=0
-	$Player/Camera2D.limit_right=11232
+
 	
 
 
@@ -116,10 +117,10 @@ func _on_Area2D2_body_entered(body):
 
 
 func _on_Area2D3_body_entered(body):
-	if body.name=="Player":
-		$Player/Camera2D.limit_left=9800
+	if body.name=="Player" and get_tree().get_root().get_node("World/Old_guardian")!=null:
+		var from=$Player/Camera2D.global_position.x
+		$Player/Camera2D.change_left(from-1000,9800)
 		$Player/Camera2D.limit_right=10700
 		raise()
 		get_tree().get_root().get_node("World/Old_guardian").start()
-		queue_free()
-		
+		$Area2D3.queue_free()

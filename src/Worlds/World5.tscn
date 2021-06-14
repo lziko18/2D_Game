@@ -12,7 +12,6 @@
 [ext_resource path="res://Tilesets/collision.tres" type="TileSet" id=11]
 [ext_resource path="res://Mobs_and_NPC/Cute_slime.tscn" type="PackedScene" id=12]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
 tracks/0/type = "value"

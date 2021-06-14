@@ -3,7 +3,8 @@ extends Sprite
 var target1
 var target2
 var dir=0
-# Called when the node enters the scene tree for the first time.
+const scene = preload("res://Obelisk.tscn")
+var can_save=false
 func _ready():
 	target1=Vector2(global_position.x,global_position.y-10)
 	target2=Vector2(global_position.x,global_position.y)
@@ -18,6 +19,8 @@ func backrun():
 	dir=0
 	$Tween.start()
 
+func _process(delta):
+	if InputEventAction.
 
 
 
@@ -30,9 +33,17 @@ func _on_Tween_tween_all_completed():
 
 func _on_Area2D_body_entered(body):
 	if body.name=="Player":
+		if body.obelisk==false:
+			var add=scene.instance()
+			get_tree().get_root().get_node("World/Player/Camera2D").add_child(add)
+			body.obelisk=true
 		$AnimationPlayer.play_backwards("New Anim")
 
 
 func _on_Area2D_body_exited(body):
 	if body.name=="Player":
 		$AnimationPlayer.play("New Anim")
+
+
+func _on_Timer_timeout():
+	pass # Replace with function body.

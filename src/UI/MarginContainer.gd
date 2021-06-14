@@ -40,7 +40,7 @@ func handle_selection(_current_selection):
 		self.queue_free()
 		#var pause_mode = load("res://UI/Game_UI/Pause.tscn")
 		#get_tree().get_root().add_child(pause_mode.instance())
-		get_tree().get_root().add_child((load('res://Worlds/World8.tscn')).instance())
+		get_tree().get_root().add_child((load('res://Worlds/World5.tscn')).instance())
 		player.position=Vector2(250,-200)#player_data.position
 		get_tree().get_root().get_node("World").add_child(player)
 		

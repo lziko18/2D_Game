@@ -9,9 +9,9 @@ onready var root=get_tree().get_root()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused=true
-	yield(get_tree().create_timer(0.01), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	$Player/Camera2D.limit_bottom=352
-	$Player/Camera2D.limit_top=-320
+	$Player/Camera2D.limit_top=-317
 	$Player/Camera2D.limit_right=10300
 	$Player/Camera2D.limit_left=0
 	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")

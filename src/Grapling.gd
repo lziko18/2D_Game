@@ -3,7 +3,7 @@ extends Sprite
 var target1
 var target2
 var dir=0
-# Called when the node enters the scene tree for the first time.
+const scene = preload("res://GrapplingHook.tscn")
 func _ready():
 	target1=Vector2(global_position.x,global_position.y-10)
 	target2=Vector2(global_position.x,global_position.y)
@@ -27,8 +27,11 @@ func _on_Tween_tween_all_completed():
 	else:
 		backrun()
 
-
 func _on_Area2D_body_entered(body):
 	if body.name=="Player":
 		body.can_hook=true
+		if body.grappling==false:
+			var add=scene.instance()
+			get_tree().get_root().get_node("World/Player/Camera2D").add_child(add)
+			body.grappling=true
 		queue_free()

@@ -57,6 +57,11 @@ var can_speak=false
 var cnt=1
 var wizard 
 var bandit
+var spirit_fire=false
+var runes=false
+var obelisk=false
+var grappling=false
+
 func load_save(data):
 	save_data = data
 

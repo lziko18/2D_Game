@@ -46,18 +46,21 @@ func next_scene_to_world5():
 
 func raise():
 	$Hidden3/AnimationPlayer.play("Unhide")
-	$StaticBody2D/CollisionShape2D.disabled=false
-	$Player/Camera2D.change_left(0,25975)
+	var from=$Player/Camera2D.global_position.x
+	print(from)
+	$Player/Camera2D.change_left(from-1000,25225)
 	
 func unraise():
+	var from=$Player/Camera2D.global_position.x
+	print(from)
 	$Hidden3/AnimationPlayer.play("Hide")
 	$Hidden4/AnimationPlayer.play("Hide1")
 	yield(get_tree().create_timer(0.3), "timeout")
+	$Player/Camera2D.change_left(25225,from-1000)
+	$Player/Camera2D.change_right(25975,27125)
+	yield(get_tree().create_timer(1), "timeout")
 	$Player/Camera2D.limit_left=0
-	$Player/Camera2D.limit_right=27125
-	$StaticBody2D/CollisionShape2D.disabled=true
-	$StaticBody2D2/CollisionShape2D.disabled=true
-	
+
 
 func _on_Area2D_body_entered(body):
 	if body.name=="Player":
@@ -81,6 +84,8 @@ func _on_Area2D2_body_exited(body):
 
 func _on_Area2D3_body_entered(body):
 	if body.name=="Player":
+		get_tree().get_root().get_node("World/Player/Light2D").visible=true
+		$CanvasModulate.visible=true
 		$Player/Camera2D.limit_bottom=864
 		$Player/Camera2D.limit_top=351
 		$Player/Camera2D.limit_right=15169
@@ -89,6 +94,8 @@ func _on_Area2D3_body_entered(body):
 
 func _on_Area2D3_body_exited(body):
 	if body.name=="Player":
+		get_tree().get_root().get_node("World/Player/Light2D").visible=false
+		$CanvasModulate.visible=false
 		$Player/Camera2D.limit_bottom=352
 		$Player/Camera2D.limit_top=-320
 		$Player/Camera2D.limit_right=25975
@@ -199,6 +206,6 @@ func _on_FallCollision_body_entered(body):
 		
 
 
-func _on_Area2D5_body_entered(body):
-	
-	$Player/Camera2D.limit_left=4000
+
+
+

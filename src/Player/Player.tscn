@@ -1,8 +1,9 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Skills/Chain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Skills/Hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Game_UI/Game_UI_2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/2cd43b_2fbcdebf10894ccdbbd22f5642338f6c_mv2.png" type="Texture" id=4]
 [ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/Player_sprite_sheet.png" type="Texture" id=12]
 [ext_resource path="res://Skills/Groundslam.gd" type="Script" id=15]
@@ -601,6 +602,15 @@ position = Vector2( -80, 36 )
 enabled = true
 
 [node name="Hook" type="Timer" parent="."]
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( -4, 0 )
+rotation = 6.28319
+scale = Vector2( 3, 3 )
+z_as_relative = false
+texture = ExtResource( 4 )
+mode = 2
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="Attack_reset" to="." method="_on_Timer_timeout"]

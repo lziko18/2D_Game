@@ -16,8 +16,8 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
+		get_tree().paused=false
 		self.queue_free()
-
 
 func _on_Tween_tween_all_completed():
 	$Tween2.interpolate_property($TextureRect/RichTextLabel2, "percent_visible", 0, 1, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

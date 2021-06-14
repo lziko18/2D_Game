@@ -85,8 +85,6 @@ func ch_state1():
 	var our=get_parent().get_node("Old_guardian").global_position.x
 	rng.randomize()
 	num=rng.randi()%10+1
-	print(num)
-	print("state1")
 	if  abs(our - dir)<=90:
 		if can_choose==true:
 			if int(num)<=4:
@@ -114,7 +112,6 @@ func ch_state2():
 	var our=get_parent().get_node("Old_guardian").global_position.x
 	rng.randomize()
 	num=rng.randi()%10+1
-	print(num)
 	print("state2")
 	if  abs(our - dir)<=90:
 		if can_choose==true:
@@ -166,7 +163,6 @@ func _on_AnimationPlayer_animation_started(name):
 
 func _on_Hurtbox_area_entered(area):
 	health=health-1
-	print("jeta=")
 	print(health)
 	if health<=0:
 		can_choose=false

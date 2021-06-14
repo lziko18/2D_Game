@@ -50,6 +50,7 @@ __meta__ = {
 "anims/New Anim" = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 scale = Vector2( 15, 10 )
 __meta__ = {
 "_edit_group_": true
@@ -59,6 +60,10 @@ __meta__ = {
 shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -31,6 +31,8 @@ func _on_Tween_tween_all_completed():
 func _on_Area2D_body_entered(body):
 	if body.name=="Player":
 		body.can_cast=true
-		var add=scene.instance()
-		get_tree().get_root().get_node("World/Player/Camera2D").add_child(add)
+		if body.spirit_fire==false:
+			var add=scene.instance()
+			get_tree().get_root().get_node("World/Player/Camera2D").add_child(add)
+			body.spirit_fire=true
 		queue_free()
