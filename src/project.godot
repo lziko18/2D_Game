@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
-"class": "Custom_World",
-"language": "GDScript",
-"path": "res://Scripts/World.gd"
-}, {
 "base": "Reference",
 "class": "SaveSystem",
 "language": "GDScript",
@@ -25,7 +20,6 @@ _global_script_classes=[ {
 "path": "res://StateMachine.gd"
 } ]
 _global_script_class_icons={
-"Custom_World": "",
 "SaveSystem": "",
 "StateMachine": ""
 }
