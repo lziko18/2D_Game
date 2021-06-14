@@ -3,14 +3,10 @@ extends "res://Scripts/World.gd"
 onready var root=get_tree().get_root()
 
 func _ready():
-	get_tree().paused=true
-	yield(get_tree().create_timer(0.01), "timeout")
 	$Player/Camera2D.limit_bottom=352
 	$Player/Camera2D.limit_top=-500
 	$Player/Camera2D.limit_right=26000
 	$Player/Camera2D.limit_left=0
-	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
-	get_tree().paused=false
 	yield(get_tree().create_timer(0.05), "timeout")
 	$Player.set_physics_process(true)
 	$Area2D3/CollisionShape2D.disabled=false
@@ -123,3 +119,7 @@ func _on_FallCollision_body_entered(body):
 	if body.name == "Player":
 		body.position.x = body.last_floor_position.x
 		body.position.y = body.last_floor_position.y
+
+	
+func _get_world_name():
+	return "World8"

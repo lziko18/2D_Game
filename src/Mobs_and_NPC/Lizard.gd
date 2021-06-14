@@ -15,9 +15,16 @@ enum{
 	Die,
 }
 
+var save_data = null
+func load_save(data):
+	save_data = data
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state=Wander
+	if save_data != null:
+		set_from_save_data(save_data)
+
 
 func wander():
 	motion.x=150
@@ -176,3 +183,19 @@ func _on_backhit_body_entered(_body):
 
 func _on_Lizard_stats_no_health():
 	state=Die
+
+func get_save_data():
+	var data = {
+		"position": {
+			"x": global_position.x,
+			"y": global_position.y
+		}
+	}
+	return data
+	
+func set_from_save_data(data):
+	global_position.x = data.position.x
+	global_position.y = data.position.y
+
+func get_entity_name():
+	return "Lizard"

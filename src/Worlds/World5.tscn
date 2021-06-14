@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=1]
 [ext_resource path="res://ParallaxBackgrounds/Background_Magic_Forest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mobs_and_NPC/Lizard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Mobs_and_NPC/Slimes.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Bosses/Old_guardian.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Mobs_and_NPC/Crawler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mobs_and_NPC/Pathfinder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/1-16663_light-beam-png-beam-of-light-png.png" type="Texture" id=8]
@@ -11,7 +12,6 @@
 [ext_resource path="res://Sprites/Skeleton_enemy/light_PNG14418.png" type="Texture" id=10]
 [ext_resource path="res://Tilesets/collision.tres" type="TileSet" id=11]
 [ext_resource path="res://Mobs_and_NPC/Cute_slime.tscn" type="PackedScene" id=12]
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
@@ -327,14 +327,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hide2_area"]
 shape = SubResource( 6 )
 
-[node name="Crawler" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1906.7, -13.1215 )
-scale = Vector2( 0.4, 0.4 )
-
-[node name="Pathfinder" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1185.66, 107.635 )
-collision_mask = 1
-
 [node name="Cute_slime" parent="." instance=ExtResource( 12 )]
 position = Vector2( 683.839, 271.584 )
 scale = Vector2( 2, 2 )
@@ -354,14 +346,6 @@ collision_layer = 0
 offset = Vector2( 0, -190 )
 transform = Transform2D( 1, 0, 0, 1, 0, -190 )
 
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 294.923, 94.542 )
-collision_mask = 1
-
-[node name="Slimes" parent="." instance=ExtResource( 4 )]
-position = Vector2( 342.16, 112.577 )
-direction = -1
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 10360.8, -14.897 )
 scale = Vector2( 4.2, 26.2 )
@@ -371,6 +355,31 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 7 )
+
+[node name="Player_Start" type="Position2D" parent="."]
+position = Vector2( 45.8399, -84.0219 )
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Crawler" parent="Entities" instance=ExtResource( 6 )]
+position = Vector2( 1913.37, -16.4586 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Pathfinder" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 1185.66, 107.635 )
+collision_mask = 1
+
+[node name="Lizard" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 294.923, 94.542 )
+collision_mask = 1
+
+[node name="Slimes" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 342.16, 112.577 )
+
+[node name="Bosses" type="Node2D" parent="."]
+
+[node name="Old_guardian" parent="Bosses" instance=ExtResource( 5 )]
+position = Vector2( 921.189, 204.57 )
 [connection signal="body_entered" from="Hide1_area" to="." method="_on_Hide1_area_body_entered"]
 [connection signal="body_exited" from="Hide1_area" to="." method="_on_Hide1_area_body_exited"]
 [connection signal="body_entered" from="Hide2_area" to="." method="_on_Hide2_area_body_entered"]

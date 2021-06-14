@@ -591,6 +591,8 @@ hframes = 140
 frame = 93
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
+limit_top = -190
+limit_bottom = 367
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="Attack_reset" to="." method="_on_Timer_timeout"]
