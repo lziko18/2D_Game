@@ -49,7 +49,7 @@ func add_state(state_name):
 func get_state_by_id(id):
 	var _state
 	for key in states.keys():
-		if states[key] == id:
+		if id == states[key]:
 			_state = key
 			break
 	return _state
