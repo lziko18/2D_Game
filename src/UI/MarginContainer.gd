@@ -57,8 +57,8 @@ func handle_selection(_current_selection):
 
 		#var load_game_menu_scene = load("res://UI/Load_Game_Menu/Load_Game_Menu.tscn")
 		#var load_game_menu = load_game_menu_scene.instance()
-		#get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
-		#yield(get_tree().create_timer(1), "timeout")
+		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
+		yield(get_tree().create_timer(1), "timeout")
 		self.queue_free()
 		get_tree().get_root().add_child(game_instance)
 		

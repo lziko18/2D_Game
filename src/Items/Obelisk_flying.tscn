@@ -1,9 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/Color_Fill_2_copy.png" type="Texture" id=1]
-[ext_resource path="res://Obelisk_flying.gd" type="Script" id=2]
+[ext_resource path="res://Items/Obelisk_flying.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/Adventurefont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Sprites/FlyingObelisk_no_lightnings_no_letter.png" type="Texture" id=4]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"

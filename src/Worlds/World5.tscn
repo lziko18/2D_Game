@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=1]
 [ext_resource path="res://ParallaxBackgrounds/Background_Magic_Forest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mobs_and_NPC/Lizard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Mobs_and_NPC/Slimes.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Bosses/Old_guardian.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/Rune.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Mobs_and_NPC/Crawler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mobs_and_NPC/Pathfinder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/1-16663_light-beam-png-beam-of-light-png.png" type="Texture" id=8]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Sprites/Skeleton_enemy/light_PNG14418.png" type="Texture" id=10]
 [ext_resource path="res://Tilesets/collision.tres" type="TileSet" id=11]
 [ext_resource path="res://Mobs_and_NPC/Cute_slime.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Items/hearts.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
@@ -333,16 +334,19 @@ shape = SubResource( 6 )
 position = Vector2( 683.839, 271.584 )
 scale = Vector2( 2, 2 )
 collision_layer = 0
+collision_mask = 0
 
 [node name="Cute_slime3" parent="." instance=ExtResource( 12 )]
 position = Vector2( 709.656, 275.232 )
 scale = Vector2( 1.5, 1.5 )
 collision_layer = 0
+collision_mask = 0
 dir = 0
 
 [node name="Cute_slime2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 697.589, 280.564 )
 collision_layer = 0
+collision_mask = 0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
 offset = Vector2( 0, -190 )
@@ -387,8 +391,14 @@ position = Vector2( 342.16, 112.577 )
 
 [node name="Bosses" type="Node2D" parent="."]
 
-[node name="Old_guardian" parent="Bosses" instance=ExtResource( 5 )]
-position = Vector2( 921.189, 204.57 )
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Rune" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 764.137, 245.722 )
+
+[node name="hearts" parent="Items" instance=ExtResource( 13 )]
+position = Vector2( 843.547, 248.719 )
+
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2( 4295.32, 450 )
 scale = Vector2( 700, 5 )

@@ -2,7 +2,6 @@ extends "res://Scripts/World.gd"
 
 onready var root=get_tree().get_root()
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused=true
@@ -28,12 +27,6 @@ func next_scene_to_world8():
 	root.get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
 	root.get_child(root.get_child_count()-1).add_child(player)
 	print(root.get_child_count())
-
-
-
-
-
-
 
 func _on_Hide1_area_body_entered(body):
 	if body.name=="Player":

@@ -28,7 +28,6 @@ func _physics_process(delta):
 	yield(get_tree().create_timer(1.35), "timeout")
 	queue_free()
 
-
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name=="land":
 		anime_palyed=true

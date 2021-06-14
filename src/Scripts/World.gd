@@ -10,8 +10,14 @@ var entity_scenes = {
 }
 
 var boss_scenes = {
-	"Old_guardian": preload("res://Bosses/Old_guardian.tscn")
-	#"boss_type_01": preload("res://Bosses/boss_type_01.tscn")
+	"Old_guardian": preload("res://Bosses/Old_guardian.tscn"),
+	"boss_type_01": preload("res://Bosses/boss_type_01.tscn")
+}
+
+var item_scenes = {
+	"Grapling": preload("res://Items/Grapling.tscn"),
+	"hearts": preload("res://Items/hearts.tscn"),
+	"Rune": preload("res://Items/Rune.tscn")
 }
 
 func _ready():
@@ -27,6 +33,8 @@ func load_save(data):
 		e.queue_free()
 	for e in get_node("Bosses").get_children():
 		e.queue_free()
+	for e in get_node("Items").get_children():
+		e.queue_free()
 	save_data = data
 
 func get_save_data():
@@ -40,9 +48,15 @@ func get_save_data():
 		var data = b.get_save_data()
 		data.name = b.get_entity_name()
 		boss_data.append(data)
+	var item_data = []
+	for item in get_node("Items").get_children():
+		var data = item.get_save_data()
+		data.name = item.get_entity_name()
+		item_data.append(data)
 	var data = {
 		"entities" : entity_data,
-		"bosses": boss_data
+		"bosses": boss_data,
+		"items": item_data
 	}
 	return data
 
@@ -55,6 +69,10 @@ func set_from_save_data(data):
 		var boss_instance = boss_scenes[data.bosses[i].name].instance()
 		boss_instance.load_save(data.bosses[i])
 		get_node("Bosses").add_child(boss_instance)
+	for i in range(0, data.items.size()):
+		var item_instance = item_scenes[data.items[i].name].instance()
+		item_instance.load_save(data.items[i])
+		get_node("Items").add_child(item_instance)
 
 func _get_world_name():
 	return "World"

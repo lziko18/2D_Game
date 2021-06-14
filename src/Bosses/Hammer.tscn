@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://bosses/Throw.gd" type="Script" id=1]
+[ext_resource path="res://Bosses/Throw.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/boss_effect_hammer.png" type="Texture" id=2]
 [ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Skills/Enemy_hitbox.gd" type="Script" id=4]
