@@ -61,7 +61,6 @@ tracks/1/keys = {
 scale = Vector2( 2, 2 )
 z_as_relative = false
 collision_layer = 64
-collision_mask = 256
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

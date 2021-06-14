@@ -33,7 +33,6 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerStats="*res://Player/Player_stats.tscn"
-PlayerHealth="*res://UI/Game_UI/Player_health.tscn"
 Transition="*res://UI/Transition.tscn"
 
 [display]

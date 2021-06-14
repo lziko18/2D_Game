@@ -164,7 +164,7 @@ collision_mask = 2
 shape = SubResource( 6 )
 
 [node name="kot" parent="Sprite" instance=ExtResource( 4 )]
-position = Vector2( -0.565247, 8.03821 )
+position = Vector2( 0, 12.3101 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.3 )
 collision_layer = 64
@@ -180,8 +180,8 @@ position = Vector2( 3.0889, 16.0622 )
 shape = SubResource( 8 )
 
 [node name="Weak_point" type="Area2D" parent="."]
-position = Vector2( -3.1951, -7.26178 )
-scale = Vector2( 2.72154, 0.82937 )
+position = Vector2( 0, 6.94216 )
+scale = Vector2( 2.25083, 2.31998 )
 linear_damp = 0.0
 collision_layer = 128
 collision_mask = 0

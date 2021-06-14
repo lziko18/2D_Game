@@ -92,7 +92,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 flip_h = true
 hframes = 24
-frame = 16
+frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Crawl = SubResource( 1 )

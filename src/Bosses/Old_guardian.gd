@@ -104,6 +104,11 @@ func ch_state1():
 			elif int(num)<=10 and 9<int(num):
 				$OG_state.set_state(4)
 
+
+
+func start():
+	$OG_state.set_state(0)
+	
 func ch_state2():
 	var dir=get_parent().get_node("Player").global_position.x
 	var our=get_parent().get_node("Old_guardian").global_position.x
@@ -134,6 +139,7 @@ func _on_AnimationPlayer_animation_finished(name):
 		attack3=false
 		$OG_state.set_state(0)
 	if name=="Die":
+		get_tree().get_root().get_node("World").unraise()
 		queue_free()
 
 

@@ -182,7 +182,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 61, 59, 60 ]
+"values": [ 61, 59, 59 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -588,9 +588,19 @@ position = Vector2( -0.418701, -11.5197 )
 scale = Vector2( 3.6374, 3.92665 )
 texture = ExtResource( 12 )
 hframes = 140
-frame = 93
+frame = 60
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
+
+[node name="check_for_end1" type="RayCast2D" parent="."]
+position = Vector2( 80, 36 )
+enabled = true
+
+[node name="check_for_end2" type="RayCast2D" parent="."]
+position = Vector2( -80, 36 )
+enabled = true
+
+[node name="Hook" type="Timer" parent="."]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="Attack_reset" to="." method="_on_Timer_timeout"]
@@ -598,6 +608,7 @@ frame = 93
 [connection signal="timeout" from="Cast_reset" to="." method="_on_Cast_reset_timeout"]
 [connection signal="timeout" from="Hurt_reset" to="." method="_on_Hurt_reset_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="timeout" from="Hook" to="." method="_on_Hook_timeout"]
 
 [editable path="Position2D/Att_hitbox"]
 
