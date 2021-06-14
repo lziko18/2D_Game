@@ -45,9 +45,6 @@ func _input(event):
 
 
 func _state_logic(delta):
-	for i in states.keys():
-		if states[i]==state:
-			print(i)
 	parent.gravity()
 	parent.player_knock_back()
 	if parent.is_dead==true and parent.is_on_floor()==true:

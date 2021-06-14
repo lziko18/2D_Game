@@ -114,6 +114,7 @@ func _on_Weak_point_area_entered(area):
 	if area.get_parent().name=="Player":
 		health-=1
 		if player.motion.y>0:
+			player.motion.x=0
 			player.motion.y=-600
 			player.first_jump=true
 			player.jumps_left=1
@@ -125,6 +126,8 @@ func _on_Weak_point_area_entered(area):
 			else:
 				set_state(states.Die)
 				$Weak_point.queue_free()
+		else:
+			print("bug")
 
 func get_save_data():
 	var data = {

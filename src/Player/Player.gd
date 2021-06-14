@@ -18,14 +18,14 @@ var double_jump_force= 500
 var jumps_left=0
 var attack_points=3
 var air_att_points=3
-
+var can_hook=false
 var double_jump=false
 var friction=true
 var is_casting=false
 var is_running=null
 var is_jumping=null
 var first_jump=true
-var can_cast=true
+var can_cast=false
 var is_sliding=false
 var is_attackig=false
 var is_air_att=false
@@ -44,7 +44,7 @@ var grab_left=false
 var chain_velocity := Vector2(0,0)
 var last_floor_position = Vector2(0, 0)
 var last_floor_ctr = 0
-
+var speaking_to=""
 onready var cam=$Camera2D
 onready var attack_hitbox =$Position2D/Att_hitbox
 onready var ground_damage=$Ground_slam_hitbox
@@ -55,6 +55,13 @@ var player_stats
 var is_speaking=false
 var can_speak=false
 var world_name
+var cnt=1
+var wizard 
+var bandit
+var spirit_fire=false
+var runes=false
+var obelisk=false
+var grappling=false
 
 func load_save(data):
 	save_data = data
@@ -77,7 +84,6 @@ func heal(amount):
 
 func add_health(amount):
 	health_max = health_max + amount
-	health_current = health_current + amount
 	update_max_health()
 	update_health()
 
@@ -105,8 +111,10 @@ func check():
 		is_crouching=false
 
 func hook():
-	if Input.is_action_just_pressed("Hook") and is_sliding==false and is_attackig==false and is_casting==false and is_air_att==false and is_crouching==false and is_wall_sliding==false and grabbed==false and is_speaking==false:
+	if Input.is_action_just_pressed("Hook") and is_sliding==false and is_attackig==false and is_casting==false and is_air_att==false and is_crouching==false and is_wall_sliding==false and grabbed==false and is_speaking==false and can_hook==true:
 		$Position2D/Chain.realease=false
+		can_hook=false
+		$Hook.start()
 		is_hooking=true
 		if $Sprite.flip_h==true:
 			motion.x=1
@@ -334,9 +342,15 @@ func get_input_for_attacking():
 	fireball_cast.position=$Position2D.global_position
 
 func speaking():
-	if Input.is_action_just_pressed("Talk_Read") and is_on_floor() and is_sliding==false and is_attackig==false and  is_air_att==false  and is_casting==false and is_crouching==false and is_hooking==false :
+	if Input.is_action_just_pressed("Talk_Read") and is_on_floor() and is_sliding==false and is_attackig==false and  is_air_att==false  and is_casting==false and is_crouching==false and is_hooking==false and can_speak==true and cnt==1:
+		cnt=0
 		motion.x=0
 		var dialog=DIALOG.instance()
+		dialog.get_node("DialogBox").who=speaking_to
+		if wizard==true:
+			dialog.get_node("DialogBox").wizard=true
+		elif bandit==true:
+			dialog.get_node("DialogBox").bandit=true
 		$AnimationPlayer.play("Player Idle")
 		is_speaking=true
 		$Camera2D/CanvasLayer.add_child(dialog)
@@ -594,6 +608,8 @@ func _on_AnimationPlayer_animation_finished(cast):
 
 
 func _on_AnimationPlayer_animation_started(anim_name):
+	if anim_name!="air1" or anim_name!="air2" or anim_name!="Attack1" or anim_name!="Attack2" or anim_name!="Attack3":
+		$Position2D/Att_hitbox/CollisionShape2D.disabled=true
 	if anim_name=="Hurt":
 		$Bounce/CollisionShape2D.disabled=false
 		$Position2D/Att_hitbox/CollisionShape2D.disabled=true
@@ -685,8 +701,12 @@ func _ready():
 
 func update_floor_position():
 	last_floor_ctr += 1
-	if last_floor_ctr % 60 == 0:
-		last_floor_ctr -= 60
-		if is_on_floor():
+	if last_floor_ctr % 5 == 0:
+		last_floor_ctr -= 5
+		if is_on_floor() and $check_for_end1.is_colliding()==true and $check_for_end2.is_colliding()==true:
 			last_floor_position.x = global_position.x
 			last_floor_position.y = global_position.y
+
+
+func _on_Hook_timeout():
+	can_hook=true

@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Fonts/Adventurefont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Sprites/Color_Fill_2_copy.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/firefire_w.png" type="Texture" id=3]
+[ext_resource path="res://Fireball.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/casting_w.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fonts/Adventurer.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 26
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 13
+font_data = SubResource( 1 )
+
+[node name="Fireball" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.0235294, 0.0235294, 0.0235294, 0.815686 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.0
+margin_top = 137.09
+margin_right = 69.0
+margin_bottom = 165.09
+custom_fonts/font = SubResource( 2 )
+text = "Press Enter"
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -325.0
+margin_top = -176.0
+margin_right = 325.0
+margin_bottom = 176.0
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="TextureRect"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 325.527, 40 )
+scale = Vector2( 0.6, 0.5 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 82, -1, 132, 95 )
+
+[node name="Label" type="Label" parent="TextureRect/Sprite"]
+margin_left = -108.828
+margin_top = -26.5135
+margin_right = 135.172
+margin_bottom = 25.4865
+custom_fonts/font = ExtResource( 1 )
+text = "Fire Spirit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -129.0
+margin_top = -50.9385
+margin_right = 129.0
+margin_bottom = -6.93846
+custom_fonts/normal_font = SubResource( 3 )
+visible_characters = 0
+percent_visible = 0.0
+text = "	This spirit can control the fire element of the nature. It is a very powerful spirit and his powers can be destructive."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -129.0
+margin_top = 84.0
+margin_right = 144.0
+margin_bottom = 128.0
+custom_fonts/normal_font = SubResource( 3 )
+visible_characters = 0
+percent_visible = 0.0
+text = "	Now that you absorded this spirit,  you can press Q to release a fireball. It will take a short period of time to reuse it."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="TextureRect"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 319.7, 215.544 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="TextureRect"]
+modulate = Color( 1, 1, 1, 0 )
+show_behind_parent = true
+position = Vector2( 321.422, 96.0691 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )
+region_rect = Rect2( 3526.13, 311.007, 147.807, 234.328 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Tween2" type="Tween" parent="."]
+
+[node name="Tween3" type="Tween" parent="."]
+
+[node name="Tween4" type="Tween" parent="."]
+
+[node name="Tween5" type="Tween" parent="."]
+
+[node name="Tween6" type="Tween" parent="."]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="tween_all_completed" from="Tween2" to="." method="_on_Tween2_tween_all_completed"]
+[connection signal="tween_all_completed" from="Tween3" to="." method="_on_Tween3_tween_all_completed"]
+[connection signal="tween_all_completed" from="Tween4" to="." method="_on_Tween4_tween_all_completed"]
+[connection signal="tween_all_completed" from="Tween5" to="." method="_on_Tween5_tween_all_completed"]
+[connection signal="tween_all_completed" from="Tween6" to="." method="_on_Tween6_tween_all_completed"]

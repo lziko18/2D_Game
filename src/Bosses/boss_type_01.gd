@@ -78,7 +78,8 @@ func walk():
 	if  abs(our - dir)<=30:
 		motion.x = 0;
 
-
+func start():
+	$Node.set_state(13)
 
 
 
@@ -193,6 +194,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$Hurtbox/CollisionShape2D2.disabled=false
 		$Node.set_state(4)
 	if anim_name=='boss_death':
+		get_tree().get_root().get_node("World").unraise()
 		queue_free()
 
 func get_hammer():
@@ -250,7 +252,6 @@ func _on_AnimationPlayer_animation_started(anim_name):
 
 func _on_Hurtbox_area_entered(area):
 	health=health-1
-	print("jeta=")
 	print(health)
 	if health<=0:
 		can_choose=false
