@@ -687,14 +687,13 @@ func set_from_save_data(data):
 func _ready():
 	#player_stat.connect("no_health",self,"player_die")
 	player_stats=get_tree().get_root().get_node("World/Player/Camera2D/CanvasLayer/Prova")
-	set_physics_process(false)
+	#set_physics_process(false)
 
 	if save_data == null:
 		health_max = 5
 		update_max_health()
 		health_current = 5
 		update_health()
-		global_position = get_tree().get_root().get_node("World/Player_Start").global_position
 	else:
 		set_from_save_data(save_data)
 

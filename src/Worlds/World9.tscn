@@ -10,9 +10,10 @@
 [ext_resource path="res://Worlds/World9.gd" type="Script" id=8]
 [ext_resource path="res://Tilesets/collision.tres" type="TileSet" id=9]
 [ext_resource path="res://Bosses/Old_guardian.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Items/Rune.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 128.75 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -139,7 +140,7 @@ format = 1
 tile_data = PoolIntArray( -786220, 1610612809, 0, -786214, 1610612809, 0, -720617, 536870986, 0, -720605, 536870986, 0, -720603, 536870986, 0, -655195, 74, 0, -655191, 74, 0, -655186, 74, 0, -655175, 73, 0, -655172, 73, 0, -655169, 73, 0, -655165, 73, 0, -655161, 73, 0, -655157, 73, 0, -655154, 73, 0, -655138, 536870980, 0, -655137, 73, 0, -655132, 73, 0, -655114, 536870985, 0, -655109, 536870987, 0, -589615, 73, 0, -589612, 73, 0, -589609, 73, 0, -589607, 73, 0, -589605, 73, 0, -589571, 51, 0, -524194, 51, 0, 48, 52, 0, 131338, 1610612760, 0, 131339, 1610612759, 0, 196874, 1610612758, 0, 196875, 1610612757, 0, 262410, 1610612756, 0, 262411, 1610612755, 0, 327946, 1610612754, 0, 327947, 1610612753, 0, 393276, 536870966, 0, 393295, 52, 0, 458822, 52, 0, 458826, 53, 0, 458836, 52, 0, 458840, 52, 0, 458891, 536870966, 0, 459012, 536870930, 0, 459013, 536870929, 0, 524297, 1610612810, 0, 524396, 53, 0, 524433, 53, 0, 524453, 53, 0, 524548, 536870932, 0, 524549, 536870931, 0, 524562, 536870966, 0, 524573, 536870966, 0, 524626, 536870939, 0, 589854, 53, 0, 589866, 53, 0, 590004, 1610612811, 0, 590052, 1610612810, 0, 590084, 536870934, 0, 590085, 536870933, 0, 590162, 536870940, 0, 655541, 1610612809, 0, 655548, 1610612809, 0, 655551, 1610612810, 0, 655553, 1610612809, 0, 655558, 1610612809, 0, 655563, 1610612809, 0, 655566, 1610612811, 0, 655569, 1610612810, 0, 655574, 1610612811, 0, 655579, 1610612811, 0, 655582, 1610612811, 0, 655586, 1610612809, 0, 655620, 536870936, 0, 655621, 536870935, 0, 655667, 1073741898, 0, 721025, 1610612809, 0 )
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 4427.21, -360.725 )
+position = Vector2( 4430.15, -1046.3 )
 scale = Vector2( 21.5483, 5.91052 )
 __meta__ = {
 "_edit_group_": true
@@ -191,9 +192,6 @@ tile_data = PoolIntArray( 328013, 0, 0, 328014, 0, 0, 328015, 0, 0, 393549, 1, 0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hidden2"]
 "anims/New Anim" = SubResource( 4 )
 
-[node name="Old_guardian" parent="." instance=ExtResource( 10 )]
-position = Vector2( 10493.2, 211.883 )
-
 [node name="Area2D3" type="Area2D" parent="."]
 position = Vector2( 10086.4, 35.919 )
 scale = Vector2( 11.4262, 32.1144 )
@@ -204,8 +202,17 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
 shape = SubResource( 5 )
 
-[node name="Player" parent="." instance=ExtResource( 11 )]
-position = Vector2( 9490.47, -100.071 )
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Bosses" type="Node2D" parent="."]
+
+[node name="Old_guardian" parent="Bosses" instance=ExtResource( 10 )]
+position = Vector2( 10493.2, 211.883 )
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Rune" parent="Items" instance=ExtResource( 11 )]
+position = Vector2( 4655, 227.761 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
 [connection signal="body_entered" from="Area2D3" to="." method="_on_Area2D3_body_entered"]

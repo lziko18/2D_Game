@@ -30,7 +30,7 @@ func _init():
 
 func _ready():
 	if save_data == null:
-		set_state(states.idle)
+		set_state(states.fake_idle)
 	timer = 0
 
 func _state_logic(_delta):
@@ -156,6 +156,7 @@ func _on_AnimationPlayer_animation_finished(name):
 	if name=="Spit":
 		set_state(states.idle)
 	if name=="Die":
+		get_tree().get_root().get_node("World").unraise()
 		queue_free()
 
 func _on_AnimationPlayer_animation_started(name):

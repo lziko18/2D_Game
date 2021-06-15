@@ -16,7 +16,7 @@ func _ready():
 	add_state('death')#12
 	add_state('taunt')#13
 	add_state('fake_idle')#15
-	call_deferred("set_state",states.idle)
+	call_deferred("set_state",states.fake_idle)
 func _input(event):
 	#if[states.idle,states.walk].has(state):
 		#if event.is_action_pressed("ui_up"):
