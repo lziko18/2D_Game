@@ -1,4 +1,4 @@
-extends "res://Scripts/StateMachine.gd"
+extends "res://Scripts/Entity.gd"
 
 const UP=Vector2(0,-1)
 const speed=40
@@ -11,8 +11,6 @@ var health=2
 onready var player_push=$Sprite/Position2D/Area2D
 onready var player_push1=$Sprite/kot
 var player = null
-
-var save_data = null
 
 func _init():
 	add_state("Wander")
@@ -33,7 +31,6 @@ func _state_logic(delta):
 		states.Wander:
 			if $Sprite/Position2D/RayCast2D.is_colliding() or !$Sprite/Position2D/RayCast2D2.is_colliding():
 				set_direction(-direction)
-				print("colliding")
 			motion.x = speed * direction
 			motion.y += gravity
 		states.Idle:
@@ -59,7 +56,6 @@ func player_knock():
 		player_push.knockback_vector=-150
 	if $Sprite.flip_h==false:
 		player_push.knockback_vector=-150
-		player_push
 	else:
 		player_push.knockback_vector=150
 	
@@ -83,7 +79,6 @@ func _enter_state(new_state, old_state):
 			$Sprite/Position2D.queue_free()
 			$Sprite/kot.queue_free()
 			$CollisionShape2D.queue_free()
-			get_tree().get_root().get_node("World").entities[get_index()] = false
 
 func _exit_state(old_state, new_state):
 	pass
@@ -119,6 +114,7 @@ func _on_Weak_point_area_entered(area):
 	if area.get_parent().name=="Player":
 		health-=1
 		if player.motion.y>0:
+			player.motion.x=0
 			player.motion.y=-600
 			player.first_jump=true
 			player.jumps_left=1
@@ -130,9 +126,8 @@ func _on_Weak_point_area_entered(area):
 			else:
 				set_state(states.Die)
 				$Weak_point.queue_free()
-
-func load_save(data):
-	save_data = data
+		else:
+			print("bug")
 
 func get_save_data():
 	var data = {
@@ -164,3 +159,6 @@ func set_from_save_data(data):
 	$Sprite/AnimationPlayer.play(data.animation.name)
 	$Sprite/AnimationPlayer.seek(data.animation.position)
 	health = data.health
+
+func get_entity_name():
+	return "Slime"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Mobs_and_NPC/Crawler.gd" type="Script" id=1]
+[ext_resource path="res://Mobs_and_NPC/Crawler2.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/output-onlinegiftools.png" type="Texture" id=2]
 [ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Skills/Enemy_hitbox.gd" type="Script" id=4]
@@ -92,7 +92,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 flip_h = true
 hframes = 24
-frame = 16
+frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Crawl = SubResource( 1 )

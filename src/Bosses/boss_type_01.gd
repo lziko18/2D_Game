@@ -27,6 +27,14 @@ onready var player_push=$Sprite/Position2D/Area2D
 onready var player_push2=$Sprite/Position2D/Area2D2
 onready var player_push3=$Sprite/Position2D/Area2D3
 
+var save_data
+
+func load_save(data):
+	save_data = data
+
+func _ready():
+	if save_data != null:
+		set_from_save_data(save_data)
 
 func gravity():
 	motion.y += GRAVITY;
@@ -41,8 +49,8 @@ func dash():
 			motion.x=-500
 	
 func change_dir():
-	var dir=get_parent().get_node("Player").global_position.x
-	var our=get_parent().get_node("boss_type_01").global_position.x
+	var dir=get_tree().get_root().get_node("World").get_node("Player").global_position.x
+	var our=global_position.x
 	if our > dir:
 		$Sprite.flip_h=true
 		$Sprite/Position2D.position.x=-8
@@ -57,8 +65,8 @@ func change_dir():
 		$Sprite/Position2D/Area2D3.position.x=4.508
 
 func player_knock_back():
-	var dir=get_parent().get_node("Player").global_position.x
-	var our=get_parent().get_node("boss_type_01").global_position.x
+	var dir=get_tree().get_root().get_node("World").get_node("Player").global_position.x
+	var our=global_position.x
 	if our<dir:
 		player_push.knockback_vector=100
 		player_push2.knockback_vector=100
@@ -69,8 +77,8 @@ func player_knock_back():
 		player_push3.knockback_vector=-100
 		
 func walk():
-	var dir=get_parent().get_node("Player").global_position.x
-	var our=get_parent().get_node("boss_type_01").global_position.x
+	var dir=get_tree().get_root().get_node("World").get_node("Player").global_position.x
+	var our=global_position.x
 	if $Sprite.flip_h == true:
 		motion.x = -150;
 	elif $Sprite.flip_h == false:
@@ -78,12 +86,8 @@ func walk():
 	if  abs(our - dir)<=30:
 		motion.x = 0;
 
-
-
-
-
-
-
+func start():
+	$Node.set_state(13)
 
 func jump_attack():
 	if is_dead==false:
@@ -117,8 +121,8 @@ func leap_down():
 
 
 func choose_state_from_distance():
-	var dir=get_parent().get_node("Player").global_position.x
-	var our=get_parent().get_node("boss_type_01").global_position.x
+	var dir=get_tree().get_root().get_node("World").get_node("Player").global_position.x
+	var our=global_position.x
 	rng.randomize()
 	num=rng.randi()%10+1
 
@@ -156,13 +160,13 @@ func throw():
 	var hammer=Hammer.instance()
 	var position_of_hammer=$Sprite/Position2D.global_position
 	hammer.position=position_of_hammer
-	if abs(get_parent().get_node("Player").get_node("Colli2").global_position.x-$Sprite/Position2D.global_position.x)<200:
-		hammer.speed=(get_parent().get_node("Player").get_node("Colli2").global_position.x-$Sprite/Position2D.global_position.x)*3
+	if abs(get_tree().get_root().get_node("World").get_node("Player").get_node("Colli2").global_position.x-$Sprite/Position2D.global_position.x)<200:
+		hammer.speed=(get_tree().get_root().get_node("World").get_node("Player").get_node("Colli2").global_position.x-$Sprite/Position2D.global_position.x)*3
 		hammer.speed2=(336.049-$Sprite/Position2D.global_position.y-25)*3
 	else:
-		hammer.speed=get_parent().get_node("Player").get_node("Colli2").global_position.x-$Sprite/Position2D.global_position.x
+		hammer.speed=get_tree().get_root().get_node("World").get_node("Player").get_node("Colli2").global_position.x-$Sprite/Position2D.global_position.x
 		hammer.speed2=336.049-$Sprite/Position2D.global_position.y-40
-	get_parent().add_child(hammer)
+	get_tree().get_root().get_node("World").add_child(hammer)
 
 
 
@@ -193,13 +197,14 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$Hurtbox/CollisionShape2D2.disabled=false
 		$Node.set_state(4)
 	if anim_name=='boss_death':
+		get_tree().get_root().get_node("World").unraise()
 		queue_free()
 
 func get_hammer():
 	pass
 
 func get_pos():
-	dust_pos=Vector2(get_parent().get_node("boss_type_01").global_position.x,get_parent().get_node("boss_type_01").global_position.y-20)
+	dust_pos=Vector2(global_position.x,global_position.y-20)
 	if $Sprite.flip_h==true:
 		dust_dir=-1
 	elif $Sprite.flip_h==false:
@@ -211,7 +216,7 @@ func spawn_dust():
 		dust.flip_h=true
 	elif dust_dir==1:
 		dust.flip_h=false
-	get_parent().add_child(dust)
+	get_tree().get_root().get_node("World").add_child(dust)
 	
 	
 
@@ -241,18 +246,28 @@ func _on_AnimationPlayer_animation_started(anim_name):
 		if is_dead==false:
 			leap_up()
 	elif anim_name=="boss_leap_down":
-		position.x=get_parent().get_node("Hammer").position.x
-		position.y=get_parent().get_node("Hammer").position.y-10
-
-
-
-
+		position.x=get_tree().get_root().get_node("World").get_node("Hammer").position.x
+		position.y=get_tree().get_root().get_node("World").get_node("Hammer").position.y-10
 
 func _on_Hurtbox_area_entered(area):
 	health=health-1
-	print("jeta=")
 	print(health)
 	if health<=0:
 		can_choose=false
 		is_dead=true
 
+func get_save_data():
+	var data = {
+		"position": {
+			"x": global_position.x,
+			"y": global_position.y
+		},
+	}
+	return data
+
+func set_from_save_data(data):
+	global_position.x = data.position.x
+	global_position.y = data.position.y
+	
+func get_entity_name():
+	return "boss_type_01"

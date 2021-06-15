@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Sprites/Pathfinding.png" type="Texture" id=1]
-[ext_resource path="res://Mobs_and_NPC/Pathfinder.gd" type="Script" id=2]
+[ext_resource path="res://Mobs_and_NPC/Pathfinder2.gd" type="Script" id=2]
 [ext_resource path="res://Skills/Enemy_hitbox.gd" type="Script" id=3]
 [ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Skills/Hurtbox.tscn" type="PackedScene" id=5]
@@ -9,22 +9,6 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [sub_resource type="Animation" id=2]
-resource_name = "New Anim"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 27, 28, 29, 30 ]
-}
-
-[sub_resource type="Animation" id=3]
 resource_name = "attack"
 step = 0.05
 tracks/0/type = "value"
@@ -64,7 +48,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "die"
 length = 3.0
 tracks/0/type = "value"
@@ -90,6 +74,21 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27, 28, 29, 30 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -156,10 +155,8 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
 vframes = 5
 hframes = 9
-frame = 43
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1.5, 1.5 )
 shape = SubResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -167,16 +164,14 @@ visible = false
 width = 2.0
 
 [node name="LineOfSight" type="RayCast2D" parent="."]
-visible = false
 scale = Vector2( 3, 1 )
-enabled = true
 cast_to = Vector2( 70, 0 )
 collision_mask = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/New Anim" = SubResource( 2 )
-anims/attack = SubResource( 3 )
-anims/die = SubResource( 4 )
+anims/attack = SubResource( 2 )
+anims/die = SubResource( 3 )
+anims/hurt = SubResource( 4 )
 anims/idle = SubResource( 5 )
 anims/land = SubResource( 6 )
 anims/move = SubResource( 7 )

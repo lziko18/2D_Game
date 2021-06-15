@@ -1,20 +1,12 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Sprites/Guardian_Sprite_Sheet.png" type="Texture" id=1]
-[ext_resource path="res://Mobs_and_NPC/Guardian.gd" type="Script" id=2]
+[ext_resource path="res://Mobs_and_NPC/Guardian2.gd" type="Script" id=2]
 [ext_resource path="res://Skills/Lizard_stats.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Skills/Hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Skills/Enemy_hitbox.gd" type="Script" id=6]
 [ext_resource path="res://Skills/Hurtbox.gd" type="Script" id=7]
-
-
-
-
-
-
-
-
 
 [sub_resource type="Animation" id=1]
 resource_name = "Guardian_death"
@@ -120,9 +112,15 @@ tracks/0/keys = {
 
 [sub_resource type="CapsuleShape2D" id=7]
 
-[node name="Guardian" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 3.45177
+height = 15.4831
+
+[node name="Guardian" type="KinematicBody2D"]
 position = Vector2( 0.25, 0 )
 scale = Vector2( 3.70313, 3.29006 )
+collision_layer = 1024
+collision_mask = 1024
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -168,8 +166,11 @@ script = ExtResource( 7 )
 shape = SubResource( 7 )
 
 [node name="Lizard_stats" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 22.4588, 15.7789 )
+shape = SubResource( 8 )
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="animation_started" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="body_entered" from="Sprite/Position2D/Player_detect" to="." method="_on_Player_detect_body_entered"]
 [connection signal="area_entered" from="Sprite/Hurtbox" to="Sprite/Hurtbox" method="_on_Hurtbox_area_entered"]
 [connection signal="area_entered" from="Sprite/Hurtbox" to="." method="_on_Hurtbox_area_entered"]

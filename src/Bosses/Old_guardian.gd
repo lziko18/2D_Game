@@ -1,11 +1,13 @@
 extends KinematicBody2D
+
 const Spit=preload("res://Bosses/Spit.tscn")
 const wave= preload("res://Bosses/shock_wave.tscn")
 const UP = Vector2(0, -1);
-var GRAVITY = 100;
+const GRAVITY = 100;
 const ACCELERATION = 50;
 const MAX_SPEED = 250;
 const JUMP_HEIGHT = -1300;
+
 var jump_attack=false
 var motion = Vector2()
 var grounded = false
@@ -13,16 +15,14 @@ var attack=false
 var can_choose=true
 var attack2=false
 var attack3=false
-var rng = RandomNumberGenerator.new()
 var num
 var health=2
 var is_dead=false
+
+onready var rng = RandomNumberGenerator.new()
 onready var player_push=$Area2D
 onready var player_push2=$Area2D2
 onready var player_push3=$Area2D3
-
-
-	
 
 func gravity():
 	motion.y += GRAVITY;
@@ -44,6 +44,7 @@ func change_dir():
 		$Sprite/Position2D2.position.x=30
 		$Area2D2.position.x=18.184
 		$Area2D3.position.x=34.796
+
 func player_knock_back():
 	var dir=get_parent().get_node("Player").global_position.x
 	var our=get_parent().get_node("Old_guardian").global_position.x
@@ -70,6 +71,7 @@ func fire2():
 	elif $Sprite.flip_h==true:
 		bump.dir=-1
 	get_parent().add_child(bump)
+
 func walk():
 	var dir=get_parent().get_node("Player").global_position.x
 	var our=get_parent().get_node("Old_guardian").global_position.x
@@ -85,8 +87,6 @@ func ch_state1():
 	var our=get_parent().get_node("Old_guardian").global_position.x
 	rng.randomize()
 	num=rng.randi()%10+1
-	print(num)
-	print("state1")
 	if  abs(our - dir)<=90:
 		if can_choose==true:
 			if int(num)<=4:
@@ -104,12 +104,16 @@ func ch_state1():
 			elif int(num)<=10 and 9<int(num):
 				$OG_state.set_state(4)
 
+
+
+func start():
+	$OG_state.set_state(0)
+	
 func ch_state2():
 	var dir=get_parent().get_node("Player").global_position.x
 	var our=get_parent().get_node("Old_guardian").global_position.x
 	rng.randomize()
 	num=rng.randi()%10+1
-	print(num)
 	print("state2")
 	if  abs(our - dir)<=90:
 		if can_choose==true:
@@ -134,6 +138,7 @@ func _on_AnimationPlayer_animation_finished(name):
 		attack3=false
 		$OG_state.set_state(0)
 	if name=="Die":
+		get_tree().get_root().get_node("World").unraise()
 		queue_free()
 
 
@@ -160,8 +165,6 @@ func _on_AnimationPlayer_animation_started(name):
 
 func _on_Hurtbox_area_entered(area):
 	health=health-1
-	print("jeta=")
-	print(health)
 	if health<=0:
 		can_choose=false
 		is_dead=true

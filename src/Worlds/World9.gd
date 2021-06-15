@@ -1,4 +1,4 @@
-extends Node2D
+extends "res://Scripts/World.gd"
 onready var root=get_tree().get_root()
 
 # Declare member variables here. Examples:
@@ -8,14 +8,12 @@ onready var root=get_tree().get_root()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_tree().paused=true
-	yield(get_tree().create_timer(0.01), "timeout")
-	$Player/Camera2D.limit_top=-317
+	$Player/Camera2D.limit_top=-320
 	$Player/Camera2D.limit_right=11232
-	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
-	get_tree().paused=false
+	$Player/Camera2D.limit_bottom=352
+	$Player/Camera2D.limit_left=0
+	$Area2D/CollisionShape2D.disabled = false
 	yield(get_tree().create_timer(0.05), "timeout")
-	$Player.set_physics_process(true)
 
 
 
@@ -35,8 +33,21 @@ func _ready():
 
 
 
+func raise():
+	$Hidden1/AnimationPlayer.play_backwards("New Anim")
 
 
+func unraise():
+	$Hidden1/AnimationPlayer.play("New Anim")
+	$Hidden2/AnimationPlayer.play("New Anim")
+	yield(get_tree().create_timer(0.3), "timeout")
+	var from=$Player/Camera2D.global_position.x
+	$Player/Camera2D.change_left(9800,from-1000)
+	$Player/Camera2D.change_right(10700,11232)
+	yield(get_tree().create_timer(1), "timeout")
+	$Player/Camera2D.limit_left=0
+
+	
 
 
 func next_scene():
@@ -57,12 +68,72 @@ func next_scene():
 
 
 func _on_Area2D_body_entered(body):
-		if body.name=="Player":
-			body.motion.y=-1000
-			yield(get_tree().create_timer(0.1), "timeout")
-			body.set_physics_process(false)
-			get_tree().paused=true
-			root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
-			get_tree().paused=false
-			yield(get_tree().create_timer(1), "timeout")
-			call_deferred("next_scene")
+	if body.name=="Player":
+		get_tree().paused=true
+		root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
+		get_tree().paused=false
+		body.motion.y = -2000
+		yield(get_tree().create_timer(0.1), "timeout")
+		body.set_physics_process(false)
+		yield(get_tree().create_timer(1), "timeout")
+		root.get_node("Game").load_world("World8")
+		root.get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
+		body.position=Vector2(13389,800)
+		body.motion.y=-1000
+		body.motion.x=2000
+		body.set_physics_process(true)
+		
+		#body.motion.y=-1000
+		#yield(get_tree().create_timer(0.1), "timeout")
+		#body.set_physics_process(false)
+		#get_tree().paused=true
+		#root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
+		#get_tree().paused=false
+		#yield(get_tree().create_timer(1), "timeout")
+		#call_deferred("next_scene")
+
+
+func _on_Area2D2_body_entered(body):
+	if body.name == "Player":
+		body.motion.y=1000
+		yield(get_tree().create_timer(0.3), "timeout")
+		body.motion.y=0
+		body.is_casting=false
+		body.is_attackig=false
+		body.is_air_att=false
+		body.is_hooking=false
+		body.get_node("Position2D/Chain").release()
+		body.is_sliding=false
+		body.is_wall_sliding=false
+		body.get_node("AnimationPlayer").play("Player Idle")
+		body.set_physics_process(false)
+		body.can_be_target=false
+		get_tree().paused=true
+		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
+		get_tree().paused=false
+		yield(get_tree().create_timer(0.9), "timeout")
+		get_tree().paused=true
+		body.position.x = body.last_floor_position.x
+		body.position.y = body.last_floor_position.y
+		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
+		get_tree().paused=false
+		yield(get_tree().create_timer(0.1), "timeout")
+		body.set_physics_process(true)
+		body.take_damage(1)
+		body.motion.x=0
+		body.motion.y=0
+		yield(get_tree().create_timer(0.5), "timeout")
+		body.can_be_target=true
+
+
+func _on_Area2D3_body_entered(body):
+	if body.name=="Player" and get_tree().get_root().get_node("World/Bosses/Old_guardian")!=null:
+		var from=$Player/Camera2D.global_position.x
+		$Player/Camera2D.change_left(from-1000,9800)
+		$Player/Camera2D.limit_right=10700
+		raise()
+		get_tree().get_root().get_node("World/Bosses/Old_guardian").set_state(0)
+		$Area2D3.queue_free()
+
+func _get_world_name():
+	return "World9"

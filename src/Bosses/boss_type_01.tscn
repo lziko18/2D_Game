@@ -321,6 +321,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+flip_h = true
 vframes = 7
 hframes = 40
 frame = 1

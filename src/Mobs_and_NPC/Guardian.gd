@@ -4,10 +4,7 @@ var can_attack=true
 export(int) var face=1
 onready var guardianhealth = $Lizard_stats
 
-
-
 func _ready():
-
 	$Sprite/AnimationPlayer.play("Idle")
 	checkface()
 

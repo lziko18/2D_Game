@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://bosses/Throw.gd" type="Script" id=1]
+[ext_resource path="res://Bosses/Throw.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/boss_effect_hammer.png" type="Texture" id=2]
 [ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Skills/Enemy_hitbox.gd" type="Script" id=4]
@@ -61,7 +61,6 @@ tracks/1/keys = {
 scale = Vector2( 2, 2 )
 z_as_relative = false
 collision_layer = 64
-collision_mask = 256
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

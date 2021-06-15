@@ -78,30 +78,30 @@ margin_right = 650.0
 margin_bottom = 352.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 117.0
-margin_top = 86.0
-margin_right = 532.0
-margin_bottom = 265.0
+margin_left = 79.0
+margin_top = 82.0
+margin_right = 571.0
+margin_bottom = 269.0
 custom_constants/separation = 37
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
-margin_right = 415.0
-margin_bottom = 40.0
+margin_right = 492.0
+margin_bottom = 48.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer"]
-margin_right = 415.0
-margin_bottom = 40.0
+margin_right = 492.0
+margin_bottom = 48.0
 custom_fonts/font = ExtResource( 3 )
 text = "Adventure of Boredom "
 
 [node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 77.0
-margin_right = 415.0
-margin_bottom = 179.0
+margin_top = 85.0
+margin_right = 492.0
+margin_bottom = 187.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2"]
-margin_left = 128.0
-margin_right = 286.0
+margin_left = 167.0
+margin_right = 325.0
 margin_bottom = 102.0
 custom_constants/separation = 9
 
