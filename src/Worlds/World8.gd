@@ -114,25 +114,41 @@ func _on_Area2D4_body_exited(body):
 
 func _on_world9_body_entered(body):
 	if body.name=="Player":
-			body.motion.y=1000
-			yield(get_tree().create_timer(0.01), "timeout")
-			body.set_physics_process(false)
-			get_tree().paused=true
-			root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
-			get_tree().paused=false
-			yield(get_tree().create_timer(1), "timeout")
-			call_deferred("next_scene_to_world9")
+		get_tree().paused=true
+		root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
+		get_tree().paused=false
+		yield(get_tree().create_timer(1), "timeout")
+		root.get_node("Game").load_world("World9")
+		root.get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
+		body.position.x = 4420
+		body.position.y = -200
+		#body.motion.y=1000
+		#yield(get_tree().create_timer(0.01), "timeout")
+		#body.set_physics_process(false)
+		#get_tree().paused=true
+		#root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
+		#get_tree().paused=false
+		#yield(get_tree().create_timer(1), "timeout")
+		#call_deferred("next_scene_to_world9")
 
 
 func _on_world5_body_entered(body):
 	if body.name=="Player":
-			body.motion.x=-1000
-			body.set_physics_process(false)
-			get_tree().paused=true
-			root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
-			get_tree().paused=false
-			yield(get_tree().create_timer(1), "timeout")
-			call_deferred("next_scene_to_world5")
+		get_tree().paused=true
+		root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
+		get_tree().paused=false
+		yield(get_tree().create_timer(1), "timeout")
+		root.get_node("Game").load_world("World5")
+		root.get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
+		body.position.x = 10251
+		body.position.y = 196
+			#body.motion.x=-1000
+			#body.set_physics_process(false)
+			#get_tree().paused=true
+			#root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
+			#get_tree().paused=false
+			#yield(get_tree().create_timer(1), "timeout")
+			#call_deferred("next_scene_to_world5")
 
 func _on_FallCollision2_body_entered(body):
 	if body.name == "Player":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Tilesets/Background/Background-1.png" type="Texture" id=1]
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=2]
@@ -19,7 +19,6 @@
 [ext_resource path="res://Fonts/Adventurefont.tres" type="DynamicFont" id=17]
 [ext_resource path="res://Bosses/boss_type_01.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Sprites/Color_Fill_2_copy.png" type="Texture" id=19]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
@@ -405,13 +404,7 @@ position = Vector2( 3363.23, 235.301 )
 [node name="Slimes6" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 3220.69, 235.301 )
 
-[node name="Crawler" parent="Entities" instance=ExtResource( 10 )]
-position = Vector2( 660.004, -116.868 )
-
 [node name="Bosses" type="Node2D" parent="."]
-
-[node name="Old_guardian" parent="Bosses" instance=ExtResource( 11 )]
-position = Vector2( 737.054, 166.71 )
 
 [node name="FallCollision" type="Area2D" parent="."]
 position = Vector2( 5521.3, 500 )
@@ -429,21 +422,6 @@ shape = SubResource( 16 )
 
 [node name="Wizzard_guide" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2516.19, 0.093338 )
-
-[node name="hearts" parent="." instance=ExtResource( 11 )]
-position = Vector2( 2674.63, 51.1935 )
-
-[node name="Rune" parent="." instance=ExtResource( 12 )]
-position = Vector2( 3071.12, 190.188 )
-
-[node name="Rune2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 3278.77, 167.535 )
-
-[node name="Grapling" parent="." instance=ExtResource( 13 )]
-position = Vector2( 2382.24, 57.5032 )
-
-[node name="Grapling2" parent="." instance=ExtResource( 13 )]
-position = Vector2( 2588, 44.289 )
 
 [node name="Flame_spirit" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2327.31, 38.2833 )
@@ -495,7 +473,6 @@ texture = ExtResource( 15 )
 
 [node name="Banditt" parent="." instance=ExtResource( 16 )]
 position = Vector2( 23414.9, -148.891 )
-frame = 0
 
 [node name="boss_type_01" parent="." instance=ExtResource( 18 )]
 position = Vector2( 25806, 252.167 )
@@ -505,8 +482,25 @@ collision_layer = 4
 visible = false
 color = Color( 0.392157, 0.392157, 0.392157, 1 )
 
-[node name="Player" parent="." instance=ExtResource( 20 )]
-position = Vector2( 24947.6, 35.8976 )
+[node name="Player_Start_World5" type="Position2D" parent="."]
+position = Vector2( 13905.1, 178.248 )
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="hearts" parent="Items" instance=ExtResource( 11 )]
+position = Vector2( 2674.63, 51.1935 )
+
+[node name="Rune" parent="Items" instance=ExtResource( 12 )]
+position = Vector2( 3071.12, 190.188 )
+
+[node name="Rune2" parent="Items" instance=ExtResource( 12 )]
+position = Vector2( 3278.77, 167.535 )
+
+[node name="Grapling" parent="Items" instance=ExtResource( 13 )]
+position = Vector2( 2382.24, 57.5032 )
+
+[node name="Grapling2" parent="Items" instance=ExtResource( 13 )]
+position = Vector2( 2588, 44.289 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]

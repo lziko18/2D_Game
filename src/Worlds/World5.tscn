@@ -352,11 +352,6 @@ collision_mask = 0
 offset = Vector2( 0, -190 )
 transform = Transform2D( 1, 0, 0, 1, 0, -190 )
 
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 479.215, 260.854 )
-collision_mask = 1
-direction = -1
-
 [node name="Slimes" parent="." instance=ExtResource( 4 )]
 position = Vector2( 342.16, 112.577 )
 
@@ -370,9 +365,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 7 )
 
-[node name="Player_Start" type="Position2D" parent="."]
-position = Vector2( 45.8399, -84.0219 )
-
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Crawler" parent="Entities" instance=ExtResource( 6 )]
@@ -385,10 +377,13 @@ collision_mask = 1
 
 [node name="Lizard" parent="Entities" instance=ExtResource( 3 )]
 position = Vector2( 294.923, 94.542 )
-collision_mask = 1
 
 [node name="Slimes" parent="Entities" instance=ExtResource( 4 )]
 position = Vector2( 342.16, 112.577 )
+
+[node name="Enemy" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 479.215, 260.854 )
+direction = -1
 
 [node name="Bosses" type="Node2D" parent="."]
 
@@ -409,6 +404,12 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource( 8 )
+
+[node name="Player_Start" type="Position2D" parent="."]
+position = Vector2( 9743.91, 131.491 )
+
+[node name="Player_Start_World8" type="Position2D" parent="."]
+position = Vector2( 10164.5, 154.173 )
 [connection signal="body_entered" from="Hide1_area" to="." method="_on_Hide1_area_body_entered"]
 [connection signal="body_exited" from="Hide1_area" to="." method="_on_Hide1_area_body_exited"]
 [connection signal="body_entered" from="Hide2_area" to="." method="_on_Hide2_area_body_entered"]

@@ -4,7 +4,7 @@
 [ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Skills/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/spritesheet (7).png" type="Texture" id=4]
-[ext_resource path="res://Mobs_and_NPC/Lizard.gd" type="Script" id=5]
+[ext_resource path="res://Mobs_and_NPC/Lizard2.gd" type="Script" id=5]
 [ext_resource path="res://Skills/Hurtbox.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -106,17 +106,16 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 10, 11, 12, 13, 14, 20, 21 ]
 }
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 106.066, 78.8941 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 30.4101, 38.9747 )
 
-[sub_resource type="CapsuleShape2D" id=11]
+[sub_resource type="CapsuleShape2D" id=10]
 
 [node name="Lizard" type="KinematicBody2D"]
 collision_layer = 4
-collision_mask = 2
 script = ExtResource( 5 )
 
 [node name="Enemysprite" type="Sprite" parent="."]
@@ -125,7 +124,7 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
 vframes = 6
 hframes = 10
-frame = 33
+frame = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -166,7 +165,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="backhit"]
-shape = SubResource( 10 )
+shape = SubResource( 8 )
 
 [node name="Player_detect" type="Area2D" parent="."]
 position = Vector2( -35, 0 )
@@ -186,7 +185,7 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 rotation = 1.5708
 scale = Vector2( 2.3, 2.5 )
-shape = SubResource( 11 )
+shape = SubResource( 10 )
 disabled = true
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_area_entered"]
