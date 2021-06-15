@@ -1,130 +1,72 @@
-extends KinematicBody2D
+extends Sprite
 export  var direction=1
-
-var speed=100
-const UP=Vector2(0,-1)
-var motion= Vector2()
-var gravity=30
+const Dust=preload("res://Spikes.tscn")
+var can_attack=false
 var state
-var health=3
-var can_move=true
-var rng = RandomNumberGenerator.new()
-var num
-onready var player_push=$Area2D
-var player=null
+var seen
+var where= Vector2()
+var cnt=1
+var player
 enum{
-	Wander,
 	Attack,
-	Die,
 	Idle,
 }
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state=Idle
+	player = get_tree().get_root().get_node("World/Player")
 
 func _physics_process(delta):
+	if player.is_on_floor() and get_tree().get_root().get_node("World/Player/check_for_end3").is_colliding() and get_tree().get_root().get_node("World/Player/check_for_end4").is_colliding():
+		where.x=player.global_position.x
+		where.y=player.global_position.y-12
 	match state:
-		Attack:
-			attack_state()
-		Wander:
-			if $RayCast2D.is_colliding() or  !$RayCast2D2.is_colliding():
-				change_dir()
-			wander_state(delta)
-			motion.y+=gravity
-			motion= move_and_slide(motion,UP)
-		Die:
-			enemy_death()
 		Idle:
-			idle_state()
-
-func idle_state():
-	motion.x=0
-	$Enemyanim.play("en idle")
-
-
-func chose_direction():
-	rng.randomize()
-	var num=rng.randi()%10+1
-	var num1=rng.randi()%10+1
-	print(num)
-	print(num1)
-	if num<=3:
-		$Timer.wait_time=1
-	elif num>3 and num<=6:
-		$Timer.wait_time=2
-	else:
-		$Timer.wait_time=3
-		
-	if num1<=5:
-		direction=1
-	else:
-		direction-1
-	$Timer.start()
-
-func hurt_state(delta):
-	motion.y+=gravity
-	$Enemyanim.play("en hurt")
-	$Player_detect/CollisionShape2D.disabled=true
-	motion= move_and_slide(motion,UP)
-	
-func wander_state(_delta):
-	$Enemyanim.play("en walk")
-	$backhit/CollisionShape2D.disabled=true
-	if direction==1:
-		if can_move==true:
-			motion.x=speed
-		$Enemysprite.flip_h=true
-		$backhit.position.x=-110
-		$RayCast2D.scale.y=-1
-		$RayCast2D2.position.x=20
-		$Area2D.position.x=50
-		$Player_detect.position.x=35
-	elif direction==-1:
-		if can_move==true:
-			motion.x=-speed
-		$Enemysprite.flip_h=false
-		$backhit.position.x=110
-		$RayCast2D.scale.y=1
-		$RayCast2D2.position.x=-20
-		$Area2D.position.x=-50
-		$Player_detect.position.x=-35
+			flip()
+			$AnimationPlayer.play("Idle")
+			if seen==true and player.is_on_floor():
+				state=Attack
+		Attack:
+			flip()
+			attack_state()
 
 
-func enemy_death():
-	motion.x=0
-	motion.y=0
-	$Enemyanim.play("en die")
+func flip():
+	var dir=get_tree().get_root().get_node("World").get_node("Player").global_position.x
+	var our=global_position.x
+	if our > dir:
+		self.flip_h=true
+	elif our < dir:
+		self.flip_h=false
 
-
-func change_dir():
-	if direction==1:
-		direction=-1
-	elif direction==-1:
-		direction=1
 
 func attack_state():
-	motion.x=0
-	$Enemyanim.play("En att")
-	
-	
+	$AnimationPlayer.play("Attack")
 
 
 
+func spawn():
+	var spikes=Dust.instance()
+	spikes.global_position=where
+	get_parent().add_child(spikes)
+
+func _on_Area2D_body_entered(body):
+	if body.name=="Player":
+		seen=true
+		
+
+func _on_Area2D_body_exited(body):
+	seen=false
 
 
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name=="Attack":
+		if seen==true and player.is_on_floor():
+			state=Attack
+		else:
+			state=Idle
 
 
-
-
-
-
-
-
-
-
-
-
-
-func _on_Timer_timeout():
-	state=Idle
+func _on_AnimationPlayer_animation_started(anim_name):
+	pass # Replace with function body.

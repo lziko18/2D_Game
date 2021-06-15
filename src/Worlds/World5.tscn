@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=1]
 [ext_resource path="res://ParallaxBackgrounds/Background_Magic_Forest.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Tilesets/collision.tres" type="TileSet" id=11]
 [ext_resource path="res://Mobs_and_NPC/Cute_slime.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Items/hearts.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Evil_tree.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
@@ -409,6 +410,9 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource( 8 )
+
+[node name="Evil_tree" parent="." instance=ExtResource( 14 )]
+position = Vector2( 2030.98, -60.1337 )
 [connection signal="body_entered" from="Hide1_area" to="." method="_on_Hide1_area_body_entered"]
 [connection signal="body_exited" from="Hide1_area" to="." method="_on_Hide1_area_body_exited"]
 [connection signal="body_entered" from="Hide2_area" to="." method="_on_Hide2_area_body_entered"]

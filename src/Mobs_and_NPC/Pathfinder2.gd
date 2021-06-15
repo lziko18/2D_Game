@@ -19,7 +19,7 @@ func _init():
 
 func _ready():
 	if save_data == null:
-		set_state(states.wander)
+		set_state(0)
 		set_direction(direction)
 	yield(get_tree(), "idle_frame")
 	$Line2D.global_position = Vector2(0, 0)
@@ -40,6 +40,7 @@ func _state_logic(_delta):
 		states.attack:
 			pass
 		states.wander:
+			$AnimationPlayer.play("idle")
 			if check_player_in_detection():
 				set_state(states.hunt)
 		states.hurt:

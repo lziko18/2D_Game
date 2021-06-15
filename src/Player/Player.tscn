@@ -599,8 +599,16 @@ limit_bottom = 367
 position = Vector2( 80, 36 )
 enabled = true
 
+[node name="check_for_end3" type="RayCast2D" parent="."]
+position = Vector2( 35, 36 )
+enabled = true
+
 [node name="check_for_end2" type="RayCast2D" parent="."]
 position = Vector2( -80, 36 )
+enabled = true
+
+[node name="check_for_end4" type="RayCast2D" parent="."]
+position = Vector2( -35, 36 )
 enabled = true
 
 [node name="Hook" type="Timer" parent="."]

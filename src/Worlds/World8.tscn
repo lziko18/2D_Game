@@ -495,7 +495,7 @@ texture = ExtResource( 15 )
 
 [node name="Banditt" parent="." instance=ExtResource( 16 )]
 position = Vector2( 23414.9, -148.891 )
-frame = 0
+frame = 1
 
 [node name="boss_type_01" parent="." instance=ExtResource( 18 )]
 position = Vector2( 25806, 252.167 )
