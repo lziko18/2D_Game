@@ -35,7 +35,7 @@ static func save_player(save_name : String, data : Dictionary):
 	file.store_string(json_string)
 	file.close()
 	
-static func save_world(save_name : String, data : Dictionary):
+static func save_worlds(save_name : String, data : Dictionary):
 	var dir = Directory.new()
 	var dir_path = saves_folder + "/" + save_name
 	if !dir.dir_exists(dir_path):
@@ -62,7 +62,7 @@ static func load_player(save_name : String):
 		print("Could not find save files for " + save_name)
 		return {}
 
-static func load_world(save_name : String):
+static func load_worlds(save_name : String):
 	print("Loading player data.")
 	var dir = Directory.new()
 	var dir_path = saves_folder + "/" + save_name

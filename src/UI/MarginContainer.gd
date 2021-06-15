@@ -35,22 +35,32 @@ func handle_selection(_current_selection):
 	var emer ='res://Worlds/'+ str(player_data.scene) +'.tscn'
 	var scene= load(emer)
 	if _current_selection == 0:
+		var game_instance = Game.new()
+		game_instance.set_name("Game")
+
 		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
 		yield(get_tree().create_timer(1), "timeout")
 		self.queue_free()
-		#var pause_mode = load("res://UI/Game_UI/Pause.tscn")
-		#get_tree().get_root().add_child(pause_mode.instance())
-		get_tree().get_root().add_child((load('res://Worlds/World5.tscn')).instance())
-		player.position=Vector2(250,-200)#player_data.position
-		get_tree().get_root().get_node("World").add_child(player)
+
+		get_tree().get_root().add_child(game_instance)
+
+		##var pause_mode = load("res://UI/Game_UI/Pause.tscn")
+		##get_tree().get_root().add_child(pause_mode.instance())
+		#get_tree().get_root().add_child((load('res://Worlds/World8.tscn')).instance())
+		#player.position=Vector2(250,-200)#player_data.position
+		#get_tree().get_root().get_node("World").add_child(player)
 		
 	elif _current_selection == 1:
-		var load_game_menu_scene = load("res://UI/Load_Game_Menu/Load_Game_Menu.tscn")
-		var load_game_menu = load_game_menu_scene.instance()
+		var game_instance = Game.new()
+		game_instance.set_name("Game")
+		game_instance.load_save("Test2")
+
+		#var load_game_menu_scene = load("res://UI/Load_Game_Menu/Load_Game_Menu.tscn")
+		#var load_game_menu = load_game_menu_scene.instance()
 		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
 		yield(get_tree().create_timer(1), "timeout")
 		self.queue_free()
-		get_tree().get_root().add_child(load_game_menu)
+		get_tree().get_root().add_child(game_instance)
 		
 	
 	elif _current_selection == 2:

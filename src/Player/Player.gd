@@ -54,6 +54,7 @@ var save_data = null
 var player_stats
 var is_speaking=false
 var can_speak=false
+var world_name
 var cnt=1
 var wizard 
 var bandit
@@ -669,7 +670,8 @@ func get_save_data():
 		"health": {
 			"current": health_current,
 			"max": health_max
-		}
+		},
+		"world_name": world_name
 	}
 	return data
 
@@ -680,6 +682,7 @@ func set_from_save_data(data):
 	update_max_health()
 	health_current = data.health.current
 	update_health()
+	world_name = data.world_name
 
 func _ready():
 	#player_stat.connect("no_health",self,"player_die")
@@ -691,6 +694,7 @@ func _ready():
 		update_max_health()
 		health_current = 5
 		update_health()
+		global_position = get_tree().get_root().get_node("World/Player_Start").global_position
 	else:
 		set_from_save_data(save_data)
 

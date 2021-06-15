@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Bosses/OG_state.gd" type="Script" id=1]
-[ext_resource path="res://Bosses/Old_guardian.gd" type="Script" id=2]
+[ext_resource path="res://Bosses/Old_guardian2.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Old_Guardian/Old_guardian.png" type="Texture" id=3]
 [ext_resource path="res://Skills/Hitbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Skills/Enemy_hitbox.gd" type="Script" id=5]
@@ -219,9 +218,6 @@ anims/Idle = SubResource( 5 )
 anims/Jump = SubResource( 6 )
 anims/Spit = SubResource( 7 )
 anims/Walk = SubResource( 8 )
-
-[node name="OG_state" type="Node" parent="."]
-script = ExtResource( 1 )
 
 [node name="Area2D" parent="." instance=ExtResource( 4 )]
 scale = Vector2( 1.384, 1.16 )

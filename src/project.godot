@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Game",
+"language": "GDScript",
+"path": "res://Scripts/Game.gd"
+}, {
 "base": "Reference",
 "class": "SaveSystem",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://StateMachine.gd"
 } ]
 _global_script_class_icons={
+"Game": "",
 "SaveSystem": "",
 "StateMachine": ""
 }
@@ -33,6 +39,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerStats="*res://Player/Player_stats.tscn"
+PlayerHealth="*res://UI/Game_UI/Player_health.tscn"
 Transition="*res://UI/Transition.tscn"
 
 [display]

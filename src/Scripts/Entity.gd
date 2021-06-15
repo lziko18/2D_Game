@@ -12,7 +12,7 @@ func load_save(data):
 func get_save_data():
 	pass
 
-func set_from_save_data(data):
+func set_from_save_data(_data):
 	pass
 
 func get_entity_name():

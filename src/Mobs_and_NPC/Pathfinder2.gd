@@ -34,6 +34,8 @@ func _state_logic(_delta):
 	if player:
 		$LineOfSight.look_at(player.global_position)
 		velocity = move_and_slide(velocity)
+	else:
+		player = get_tree().get_root().get_node("World/Player")
 	match state:
 		states.attack:
 			pass

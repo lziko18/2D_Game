@@ -10,9 +10,9 @@
 [ext_resource path="res://Worlds/World8.gd" type="Script" id=8]
 [ext_resource path="res://Tilesets/iron.tres" type="TileSet" id=9]
 [ext_resource path="res://Wizzard_guide.tscn" type="PackedScene" id=10]
-[ext_resource path="res://hearts.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Rune.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Grapling.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Items/hearts.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Items/Rune.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Items/Grapling.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Flame_spirit.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Sprites/LightBandit_Death_0.png" type="Texture" id=15]
 [ext_resource path="res://Banditt.tscn" type="PackedScene" id=16]
@@ -396,9 +396,6 @@ shape = SubResource( 15 )
 
 [node name="Entities" type="Node" parent="."]
 
-[node name="Guardian" parent="Entities" instance=ExtResource( 11 )]
-position = Vector2( 104.521, 147.998 )
-
 [node name="Slimes4" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 2998.85, 231.737 )
 
@@ -411,8 +408,10 @@ position = Vector2( 3220.69, 235.301 )
 [node name="Crawler" parent="Entities" instance=ExtResource( 10 )]
 position = Vector2( 660.004, -116.868 )
 
-[node name="Pathfinder" parent="Entities" instance=ExtResource( 12 )]
-position = Vector2( 740.836, 130.781 )
+[node name="Bosses" type="Node2D" parent="."]
+
+[node name="Old_guardian" parent="Bosses" instance=ExtResource( 11 )]
+position = Vector2( 737.054, 166.71 )
 
 [node name="FallCollision" type="Area2D" parent="."]
 position = Vector2( 5521.3, 500 )
