@@ -1,13 +1,18 @@
 extends KinematicBody2D
 export  var direction=1
-onready var enemy_stats=$Lizard_stats
 
-var speed=60
+var speed=100
 const UP=Vector2(0,-1)
 var motion= Vector2()
 var gravity=30
 var state
-onready var player_push=$Position2D/Area2D
+var health=3
+var can_move=true
+var rng = RandomNumberGenerator.new()
+var num
+onready var player_push=$Area2D
+var player=null
+var is_attacking=false
 enum{
 	Wander,
 	Attack,
@@ -19,68 +24,61 @@ enum{
 func _ready():
 	state=Wander
 
-func wander():
-	motion.x=150
-
 func _physics_process(delta):
 	match state:
 		Attack:
 			attack_state()
 			player_knock_back()
 		Wander:
+			if $RayCast2D.is_colliding() or  !$RayCast2D2.is_colliding():
+				change_dir()
 			wander_state(delta)
-			$Position2D/Area2D/CollisionShape2D.disabled=true
+			motion.y+=gravity
+			motion= move_and_slide(motion,UP)
+			$Area2D/CollisionShape2D.disabled=true
+			
 		Hurt:
 			hurt_state(delta)
-			$Position2D/Area2D/CollisionShape2D.disabled=true
+			$Area2D/CollisionShape2D.disabled=true
 		Die:
 			$CollisionShape2D.disabled=true
 			$Hurtbox/CollisionShape2D.disabled=true
-			$Position2D/Area2D/CollisionShape2D.disabled=true
-			$Position2D/Player_detect/CollisionShape2D.disabled=true
+			$Area2D/CollisionShape2D.disabled=true
+			$Player_detect/CollisionShape2D.disabled=true
 			$backhit/CollisionShape2D.disabled=true
 			enemy_death()
+
+
 
 
 func hurt_state(delta):
 	motion.y+=gravity
 	$Enemyanim.play("en hurt")
-	$Position2D/Player_detect/CollisionShape2D.disabled=true
-	motion=motion.move_toward(Vector2.ZERO,1000*delta)
+	$Player_detect/CollisionShape2D.disabled=true
 	motion= move_and_slide(motion,UP)
 	
 func wander_state(_delta):
-	motion.y+=gravity
-	motion= move_and_slide(motion,UP)
 	$Enemyanim.play("en walk")
-	$Position2D/Player_detect/CollisionShape2D.disabled=true
-	$Position2D/Player_detect/CollisionShape2D.disabled=false
 	$backhit/CollisionShape2D.disabled=true
 	if direction==1:
-		$Enemysprite.flip_h=false
-		$backhit.position.x=-122.35
-		$Hurtbox.position.x=-9.709
-		motion.x=speed
-		if $RayCast2D.is_colliding() or  !$RayCast2D2.is_colliding():
-			direction=-1
-			$RayCast2D.rotation_degrees=90
-			$RayCast2D2.position.x=-20
-			$Hurtbox.position.x*=-1
-			if sign($Position2D.position.x)==1:
-					$Position2D.position.x*=-1
-
-	elif direction==-1:
+		if can_move==true:
+			motion.x=speed
 		$Enemysprite.flip_h=true
-		$backhit.position.x=122.35
-		$Hurtbox.position.x=11.986
-		motion.x=-speed
-		if $RayCast2D.is_colliding() or !$RayCast2D2.is_colliding():
-			direction=1
-			$RayCast2D.rotation_degrees=-90
-			$RayCast2D2.position.x=20
-			$Hurtbox.position.x*=-1
-			if sign($Position2D.position.x)==-1:
-					$Position2D.position.x*=-1
+		$backhit.position.x=-110
+		$RayCast2D.scale.y=-1
+		$RayCast2D2.position.x=20
+		$Area2D.position.x=50
+		$Player_detect.position.x=35
+	elif direction==-1:
+		if can_move==true:
+			motion.x=-speed
+		$Enemysprite.flip_h=false
+		$backhit.position.x=110
+		$RayCast2D.scale.y=1
+		$RayCast2D2.position.x=-20
+		$Area2D.position.x=-50
+		$Player_detect.position.x=-35
+
 
 func enemy_death():
 	motion.x=0
@@ -88,27 +86,37 @@ func enemy_death():
 	$Enemyanim.play("en die")
 
 func player_knock_back():
-	if $Enemysprite.flip_h==false:
-		player_push.knockback_vector=100
+	if player == null:
+		player = get_tree().get_root().get_node("World/Player")
+	var dir = player.global_position.x
+	var our = global_position.x
+	if our<dir:
+		$Area2D.knockback_vector=100
 	else:
-		player_push.knockback_vector=-100
+		$Area2D.knockback_vector=-100
 
-
+func change_dir():
+	if direction==1:
+		direction=-1
+	elif direction==-1:
+		direction=1
 
 func attack_state():
 	motion.x=0
-	motion.y+=gravity
 	if is_on_floor():
 		$backhit/CollisionShape2D.disabled=true
-		$Enemyanim.play("En att")
+		if is_attacking==false:
+			is_attacking=true
+			$Enemyanim.play("En att")
+			
 	
 	
 
 
 
 func _on_Hurtbox_area_entered(area):
-	enemy_stats.health-=1
-	if enemy_stats.health>0:
+	health=health-1
+	if health>0:
 		state=Hurt
 	else:
 		state=Die
@@ -131,48 +139,39 @@ func _on_Hurtbox_area_entered(area):
 
 
 func _on_Player_detect_body_entered(body):
-	if body.can_be_detected==true:
+	if body.name=="Player":
+		can_move=false
+		motion.x=0
 		state=Attack
 
 
 
 func _on_Enemyanim_animation_finished(anim_name):
 	if anim_name=="En att":
-		$Position2D/Player_detect/CollisionShape2D.disabled=true
-		$Position2D/Player_detect/CollisionShape2D.disabled=false
-		state=Wander
+		is_attacking=false
+		if can_move==false:
+			state=Attack
+		elif can_move==true:
+			state=Wander
 	if anim_name=="en hurt" and is_on_floor():
 		state=Wander
 	if anim_name=="en die":
 		queue_free()
 
 
-func _on_Player_detect_body_exited(_body):
-	state=Wander
+
 
 
 func _on_Enemyanim_animation_started(anim_name):
-	if anim_name=="En att":
-		$Position2D/Player_detect/CollisionShape2D.disabled=true
-		$Position2D/Player_detect/CollisionShape2D.disabled=false
 	if anim_name=="en hurt":
 		$backhit/CollisionShape2D.disabled=false
 
 
 func _on_backhit_body_entered(_body):
 	direction=direction*-1
-	if direction==1:
-		$RayCast2D.rotation_degrees=-90
-		$RayCast2D2.position.x=20
-		$Hurtbox.position.x*=-1
-		if sign($Position2D.position.x)==-1:
-			$Position2D.position.x*=-1
-	elif direction==-1:
-		$RayCast2D.rotation_degrees=90
-		$Hurtbox.position.x=-20
-		if sign($Position2D.position.x)==1:
-				$Position2D.position.x*=-1
 
 
-func _on_Lizard_stats_no_health():
-	state=Die
+func _on_Player_detect_body_exited(body):
+		if body.name=="Player":
+			can_move=true
+
