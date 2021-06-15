@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/MarginContainer.gd" type="Script" id=1]
 [ext_resource path="res://UI/Menu.png" type="Texture" id=2]
@@ -10,6 +10,54 @@ font_path = "res://Fonts/Adventurer.ttf"
 [sub_resource type="DynamicFont" id=2]
 size = 28
 font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -8, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Idel"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -8, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -8, 0 ) ]
+}
 
 [node name="MarginContainer" type="MarginContainer"]
 anchor_right = 1.0
@@ -66,11 +114,16 @@ margin_right = 158.0
 margin_bottom = 28.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 12.0
+margin_left = -8.0
+margin_right = 4.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 11, 0 )
 custom_fonts/font = SubResource( 2 )
 text = ">"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Label"]
+autoplay = "idle"
+anims/idle = SubResource( 3 )
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
 margin_left = 16.0
@@ -89,11 +142,16 @@ margin_right = 158.0
 margin_bottom = 28.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
-margin_right = 12.0
+margin_left = -8.0
+margin_right = 4.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 11, 0 )
 custom_fonts/font = SubResource( 2 )
 text = ">"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/Label"]
+autoplay = "Idel"
+anims/Idel = SubResource( 4 )
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
 margin_left = 16.0
@@ -113,11 +171,16 @@ margin_right = 158.0
 margin_bottom = 28.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
-margin_right = 12.0
+margin_left = -8.0
+margin_right = 4.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 11, 0 )
 custom_fonts/font = SubResource( 2 )
 text = ">"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Label"]
+autoplay = "Idle"
+anims/Idle = SubResource( 5 )
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
 margin_left = 16.0

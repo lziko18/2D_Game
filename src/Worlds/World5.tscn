@@ -359,7 +359,6 @@ collision_mask = 1
 
 [node name="Slimes" parent="." instance=ExtResource( 4 )]
 position = Vector2( 342.16, 112.577 )
-direction = -1
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 10360.8, -14.897 )
