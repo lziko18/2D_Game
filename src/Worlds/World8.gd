@@ -2,11 +2,15 @@ extends "res://Scripts/World.gd"
 
 onready var root=get_tree().get_root()
 
-func _ready():
+
+func refresh():
+	yield(get_tree().create_timer(0.01), "timeout")
+	$Area2D3/CollisionShape2D.disabled=true
 	$Player/Camera2D.limit_bottom=352
 	$Player/Camera2D.limit_top=-320
 	$Player/Camera2D.limit_right=25975
 	$Player/Camera2D.limit_left=0
+	$Area2D3/CollisionShape2D.disabled=false
 	yield(get_tree().create_timer(0.05), "timeout")
 	$Player.set_physics_process(true)
 	$Area2D3/CollisionShape2D.disabled=false
@@ -135,7 +139,10 @@ func _on_world9_body_entered(body):
 func _on_world5_body_entered(body):
 	if body.name=="Player":
 		get_tree().paused=true
+		body.motion.x=-1000
 		root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
+		yield(get_tree().create_timer(0.1), "timeout")
+		body.set_physics_process(false)
 		get_tree().paused=false
 		yield(get_tree().create_timer(1), "timeout")
 		root.get_node("Game").load_world("World5")

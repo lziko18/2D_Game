@@ -74,6 +74,7 @@ func load_world(world_name):
 	player_instance.world_name = world_name
 	world_instance.add_child(player_instance)
 	root.add_child(world_instance)
+	world_instance.refresh()
 
 func save_game(save_name : String):
 	var world_node = get_tree().get_root().get_node("World")

@@ -396,6 +396,9 @@ position = Vector2( 764.137, 245.722 )
 [node name="hearts" parent="Items" instance=ExtResource( 13 )]
 position = Vector2( 843.547, 248.719 )
 
+[node name="hearts2" parent="Items" instance=ExtResource( 13 )]
+position = Vector2( 9555.58, 164.786 )
+
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2( 4295.32, 450 )
 scale = Vector2( 700, 5 )
@@ -408,6 +411,7 @@ shape = SubResource( 8 )
 
 [node name="Evil_tree" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2030.98, -60.1337 )
+
 [node name="Player_Start" type="Position2D" parent="."]
 position = Vector2( 9743.91, 131.491 )
 

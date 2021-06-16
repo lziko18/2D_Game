@@ -339,7 +339,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
 position = Vector2( 0.111267, -1.02365 )
 shape = SubResource( 11 )
-disabled = true
 
 [node name="Area2D4" type="Area2D" parent="."]
 position = Vector2( 25757.4, 285.659 )
@@ -473,7 +472,7 @@ texture = ExtResource( 15 )
 
 [node name="Banditt" parent="." instance=ExtResource( 16 )]
 position = Vector2( 23414.9, -148.891 )
-frame = 1
+frame = 3
 
 [node name="boss_type_01" parent="." instance=ExtResource( 18 )]
 position = Vector2( 25806, 252.167 )
@@ -484,7 +483,7 @@ visible = false
 color = Color( 0.392157, 0.392157, 0.392157, 1 )
 
 [node name="Player_Start_World5" type="Position2D" parent="."]
-position = Vector2( 13905.1, 178.248 )
+position = Vector2( 114.398, 205.157 )
 
 [node name="Items" type="Node2D" parent="."]
 

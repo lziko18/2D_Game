@@ -7,15 +7,15 @@ onready var root=get_tree().get_root()
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+
+
+func refresh():
 	$Player/Camera2D.limit_top=-320
 	$Player/Camera2D.limit_right=11232
 	$Player/Camera2D.limit_bottom=352
 	$Player/Camera2D.limit_left=0
 	$Area2D/CollisionShape2D.disabled = false
 	yield(get_tree().create_timer(0.05), "timeout")
-
-
 
 
 

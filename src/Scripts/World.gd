@@ -23,9 +23,10 @@ var item_scenes = {
 func _ready():
 	print("transition")
 	get_tree().paused=true
-	yield(get_tree().create_timer(0.01), "timeout")
-	get_tree().paused=false
 	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
+	yield(get_tree().create_timer(0.05), "timeout")
+	$Player.set_physics_process(true)
+	get_tree().paused=false
 	if save_data != null:
 		set_from_save_data(save_data)
 
