@@ -148,7 +148,6 @@ tracks/0/keys = {
 
 [node name="Pathfinder" type="KinematicBody2D"]
 collision_layer = 4
-collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -204,6 +203,7 @@ scale = Vector2( 1, 0.7 )
 enabled = true
 
 [node name="Area2D2" parent="." instance=ExtResource( 4 )]
+scale = Vector2( 0.2, 0.2 )
 collision_layer = 64
 collision_mask = 16
 script = ExtResource( 3 )

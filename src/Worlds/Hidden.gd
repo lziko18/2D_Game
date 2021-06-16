@@ -98,3 +98,5 @@ func _on_Area2D2_body_entered(body):
 		body.motion.y=0
 		yield(get_tree().create_timer(0.5), "timeout")
 		body.can_be_target=true
+	else:
+		body.queue_free()

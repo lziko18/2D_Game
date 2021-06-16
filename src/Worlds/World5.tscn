@@ -371,11 +371,9 @@ scale = Vector2( 0.4, 0.4 )
 
 [node name="Pathfinder" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 2927.38, 24.4724 )
-collision_mask = 1
 
 [node name="Pathfinder3" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 3580.54, -45.3743 )
-collision_mask = 1
 
 [node name="Lizard" parent="Entities" instance=ExtResource( 3 )]
 position = Vector2( 5548.56, 199.251 )

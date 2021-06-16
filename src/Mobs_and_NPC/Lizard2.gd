@@ -58,12 +58,12 @@ func _enter_state(_new_state, _old_state):
 			$backhit/CollisionShape2D.disabled=false
 		states.Die:
 			$Enemyanim.play("en die")
+			motion.x=0
 			$CollisionShape2D.disabled=true
 			$Hurtbox/CollisionShape2D.disabled=true
 			$Area2D/CollisionShape2D.disabled=true
 			$Player_detect/CollisionShape2D.disabled=true
 			$backhit/CollisionShape2D.disabled=true
-			$Area2D2/CollisionShape2D.disabled=true
 	
 func _exit_state(_old_state, _new_state):
 	match _old_state:
@@ -81,7 +81,7 @@ func set_direction(dir):
 	direction = dir
 	if state == states.Wander:
 		$Enemysprite.flip_h = (direction == 1)
-		$backhit.position.x = -80 * direction
+		$backhit.position.x = -50 * direction
 		$RayCast2D.scale.y = -1 * direction
 		$RayCast2D2.position.x = 20 * direction
 		$Area2D.position.x = 50 * direction
@@ -93,19 +93,9 @@ func _on_Hurtbox_area_entered(area):
 	if health>0:
 		set_state(states.Hurt)
 		if area.name=="Att_hitbox":
-			motion.x=area.knockback_vector / 2 
+			motion.x=area.knockback_vector/2 
 		elif area.name=="Ground_slam_hitbox":
-			motion.y=area.knockback_vector
-			if area.player_position>position.x:
-				if area.player_position-position.x<10 && area.player_position-position.x>-10:
-					motion.x=0
-				else:
-					motion.x=area.knockback_vector
-			elif area.player_position<position.x:
-				if area.player_position-position.x<10 && area.player_position-position.x>-10:
-					motion.x=0
-				else:
-					motion.x=-area.knockback_vector
+			motion.y=area.knockback_vector/2
 	else:
 		set_state(states.Die)
 
@@ -131,6 +121,8 @@ func _on_Enemyanim_animation_finished(anim_name):
 func _on_Enemyanim_animation_started(anim_name):
 	if anim_name != "En att":
 		$Area2D/CollisionShape2D2.disabled = true
+	if anim_name=="en die":
+		$Area2D2/CollisionShape2D2.queue_free()
 
 
 func _on_backhit_body_entered(body):

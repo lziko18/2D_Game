@@ -150,7 +150,7 @@ shape = SubResource( 2 )
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 0.463, 1.0012 )
 rotation = 1.5708
-scale = Vector2( 10, 1 )
+scale = Vector2( 10, 0.4 )
 enabled = true
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
@@ -159,8 +159,8 @@ scale = Vector2( 1, 0.3 )
 enabled = true
 
 [node name="backhit" type="Area2D" parent="."]
-position = Vector2( 80, -0.976 )
-scale = Vector2( 0.440001, 0.440001 )
+position = Vector2( 50, -0.976 )
+scale = Vector2( 0.25, 0.5 )
 collision_layer = 0
 collision_mask = 2
 __meta__ = {
@@ -172,6 +172,7 @@ shape = SubResource( 8 )
 
 [node name="Player_detect" type="Area2D" parent="."]
 position = Vector2( -35, 0 )
+scale = Vector2( 1.3, 1 )
 collision_layer = 0
 collision_mask = 2
 

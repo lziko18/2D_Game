@@ -46,18 +46,22 @@ func _enter_state(_new_state, _old_state):
 			motion.y=0
 			motion.x=speed
 			$Sprite.rotation_degrees=0
+			$Area2D2.rotation_degrees=0
 		states.left:
 			motion.y=0
 			motion.x=-speed
 			$Sprite.rotation_degrees=180
+			$Area2D2.rotation_degrees=180
 		states.up:
 			motion.x=0
 			motion.y=-speed
 			$Sprite.rotation_degrees=-90
+			$Area2D2.rotation_degrees=-90
 		states.down:
 			motion.x=0
 			motion.y=speed
 			$Sprite.rotation_degrees=90
+			$Area2D2.rotation_degrees=90
 		states.explode:
 			$Sprite/AnimationPlayer.play("Explode")
 			motion.x=0

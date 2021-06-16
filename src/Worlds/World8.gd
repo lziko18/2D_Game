@@ -194,7 +194,8 @@ func _on_FallCollision2_body_entered(body):
 		body.motion.y=0
 		yield(get_tree().create_timer(0.5), "timeout")
 		body.can_be_target=true
-		
+	else:
+		body.queue_free()
 
 func _on_FallCollision_body_entered(body):
 	if body.name == "Player":
@@ -227,6 +228,8 @@ func _on_FallCollision_body_entered(body):
 		body.motion.y=0
 		yield(get_tree().create_timer(0.5), "timeout")
 		body.can_be_target=true
+	else:
+		body.queue_free()
 	
 func _get_world_name():
 	return "World8"
