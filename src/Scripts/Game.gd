@@ -25,6 +25,8 @@ func load_save(save_name : String):
 	save_data = {}
 	save_data["player"] = SaveSystem.load_player(save_name)
 	save_data["worlds"] = SaveSystem.load_worlds(save_name)
+	return save_data["player"] != null and save_data["worlds"] != null
+		
 
 func _ready():
 	if save_data != null:
@@ -88,5 +90,7 @@ func save_game(save_name : String):
 	SaveSystem.save_worlds(save_name, save_data.worlds)
 
 func load_game(save_name : String):
-	load_save(save_name)
+	if load_save(save_name):
+		return false
 	load_world(save_data.player.world_name, LoadType.LOAD)
+	return true

@@ -608,9 +608,11 @@ func _on_AnimationPlayer_animation_finished(cast):
 		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
 		yield(get_tree().create_timer(1), "timeout")
 		var game = get_tree().get_root().get_node("Game")
-		game.load_game("Checkpoint")
-		update_max_health()
-		update_health()
+		if game.load_game("Checkpoint"):
+			update_max_health()
+			update_health()
+		else:
+			game.load_world("World5", game.LoadType.START)
 
 
 
@@ -634,14 +636,11 @@ func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name=="Ground_slam":
 		$Position2D/Att_hitbox/CollisionShape2D.disabled=true
 	if anim_name=="air3":
-			$Bounce/CollisionShape2D.disabled=true
-
+		$Bounce/CollisionShape2D.disabled=true
 
 
 func _on_Timer_timeout():
 	attack_points=3
-
-
 
 func _on_Cast_reset_timeout():
 	can_cast=true

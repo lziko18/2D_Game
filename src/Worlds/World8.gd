@@ -15,6 +15,11 @@ func refresh():
 	yield(get_tree().create_timer(0.05), "timeout")
 	$Player.set_physics_process(true)
 	$Area2D3/CollisionShape2D.disabled=false
+	if $Bosses.get_child_count() == 0:
+		$Hidden3.queue_free()
+		$Hidden4.queue_free()
+		$Area2D4.queue_free()
+
 
 func next_scene_to_world9():
 	var level = root.get_node(self.name)
