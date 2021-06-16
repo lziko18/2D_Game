@@ -5,6 +5,7 @@ const speed = 200
 const gravity = 30
 
 var motion = Vector2()
+var pos = Vector2()
 
 func _init():
 	add_state("right")
@@ -19,6 +20,8 @@ func _ready():
 		$Sprite/AnimationPlayer.play("Crawl")
 	scale.x=0.5
 	scale.y=0.5
+	pos.x = global_position.x
+	pos.y = global_position.y
 
 func _state_logic(_delta):
 	motion=move_and_slide(motion,UP)
@@ -87,31 +90,37 @@ func del():
 	self.queue_free()
 
 func get_save_data():
+	#var data = {
+	#	"state": get_state_by_id(state),
+	#	"position": {
+	#		"x": global_position.x,
+	#		"y": global_position.y
+	#	},
+	#	"motion": {
+	#		"x": motion.x,
+	#		"y": motion.y
+	#	},
+	#	"animation": {
+	#		"name": $Sprite/AnimationPlayer.current_animation,
+	#		"position": $Sprite/AnimationPlayer.current_animation_position
+	#	}
+	#}
 	var data = {
-		"state": get_state_by_id(state),
 		"position": {
-			"x": global_position.x,
-			"y": global_position.y
-		},
-		"motion": {
-			"x": motion.x,
-			"y": motion.y
-		},
-		"animation": {
-			"name": $Sprite/AnimationPlayer.current_animation,
-			"position": $Sprite/AnimationPlayer.current_animation_position
+			"x": pos.x,
+			"y": pos.y
 		}
 	}
 	return data
 
 func set_from_save_data(data):
-	set_state(states[data.state])
+	#set_state(states[data.state])
 	global_position.x = data.position.x
 	global_position.y = data.position.y
-	motion.x = data.motion.x
-	motion.y = data.motion.y
-	$Sprite/AnimationPlayer.play(data.animation.name)
-	$Sprite/AnimationPlayer.seek(data.animation.position)
+	#motion.x = data.motion.x
+	#motion.y = data.motion.y
+	#$Sprite/AnimationPlayer.play(data.animation.name)
+	#$Sprite/AnimationPlayer.seek(data.animation.position)
 
 func get_entity_name():
 	return "Crawler"

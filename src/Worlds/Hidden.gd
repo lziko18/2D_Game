@@ -61,8 +61,6 @@ func _on_Area2D_body_entered(body):
 		yield(get_tree().create_timer(1), "timeout")
 		game.load_world("World8", game.LoadType.TRANSITION)
 		root.get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
-		#body.position.x = 59
-		#body.position.y = 225
 			
 func _get_world_name():
 	return "World5"

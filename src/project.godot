@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Game",
 "language": "GDScript",
-"path": "res://Scripts/Game.gd"
+"path": "res://Scripts/Game2.gd"
 }, {
 "base": "Reference",
 "class": "SaveSystem",

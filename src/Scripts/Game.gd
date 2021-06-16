@@ -1,5 +1,5 @@
 extends Node2D
-class_name Game
+#class_name Game
 
 var world_scenes = {
 	"World5": preload("res://Worlds/World5.tscn"),
@@ -25,7 +25,6 @@ func load_save(save_name : String):
 	save_data = {}
 	save_data["player"] = SaveSystem.load_player(save_name)
 	save_data["worlds"] = SaveSystem.load_worlds(save_name)
-	return save_data["player"] != null and save_data["worlds"] != null
 		
 
 func _ready():
@@ -38,7 +37,7 @@ func _ready():
 		save_data["worlds"] = {}
 		load_world("World5", LoadType.START)
 
-func load_world(world_name, load_type):
+func load_world(world_name, load_type, free_entities=true):
 	print("Loading world " + world_name + " with load type " + LoadType.keys()[load_type])
 
 	var root = get_tree().get_root()
@@ -50,7 +49,7 @@ func load_world(world_name, load_type):
 	else:
 		world_instance = world_scenes[world_name].instance()
 		if load_type == LoadType.LOAD:
-			world_instance.load_save(save_data.worlds[world_name])
+			world_instance.load_save(save_data.worlds[world_name], free_entities)
 
 	# gen player instance
 	var player_instance = null
@@ -90,7 +89,5 @@ func save_game(save_name : String):
 	SaveSystem.save_worlds(save_name, save_data.worlds)
 
 func load_game(save_name : String):
-	if load_save(save_name):
-		return false
-	load_world(save_data.player.world_name, LoadType.LOAD)
-	return true
+	load_save(save_name)
+	load_world(save_data.player.world_name, LoadType.LOAD, false)

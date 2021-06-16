@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=1]
 [ext_resource path="res://ParallaxBackgrounds/Background_Magic_Forest.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Items/hearts.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Evil_tree.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Items/Obelisk_flying.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Mobs_and_NPC/Guardian.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
@@ -354,9 +355,6 @@ collision_mask = 0
 offset = Vector2( 0, -190 )
 transform = Transform2D( 1, 0, 0, 1, 0, -190 )
 
-[node name="Slimes" parent="." instance=ExtResource( 4 )]
-position = Vector2( 342.16, 112.577 )
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 10360.8, -14.897 )
 scale = Vector2( 4.2, 26.2 )
@@ -369,39 +367,112 @@ shape = SubResource( 7 )
 
 [node name="Entities" type="Node2D" parent="."]
 
+[node name="Guardian" parent="Entities" instance=ExtResource( 16 )]
+position = Vector2( 8039.29, -139.137 )
+face = -1
+
+[node name="Guardian2" parent="Entities" instance=ExtResource( 16 )]
+position = Vector2( 4408.52, -11.3427 )
+face = -1
+
+[node name="Guardian3" parent="Entities" instance=ExtResource( 16 )]
+position = Vector2( 2999.17, 113.11 )
+face = -1
+
 [node name="Crawler" parent="Entities" instance=ExtResource( 6 )]
-position = Vector2( 1913.37, -16.4586 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 2313.85, -46.1236 )
+
+[node name="Crawler2" parent="Entities" instance=ExtResource( 6 )]
+position = Vector2( 7392.43, 179.326 )
 
 [node name="Pathfinder" parent="Entities" instance=ExtResource( 7 )]
-position = Vector2( 1185.66, 107.635 )
+position = Vector2( 2927.38, 24.4724 )
+collision_mask = 1
+
+[node name="Pathfinder3" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 3580.54, -45.3743 )
 collision_mask = 1
 
 [node name="Lizard" parent="Entities" instance=ExtResource( 3 )]
-position = Vector2( 8807.47, 190.775 )
+position = Vector2( 5548.56, 199.251 )
 
-[node name="Slimes" parent="Entities" instance=ExtResource( 4 )]
-position = Vector2( 342.16, 112.577 )
+[node name="Lizard2" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 7545.35, -67.0479 )
+
+[node name="Lizard3" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 5071, 252.436 )
+
+[node name="Lizard4" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 9565.9, 184.181 )
+
+[node name="Lizard5" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 9254.19, 181.961 )
+
+[node name="Lizard6" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 8891.43, 183.937 )
+
+[node name="Lizard7" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 9876.22, 181.961 )
 
 [node name="Enemy" parent="Entities" instance=ExtResource( 3 )]
-position = Vector2( 479.215, 260.854 )
+position = Vector2( 2303.89, 243.294 )
+direction = -1
+
+[node name="Enemy2" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 3600.68, 189.355 )
+direction = -1
+
+[node name="Enemy3" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 3600.68, 189.355 )
 direction = -1
 
 [node name="Pathfinder2" parent="Entities" instance=ExtResource( 7 )]
-position = Vector2( 9101.67, 137.749 )
+position = Vector2( 8552.43, 91.7144 )
+
+[node name="Pathfinder4" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 7408.6, 124.687 )
+
+[node name="Pathfinder5" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 7408.6, 124.687 )
+
+[node name="Slimes" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 1609.85, 138.74 )
+
+[node name="Slimes2" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 2809.56, -14.8822 )
+
+[node name="Slimes3" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 3752.48, 76.2316 )
+direction = 1
+
+[node name="Slimes4" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 3928.36, 71.9938 )
+
+[node name="Slimes5" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 7161.17, -54.9253 )
+
+[node name="Slimes6" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 7716.46, 204.034 )
+
+[node name="Slimes7" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 7988.77, 201.364 )
 
 [node name="Bosses" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
+z_index = -1
 
 [node name="Rune" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 764.137, 245.722 )
+position = Vector2( 3375.03, -48.9825 )
 
 [node name="hearts" parent="Items" instance=ExtResource( 13 )]
-position = Vector2( 843.547, 248.719 )
+position = Vector2( 3213.66, -53.7041 )
 
 [node name="hearts2" parent="Items" instance=ExtResource( 13 )]
-position = Vector2( 9555.58, 164.786 )
+position = Vector2( 8200.76, -84.1156 )
+
+[node name="Rune2" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 7174.79, 164.266 )
 
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2( 4295.32, 450 )
@@ -414,19 +485,16 @@ __meta__ = {
 shape = SubResource( 8 )
 
 [node name="Obelisk_flying" parent="." instance=ExtResource( 15 )]
-position = Vector2( 9380.3, 41.429 )
+position = Vector2( 838.451, 177.775 )
 
 [node name="Evil_tree" parent="." instance=ExtResource( 14 )]
-position = Vector2( 2030.98, -60.1337 )
+position = Vector2( 5983.48, -88.3288 )
 
 [node name="Player_Start" type="Position2D" parent="."]
 position = Vector2( 71.7247, -95.4592 )
 
 [node name="Player_Start_World8" type="Position2D" parent="."]
 position = Vector2( 10251, 170 )
-
-[node name="Obelisk_flying2" parent="." instance=ExtResource( 15 )]
-position = Vector2( 8819.48, 114.421 )
 [connection signal="body_entered" from="Hide1_area" to="." method="_on_Hide1_area_body_entered"]
 [connection signal="body_exited" from="Hide1_area" to="." method="_on_Hide1_area_body_exited"]
 [connection signal="body_entered" from="Hide2_area" to="." method="_on_Hide2_area_body_entered"]

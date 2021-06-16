@@ -608,15 +608,7 @@ func _on_AnimationPlayer_animation_finished(cast):
 		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
 		yield(get_tree().create_timer(1), "timeout")
 		var game = get_tree().get_root().get_node("Game")
-		if game.load_game("Checkpoint"):
-			update_max_health()
-			update_health()
-		else:
-			game.load_world("World5", game.LoadType.START)
-
-
-
-
+		game.load_world("World", game.LoadType.RESPAWN)
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name!="air1" or anim_name!="air2" or anim_name!="Attack1" or anim_name!="Attack2" or anim_name!="Attack3":

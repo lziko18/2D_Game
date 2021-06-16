@@ -22,7 +22,7 @@ func backrun():
 func _process(delta):
 	if Input.is_action_just_pressed("Talk_Read") and can_save==true:
 		$Example2/Particles2D.emitting=true
-		get_tree().get_root().get_node("Game").save_game("Checkpoint")
+		get_tree().get_root().get_node("Game").save_game("_respawn")
 		get_tree().get_root().get_node("World/Player").heal(20)
 		yield(get_tree().create_timer(0.5), "timeout")
 		$Example2/Particles2D.emitting=false
@@ -51,6 +51,7 @@ func _on_Area2D_body_entered(body):
 func _on_Area2D_body_exited(body):
 	if body.name=="Player":
 		$AnimationPlayer.play_backwards("New Anim")
+		can_save=false
 
 
 func _on_Timer_timeout():
