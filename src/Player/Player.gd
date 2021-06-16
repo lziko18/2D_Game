@@ -84,6 +84,12 @@ func heal(amount):
 	if health_current > health_max:
 		health_current = health_max
 	update_health()
+	$Example5/Particles2D2.emitting=true
+	$Example5/Flare2.visible=true
+	yield(get_tree().create_timer(0.5), "timeout")
+	$Example5/Flare2.visible=false
+	$Example5/Particles2D2.emitting=false
+
 
 func add_health(amount):
 	health_max = health_max + amount
@@ -541,7 +547,6 @@ func player_die():
 	
 func finish_him():
 	if is_on_floor():
-		player_stats.disconnect("no_health",self,"player_die")
 		$AnimationPlayer.play("Player Die")
 		motion.x=0
 		set_physics_process(false)
@@ -555,7 +560,7 @@ func check2():
 		$AnimationPlayer.play("Player Jumping")
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	update_floor_position()
 	if got_hit==false:
 		flip()

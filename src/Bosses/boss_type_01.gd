@@ -249,7 +249,7 @@ func _on_AnimationPlayer_animation_started(anim_name):
 		position.x=get_tree().get_root().get_node("World").get_node("Hammer").position.x
 		position.y=get_tree().get_root().get_node("World").get_node("Hammer").position.y-10
 
-func _on_Hurtbox_area_entered(area):
+func _on_Hurtbox_area_entered(_area):
 	health=health-1
 	print(health)
 	if health<=0:

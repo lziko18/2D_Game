@@ -17,7 +17,7 @@ func _ready():
 	state=Idle
 	player = get_tree().get_root().get_node("World/Player")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player.is_on_floor() and get_tree().get_root().get_node("World/Player/check_for_end3").is_colliding() and get_tree().get_root().get_node("World/Player/check_for_end4").is_colliding():
 		where.x=player.global_position.x
 		where.y=player.global_position.y-12
@@ -57,7 +57,8 @@ func _on_Area2D_body_entered(body):
 		
 
 func _on_Area2D_body_exited(body):
-	seen=false
+	if body.name=="Player":
+		seen=false
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -68,5 +69,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			state=Idle
 
 
-func _on_AnimationPlayer_animation_started(anim_name):
+func _on_AnimationPlayer_animation_started(_anim_name):
 	pass # Replace with function body.

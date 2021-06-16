@@ -119,6 +119,7 @@ scale = Vector2( 2.75403, 2.75403 )
 texture = ExtResource( 1 )
 vframes = 3
 hframes = 8
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Bite = SubResource( 1 )
@@ -193,6 +194,5 @@ __meta__ = {
 shape = SubResource( 9 )
 one_way_collision = true
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="animation_started" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="body_entered" from="Sprite/Position2D/Player_detect" to="." method="_on_Player_detect_body_entered"]
 [connection signal="area_entered" from="Weak_point" to="." method="_on_Weak_point_area_entered"]

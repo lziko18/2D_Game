@@ -19,19 +19,19 @@ func _input(event):
 	if transition != null:
 		set_state(transition)
 	
-func _input_logic(event):
+func _input_logic(_event):
 	pass
 
-func _state_logic(delta):
+func _state_logic(_delta):
 	pass
 	
 func _get_transition():
 	return null
 	
-func _enter_state(new_state, old_state):
+func _enter_state(_new_state, _old_state):
 	pass
 	
-func _exit_state(old_state, new_state):
+func _exit_state(_old_state, _new_state):
 	pass
 
 func set_state(new_state):

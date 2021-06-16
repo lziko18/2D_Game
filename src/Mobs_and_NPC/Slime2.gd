@@ -22,10 +22,10 @@ func _init():
 func _ready():
 	set_direction(direction)
 
-func _input_logic(event):
+func _input_logic(_event):
 	pass
 
-func _state_logic(delta):
+func _state_logic(_delta):
 	player_knock()
 	match state:
 		states.Wander:
@@ -62,7 +62,7 @@ func player_knock():
 func _get_transition():
 	pass
 
-func _enter_state(new_state, old_state):
+func _enter_state(_new_state, _old_state):
 	match state:
 		states.Wander:
 			$Sprite/AnimationPlayer.play("Slide")
@@ -80,7 +80,7 @@ func _enter_state(new_state, old_state):
 			$Sprite/kot.queue_free()
 			$CollisionShape2D.queue_free()
 
-func _exit_state(old_state, new_state):
+func _exit_state(_old_state, _new_state):
 	pass
 
 func set_direction(dir):

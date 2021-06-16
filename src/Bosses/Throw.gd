@@ -13,7 +13,7 @@ func check():
 		stoped=true
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	motion.y = speed2*2
 	motion=move_and_slide(motion,UP)
 	check()

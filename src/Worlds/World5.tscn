@@ -424,6 +424,11 @@ position = Vector2( 71.7247, -95.4592 )
 
 [node name="Player_Start_World8" type="Position2D" parent="."]
 position = Vector2( 10251, 170 )
+
+[node name="Obelisk_flying" parent="." instance=ExtResource( 15 )]
+
+[node name="Obelisk_flying2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 8819.48, 114.421 )
 [connection signal="body_entered" from="Hide1_area" to="." method="_on_Hide1_area_body_entered"]
 [connection signal="body_exited" from="Hide1_area" to="." method="_on_Hide1_area_body_exited"]
 [connection signal="body_entered" from="Hide2_area" to="." method="_on_Hide2_area_body_entered"]

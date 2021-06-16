@@ -25,6 +25,6 @@ func fire():
 		spit.dir="left"
 	get_parent().add_child(spit)
 
-func _on_Spit_body_entered(body):
+func _on_Spit_body_entered(_body):
 	fire()
 	queue_free()

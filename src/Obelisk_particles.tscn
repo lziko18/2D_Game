@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/wiggle_scale.gd" type="Script" id=1]
+[ext_resource path="res://Assets/resources/spotlight_7.png" type="Texture" id=2]
+[ext_resource path="res://Assets/resources/offset_glow.png" type="Texture" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="Curve" id=3]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 9.81818 ), 0.0, 0.0, 0, 0, Vector2( 1, 360 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.191336, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0.472727 ), 0.0, 2.25296, 0, 0, Vector2( 1, 0.440909 ), -0.818182, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 1
+emission_sphere_radius = 5.0
+flag_disable_z = true
+gravity = Vector3( 0, -150, 0 )
+angular_velocity = 1.0
+angular_velocity_random = 1.0
+angular_velocity_curve = SubResource( 4 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+scale = 0.5
+scale_random = 0.3
+scale_curve = SubResource( 8 )
+color_ramp = SubResource( 6 )
+
+[node name="Example2" type="Node2D"]
+position = Vector2( 287, 300 )
+
+[node name="Flare" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.239216, 1.6, 2, 0.654902 )
+material = SubResource( 1 )
+position = Vector2( -4, -23 )
+scale = Vector2( 0.460937, 0.3125 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+power = 0.01
+speed = 50.0
+
+[node name="Particles2D" type="Particles2D" parent="."]
+modulate = Color( 0.3, 1.55, 3, 1 )
+material = SubResource( 2 )
+position = Vector2( -4, -35 )
+scale = Vector2( 3, 3 )
+emitting = false
+amount = 20
+process_material = SubResource( 9 )
+texture = ExtResource( 3 )

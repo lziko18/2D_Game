@@ -19,10 +19,13 @@ func backrun():
 	dir=0
 	$Tween.start()
 
-func _process(_delta):
+func _process(delta):
 	if Input.is_action_just_pressed("Talk_Read") and can_save==true:
+		$Example2/Particles2D.emitting=true
 		get_tree().get_root().get_node("Game").save_game("Checkpoint")
-		print("saved")
+		get_tree().get_root().get_node("World/Player").heal(20)
+		yield(get_tree().create_timer(0.5), "timeout")
+		$Example2/Particles2D.emitting=false
 
 
 
@@ -40,13 +43,15 @@ func _on_Area2D_body_entered(body):
 			var add=scene.instance()
 			get_tree().get_root().get_node("World/Player/Camera2D").add_child(add)
 			body.obelisk=true
-		$AnimationPlayer.play_backwards("New Anim")
+		can_save=true
+		body.obelisk=true
+	$AnimationPlayer.play("New Anim")
 
 
 func _on_Area2D_body_exited(body):
 	if body.name=="Player":
-		$AnimationPlayer.play("New Anim")
+		$AnimationPlayer.play_backwards("New Anim")
 
 
 func _on_Timer_timeout():
-	pass # Replace with function body.
+	can_save=true
