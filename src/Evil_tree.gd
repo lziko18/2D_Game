@@ -7,10 +7,13 @@ var seen
 var where= Vector2()
 var cnt=1
 var player
+var health=4
 enum{
 	Attack,
 	Idle,
+	Die,
 }
+var can_flip=true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,21 +33,34 @@ func _physics_process(_delta):
 		Attack:
 			flip()
 			attack_state()
+		Die:
+			$Hurtbox/CollisionShape2D2.disabled=true
+			$Area2D2/CollisionShape2D2.disabled=true
+			$AnimationPlayer.play("Die")
 
 
 func flip():
 	var dir=get_tree().get_root().get_node("World").get_node("Player").global_position.x
 	var our=global_position.x
-	if our > dir:
-		self.flip_h=true
-	elif our < dir:
-		self.flip_h=false
+	if can_flip:
+		if our > dir:
+			self.flip_h=true
+			$Hurtbox.position.x=-6.1
+			$Area2D2.position.x=-6.1
+		elif our < dir:
+			self.flip_h=false
+			$Hurtbox.position.x=6.1
+			$Area2D2.position.x=6.1
 
 
 func attack_state():
 	$AnimationPlayer.play("Attack")
 
+func can_flip_true():
+	can_flip=true
 
+func can_flip_false():
+	can_flip=false
 
 func spawn():
 	var spikes=Dust.instance()
@@ -67,7 +83,20 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			state=Attack
 		else:
 			state=Idle
+	if anim_name=="Die":
+		queue_free()
 
 
 func _on_AnimationPlayer_animation_started(_anim_name):
-	pass # Replace with function body.
+	pass
+
+
+func _on_Hurtbox_area_entered(area):
+	health=health-1
+	if health<=0:
+		state=Die
+
+
+func _on_Area2D2_body_entered(body):
+	if body.name=="Player":
+		body.take

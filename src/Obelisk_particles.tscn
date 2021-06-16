@@ -69,5 +69,6 @@ position = Vector2( -4, -35 )
 scale = Vector2( 3, 3 )
 emitting = false
 amount = 20
+lifetime = 1.5
 process_material = SubResource( 9 )
 texture = ExtResource( 3 )

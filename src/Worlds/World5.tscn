@@ -4,7 +4,6 @@
 [ext_resource path="res://ParallaxBackgrounds/Background_Magic_Forest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mobs_and_NPC/Lizard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Mobs_and_NPC/Slimes.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Items/Rune.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Mobs_and_NPC/Crawler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mobs_and_NPC/Pathfinder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/1-16663_light-beam-png-beam-of-light-png.png" type="Texture" id=8]
@@ -456,6 +455,19 @@ position = Vector2( 7716.46, 204.034 )
 
 [node name="Slimes7" parent="Entities" instance=ExtResource( 4 )]
 position = Vector2( 7988.77, 201.364 )
+
+[node name="Slimes" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 1609.85, 138.74 )
+
+[node name="Slimes2" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 2809.56, -14.8822 )
+
+[node name="Slimes3" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 3752.48, 76.2316 )
+direction = 1
+
+[node name="Slimes4" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 3928.36, 71.9938 )
 
 [node name="Bosses" type="Node2D" parent="."]
 

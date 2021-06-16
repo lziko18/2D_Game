@@ -781,9 +781,9 @@ func _ready():
 	#set_physics_process(false)
 
 	if save_data == null:
-		health_max = 5
+		health_max = 100
 		update_max_health()
-		health_current = 5
+		health_current = 8
 		update_health()
 	else:
 		set_from_save_data(save_data)
