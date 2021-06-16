@@ -34,9 +34,10 @@ func refresh():
 		save_data = null
 	game = get_tree().get_root().get_node("Game")
 
-func load_save(data):
+func load_save(data, free_entities=true):
 	for e in get_node("Entities").get_children():
-		e.queue_free()
+		if free_entities:
+			e.queue_free()
 	for e in get_node("Bosses").get_children():
 		e.queue_free()
 	for e in get_node("Items").get_children():
@@ -67,10 +68,11 @@ func get_save_data():
 	return data
 
 func set_from_save_data(data):
-	for i in range(0, data.entities.size()):
-		var entity_instance = entity_scenes[data.entities[i].name].instance()
-		entity_instance.load_save(data.entities[i])
-		get_node("Entities").add_child(entity_instance)
+	if get_node("Entities").get_child_count() == 0:
+		for i in range(0, data.entities.size()):
+			var entity_instance = entity_scenes[data.entities[i].name].instance()
+			entity_instance.load_save(data.entities[i])
+			get_node("Entities").add_child(entity_instance)
 	for i in range(0, data.bosses.size()):
 		var boss_instance = boss_scenes[data.bosses[i].name].instance()
 		boss_instance.load_save(data.bosses[i])

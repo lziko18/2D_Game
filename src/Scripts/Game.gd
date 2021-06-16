@@ -1,5 +1,5 @@
 extends Node2D
-class_name Game
+#class_name Game
 
 var world_scenes = {
 	"World5": preload("res://Worlds/World5.tscn"),

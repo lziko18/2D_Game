@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Tilesets/Background/Background-1.png" type="Texture" id=1]
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=2]
@@ -22,7 +22,6 @@
 [ext_resource path="res://Items/Obelisk_flying.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Mobs_and_NPC/Lizard.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Mobs_and_NPC/Guardian.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Audio/12. Sisters of Battle.wav" type="AudioStream" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
@@ -680,9 +679,6 @@ position = Vector2( 668.906, 146.004 )
 
 [node name="Obelisk_flying2" parent="." instance=ExtResource( 20 )]
 position = Vector2( 22907.5, -193.125 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 23 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
