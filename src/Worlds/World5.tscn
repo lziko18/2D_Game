@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=1]
 [ext_resource path="res://ParallaxBackgrounds/Background_Magic_Forest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Mobs_and_NPC/Lizard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Mobs_and_NPC/Slimes.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Items/Rune.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Mobs_and_NPC/Crawler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Mobs_and_NPC/Pathfinder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/1-16663_light-beam-png-beam-of-light-png.png" type="Texture" id=8]
@@ -354,9 +353,6 @@ collision_mask = 0
 offset = Vector2( 0, -190 )
 transform = Transform2D( 1, 0, 0, 1, 0, -190 )
 
-[node name="Slimes" parent="." instance=ExtResource( 4 )]
-position = Vector2( 342.16, 112.577 )
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 10360.8, -14.897 )
 scale = Vector2( 4.2, 26.2 )
@@ -370,35 +366,54 @@ shape = SubResource( 7 )
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Crawler" parent="Entities" instance=ExtResource( 6 )]
-position = Vector2( 1913.37, -16.4586 )
+position = Vector2( 2313.85, -46.1236 )
 scale = Vector2( 0.4, 0.4 )
 
 [node name="Pathfinder" parent="Entities" instance=ExtResource( 7 )]
-position = Vector2( 1185.66, 107.635 )
+position = Vector2( 2927.38, 24.4724 )
+collision_mask = 1
+
+[node name="Pathfinder3" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 3580.54, -45.3743 )
 collision_mask = 1
 
 [node name="Lizard" parent="Entities" instance=ExtResource( 3 )]
-position = Vector2( 8807.47, 190.775 )
-
-[node name="Slimes" parent="Entities" instance=ExtResource( 4 )]
-position = Vector2( 342.16, 112.577 )
+position = Vector2( 5548.56, 199.251 )
 
 [node name="Enemy" parent="Entities" instance=ExtResource( 3 )]
-position = Vector2( 479.215, 260.854 )
+position = Vector2( 2303.89, 243.294 )
+direction = -1
+
+[node name="Enemy2" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 3600.68, 189.355 )
+direction = -1
+
+[node name="Enemy3" parent="Entities" instance=ExtResource( 3 )]
+position = Vector2( 3600.68, 189.355 )
 direction = -1
 
 [node name="Pathfinder2" parent="Entities" instance=ExtResource( 7 )]
 position = Vector2( 9101.67, 137.749 )
 
+[node name="Slimes" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 1609.85, 138.74 )
+
+[node name="Slimes2" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 2809.56, -14.8822 )
+
+[node name="Slimes3" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 3752.48, 76.2316 )
+direction = 1
+
+[node name="Slimes4" parent="Entities" instance=ExtResource( 4 )]
+position = Vector2( 3928.36, 71.9938 )
+
 [node name="Bosses" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Rune" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 764.137, 245.722 )
-
 [node name="hearts" parent="Items" instance=ExtResource( 13 )]
-position = Vector2( 843.547, 248.719 )
+position = Vector2( 3213.66, -53.7041 )
 
 [node name="hearts2" parent="Items" instance=ExtResource( 13 )]
 position = Vector2( 9555.58, 164.786 )
@@ -413,8 +428,11 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource( 8 )
 
+[node name="Obelisk_flying" parent="." instance=ExtResource( 15 )]
+position = Vector2( 838.451, 177.775 )
+
 [node name="Evil_tree" parent="." instance=ExtResource( 14 )]
-position = Vector2( 2030.98, -60.1337 )
+position = Vector2( 5983.48, -88.3288 )
 
 [node name="Player_Start" type="Position2D" parent="."]
 position = Vector2( 71.7247, -95.4592 )
@@ -422,8 +440,8 @@ position = Vector2( 71.7247, -95.4592 )
 [node name="Player_Start_World8" type="Position2D" parent="."]
 position = Vector2( 10251, 170 )
 
-[node name="Obelisk_flying" parent="." instance=ExtResource( 15 )]
-position = Vector2( 4972, 178 )
+[node name="Obelisk_flying2" parent="." instance=ExtResource( 15 )]
+position = Vector2( 4659.53, 110.075 )
 [connection signal="body_entered" from="Hide1_area" to="." method="_on_Hide1_area_body_entered"]
 [connection signal="body_exited" from="Hide1_area" to="." method="_on_Hide1_area_body_exited"]
 [connection signal="body_entered" from="Hide2_area" to="." method="_on_Hide2_area_body_entered"]
