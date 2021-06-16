@@ -91,6 +91,7 @@ func _enter_state(_new_state, _old_state):
 		states.die:
 			$AnimationPlayer.play("die")
 			$Hurtbox/CollisionShape2D2.disabled=true
+			velocity.x = 0
 		states.land:
 			$AnimationPlayer.play("land")
 		states.hunt:
@@ -139,11 +140,11 @@ func _on_AnimationPlayer_animation_started(anim_name):
 
 
 func _on_Hurtbox_area_entered(area):
-	set_state(states.hurt)
 	if area.name=="Att_hitbox":
 		velocity.x=area.knockback_vector*0.5
 	else:
 		velocity.x=0
+	set_state(states.hurt)
 
 func get_save_data():
 	var data = {

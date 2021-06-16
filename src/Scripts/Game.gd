@@ -13,6 +13,12 @@ var world_instances = {
 	"World9": null
 }
 
+enum LoadType {
+	START,
+	LOAD,
+	TRANSITION
+}
+
 var save_data = null
 
 func load_save(save_name : String):
@@ -23,15 +29,15 @@ func load_save(save_name : String):
 func _ready():
 	if save_data != null:
 		var player_world = save_data.player.world_name
-		load_world(player_world)
+		load_world(player_world, LoadType.LOAD)
 	else:
 		save_data = {}
 		save_data["player"] = {}
 		save_data["worlds"] = {}
-		load_world("World5")
+		load_world("World5", LoadType.START)
 
-func load_world(world_name):
-	print("loading world " + world_name)
+func load_world(world_name, load_type):
+	print("Loading world " + world_name + " with load type " + LoadType.keys()[load_type])
 
 	var root = get_tree().get_root()
 
@@ -41,7 +47,7 @@ func load_world(world_name):
 		world_instance = world_instances[world_name]
 	else:
 		world_instance = world_scenes[world_name].instance()
-		if save_data.worlds.has(world_name):
+		if load_type == LoadType.LOAD:
 			world_instance.load_save(save_data.worlds[world_name])
 
 	# gen player instance
@@ -51,8 +57,8 @@ func load_world(world_name):
 		root.get_node("World").remove_child(player_instance)
 	else:
 		player_instance = preload("res://Player/Player.tscn").instance()
-		if save_data.player.size() > 0:
-			player_instance.load_save(save_data.player)
+	if load_type == LoadType.LOAD:
+		player_instance.set_from_save_data(save_data.player)
 	
 	# save old_world and remove from tree
 	var old_world = root.get_node("World")
@@ -61,14 +67,10 @@ func load_world(world_name):
 		save_data["worlds"][old_world._get_world_name()] = old_world.get_save_data()
 		root.remove_child(old_world)
 	
-	if world_name == "World5" and world_instances["World5"] == null:
+	if load_type == LoadType.START:
 		player_instance.global_position = world_instance.get_node("Player_Start").global_position
-	#elif world_instances[old_world._get_world_name()] == null:
-	#	player_instance.global_position = world_instance.get_node("Player_Start_" + old_world._get_world_name()).global_position
-	#if world_instances[world_instance._get_world_name()] == null and world_name == "World5":
-	#	player_instance.global_position = world_instance.get_node("Player_Start").global_position
-	#elif old_world != null:
-	#	player_instance.global_position = world_instance.get_node("Player_Start_" + old_world._get_world_name()).global_position
+	elif load_type == LoadType.TRANSITION:
+		player_instance.global_position = world_instance.get_node("Player_Start_" + old_world._get_world_name()).global_position
 
 	# replace old_world with new
 	player_instance.world_name = world_name
@@ -84,3 +86,7 @@ func save_game(save_name : String):
 	print(save_data)
 	SaveSystem.save_player(save_name, save_data.player)
 	SaveSystem.save_worlds(save_name, save_data.worlds)
+
+func load_game(save_name : String):
+	load_save(save_name)
+	load_world(save_data.player.world_name, LoadType.LOAD)

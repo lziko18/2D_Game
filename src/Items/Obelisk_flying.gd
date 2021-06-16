@@ -19,8 +19,10 @@ func backrun():
 	dir=0
 	$Tween.start()
 
-func _process(delta):
-	if InputEventAction.
+func _process(_delta):
+	if Input.is_action_just_pressed("Talk_Read") and can_save==true:
+		get_tree().get_root().get_node("Game").save_game("Checkpoint")
+		print("saved")
 
 
 
@@ -33,6 +35,7 @@ func _on_Tween_tween_all_completed():
 
 func _on_Area2D_body_entered(body):
 	if body.name=="Player":
+		can_save = true
 		if body.obelisk==false:
 			var add=scene.instance()
 			get_tree().get_root().get_node("World/Player/Camera2D").add_child(add)

@@ -124,7 +124,7 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
 vframes = 6
 hframes = 10
-frame = 30
+frame = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -187,8 +187,8 @@ rotation = 1.5708
 scale = Vector2( 2.3, 2.5 )
 shape = SubResource( 10 )
 disabled = true
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="animation_finished" from="Enemyanim" to="." method="_on_Enemyanim_animation_finished"]
 [connection signal="animation_started" from="Enemyanim" to="." method="_on_Enemyanim_animation_started"]
 [connection signal="body_entered" from="backhit" to="." method="_on_backhit_body_entered"]

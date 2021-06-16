@@ -10,13 +10,17 @@ onready var root=get_tree().get_root()
 
 
 func refresh():
+	.refresh()
 	$Player/Camera2D.limit_top=-320
 	$Player/Camera2D.limit_right=11232
 	$Player/Camera2D.limit_bottom=352
 	$Player/Camera2D.limit_left=0
 	$Area2D/CollisionShape2D.disabled = false
 	yield(get_tree().create_timer(0.05), "timeout")
-
+	if $Bosses.get_child_count() == 0:
+		$Hidden1.queue_free()
+		$Hidden2.queue_free()
+		$Area2D3.queue_free()
 
 
 
@@ -76,9 +80,9 @@ func _on_Area2D_body_entered(body):
 		yield(get_tree().create_timer(0.1), "timeout")
 		body.set_physics_process(false)
 		yield(get_tree().create_timer(1), "timeout")
-		root.get_node("Game").load_world("World8")
+		game.load_world("World8", game.LoadType.TRANSITION)
 		root.get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
-		body.position=Vector2(13389,800)
+		#body.position=Vector2(13389,800)
 		body.motion.y=-1000
 		body.motion.x=2000
 		body.set_physics_process(true)

@@ -4,6 +4,7 @@ onready var root=get_tree().get_root()
 
 
 func refresh():
+	.refresh()
 	yield(get_tree().create_timer(0.01), "timeout")
 	$Area2D3/CollisionShape2D.disabled=true
 	$Player/Camera2D.limit_bottom=352
@@ -122,10 +123,10 @@ func _on_world9_body_entered(body):
 		root.get_node("/root/Transition").get_node("Transition/Video").play("transition")
 		get_tree().paused=false
 		yield(get_tree().create_timer(1), "timeout")
-		root.get_node("Game").load_world("World9")
+		game.load_world("World9", game.LoadType.TRANSITION)
 		root.get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
-		body.position.x = 4420
-		body.position.y = -200
+		#body.position.x = 4420
+		#body.position.y = -200
 		#body.motion.y=1000
 		#yield(get_tree().create_timer(0.01), "timeout")
 		#body.set_physics_process(false)
@@ -145,10 +146,10 @@ func _on_world5_body_entered(body):
 		body.set_physics_process(false)
 		get_tree().paused=false
 		yield(get_tree().create_timer(1), "timeout")
-		root.get_node("Game").load_world("World5")
+		game.load_world("World5", game.LoadType.TRANSITION)
 		root.get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
-		body.position.x = 10251
-		body.position.y = 196
+		#body.position.x = 10251
+		#body.position.y = 196
 			#body.motion.x=-1000
 			#body.set_physics_process(false)
 			#get_tree().paused=true

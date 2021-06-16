@@ -392,19 +392,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="world5"]
 shape = SubResource( 15 )
 
-[node name="Entities" type="Node" parent="."]
-
-[node name="Slimes4" parent="Entities" instance=ExtResource( 7 )]
-position = Vector2( 2998.85, 231.737 )
-
-[node name="Slimes5" parent="Entities" instance=ExtResource( 7 )]
-position = Vector2( 3363.23, 235.301 )
-
-[node name="Slimes6" parent="Entities" instance=ExtResource( 7 )]
-position = Vector2( 3220.69, 235.301 )
-
-[node name="Bosses" type="Node2D" parent="."]
-
 [node name="FallCollision" type="Area2D" parent="."]
 position = Vector2( 5521.3, 500 )
 
@@ -472,7 +459,6 @@ texture = ExtResource( 15 )
 
 [node name="Banditt" parent="." instance=ExtResource( 16 )]
 position = Vector2( 23414.9, -148.891 )
-frame = 3
 
 [node name="boss_type_01" parent="." instance=ExtResource( 18 )]
 position = Vector2( 25806, 252.167 )
@@ -483,7 +469,23 @@ visible = false
 color = Color( 0.392157, 0.392157, 0.392157, 1 )
 
 [node name="Player_Start_World5" type="Position2D" parent="."]
-position = Vector2( 114.398, 205.157 )
+position = Vector2( 89.8573, 205.157 )
+
+[node name="Player_Start_World9" type="Position2D" parent="."]
+position = Vector2( 13389, 800 )
+
+[node name="Entities" type="Node" parent="."]
+
+[node name="Slimes4" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 2998.85, 231.737 )
+
+[node name="Slimes5" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 3363.23, 235.301 )
+
+[node name="Slimes6" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 3220.69, 235.301 )
+
+[node name="Bosses" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
 

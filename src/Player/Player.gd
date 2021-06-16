@@ -10,11 +10,12 @@ const CHAIN_PULL = 105
 var can_be_detected=true
 var motion=Vector2()
 
-var speed=50
-var max_speed=300
-var jump_force=600
-var gravity=30
-var double_jump_force= 500
+const speed=50
+const max_speed=300
+const jump_force=600
+const gravity=30
+const double_jump_force= 500
+
 var jumps_left=0
 var attack_points=3
 var air_att_points=3
@@ -45,13 +46,8 @@ var chain_velocity := Vector2(0,0)
 var last_floor_position = Vector2(0, 0)
 var last_floor_ctr = 0
 var speaking_to=""
-onready var cam=$Camera2D
-onready var attack_hitbox =$Position2D/Att_hitbox
-onready var ground_damage=$Ground_slam_hitbox
 var health_current : int
 var health_max : int
-var save_data = null
-var player_stats
 var is_speaking=false
 var can_speak=false
 var world_name
@@ -62,6 +58,13 @@ var spirit_fire=false
 var runes=false
 var obelisk=false
 var grappling=false
+
+var player_stats
+onready var cam=$Camera2D
+onready var attack_hitbox =$Position2D/Att_hitbox
+onready var ground_damage=$Ground_slam_hitbox
+
+var save_data = null
 
 func load_save(data):
 	save_data = data
@@ -432,13 +435,6 @@ func flip():
 
 
 
-
-
-
-
-
-
-
 func cast():
 	if Input.is_action_just_pressed("Cast Spell")  and is_sliding==false and is_crouching==false and is_wall_sliding==false and is_attackig==false and is_air_att==false and is_hooking==false and is_speaking==false:
 		if can_cast==true:
@@ -603,6 +599,14 @@ func _on_AnimationPlayer_animation_finished(cast):
 		air_att_points-=1
 	if cast=="Hurt":
 		got_hit=false
+	if cast == "Player Die":
+		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play("transition")
+		yield(get_tree().create_timer(1), "timeout")
+		var game = get_tree().get_root().get_node("Game")
+		game.load_game("Checkpoint")
+		update_max_health()
+		update_health()
+
 
 
 
@@ -671,7 +675,58 @@ func get_save_data():
 			"current": health_current,
 			"max": health_max
 		},
-		"world_name": world_name
+		"world_name": world_name,
+		"jumps_left": jumps_left,
+		"attack_points": attack_points,
+		"air_att_points": air_att_points,
+		"can_hook": can_hook,
+		"double_jump": double_jump,
+		"friction": friction,
+		"is_casting": is_casting,
+		"is_running": is_running,
+		"is_jumping": is_jumping,
+		"first_jump": first_jump,
+		"can_cast": can_cast,
+		"is_sliding": is_sliding,
+		"is_attackig": is_attackig,
+		"is_air_att": is_air_att,
+		"is_crouching": is_crouching,
+		"can_slide": can_slide,
+		"can_do_the_action": can_do_the_action,
+		"is_wall_sliding": is_wall_sliding,
+		"can_jump": can_jump,
+		"grabbed": grabbed,
+		"got_hit": got_hit,
+		"can_be_target": can_be_target,
+		"not_dead": not_dead,
+		"is_hooking": is_hooking,
+		"grab_right": grab_right,
+		"grab_left": grab_left,
+		"chain_velocity" : {
+			"x": chain_velocity.x,
+			"y": chain_velocity.y
+		},
+		"last_floor_position": {
+			"x": last_floor_position.x,
+			"y": last_floor_position.y
+		},
+		"last_floor_ctr": last_floor_ctr,
+		"speaking_to": speaking_to,
+		"health_current" : health_current,
+		"health_max" : health_max,
+		"is_speaking": is_speaking,
+		"can_speak": can_speak,
+		"cnt": cnt,
+		"wizard": wizard,
+		"bandit": bandit,
+		"spirit_fire": spirit_fire,
+		"runes": runes,
+		"obelisk": obelisk,
+		"grappling": grappling,
+		"animation": {
+			"name": $AnimationPlayer.current_animation,
+			"position": $AnimationPlayer.current_animation_position
+		}
 	}
 	return data
 
@@ -679,14 +734,54 @@ func set_from_save_data(data):
 	global_position.x = data.position.x
 	global_position.y = data.position.y
 	health_max = data.health["max"]
-	update_max_health()
 	health_current = data.health.current
-	update_health()
 	world_name = data.world_name
+	jumps_left=data.jumps_left
+	#attack_points=data.attack_points
+	#air_att_points=data.air_att_points
+	can_hook=data.can_hook
+	double_jump=data.double_jump
+	friction=data.friction
+	#is_casting=data.is_casting
+	#is_running=data.is_running
+	#is_jumping=data.is_jumping
+	first_jump=data.first_jump
+	can_cast=data.can_cast
+	#is_sliding=data.is_sliding
+	#is_attackig=data.is_attackig
+	#is_air_att=data.is_air_att
+	#is_crouching=data.is_crouching
+	can_slide=data.can_slide
+	can_do_the_action=data.can_do_the_action
+	#is_wall_sliding=data.is_wall_sliding
+	can_jump=data.can_jump
+	grabbed=data.grabbed
+	got_hit=data.got_hit
+	can_be_target=data.can_be_target
+	not_dead=data.not_dead
+	#is_hooking=data.is_hooking
+	grab_right=data.grab_right
+	grab_left=data.grab_left
+	chain_velocity = Vector2(data.chain_velocity.x, data.chain_velocity.y)
+	last_floor_position = Vector2(data.last_floor_position.x, data.last_floor_position.y)
+	last_floor_ctr = int(data.last_floor_ctr)
+	#speaking_to=data.speaking_to
+	#is_speaking=data.is_speaking
+	#can_speak=data.can_speak
+	world_name=data.world_name
+	cnt=data.cnt
+	wizard = data.wizard
+	bandit = data.bandit
+	spirit_fire = data.spirit_fire
+	runes=data.runes
+	obelisk=data.obelisk
+	grappling=data.grappling
+	$AnimationPlayer.play(data.animation.name)
+	$AnimationPlayer.seek(data.animation.position)
 
 func _ready():
 	#player_stat.connect("no_health",self,"player_die")
-	player_stats=get_tree().get_root().get_node("World/Player/Camera2D/CanvasLayer/Prova")
+	player_stats=get_node("Camera2D/CanvasLayer/Prova")
 	#set_physics_process(false)
 
 	if save_data == null:
@@ -696,6 +791,9 @@ func _ready():
 		update_health()
 	else:
 		set_from_save_data(save_data)
+		save_data = null
+		update_max_health()
+		update_health()
 
 
 func update_floor_position():

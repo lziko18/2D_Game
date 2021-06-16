@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=1]
 [ext_resource path="res://ParallaxBackgrounds/Background_Magic_Forest.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Mobs_and_NPC/Cute_slime.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Items/hearts.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Evil_tree.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Items/Obelisk_flying.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
@@ -377,7 +378,7 @@ position = Vector2( 1185.66, 107.635 )
 collision_mask = 1
 
 [node name="Lizard" parent="Entities" instance=ExtResource( 3 )]
-position = Vector2( 294.923, 94.542 )
+position = Vector2( 8807.47, 190.775 )
 
 [node name="Slimes" parent="Entities" instance=ExtResource( 4 )]
 position = Vector2( 342.16, 112.577 )
@@ -385,6 +386,9 @@ position = Vector2( 342.16, 112.577 )
 [node name="Enemy" parent="Entities" instance=ExtResource( 3 )]
 position = Vector2( 479.215, 260.854 )
 direction = -1
+
+[node name="Pathfinder2" parent="Entities" instance=ExtResource( 7 )]
+position = Vector2( 9101.67, 137.749 )
 
 [node name="Bosses" type="Node2D" parent="."]
 
@@ -409,14 +413,17 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource( 8 )
 
+[node name="Obelisk_flying" parent="." instance=ExtResource( 15 )]
+position = Vector2( 9380.3, 41.429 )
+
 [node name="Evil_tree" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2030.98, -60.1337 )
 
 [node name="Player_Start" type="Position2D" parent="."]
-position = Vector2( 9743.91, 131.491 )
+position = Vector2( 71.7247, -95.4592 )
 
 [node name="Player_Start_World8" type="Position2D" parent="."]
-position = Vector2( 10164.5, 154.173 )
+position = Vector2( 10251, 170 )
 [connection signal="body_entered" from="Hide1_area" to="." method="_on_Hide1_area_body_entered"]
 [connection signal="body_exited" from="Hide1_area" to="." method="_on_Hide1_area_body_exited"]
 [connection signal="body_entered" from="Hide2_area" to="." method="_on_Hide2_area_body_entered"]

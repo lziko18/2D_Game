@@ -6,15 +6,16 @@ onready var root=get_tree().get_root()
 
 
 func refresh():
+	.refresh()
 	yield(get_tree().create_timer(0.01), "timeout")
 	$Player/Camera2D.limit_bottom=352
 	$Player/Camera2D.limit_top=-190
 	$Player/Camera2D.limit_right=10300
 	$Player/Camera2D.limit_left=0
 	yield(get_tree().create_timer(0.05), "timeout")
-	print("sbohet")
 	$Player.set_physics_process(true)
 	$Player/Camera2D/CanvasLayer/Label/AnimationPlayer.play("Hide")
+
 func next_scene_to_world8():
 	pass
 	#var level = root.get_node(self.name)
@@ -58,12 +59,10 @@ func _on_Area2D_body_entered(body):
 		body.set_physics_process(false)
 		get_tree().paused=false
 		yield(get_tree().create_timer(1), "timeout")
-		root.get_node("Game").load_world("World8")
+		game.load_world("World8", game.LoadType.TRANSITION)
 		root.get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
 		#body.position.x = 59
 		#body.position.y = 225
-		body.position.x = 59
-		body.position.y = 225
 			
 func _get_world_name():
 	return "World5"

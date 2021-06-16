@@ -8,6 +8,7 @@ const scene = preload("res://GrapplingHook.tscn")
 func _ready():
 	if save_data != null:
 		set_from_save_data(save_data)
+		save_data = null
 	target1=Vector2(global_position.x,global_position.y-10)
 	target2=Vector2(global_position.x,global_position.y)
 	self.tween_run_1()

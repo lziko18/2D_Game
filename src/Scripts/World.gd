@@ -20,15 +20,19 @@ var item_scenes = {
 	"Rune": preload("res://Items/Rune.tscn")
 }
 
-func _ready():
+var game = null
+
+func refresh():
 	print("transition")
 	get_tree().paused=true
 	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
+	get_tree().paused=false
 	yield(get_tree().create_timer(0.05), "timeout")
 	$Player.set_physics_process(true)
-	get_tree().paused=false
 	if save_data != null:
 		set_from_save_data(save_data)
+		save_data = null
+	game = get_tree().get_root().get_node("Game")
 
 func load_save(data):
 	for e in get_node("Entities").get_children():

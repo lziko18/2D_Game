@@ -5,7 +5,6 @@
 [ext_resource path="res://Fonts/Adventurefont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Sprites/FlyingObelisk_no_lightnings_no_letter.png" type="Texture" id=4]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
 length = 0.3

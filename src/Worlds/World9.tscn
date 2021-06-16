@@ -149,9 +149,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 4420, -240 )
-
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 162.787, -24.4516 )
 scale = Vector2( 0.5, 0.5 )
@@ -213,6 +210,9 @@ position = Vector2( 10493.2, 211.883 )
 
 [node name="Rune" parent="Items" instance=ExtResource( 11 )]
 position = Vector2( 4655, 227.761 )
+
+[node name="Player_Start_World8" type="Position2D" parent="."]
+position = Vector2( 4420, -200 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
 [connection signal="body_entered" from="Area2D3" to="." method="_on_Area2D3_body_entered"]

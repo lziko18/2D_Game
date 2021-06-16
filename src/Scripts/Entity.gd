@@ -5,6 +5,7 @@ var save_data = null
 func _ready():
 	if save_data != null:
 		set_from_save_data(save_data)
+		save_data = null
 
 func load_save(data):
 	save_data = data
