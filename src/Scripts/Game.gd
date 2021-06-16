@@ -36,7 +36,7 @@ func _ready():
 		save_data = {}
 		save_data["player"] = {}
 		save_data["worlds"] = {}
-		load_world("World5", LoadType.START)
+		load_world("World9", LoadType.START)
 
 func load_world(world_name, load_type):
 	print("Loading world " + world_name + " with load type " + LoadType.keys()[load_type])
