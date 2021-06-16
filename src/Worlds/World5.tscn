@@ -413,9 +413,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 shape = SubResource( 8 )
 
-[node name="Obelisk_flying" parent="." instance=ExtResource( 15 )]
-position = Vector2( 9380.3, 41.429 )
-
 [node name="Evil_tree" parent="." instance=ExtResource( 14 )]
 position = Vector2( 2030.98, -60.1337 )
 
@@ -426,9 +423,7 @@ position = Vector2( 71.7247, -95.4592 )
 position = Vector2( 10251, 170 )
 
 [node name="Obelisk_flying" parent="." instance=ExtResource( 15 )]
-
-[node name="Obelisk_flying2" parent="." instance=ExtResource( 15 )]
-position = Vector2( 8819.48, 114.421 )
+position = Vector2( 4972, 178 )
 [connection signal="body_entered" from="Hide1_area" to="." method="_on_Hide1_area_body_entered"]
 [connection signal="body_exited" from="Hide1_area" to="." method="_on_Hide1_area_body_exited"]
 [connection signal="body_entered" from="Hide2_area" to="." method="_on_Hide2_area_body_entered"]

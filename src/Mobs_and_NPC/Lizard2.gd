@@ -63,6 +63,7 @@ func _enter_state(_new_state, _old_state):
 			$Area2D/CollisionShape2D.disabled=true
 			$Player_detect/CollisionShape2D.disabled=true
 			$backhit/CollisionShape2D.disabled=true
+			$Area2D2/CollisionShape2D.disabled=true
 	
 func _exit_state(_old_state, _new_state):
 	match _old_state:
@@ -80,7 +81,7 @@ func set_direction(dir):
 	direction = dir
 	if state == states.Wander:
 		$Enemysprite.flip_h = (direction == 1)
-		$backhit.position.x = -110 * direction
+		$backhit.position.x = -80 * direction
 		$RayCast2D.scale.y = -1 * direction
 		$RayCast2D2.position.x = 20 * direction
 		$Area2D.position.x = 50 * direction

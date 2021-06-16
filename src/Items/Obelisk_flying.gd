@@ -50,6 +50,8 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	if body.name=="Player":
+		$Timer.stop()
+		can_save=false
 		$AnimationPlayer.play_backwards("New Anim")
 
 

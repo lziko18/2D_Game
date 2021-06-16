@@ -47,6 +47,7 @@ func _state_logic(_delta):
 			pass
 		states.die:
 			velocity.y+=20
+			$Area2D2/CollisionShape2D2.disabled=true
 			if $RayCast2D.is_colliding():
 				set_state(states.land)
 		states.land:
