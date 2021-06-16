@@ -36,7 +36,7 @@ func check_who_are_you_speaking():
 	
 	
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		load_dialog()
 
@@ -63,5 +63,5 @@ func load_dialog():
 		get_parent().queue_free()
 	dialog_index += 1
 
-func on_Tween_tween_completed(object, key):
+func on_Tween_tween_completed(_object, _key):
 	finished = true

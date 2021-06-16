@@ -14,7 +14,7 @@ func _ready():
 	$Tween.interpolate_property($TextureRect/Sprite,"modulate",Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		get_tree().paused=false
 		self.queue_free()

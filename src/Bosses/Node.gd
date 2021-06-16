@@ -17,7 +17,7 @@ func _ready():
 	add_state('taunt')#13
 	add_state('fake_idle')#15
 	call_deferred("set_state",states.fake_idle)
-func _input(event):
+func _input(_event):
 	#if[states.idle,states.walk].has(state):
 		#if event.is_action_pressed("ui_up"):
 			#parent.jump_attack=true
@@ -44,7 +44,7 @@ func _input(event):
 
 
 
-func _state_logic(delta):
+func _state_logic(_delta):
 	parent.gravity()
 	parent.player_knock_back()
 	if parent.is_dead==true and parent.is_on_floor()==true:
@@ -63,7 +63,7 @@ func _state_logic(delta):
 
 
 
-func _get_transition(delta):
+func _get_transition(_delta):
 	match state:
 		states.idle:
 			if !parent.is_on_floor():
@@ -116,7 +116,7 @@ func _get_transition(delta):
 				return states.walk
 	return null
 
-func _enter_state(new_state,old_state):
+func _enter_state(new_state,_old_state):
 	match new_state:
 		states.idle:
 			parent.motion.x=0
@@ -180,7 +180,7 @@ func _enter_state(new_state,old_state):
 			parent.can_choose=false
 
 
-func _exit_state(old_state,new_state):
+func _exit_state(old_state,_new_state):
 	match old_state:
 		states.idle:
 			parent.can_choose=false

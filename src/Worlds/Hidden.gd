@@ -12,7 +12,6 @@ func refresh():
 	$Player/Camera2D.limit_right=10300
 	$Player/Camera2D.limit_left=0
 	yield(get_tree().create_timer(0.05), "timeout")
-	print("sbohet")
 	$Player.set_physics_process(true)
 	$Player/Camera2D/CanvasLayer/Label/AnimationPlayer.play("Hide")
 func next_scene_to_world8():

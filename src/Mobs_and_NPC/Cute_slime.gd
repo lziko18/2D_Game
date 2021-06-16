@@ -17,7 +17,7 @@ func _ready():
 		$Sprite.flip_h=false
 	state=Idle
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	slime=global_position.x
 	player=get_parent().get_node("Player").global_position.x
 	if  abs(slime - player)<200:

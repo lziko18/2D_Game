@@ -20,7 +20,7 @@ func _ready():
 	scale.x=0.5
 	scale.y=0.5
 
-func _state_logic(delta):
+func _state_logic(_delta):
 	motion=move_and_slide(motion,UP)
 
 func _get_transition():
@@ -64,7 +64,7 @@ func _enter_state(_new_state, _old_state):
 			motion.y=0
 			set_physics_process(false)
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	set_state(states.explode)
 
 func zise():
