@@ -32,8 +32,6 @@ func _process(_delta):
 		handle_selection(current_selection)
 
 func handle_selection(_current_selection):
-	var emer ='res://Worlds/'+ str(player_data.scene) +'.tscn'
-	var scene= load(emer)
 	if _current_selection == 0:
 		var game_instance = Game.new()
 		game_instance.set_name("Game")

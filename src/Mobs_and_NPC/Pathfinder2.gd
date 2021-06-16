@@ -47,6 +47,7 @@ func _state_logic(_delta):
 			pass
 		states.die:
 			velocity.y+=20
+			$Area2D2/CollisionShape2D2.disabled=true
 			if $RayCast2D.is_colliding():
 				set_state(states.land)
 		states.land:
@@ -89,6 +90,7 @@ func _enter_state(_new_state, _old_state):
 			if health<=0:
 				set_state(states.die)
 		states.die:
+			$Hurtbox.queue_free()
 			$AnimationPlayer.play("die")
 			$Hurtbox/CollisionShape2D2.disabled=true
 			velocity.x = 0
@@ -122,7 +124,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name=="attack":
 		set_state(states.wander)
 	if anim_name=="hurt":
-		set_state(states.wander)
+		set_state(states.hunt)
 	if anim_name=="land":
 		queue_free()
 
