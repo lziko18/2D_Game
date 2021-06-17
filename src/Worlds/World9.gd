@@ -138,7 +138,6 @@ func _on_Area2D3_body_entered(body):
 		$Player/Camera2D.change_left(from-1000,9800)
 		$Player/Camera2D.limit_right=10700
 		raise()
-		$AudioStreamPlayer.playing=true
 		get_tree().get_root().get_node("World/Bosses/Old_guardian").set_state(0)
 		$Area2D3.queue_free()
 

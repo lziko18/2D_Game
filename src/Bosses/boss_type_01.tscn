@@ -313,7 +313,7 @@ points = PoolVector2Array( -5, 5, 5, 5, 5, -5, -5, -5, -20, 0 )
 
 [node name="boss_type_01" type="KinematicBody2D"]
 scale = Vector2( 2, 2 )
-collision_layer = 5
+collision_layer = 4
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -398,5 +398,5 @@ shape = SubResource( 19 )
 disabled = true
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

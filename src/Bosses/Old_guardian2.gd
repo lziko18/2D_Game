@@ -156,8 +156,6 @@ func _on_AnimationPlayer_animation_finished(name):
 	if name=="Spit":
 		set_state(states.idle)
 	if name=="Die":
-		get_tree().get_root().get_node("World/A1").play("Boss_die")
-		get_tree().get_root().get_node("World/A1").play_backwards("low")
 		get_tree().get_root().get_node("World").unraise()
 		queue_free()
 

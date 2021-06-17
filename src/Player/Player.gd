@@ -612,15 +612,20 @@ func _on_AnimationPlayer_animation_finished(cast):
 
 
 func _on_AnimationPlayer_animation_started(anim_name):
-	if anim_name!="air1" or anim_name!="air2" or anim_name!="Attack1" or anim_name!="Attack2" or anim_name!="Attack3":
+	if anim_name!="air1" or anim_name!="air2" or anim_name!="Attack1" or anim_name!="Attack2" or anim_name!="Attack3" or anim_name!="air3":
 		$Position2D/Att_hitbox/CollisionShape2D.disabled=true
+	if anim_name!="Ground_slam":
+		$Ground_slam_hitbox/CollisionShape2D.disabled=true
 	if anim_name=="Hurt":
-		$Bounce/CollisionShape2D.disabled=false
+		$Position2D/Att_hitbox/CollisionShape2D.disabled=true
 		$Position2D/Att_hitbox/CollisionShape2D.disabled=true
 		if not_dead==true:
 			take_damage(1)
 	if anim_name=="Player Casting":
 		can_cast=false
+	if anim_name!="air3":
+		$Bounce/CollisionShape2D.disabled=false
+		
 	if anim_name=="New Anim":
 		motion.y=50
 		motion.y=lerp(motion.y,500,0.3)

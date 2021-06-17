@@ -347,7 +347,7 @@ position = Vector2( 0.111267, -1.02365 )
 shape = SubResource( 11 )
 
 [node name="Area2D4" type="Area2D" parent="."]
-position = Vector2( 25757.4, 285.659 )
+position = Vector2( 25774.9, 286.453 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -456,6 +456,7 @@ texture = ExtResource( 15 )
 
 [node name="Banditt" parent="." instance=ExtResource( 16 )]
 position = Vector2( 23414.9, -148.891 )
+frame = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false

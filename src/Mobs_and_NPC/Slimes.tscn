@@ -167,7 +167,7 @@ shape = SubResource( 6 )
 [node name="kot" parent="Sprite" instance=ExtResource( 4 )]
 position = Vector2( 0, 12.3101 )
 rotation = 1.5708
-scale = Vector2( 0.5, 0.3 )
+scale = Vector2( 0.3, 0.2 )
 collision_layer = 64
 collision_mask = 16
 script = ExtResource( 3 )
