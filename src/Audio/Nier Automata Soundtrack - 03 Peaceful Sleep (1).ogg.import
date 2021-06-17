@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Nier Automata Soundtrack - 03 Peaceful Sleep (1).ogg-e2b628012f9d11a44fd7dbcf19e02b5a.oggstr"
+
+[deps]
+
+source_file="res://Audio/Nier Automata Soundtrack - 03 Peaceful Sleep (1).ogg"
+dest_files=[ "res://.import/Nier Automata Soundtrack - 03 Peaceful Sleep (1).ogg-e2b628012f9d11a44fd7dbcf19e02b5a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Dark Souls III Soundtrack OST - Dragonslayer Armour.ogg-e4a19386edede80c057eb50117445c2d.oggstr"
+
+[deps]
+
+source_file="res://Audio/Dark Souls III Soundtrack OST - Dragonslayer Armour.ogg"
+dest_files=[ "res://.import/Dark Souls III Soundtrack OST - Dragonslayer Armour.ogg-e4a19386edede80c057eb50117445c2d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

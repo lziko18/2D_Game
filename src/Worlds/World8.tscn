@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Tilesets/Background/Background-1.png" type="Texture" id=1]
 [ext_resource path="res://Tilesets/forest16.tres" type="TileSet" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Items/Obelisk_flying.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Mobs_and_NPC/Lizard.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Mobs_and_NPC/Guardian.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Evil_tree.tscn" type="PackedScene" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hide"
@@ -173,6 +174,8 @@ tracks/0/keys = {
 
 [sub_resource type="RectangleShape2D" id=16]
 
+[sub_resource type="RectangleShape2D" id=17]
+
 [node name="World" type="Node2D"]
 position = Vector2( 1.12244, 0 )
 script = ExtResource( 8 )
@@ -221,6 +224,7 @@ centered = false
 [node name="LevelNavigation" type="Navigation2D" parent="." groups=[
 "LevelNavigation",
 ]]
+visible = false
 
 [node name="collision" type="TileMap" parent="LevelNavigation"]
 scale = Vector2( 2, 2 )
@@ -452,14 +456,16 @@ texture = ExtResource( 15 )
 
 [node name="Banditt" parent="." instance=ExtResource( 16 )]
 position = Vector2( 23414.9, -148.891 )
-frame = 0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color( 0.392157, 0.392157, 0.392157, 1 )
 
 [node name="Player_Start" type="Position2D" parent="."]
-position = Vector2( 15793.3, 223.203 )
+position = Vector2( 22673.1, 174.358 )
+
+[node name="Player_Start_World5" type="Position2D" parent="."]
+position = Vector2( 84.2957, 202.232 )
 
 [node name="Player_Start_World9" type="Position2D" parent="."]
 position = Vector2( 13389, 800 )
@@ -581,10 +587,7 @@ position = Vector2( 22059.1, -178.615 )
 position = Vector2( 1636.35, 121.299 )
 
 [node name="Pathfinder2" parent="Entities" instance=ExtResource( 10 )]
-position = Vector2( 1534.08, -280.653 )
-
-[node name="Pathfinder3" parent="Entities" instance=ExtResource( 10 )]
-position = Vector2( 3721.51, -4.44513 )
+position = Vector2( 2710.71, -85.4915 )
 
 [node name="Pathfinder4" parent="Entities" instance=ExtResource( 10 )]
 position = Vector2( 6909.02, -64.7664 )
@@ -620,10 +623,6 @@ position = Vector2( 13464.5, -82.04 )
 position = Vector2( 5058.36, -103.374 )
 face = -1
 
-[node name="Guardian2" parent="Entities" instance=ExtResource( 22 )]
-position = Vector2( 9619.42, -132.035 )
-face = -1
-
 [node name="Guardian3" parent="Entities" instance=ExtResource( 22 )]
 position = Vector2( 8702.46, 56.7515 )
 face = -1
@@ -645,6 +644,12 @@ position = Vector2( 16874.4, -3.79036 )
 
 [node name="Guardian8" parent="Entities" instance=ExtResource( 22 )]
 position = Vector2( 18605.7, -34.4917 )
+
+[node name="Evil_tree" parent="Entities" instance=ExtResource( 23 )]
+position = Vector2( 6639.24, -219.013 )
+
+[node name="Evil_tree2" parent="Entities" instance=ExtResource( 23 )]
+position = Vector2( 19462.9, 226.662 )
 
 [node name="Bosses" type="Node2D" parent="."]
 
@@ -668,6 +673,9 @@ position = Vector2( 271.139, -176.003 )
 [node name="hearts2" parent="Items" instance=ExtResource( 11 )]
 position = Vector2( 19596.3, -122.993 )
 
+[node name="hearts5" parent="Items" instance=ExtResource( 11 )]
+position = Vector2( 9622.34, -86.4459 )
+
 [node name="hearts3" parent="Items" instance=ExtResource( 11 )]
 position = Vector2( 14075.2, -38.1405 )
 
@@ -679,6 +687,16 @@ position = Vector2( 668.906, 146.004 )
 
 [node name="Obelisk_flying2" parent="." instance=ExtResource( 20 )]
 position = Vector2( 22907.5, -193.125 )
+
+[node name="Area2D5" type="Area2D" parent="."]
+position = Vector2( 26935.2, 220.203 )
+scale = Vector2( 20, 20 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+shape = SubResource( 17 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
@@ -691,3 +709,4 @@ position = Vector2( 22907.5, -193.125 )
 [connection signal="body_entered" from="world5" to="." method="_on_world5_body_entered"]
 [connection signal="body_entered" from="FallCollision" to="." method="_on_FallCollision_body_entered"]
 [connection signal="body_entered" from="FallCollision2" to="." method="_on_FallCollision2_body_entered"]
+[connection signal="body_entered" from="Area2D5" to="." method="_on_Area2D5_body_entered"]

@@ -100,6 +100,7 @@ func _on_Area2D_body_entered(body):
 func _on_Area2D2_body_entered(body):
 	if body.name == "Player":
 		body.motion.y=1000
+		body.can_jump=false
 		yield(get_tree().create_timer(0.3), "timeout")
 		body.motion.y=0
 		body.is_casting=false
@@ -122,6 +123,7 @@ func _on_Area2D2_body_entered(body):
 		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
 		get_tree().paused=false
 		yield(get_tree().create_timer(0.1), "timeout")
+		body.can_jump=true
 		body.set_physics_process(true)
 		body.take_damage(1)
 		body.motion.x=0
@@ -136,6 +138,7 @@ func _on_Area2D3_body_entered(body):
 		$Player/Camera2D.change_left(from-1000,9800)
 		$Player/Camera2D.limit_right=10700
 		raise()
+		$AudioStreamPlayer.playing=true
 		get_tree().get_root().get_node("World/Bosses/Old_guardian").set_state(0)
 		$Area2D3.queue_free()
 

@@ -20,7 +20,7 @@ func _process(delta):
 		self.queue_free()
 
 func _on_Tween_tween_all_completed():
-	$Tween2.interpolate_property($TextureRect/RichTextLabel2, "percent_visible", 0, 1, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween2.interpolate_property($TextureRect/RichTextLabel2, "percent_visible", 0, 1, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween2.start()
 
 
@@ -32,7 +32,7 @@ func _on_Tween2_tween_all_completed():
 	
 
 func _on_Tween3_tween_all_completed():
-	$Tween4.interpolate_property($TextureRect/RichTextLabel, "percent_visible", 0, 1, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween4.interpolate_property($TextureRect/RichTextLabel, "percent_visible", 0, 1, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween4.start()
 
 

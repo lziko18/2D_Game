@@ -5,7 +5,6 @@ onready var root=get_tree().get_root()
 
 func refresh():
 	.refresh()
-	yield(get_tree().create_timer(0.01), "timeout")
 	$Area2D3/CollisionShape2D.disabled=true
 	$Player/Camera2D.limit_bottom=352
 	$Player/Camera2D.limit_top=-320
@@ -16,6 +15,7 @@ func refresh():
 	$Player.set_physics_process(true)
 	$Area2D3/CollisionShape2D.disabled=false
 	if $Bosses.get_child_count() == 0:
+		$Player/Camera2D.limit_right=27125
 		$Hidden3.queue_free()
 		$Hidden4.queue_free()
 		$Area2D4.queue_free()
@@ -166,6 +166,7 @@ func _on_world5_body_entered(body):
 func _on_FallCollision2_body_entered(body):
 	if body.name == "Player":
 		body.motion.y=1000
+		body.can_jump=false
 		yield(get_tree().create_timer(0.3), "timeout")
 		body.motion.y=0
 		body.is_casting=false
@@ -188,6 +189,7 @@ func _on_FallCollision2_body_entered(body):
 		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
 		get_tree().paused=false
 		yield(get_tree().create_timer(0.1), "timeout")
+		body.can_jump=true
 		body.set_physics_process(true)
 		body.take_damage(1)
 		body.motion.x=0
@@ -199,6 +201,7 @@ func _on_FallCollision2_body_entered(body):
 func _on_FallCollision_body_entered(body):
 	if body.name == "Player":
 		body.motion.y=1000
+		body.can_jump=false
 		yield(get_tree().create_timer(0.3), "timeout")
 		body.motion.y=0
 		body.is_casting=false
@@ -221,6 +224,7 @@ func _on_FallCollision_body_entered(body):
 		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
 		get_tree().paused=false
 		yield(get_tree().create_timer(0.1), "timeout")
+		body.can_jump=true
 		body.set_physics_process(true)
 		body.take_damage(1)
 		body.motion.x=0
@@ -238,3 +242,9 @@ func _get_world_name():
 
 
 
+
+
+func _on_Area2D5_body_entered(body):
+	if body.name=="Player":
+		body.set_physics_process(false)
+		add_child(preload ("res://Game_Over.tscn").instance())

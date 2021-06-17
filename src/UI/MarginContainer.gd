@@ -33,6 +33,8 @@ func _process(_delta):
 
 func handle_selection(_current_selection):
 	if _current_selection == 0:
+		SaveSystem.remove_save("_respawn")
+		SaveSystem.remove_save("Test2")
 		var game_instance = Game.new()
 		game_instance.set_name("Game")
 

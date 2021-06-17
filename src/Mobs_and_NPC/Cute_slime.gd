@@ -4,6 +4,7 @@ var slime
 var player
 var rng = RandomNumberGenerator.new()
 var num
+var seen=false
 enum{
 	Happy,
 	Idle
@@ -30,6 +31,7 @@ func _physics_process(_delta):
 		Idle:
 			$AnimationPlayer.play("idle")
 			if  abs(slime - player)<100:
+				seen=true
 				rng.randomize()
 				num=rng.randi()%10+1
 				if int(num)<=5:
@@ -40,10 +42,14 @@ func _physics_process(_delta):
 		Happy:
 			$AnimationPlayer.play("happy")
 			if  abs(slime - player)>=100:
-				yield(get_tree().create_timer(0.8), "timeout")
-				state=Idle
+				seen=false
 
 
 
 
 
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name=="happy" and seen==false:
+		state=Idle

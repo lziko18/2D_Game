@@ -11,7 +11,7 @@ const JUMP_HEIGHT = -1300;
 
 var direction = 1
 var motion = Vector2()
-var health = 2
+var health = 8
 var timer
 
 onready var rng = RandomNumberGenerator.new()
@@ -156,6 +156,8 @@ func _on_AnimationPlayer_animation_finished(name):
 	if name=="Spit":
 		set_state(states.idle)
 	if name=="Die":
+		get_tree().get_root().get_node("World/A1").play("Boss_die")
+		get_tree().get_root().get_node("World/A1").play_backwards("low")
 		get_tree().get_root().get_node("World").unraise()
 		queue_free()
 
@@ -167,6 +169,12 @@ func _on_AnimationPlayer_animation_started(name):
 	elif name=="Spit":
 		motion.x=0
 	elif name=="Idle":
+		motion.x=0
+	elif name=="Die":
+		$Hurtbox.queue_free()
+		$Area2D3.queue_free()
+		$Area2D.queue_free()
+		$Area2D2.queue_free()
 		motion.x=0
 
 func _on_Hurtbox_area_entered(_area):

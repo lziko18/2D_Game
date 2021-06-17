@@ -3,12 +3,12 @@ extends Control
 var dialog_of_wizzard = ["Ho... Mukatte kuru no ka... Nigezu ni kono DIO ni chikadzuite kuru no ka....  Sekkaku sofu no Josefu ga watashi no sekai' no shōtai o, shiken shūryō chaimu chokuzen made mondai o hodoite iru jukensei no yōna hisshi koita kibun de oshiete kureta to iu no ni...",
 				"Chikadzukanakya teme o buchi nomesenainde na"]
 var dialog_of_wizzard2 = ["Pershendetje Alma si po ja kalon ti?"]
-var dialog_of_boss= ["Chikadzukanakya teme o buchi nomesenainde na"]
+var dialog_of_boss= ["So you reached the end!","You thought that now you will receive your 100 points?","HAA FOOL ... If you want your max points you must defeat me first!"]
 var dialog_of_bandit= ["Oh, adventurer. We were ambushed by a warrior when we were tryinh to reach the village.",
 				"His eyes were red as they were corrupted by pure rage.",
 				"I was the only one who clould escape from his hammer.",
 				"If you are willing to fight him there is nothing I can do expect wishing you good luck! "]
-var dialog_of_bandit2= ["Be carefull and good luck adventurer"]
+var dialog_of_bandit2= ["Be carefull and good luck adventurer!"]
 
 var who=""
 var dialog
@@ -57,7 +57,7 @@ func load_dialog():
 		elif dialog==dialog_of_boss:
 			get_tree().get_root().get_node("World").raise()
 			get_tree().get_root().get_node("World/Area2D4").queue_free()
-			get_tree().get_root().get_node("World/boss_type_01").start()
+			get_tree().get_root().get_node("World/Bosses/boss_type_01").start()
 		get_tree().get_root().get_node("World/Player").cnt=1
 		get_tree().get_root().get_node("World/Player").is_speaking=false
 		get_parent().queue_free()

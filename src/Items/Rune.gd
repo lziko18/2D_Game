@@ -34,6 +34,7 @@ func _on_Tween_tween_all_completed():
 func _on_Area2D_body_entered(body):
 	if body.name=="Player":
 		body.add_health(1)
+		body.heal(1)
 		if body.runes==false:
 			var add=scene.instance()
 			get_tree().get_root().get_node("World/Player/Camera2D").add_child(add)

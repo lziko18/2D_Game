@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/NieR Automata OST - City Ruins (Rays of Light).ogg-d6424d0c360418005101156f3e6ef357.oggstr"
+
+[deps]
+
+source_file="res://Audio/NieR Automata OST - City Ruins (Rays of Light).ogg"
+dest_files=[ "res://.import/NieR Automata OST - City Ruins (Rays of Light).ogg-d6424d0c360418005101156f3e6ef357.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

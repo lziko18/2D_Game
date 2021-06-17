@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/Adventurefont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Game_Over.gd" type="Script" id=3]
+
+[node name="Game_Over" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 320, 152 )
+scale = Vector2( 18, 12.25 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.325
+anchor_top = 0.422
+anchor_right = 0.712
+anchor_bottom = 0.556
+margin_left = -1.52588e-05
+margin_top = 0.0799866
+margin_right = 0.320007
+margin_bottom = -0.160019
+custom_fonts/font = ExtResource( 1 )
+text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}

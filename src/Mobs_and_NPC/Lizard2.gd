@@ -57,6 +57,8 @@ func _enter_state(_new_state, _old_state):
 			$Area2D/CollisionShape2D.disabled=true
 			$backhit/CollisionShape2D.disabled=false
 		states.Die:
+			$Hurtbox.queue_free()
+			$Area2D2.queue_free()
 			$Enemyanim.play("en die")
 			motion.x=0
 			$CollisionShape2D.disabled=true
@@ -93,9 +95,9 @@ func _on_Hurtbox_area_entered(area):
 	if health>0:
 		set_state(states.Hurt)
 		if area.name=="Att_hitbox":
-			motion.x=area.knockback_vector/2 
+			motion.x=area.knockback_vector/5 
 		elif area.name=="Ground_slam_hitbox":
-			motion.y=area.knockback_vector/2
+			motion.y=area.knockback_vector/5
 	else:
 		set_state(states.Die)
 
@@ -121,8 +123,7 @@ func _on_Enemyanim_animation_finished(anim_name):
 func _on_Enemyanim_animation_started(anim_name):
 	if anim_name != "En att":
 		$Area2D/CollisionShape2D2.disabled = true
-	if anim_name=="en die":
-		$Area2D2/CollisionShape2D2.queue_free()
+
 
 
 func _on_backhit_body_entered(body):

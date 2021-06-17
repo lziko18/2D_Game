@@ -26,7 +26,7 @@ func _on_Tween_tween_all_completed():
 
 
 func _on_Tween2_tween_all_completed():
-	$Tween3.interpolate_property($TextureRect/RichTextLabel, "percent_visible", 0, 1, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween3.interpolate_property($TextureRect/RichTextLabel, "percent_visible", 0, 1, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween3.start()
 	
 
@@ -37,7 +37,7 @@ func _on_Tween3_tween_all_completed():
 
 
 func _on_Tween4_tween_all_completed():
-	$Tween5.interpolate_property($TextureRect/RichTextLabel2, "percent_visible", 0, 1, 3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween5.interpolate_property($TextureRect/RichTextLabel2, "percent_visible", 0, 1, 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween5.start()
 
 

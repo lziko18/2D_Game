@@ -643,7 +643,9 @@ func _on_Slide_reset_timeout():
 	can_slide=true
 
 func _on_Hurtbox_area_entered(area):
-	if can_be_target==true:
+	if can_be_target==true and not_dead==true:
+		if health_current>1:
+			$AnimationPlayer2.play("New Anim")
 		is_casting=false
 		is_air_att=false
 		is_attackig=false
@@ -782,9 +784,9 @@ func _ready():
 	#set_physics_process(false)
 
 	if save_data == null:
-		health_max = 5
+		health_max = 3
 		update_max_health()
-		health_current = 5
+		health_current = 1
 		update_health()
 	else:
 		set_from_save_data(save_data)

@@ -4,6 +4,12 @@ const saves_folder = "user://saves"
 const player_save_file_name = "player.json"
 const world_save_file_name = "world.json"
 
+static func remove_save(save_name : String):
+	var dir = Directory.new()
+	dir.remove(saves_folder+"/"+save_name+"/"+player_save_file_name)
+	dir.remove(saves_folder+"/"+save_name+"/"+world_save_file_name)
+	dir.remove(saves_folder+"/"+save_name)
+
 static func get_saves_list():
 	var saves = []
 	var dir = Directory.new()

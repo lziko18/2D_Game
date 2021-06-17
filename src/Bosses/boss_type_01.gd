@@ -21,7 +21,7 @@ var rng = RandomNumberGenerator.new()
 var num
 var dash_con=false
 var spin_con=false
-var health=1
+var health=8
 var is_dead=false
 onready var player_push=$Sprite/Position2D/Area2D
 onready var player_push2=$Sprite/Position2D/Area2D2

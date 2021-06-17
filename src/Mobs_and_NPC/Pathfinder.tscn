@@ -178,7 +178,6 @@ anims/land = SubResource( 6 )
 anims/move = SubResource( 7 )
 
 [node name="Area2D" parent="." instance=ExtResource( 4 )]
-visible = false
 position = Vector2( -13, 0 )
 scale = Vector2( 2, 2 )
 collision_layer = 64

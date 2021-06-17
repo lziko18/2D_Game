@@ -7,7 +7,6 @@ onready var root=get_tree().get_root()
 
 func refresh():
 	.refresh()
-	yield(get_tree().create_timer(0.01), "timeout")
 	$Player/Camera2D.limit_bottom=352
 	$Player/Camera2D.limit_top=-190
 	$Player/Camera2D.limit_right=10300
@@ -70,6 +69,7 @@ func _get_world_name():
 func _on_Area2D2_body_entered(body):
 	if body.name == "Player":
 		body.motion.y=1000
+		body.can_jump=false
 		yield(get_tree().create_timer(0.3), "timeout")
 		body.motion.y=0
 		body.is_casting=false
@@ -92,6 +92,7 @@ func _on_Area2D2_body_entered(body):
 		get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
 		get_tree().paused=false
 		yield(get_tree().create_timer(0.1), "timeout")
+		body.can_jump=true
 		body.set_physics_process(true)
 		body.take_damage(1)
 		body.motion.x=0

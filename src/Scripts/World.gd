@@ -6,7 +6,8 @@ var entity_scenes = {
 	"Slime": preload("res://Mobs_and_NPC/Slimes.tscn"),
 	"Lizard": preload("res://Mobs_and_NPC/Lizard.tscn"),
 	"Guardian": preload("res://Mobs_and_NPC/Guardian.tscn"),
-	"Pathfinder": preload("res://Mobs_and_NPC/Pathfinder.tscn")
+	"Pathfinder": preload("res://Mobs_and_NPC/Pathfinder.tscn"),
+	"Evil_tree": preload("res://Evil_tree.tscn")
 }
 
 var boss_scenes = {
@@ -17,7 +18,8 @@ var boss_scenes = {
 var item_scenes = {
 	"Grapling": preload("res://Items/Grapling.tscn"),
 	"hearts": preload("res://Items/hearts.tscn"),
-	"Rune": preload("res://Items/Rune.tscn")
+	"Rune": preload("res://Items/Rune.tscn"),
+	"Flame_spirit": preload("res://Flame_spirit.tscn")
 }
 
 var game = null
@@ -28,7 +30,6 @@ func refresh():
 	get_tree().get_root().get_node("/root/Transition").get_node("Transition/Video").play_backwards("transition")
 	get_tree().paused=false
 	yield(get_tree().create_timer(0.05), "timeout")
-	$Player.set_physics_process(true)
 	if save_data != null:
 		set_from_save_data(save_data)
 		save_data = null

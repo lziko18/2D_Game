@@ -1,6 +1,6 @@
 extends "res://Scripts/Entity.gd"
 
-const speed : int = 200
+var speed : int = 200
 
 var velocity : Vector2 = Vector2(0, 0)
 var path : Array = []
@@ -8,7 +8,7 @@ var levelNavigation : Navigation2D = null
 var player = null
 var health = 2
 var direction = 1
-
+var player_spotted: bool = false
 func _init():
 	add_state("wander")
 	add_state("attack")
@@ -41,11 +41,13 @@ func _state_logic(_delta):
 			pass
 		states.wander:
 			$AnimationPlayer.play("idle")
-			if check_player_in_detection():
+			check_player_in_detection()
+			if player_spotted:
 				set_state(states.hunt)
 		states.hurt:
 			pass
 		states.die:
+			speed=0
 			velocity.y+=20
 			$Area2D2/CollisionShape2D2.disabled=true
 			if $RayCast2D.is_colliding():
@@ -65,10 +67,13 @@ func _state_logic(_delta):
 					path.pop_front()
 			var x = player.global_position.x - global_position.x
 			var y = player.global_position.y - global_position.y
-			var distance = abs(x * x + y * y)
-			if distance >= 600 * 600:
+			var distance = abs(x)
+			var distance2=abs(y)
+			if distance >= 600 and distance2>=600:
+				player_spotted=false
 				set_state(states.wander)
-			elif distance <= 30 * 30:
+			elif distance <= 30 and distance2<=30:
+				player_spotted=false
 				set_state(states.attack)
 
 func _get_transition():
@@ -117,6 +122,7 @@ func set_direction(dir):
 func check_player_in_detection() -> bool:
 	var collider = $LineOfSight.get_collider()
 	if collider and collider.is_in_group("Player"):
+		player_spotted=true
 		return true
 	return false
 
@@ -124,7 +130,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name=="attack":
 		set_state(states.wander)
 	if anim_name=="hurt":
-		set_state(states.hunt)
+		set_state(states.wander)
 	if anim_name=="land":
 		queue_free()
 
@@ -139,6 +145,8 @@ func _on_AnimationPlayer_animation_started(anim_name):
 		yield(get_tree().create_timer(0.05), "timeout")
 		velocity.x=0
 		velocity.y=0
+	if anim_name!="attack":
+		$Area2D/CollisionShape2D2.disabled=true
 
 
 func _on_Hurtbox_area_entered(area):

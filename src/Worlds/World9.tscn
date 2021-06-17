@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Wizzard_guide.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/iron.tres" type="TileSet" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Mobs_and_NPC/Slimes.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Mobs_and_NPC/Cute_slime.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Items/Obelisk_flying.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Flame_spirit.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 128.75 )
@@ -447,8 +448,14 @@ dir = -1
 [node name="Rune" parent="Items" instance=ExtResource( 11 )]
 position = Vector2( 8744.49, -210.62 )
 
+[node name="Flame_spirit" parent="Items" instance=ExtResource( 20 )]
+position = Vector2( 11011.8, 221.42 )
+
 [node name="Player_Start" type="Position2D" parent="."]
 position = Vector2( 4410.03, -209.51 )
+
+[node name="Player_Start_World8" type="Position2D" parent="."]
+position = Vector2( 4416.38, -203.16 )
 
 [node name="Wizzard_guide" parent="." instance=ExtResource( 1 )]
 position = Vector2( 193.282, -1.49829 )

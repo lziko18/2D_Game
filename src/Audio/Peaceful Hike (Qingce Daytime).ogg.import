@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Peaceful Hike (Qingce Daytime).ogg-3515c196527579e70454fff437554692.oggstr"
+
+[deps]
+
+source_file="res://Audio/Peaceful Hike (Qingce Daytime).ogg"
+dest_files=[ "res://.import/Peaceful Hike (Qingce Daytime).ogg-3515c196527579e70454fff437554692.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -3,6 +3,7 @@ extends Sprite
 var target1
 var target2
 var dir=0
+var is_in
 const scene = preload("res://Obelisk.tscn")
 var can_save=false
 func _ready():
@@ -20,10 +21,13 @@ func backrun():
 	$Tween.start()
 
 func _process(delta):
-	if Input.is_action_just_pressed("Talk_Read") and can_save==true:
+	if Input.is_action_just_pressed("Talk_Read") and can_save==true and is_in==true:
+		can_save=false
+		$Timer.start()
 		$Example2/Particles2D.emitting=true
-		get_tree().get_root().get_node("Game").save_game("_respawn")
 		get_tree().get_root().get_node("World/Player").heal(20)
+		get_tree().get_root().get_node("Game").save_game("Test2")
+		get_tree().get_root().get_node("Game").save_game("_respawn")
 		yield(get_tree().create_timer(0.5), "timeout")
 		$Example2/Particles2D.emitting=false
 
@@ -38,18 +42,19 @@ func _on_Tween_tween_all_completed():
 
 func _on_Area2D_body_entered(body):
 	if body.name=="Player":
-		can_save = true
+		is_in=true
+		can_save=true
 		if body.obelisk==false:
 			var add=scene.instance()
 			get_tree().get_root().get_node("World/Player/Camera2D").add_child(add)
 			body.obelisk=true
-		can_save=true
 		body.obelisk=true
 	$AnimationPlayer.play("New Anim")
 
 
 func _on_Area2D_body_exited(body):
 	if body.name=="Player":
+		is_in=false
 		$AnimationPlayer.play_backwards("New Anim")
 
 

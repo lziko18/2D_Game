@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Skills/Chain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Skills/Hurtbox.tscn" type="PackedScene" id=2]
@@ -16,7 +16,7 @@ extents = Vector2( 10, 60.581 )
 
 [sub_resource type="Animation" id=2]
 length = 0.5
-step = 0.025
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -36,7 +36,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.4 ),
+"times": PoolRealArray( 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -44,7 +44,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=3]
 length = 0.55
-step = 0.025
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -64,7 +64,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.45 ),
+"times": PoolRealArray( 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -72,7 +72,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=4]
 length = 0.52
-step = 0.025
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -92,7 +91,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.45 ),
+"times": PoolRealArray( 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -425,6 +424,21 @@ height = 24.7495
 
 [sub_resource type="RectangleShape2D" id=26]
 
+[sub_resource type="Animation" id=27]
+resource_name = "New Anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.411765 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.411765 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
@@ -593,7 +607,7 @@ position = Vector2( -0.418701, -11.5197 )
 scale = Vector2( 3.6374, 3.92665 )
 texture = ExtResource( 12 )
 hframes = 140
-frame = 81
+frame = 57
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 limit_top = -190
@@ -625,6 +639,9 @@ scale = Vector2( 3, 3 )
 z_as_relative = false
 texture = ExtResource( 4 )
 mode = 2
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+"anims/New Anim" = SubResource( 27 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="timeout" from="Attack_reset" to="." method="_on_Timer_timeout"]

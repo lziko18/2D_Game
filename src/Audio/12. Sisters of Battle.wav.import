@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/12. Sisters of Battle.wav-5f500d0615fb822257a43f6182226955.sample"
+
+[deps]
+
+source_file="res://Audio/12. Sisters of Battle.wav"
+dest_files=[ "res://.import/12. Sisters of Battle.wav-5f500d0615fb822257a43f6182226955.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

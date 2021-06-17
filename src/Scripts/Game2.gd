@@ -27,11 +27,12 @@ func _ready():
 		save_data = {}
 		save_data["player"] = {}
 		save_data["worlds"] = {}
-		load_world("World5", LoadType.START)
+		load_world("World8", LoadType.START)
 	else:
 		load_world(save_data.player.world_name, LoadType.LOAD)
 
 func load_world(world_name, load_type):
+	print("Loading "+world_name+" with type "+LoadType.keys()[load_type])
 	var root = get_tree().get_root()
 	if load_type == LoadType.START:
 		var world_instance = world_scenes[world_name].instance()
@@ -50,7 +51,7 @@ func load_world(world_name, load_type):
 		root.add_child(world_instance)
 	elif load_type == LoadType.TRANSITION:
 		var world_instance = world_scenes[world_name].instance()
-		world_instance.load_save(save_data.worlds[world_name])
+		#world_instance.load_save(save_data.worlds[world_name])
 		var old_world = root.get_node("World")
 		var player_instance = old_world.get_node("Player")
 		player_instance.world_name = world_name
